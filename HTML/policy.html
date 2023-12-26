@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" name="viewport"  content="width=device-width, initial-scale=1.0">
+    <title>privacy policy</title>
+    <link rel="stylesheet" href="../data/css/style.css">
+    <style>
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .page_size {
+            display: flex;
+            justify-content: center;
+            height: auto;
+            padding-top: 30px; /* 上部に30pxの余白を追加 */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 500px;
+            margin-bottom: 7px;
+        }
+
+        .accordion-006 {
+            width: 100%;
+            margin-bottom: 7px;
+            border: 1px solid #8da2b5;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #bdd2e5; /* 背景色を再追加 */
+        }
+
+        .accordion-006 summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding: 1em 2em;
+            color: #6a6868;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .accordion-006 summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .accordion-006 summary::after {
+            transform: translateY(-25%) rotate(45deg);
+            width: 7px;
+            height: 7px;
+            margin-left: 10px;
+            border-bottom: 3px solid #8da2b5;
+            border-right: 3px solid #8da2b5;
+            content: '';
+            transition: transform .3s;
+        }
+
+        .accordion-006[open] summary::after {
+            transform: rotate(225deg);
+        }
+
+        .accordion-006 p {
+            transform: translateY(-10px);
+            opacity: 0;
+            margin: 0;
+            padding: .3em 2em 1.5em;
+            color: #6a6868;
+            transition: transform .5s, opacity .5s;
+        }
+
+        .accordion-006[open] p {
+            transform: none;
+            opacity: 1;
+        }
+        @media screen and (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
+    <label for="drawer-toggle" id="drawer-toggle-label"></label>
+    <header style="font-size: 24px;"><a href="../index.html">聖遺物最適化スコア計算機</a></header>
+    <nav id="drawer">
+      <ul>
+        <li><a href="../index.html">・最適化スコア計算機</a></li>
+        <li><a href="./index3.html">・使い方</a></li>
+        <li><a href="./policy.html">・プライバシーポリシー</a></li>
+        <li><a href="./index4.html">・お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <div id="page-content">
+        <div class = "page_size">
+            <div class="container">
+                <h1>プライバシーポリシー</h1>
+                <details class="accordion-006">
+                    <summary>広告</summary>
+                    <p>本サイトでは、第三者配信の広告サービス（Googleアドセンス）を利用しており、ユーザーの関心に基づいた商品やサービスの広告を提供しています。このために、クッキー（Cookie）を使用しています。クッキーを用いることで、当サイトはお客様のコンピュータを識別することが可能ですが、
+                        お客様個人を特定することはできません。お客様のプライバシーを尊重し、個人情報の収集や識別には一切関与しておりません。
+                        Cookieを無効にする方法やGoogleアドセンスに関する詳細については、<a href="https://policies.google.com/technologies/ads">Google 広告 – ポリシーと規約</a>ページをご参照ください。
+                    </p>
+                </details>
+                <details class="accordion-006">
+                    <summary>免責事項</summary>
+                    <p>本サイトからのリンクやバナーなどで移動した先のサイトで提供される情報やサービスについては、一切の責任を負いかねます。また、当ブログのコンテンツ・情報に関しては、最大限の正確性を期しておりますが、その正確性や安全性を保証するものではございません。情報が過去のものとなっている場合もございます。当サイトは参考情報を提供するものであり、特定の目的への適合性や有用性を保証するものではございません。また、提供された情報の利用により生じたいかなる損失や損害についても、一切の責任を負いかねますので、予めご了承ください。</p>
+                </details>
+                <details class="accordion-006">
+                    <summary>リンク</summary>
+                    <p>本サイトでは基本的にリンクフリーです。リンクを貼る際に許可を求めたり連絡をいただく必要はありません。
+                        ただし、インラインフレームの使用や画像の直接リンクについてはお控えいただきますようお願い申し上げます。</p>
+                </details>
+                <details class="accordion-006">
+                    <summary>その他</summary>
+                    <p>不具合報告、質問、要望などがありましたら下記のフォームや連絡先にてお問い合わせください。</p>
+                </details>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

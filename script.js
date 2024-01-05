@@ -1652,7 +1652,7 @@ async function monte_carlo_calculate()
   let score_distribute;
   let af_score_upper_limit = af_score;
   let af_score_lower_limit = 0;
-  af_score = af_score/2;
+  //af_score = af_score/2;
 
   let base_parameter;
   let fixed_status = [0,0,0,0,0,0,0,0];
@@ -1906,7 +1906,8 @@ async function monte_carlo_calculate()
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
     abs_dmg_error = Math.abs(dmg_error);
-    if (abs_dmg_error < 1 ) break;
+    //if (abs_dmg_error < 1 ) break;
+    break
 
     if (dmg_error < 0)
     {

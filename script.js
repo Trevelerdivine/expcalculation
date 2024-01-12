@@ -1908,7 +1908,6 @@ async function monte_carlo_calculate()
     abs_dmg_error = Math.abs(dmg_error);
     //if (abs_dmg_error < 1 ) break;
     break
-
     if (dmg_error < 0)
     {
       af_score_upper_limit = af_score;

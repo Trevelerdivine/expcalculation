@@ -1736,6 +1736,7 @@ async function monte_carlo_calculate()
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
+    af_score = n_count * (10);
     n_count = n_count + 1;
 
     for (let i = 0; i < 10000; i++)

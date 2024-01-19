@@ -1663,6 +1663,7 @@ async function monte_carlo_calculate()
   const team_fix_buff = await calculate_team_fix_buff(base_status);
   const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
+  let response = "";
   //let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   //let my_exp_dmg = my_result_status[8];
   //let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
@@ -1681,7 +1682,6 @@ async function monte_carlo_calculate()
   let critical_dmg;
   let temp_critical_dmg;
   let excess_crscore;
-  let response = "";
   document.getElementById("response").innerHTML = response;
 
   let score_distribute;
@@ -1945,7 +1945,8 @@ async function monte_carlo_calculate()
     output_exp_dmg = temp_exp_dmg;
     output_exp_dmg = output_exp_dmg.toFixed(0);
     //let result = "<br>" +"最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
-    let result = "<br>" + "最適化聖遺物スコア： "+ af_score + "," + output_exp_dmg;
+    //let result = "<br>" + "最適化聖遺物スコア： "+ af_score + "," + output_exp_dmg;
+    let result = "," + output_exp_dmg;
     document.getElementById("result").innerHTML += result;
   }
 

@@ -1666,7 +1666,10 @@ async function monte_carlo_calculate()
   //let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   //let my_exp_dmg = my_result_status[8];
   //let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
-  let af_score = parseFloat(document.getElementById("af_score").value);
+  let af_score = parseFloat(document.getElementById("initial_af_score").value);
+  let dlt_af_score = parseFloat(document.getElementById("dlt_af_score").value);
+  let final_af_score = parseFloat(document.getElementById("final_af_score").value);
+  af_score -= dlt_af_score;
   const my_af_score = parseFloat(document.getElementById("af_score").value);
   const dlt_score = 0.1;
   let critical_dmg;
@@ -1674,14 +1677,7 @@ async function monte_carlo_calculate()
   let excess_crscore;
   let response = "";
   document.getElementById("response").innerHTML = response;
-  
-  if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
-  {
-    calculationMessage.style.visibility = "hidden";
-    response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
-    document.getElementById("response").innerHTML = response;
-    return response;
-  }
+
   let score_distribute;
   let af_score_upper_limit = af_score;
   let af_score_lower_limit = 0;
@@ -1733,13 +1729,16 @@ async function monte_carlo_calculate()
   fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
 
-  while (n_count < 25)
+  while (n_count < 50)
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
-    af_score = n_count * 10;
     n_count = n_count + 1;
-
+    af_score += dlt_af_score
+    if (af_score > final_af_score)
+    {
+      break;
+    }
     for (let i = 0; i < 10000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);

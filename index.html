@@ -2,7 +2,8 @@
 <html lang="ja" dir="ltr">
   <head>
     <meta charset="UTF-8" name="viewport"  content="width=device-width, initial-scale=1.0">
-    <title>原神最適化スコア計算機β</title>
+    <meta name="google-site-verification" content="jB7aX3_1kB4tfFr8TeVBvbG2NtdqzOZnIV7fSZVEEEg" />
+    <title>原神最適化スコア計算機</title>
     <link rel="stylesheet" href="./data/css/style.css">
     <script src="./script.js"></script>
     <script src="./data/character/char_class/char_class.js"></script>
@@ -13,7 +14,7 @@
     <script src="./show_artifact.js"></script>
     <script src="./show_attackmethod.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
     <style>
       footer {
         padding: 5px;
@@ -448,13 +449,14 @@
                 <div class="tier-cell"><img id="29" class="tier-image" src="./artifact/残響の森で囁かれる夜話_5.webp" onclick="changeImageClass(this, 29)"></div>
                 <div class="tier-cell"><img id="28" class="tier-image" src="./artifact/ファントムハンター_5.webp" onclick="changeImageClass(this, 28)"></div>
                 <div class="tier-cell"><img id="27" class="tier-image" src="./artifact/黄金の劇団_5.webp" onclick="changeImageClass(this, 27)"></div>
-                <div class="tier-cell"><img id="25" class="tier-image" src="./artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 25)"></div>
-                <div class="tier-cell"><img id="24" class="tier-image" src="./artifact/旅中の花.png" onclick="changeImageClass(this, 24)"></div>
-                <div class="tier-cell"><img id="23" class="tier-image" src="./artifact/月娘の華彩.jpg" onclick="changeImageClass(this, 23)"></div>
-                <div class="tier-cell"><img id="22" class="tier-image" src="./artifact/諸王の都の始まり.jpg" onclick="changeImageClass(this, 22)"></div>
-                <div class="tier-cell"><img id="21" class="tier-image" src="./artifact/迷宮の遊客_5.png" onclick="changeImageClass(this, 20)"></div>
-                <div class="tier-cell"><img id="20" class="tier-image" src="./artifact/夢境の鉄花_5.png" onclick="changeImageClass(this, 19)"></div>
-                <div class="tier-cell"><img id="19" class="tier-image" src="./artifact/魂香の花_5.png" onclick="changeImageClass(this, 21)"></div>
+                <div class="tier-cell"><img id="26" class="tier-image" src="./artifact/霊光起源の蕊.png" onclick="changeImageClass(this, 26)"></div>
+                <div class="tier-cell"><img id="25" class="tier-image" src="./artifact/旅中の花.png" onclick="changeImageClass(this, 25)"></div>
+                <div class="tier-cell"><img id="24" class="tier-image" src="./artifact/月娘の華彩.jpg" onclick="changeImageClass(this, 24)"></div>
+                <div class="tier-cell"><img id="23" class="tier-image" src="./artifact/諸王の都の始まり.jpg" onclick="changeImageClass(this, 23)"></div>
+                <div class="tier-cell"><img id="22" class="tier-image" src="./artifact/迷宮の遊客_5.png" onclick="changeImageClass(this, 22)"></div>
+                <div class="tier-cell"><img id="21" class="tier-image" src="./artifact/夢境の鉄花_5.png" onclick="changeImageClass(this, 21)"></div>
+                <div class="tier-cell"><img id="20" class="tier-image" src="./artifact/魂香の花_5.png" onclick="changeImageClass(this, 20)"></div>
+                <div class="tier-cell"><img id="19" class="tier-image" src="./artifact/辰砂往生録_5.webp" onclick="changeImageClass(this, 19)"></div>
                 <div class="tier-cell"><img id="18" class="tier-image" src="./artifact/栄花の期_5.png" onclick="changeImageClass(this, 18)"></div>
                 <div class="tier-cell"><img id="17" class="tier-image" src="./artifact/威厳の鰐_5.png" onclick="changeImageClass(this, 17)"></div>
                 <div class="tier-cell"><img id="16" class="tier-image" src="./artifact/覇絆の花_5.png" onclick="changeImageClass(this, 16)"></div>
@@ -462,7 +464,6 @@
                 <div class="tier-cell"><img id="14" class="tier-image" src="./artifact/偉勲の花_5.png" onclick="changeImageClass(this, 14)"></div>
                 <div class="tier-cell"><img id="13" class="tier-image" src="./artifact/金メッキのコサージュ_5.png" onclick="changeImageClass(this, 13)"></div>
                 <div class="tier-cell"><img id="12" class="tier-image" src="./artifact/吹雪の中の思い_5.png" onclick="changeImageClass(this, 12)"></div>
-                <div class="tier-cell"><img id="26" class="tier-image" src="./artifact/辰砂往生録_5.webp" onclick="changeImageClass(this, 26)"></div>
                 <div class="tier-cell"><img id="11" class="tier-image" src="./artifact/魔女の炎の花_5.png" onclick="changeImageClass(this, 11)"></div>
                 <div class="tier-cell"><img id="10" class="tier-image" src="./artifact/火渡りの堅実_5.png" onclick="changeImageClass(this, 10)"></div>
                 <div class="tier-cell"><img id="9" class="tier-image" src="./artifact/雷鳥の憐み.png" onclick="changeImageClass(this, 9)"></div>
@@ -1344,7 +1345,7 @@
   let afpopupImages;
   let weaponPopupImage;
   let char_propaty = [5,0];
-  let selectedImageIds = [21, 21];
+  let selectedImageIds = [22, 22];
   let selectedCharId = "56";
   let selectedWeaponId = "127";
   let weapon_type_index = 4;
@@ -1371,6 +1372,7 @@
   "追憶のしめ縄",
   "絶縁の旗印",
   "華館夢醒形骸記",
+  "辰砂往生録",
   "来歆の余響",
   "金メッキの夢",
   "深林の記憶",
@@ -1378,7 +1380,6 @@
   "楽園の絶花",
   "水仙の夢",
   "花海甘露の光",
-  "辰砂往生録",
   "黄金の劇団",
   "ファントムハンター",
   "残響の森で囁かれる夜話"

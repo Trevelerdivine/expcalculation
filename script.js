@@ -1307,48 +1307,87 @@ function create_reactioncount_list(){
 }
 
 function create_reactionbonus_list(){
+    //reaction_list = [過負荷炎, 烈開花, 感電水, 開花水, 豊穣開花, 過負荷雷, 感電雷, 超開花]
   let reaction_bonus_list = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0];
   if (char_propaty[0] == 0)
   {
     if (selectedImageIds[0] == 11 && selectedImageIds[1] == 11)
     {
-      reaction_bonus_list[0] = 0.4;
-      reaction_bonus_list[1] = 0.4;
+      reaction_bonus_list[0] += 0.4;
+      reaction_bonus_list[1] += 0.4;
     }
     else if (selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
     {
-      reaction_bonus_list[0] = 0.4;
+      reaction_bonus_list[0] += 0.4;
+    }
+    else if (selectedImageIds[0] == 24 && selectedImageIds[1] == 24)
+    {
+      const af24_4check = document.getElementById("af24_4");
+      if (af24_4check.checked)
+      {
+        const af_24_4count = parseInt(document.getElementById("af24_4select").value);
+        reaction_bonus_list[1] += 0.4 + 0.1 * af_24_4count;
+      }
     }
   }
   else if (char_propaty[0] == 1)
   {
     if (selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
     {
-      reaction_bonus_list[2] = 0.4;
+      reaction_bonus_list[2] += 0.4;
+    }
+    else if (selectedImageIds[0] == 24 && selectedImageIds[1] == 24)
+    {
+      const af24_4check = document.getElementById("af24_4");
+      if (af24_4check.checked)
+      {
+        const af_24_4count = parseInt(document.getElementById("af24_4select").value);
+        reaction_bonus_list[3] += 0.4 + 0.1 * af_24_4count;
+        reaction_bonus_list[4] += 0.4 + 0.1 * af_24_4count;
+      }
     }
     if (selectedCharId != 11)
     {
       const Nirou_HP = parseInt(document.getElementById("Nirou_HP").value);
-      reaction_bonus_list[4] = Math.min(Math.max(Nirou_HP - 30000, 0) * 0.00009, 4);
+      reaction_bonus_list[4] += Math.min(Math.max(Nirou_HP - 30000, 0) * 0.00009, 4);
     }
   }
   else if (char_propaty[0] == 3)
   {
     if (selectedImageIds[0] == 11 && selectedImageIds[1] == 11)
     {
-      reaction_bonus_list[5] = 0.4;
+      reaction_bonus_list[5] += 0.4;
     }
     else if (selectedImageIds[0] == 9 && selectedImageIds[1] == 9)
     {
-      reaction_bonus_list[5] = 0.4;
-      reaction_bonus_list[6] = 0.4;
-      reaction_bonus_list[7] = 0.4;
+      reaction_bonus_list[5] += 0.4;
+      reaction_bonus_list[6] += 0.4;
+      reaction_bonus_list[7] += 0.4;
+    }
+    else if (selectedImageIds[0] == 24 && selectedImageIds[1] == 24)
+    {
+      const af24_4check = document.getElementById("af24_4");
+      if (af24_4check.checked)
+      {
+        const af_24_4count = parseInt(document.getElementById("af24_4select").value);
+        reaction_bonus_list[7] += 0.4 + 0.1 * af_24_4count;
+      }
     }
   }
   else if (char_propaty[0] == 5)
   {
     const Nirou_HP = parseInt(document.getElementById("Nirou_HP").value);
-    reaction_bonus_list[4] = Math.min(Math.max(Nirou_HP - 30000, 0) * 0.00009, 4);
+    reaction_bonus_list[4] += Math.min(Math.max(Nirou_HP - 30000, 0) * 0.00009, 4);
+    if (selectedImageIds[0] == 24 && selectedImageIds[1] == 24)
+    {
+      const af24_4check = document.getElementById("af24_4");
+      if (af24_4check.checked)
+      {
+        const af_24_4count = parseInt(document.getElementById("af24_4select").value);
+        reaction_bonus_list[3] += 0.4 + 0.1 * af_24_4count;
+        reaction_bonus_list[4] += 0.4 + 0.1 * af_24_4count;
+      }
+    }
   }
   return reaction_bonus_list;
 }
@@ -1389,7 +1428,7 @@ function calculate_elmreaction_constdmg(reaction_coeff, status_array, resist, re
   }
   else if (char_propaty[0] == 5)
   {
-    reaction_dmg = reaction_list[3] * 2 * resist[5] * (1 + reaction_elm_bunus)
+    reaction_dmg = reaction_list[3] * 2 * resist[5] * (1 + reaction_bonus_list[3] + reaction_elm_bunus)
                  + reaction_list[4] * 2 * resist[5] * (1 + reaction_bonus_list[4] + reaction_elm_bunus);
   }
   reaction_dmg *= reaction_coeff;
@@ -1407,9 +1446,9 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   let phisics_resist = (parseInt(document.getElementById("enemy-phisicsresist").value) - parseInt(document.getElementById("phisicsdebuff").value)) / 100;
   let geo_resonance = document.getElementById("geo_reso");
 
-  if (selectedImageIds[0] == 21 && selectedImageIds[1] == 21)
+  if (selectedImageIds[0] == 22 && selectedImageIds[1] == 22)
   {
-    const deepwoodCheck = document.getElementById("af21_4");
+    const deepwoodCheck = document.getElementById("af22_4");
     if (deepwoodCheck.checked && char_propaty[0] == 5) {
       dendro_resist -= 0.3;
     }
@@ -1652,7 +1691,7 @@ async function monte_carlo_calculate()
   let score_distribute;
   let af_score_upper_limit = af_score;
   let af_score_lower_limit = 0;
-  //af_score = af_score/2;
+  af_score = af_score/2;
 
   let base_parameter;
   let fixed_status = [0,0,0,0,0,0,0,0];
@@ -1906,8 +1945,8 @@ async function monte_carlo_calculate()
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
     abs_dmg_error = Math.abs(dmg_error);
-    //if (abs_dmg_error < 1 ) break;
-    break
+    if (abs_dmg_error < 1 ) break;
+
     if (dmg_error < 0)
     {
       af_score_upper_limit = af_score;
@@ -1926,11 +1965,38 @@ async function monte_carlo_calculate()
   let result = "最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
+  let dlthpScore = document.getElementById("dlt_hp_score");
+  let dltAfhp = document.getElementById("dlt_af_hp");
+  let dltdeffScore = document.getElementById("dlt_deff_score");
+  let dltAfdeff = document.getElementById("dlt_af_deff");
+  let dltElmScore = document.getElementById("dlt_elm_score");
+  let dltAfElm = document.getElementById("dlt_af_elm");
+  let dltelmchargeScore = document.getElementById("dlt_elm_charge_score");
+  let dltAfelmcharge = document.getElementById("dlt_af_elm_charge");
+  let dltattckScore = document.getElementById("dlt_attck_score");
+  let dltAfattck = document.getElementById("dlt_af_attck");
+  let dltcrScore = document.getElementById("dlt_cr_score");
+  let dltAfcr = document.getElementById("dlt_af_cr");
+  let dltcdScore = document.getElementById("dlt_cd_score");
+  let dltAfcd = document.getElementById("dlt_af_cd");
+  dlthpScore.style.color = "black";
+  dltAfhp.style.color = "black";
+  dltdeffScore.style.color = "black";
+  dltAfdeff.style.color = "black";
+  dltElmScore.style.color = "black";
+  dltAfElm.style.color = "black";
+  dltelmchargeScore.style.color = "black";
+  dltAfelmcharge.style.color = "black";
+  dltattckScore.style.color = "black";
+  dltAfattck.style.color = "black";
+  dltcrScore.style.color = "black";
+  dltAfcr.style.color = "black";
+  dltcdScore.style.color = "black";
+  dltAfcd.style.color = "black";
+
   if (depend_status[0] == 1)
   {
     let result_dlthp = (my_af_score_distribution[0] - old_score_distribution[0])
-    let dlthpScore = document.getElementById("dlt_hp_score");
-    let dltAfhp = document.getElementById("dlt_af_hp");
     let hpcolor;
     document.getElementById("my_result_hp").innerHTML = my_result_status[0].toFixed(0);
     document.getElementById("appro_result_hp").innerHTML =temp_status[0].toFixed(0);
@@ -1970,8 +2036,6 @@ async function monte_carlo_calculate()
   if (depend_status[1] == 1)
   {
     let result_dltdeff = (my_af_score_distribution[1] - old_score_distribution[1])
-    let dltdeffScore = document.getElementById("dlt_deff_score");
-    let dltAfdeff = document.getElementById("dlt_af_deff");
     let deffcolor;
     document.getElementById("my_result_deff").innerHTML = my_result_status[1].toFixed(0);
     document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(0);
@@ -2011,8 +2075,6 @@ async function monte_carlo_calculate()
   if (depend_status[2] == 1)
   {
     let result_dltelm = (my_af_score_distribution[2] - old_score_distribution[2])
-    let dltElmScore = document.getElementById("dlt_elm_score");
-    let dltAfElm = document.getElementById("dlt_af_elm");
     let elmcolor;
     document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(0);
     document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(0);
@@ -2053,8 +2115,6 @@ async function monte_carlo_calculate()
   if (depend_status[3] == 1)
   {
     let result_dltelmcharge = (my_af_score_distribution[3] - old_score_distribution[3])
-    let dltelmchargeScore = document.getElementById("dlt_elm_charge_score");
-    let dltAfelmcharge = document.getElementById("dlt_af_elm_charge");
     let elmchargecolor;
     document.getElementById("my_result_elm_charge").innerHTML = (my_result_status[3]*100).toFixed(1) + "％";
     document.getElementById("appro_result_elm_charge").innerHTML =(temp_status[3]*100).toFixed(1) + "％";
@@ -2094,8 +2154,6 @@ async function monte_carlo_calculate()
   if (depend_status[4] == 1)
   {
     let result_dltattck = (my_af_score_distribution[4] - old_score_distribution[4])
-    let dltattckScore = document.getElementById("dlt_attck_score");
-    let dltAfattck = document.getElementById("dlt_af_attck");
     let attckcolor;
     document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(0);
     document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(0);
@@ -2135,8 +2193,6 @@ async function monte_carlo_calculate()
   if (depend_status[5] == 1)
   {
     let result_dltcr = (my_af_score_distribution[5] - old_score_distribution[5])
-    let dltcrScore = document.getElementById("dlt_cr_score");
-    let dltAfcr = document.getElementById("dlt_af_cr");
     let crcolor;
     document.getElementById("my_result_cr").innerHTML = (my_result_status[5]*100).toFixed(1) + "%";
     document.getElementById("appro_result_cr").innerHTML = (temp_status[5]*100).toFixed(1) + "%";
@@ -2176,8 +2232,6 @@ async function monte_carlo_calculate()
   if (depend_status[6] == 1)
   {
     let result_dltcd = (my_af_score_distribution[6] - old_score_distribution[6])
-    let dltcdScore = document.getElementById("dlt_cd_score");
-    let dltAfcd = document.getElementById("dlt_af_cd");
     let cdcolor;
     document.getElementById("my_result_cd").innerHTML = (my_result_status[6]*100).toFixed(1) + "%";
     document.getElementById("appro_result_cd").innerHTML = (temp_status[6]*100).toFixed(1) + "%";

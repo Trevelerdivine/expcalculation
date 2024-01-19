@@ -966,11 +966,6 @@
       </div>
     </div>
     <br>
-    <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
-      <div class="button_solid004" onclick="monte_carlo_calculate()">
-        スコア計算開始
-      </div>
-    </div>
     <p id="calculationMessage" style="visibility: hidden;">計算中...</p>
     <div id="response"></div>
     <div id="result"></div>
@@ -1310,7 +1305,7 @@
     toggleweapontype(4);
   });
   document.getElementById('attack_method').addEventListener('change', show_attack_method);
-  document.getElementById('af_score').addEventListener('change', monte_carlo_calculate);
+  document.getElementById('status_setting').addEventListener('change', monte_carlo_calculate);
 
 
   function showTable(tableId, buttonId)

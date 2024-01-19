@@ -2144,7 +2144,7 @@ async function monte_carlo_calculate()
     document.getElementById("appro_result_cd").innerHTML = (temp_status[6]*100).toFixed(1) + "%";
     //document.getElementById("my_cd_score").innerHTML = my_af_score_distribution[6].toFixed(1);
     document.getElementById("appro_cd_score").innerHTML = old_score_distribution[6].toFixed(1);
-    document.getElementById("dlt_cd_score").innerHTML = (my_af_score_distribution[6] - old_score_distribution[6]).toFixed(1);
+    //document.getElementById("dlt_cd_score").innerHTML = (my_af_score_distribution[6] - old_score_distribution[6]).toFixed(1);
     document.getElementById("count_cd_score").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
     //document.getElementById("my_af_cd").innerHTML = (my_af_score_distribution[6]).toFixed(1) + "%";
     document.getElementById("appro_af_cd").innerHTML = (old_score_distribution[6]).toFixed(1) + "%";

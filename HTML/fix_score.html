@@ -1403,7 +1403,6 @@
     toggleweapontype(4);
   });
   document.getElementById('attack_method').addEventListener('change', show_attack_method);
-  document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
 
 
   function showTable(tableId, buttonId)
@@ -1472,7 +1471,6 @@
       image.classList.add("tier-image2");
       clickedImages.push(image);
     }
-    //elementalcharge_reaction_add();
   }
 
   async function handleImageSelection(images, indexDisplay)

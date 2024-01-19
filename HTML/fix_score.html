@@ -1402,16 +1402,6 @@
     showOption("option1", "parameterbutton1");
     toggleweapontype(4);
   });
-  document.getElementById('status_setting').addEventListener('input', calculate_table_status);
-  document.getElementById('choose_char_weapon').addEventListener('change', calculate_table_status);
-  document.getElementById('characterInfo').addEventListener('change', calculate_table_status);
-  document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
-  document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
-  document.getElementById('temporary_char_talent').addEventListener('change', calculate_table_status);
-  document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
-  document.getElementById('char_talent').addEventListener('change', calculate_table_status);
-  document.getElementById('option2').addEventListener('change', calculate_table_status);
-  document.getElementById('goblet_mainstatus').addEventListener('change', calculate_table_status);
   document.getElementById('attack_method').addEventListener('change', show_attack_method);
   document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
 
@@ -1617,7 +1607,6 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     await char_afweapon_setting();
     await calculate_depend_status();
     show_weapon_statsform();
-    calculate_table_status();
     toggleweapontype(weapon_type_index);
     indexDisplay1.textContent = DisplayCharName[selectedCharId];
     indexDisplay2.textContent = DisplayWeaponName[selectedWeaponId];
@@ -1651,7 +1640,6 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
       checkbox.checked = false;
       await calculate_depend_status()
       show_weapon_statsform();
-      calculate_table_status();
     }
     for (let i = 0; i < images.length; i++)
     {

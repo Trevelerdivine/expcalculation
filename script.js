@@ -1691,7 +1691,7 @@ async function monte_carlo_calculate()
   let score_distribute;
   let af_score_upper_limit = af_score;
   let af_score_lower_limit = 0;
-  //af_score = af_score/2;
+  af_score = af_score/2;
 
   let base_parameter;
   let fixed_status = [0,0,0,0,0,0,0,0];
@@ -1739,7 +1739,7 @@ async function monte_carlo_calculate()
   fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
 
-  while (n_count < 1)
+  while (n_count < 30)
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;

@@ -9,8 +9,8 @@
     <script src="../data/character/char_class/char_class2.js"></script>
     <script src="../data/weapon/weapon_class/weapon_class.js"></script>
     <script src="../data/artifact/af_class.js"></script>
-    <script src="../show_char_statsform.js"></script>
-    <script src="../show_weapon_statsform.js"></script>
+    <script src="../show_char_statsform2.js"></script>
+    <script src="../show_weapon_statsform2.js"></script>
     <script src="../show_artifact.js"></script>
     <script src="../show_attackmethod.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5275587855031997"
@@ -1396,8 +1396,8 @@
 ];
 
   window.addEventListener("DOMContentLoaded", function() {
-    //show_char_statsform();
-    //show_weapon_statsform();
+    show_char_statsform();
+    show_weapon_statsform();
     showTable("table1","tablebutton1");
     showOption("option1", "parameterbutton1");
     toggleweapontype(4);
@@ -1613,10 +1613,10 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     const checkbox = document.getElementById('pop-up_char');
     checkbox.checked = false;
 
-    //await show_char_statsform();
+    await show_char_statsform();
     await char_afweapon_setting();
     await calculate_depend_status();
-    //show_weapon_statsform();
+    show_weapon_statsform();
     calculate_table_status();
     toggleweapontype(weapon_type_index);
     indexDisplay1.textContent = DisplayCharName[selectedCharId];
@@ -1650,7 +1650,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
       const checkbox = document.getElementById('pop-up_weapon');
       checkbox.checked = false;
       await calculate_depend_status()
-      //show_weapon_statsform();
+      show_weapon_statsform();
       calculate_table_status();
     }
     for (let i = 0; i < images.length; i++)

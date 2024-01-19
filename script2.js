@@ -1670,7 +1670,6 @@ async function monte_carlo_calculate()
   let dlt_af_score = parseFloat(document.getElementById("dlt_af_score").value);
   let final_af_score = parseFloat(document.getElementById("final_af_score").value);
   af_score -= dlt_af_score;
-  const my_af_score = parseFloat(document.getElementById("af_score").value);
   const dlt_score = 0.1;
   let critical_dmg;
   let temp_critical_dmg;

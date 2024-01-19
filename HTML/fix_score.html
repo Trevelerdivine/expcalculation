@@ -53,7 +53,7 @@
                   <option value="90" selected>Lv.90</option>
                 </select>
                 <br>
-                <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
+                <!--<select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">-->
                 <option value="0" selected>C0</option>
                 <option value="1">C1</option>
                 <option value="2">C2</option>
@@ -1396,7 +1396,7 @@
 ];
 
   window.addEventListener("DOMContentLoaded", function() {
-    show_char_statsform();
+    //show_char_statsform();
     show_weapon_statsform();
     showTable("table1","tablebutton1");
     showOption("option1", "parameterbutton1");
@@ -1613,7 +1613,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     const checkbox = document.getElementById('pop-up_char');
     checkbox.checked = false;
 
-    await show_char_statsform();
+    //await show_char_statsform();
     await char_afweapon_setting();
     await calculate_depend_status();
     show_weapon_statsform();

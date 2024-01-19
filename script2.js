@@ -2169,7 +2169,7 @@ async function monte_carlo_calculate()
   document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";
   //document.getElementById("my_af_score").innerHTML = my_af_score.toFixed(1);
   document.getElementById("appro_af_score").innerHTML = af_score.toFixed(1);
-  document.getElementById("dlt_af_score").innerHTML = (my_af_score-af_score).toFixed(1);
+  //document.getElementById("dlt_af_score").innerHTML = (my_af_score-af_score).toFixed(1);
   //document.getElementById("my_af_score3").innerHTML = my_af_score.toFixed(1);
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);

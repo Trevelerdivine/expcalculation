@@ -1669,6 +1669,13 @@ async function monte_carlo_calculate()
   let af_score = parseFloat(document.getElementById("initial_af_score").value);
   let dlt_af_score = parseFloat(document.getElementById("dlt_af_score").value);
   let final_af_score = parseFloat(document.getElementById("final_af_score").value);
+  if (af_score > final_af_score || af_score < 0 || dlt_af_score < 0 || final_af_score < 0 || !Number.isFinite(af_score))
+  {
+    calculationMessage.style.visibility = "hidden";
+    response = "スコアを正しく入力してください。"
+    document.getElementById("response").innerHTML = response;
+    return response;
+  }
   af_score -= dlt_af_score;
   const dlt_score = 0.1;
   let critical_dmg;

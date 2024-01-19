@@ -1673,13 +1673,6 @@ async function monte_carlo_calculate()
   let excess_crscore;
   let response = "";
   document.getElementById("response").innerHTML = response;
-  if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
-  {
-    calculationMessage.style.visibility = "hidden";
-    response ="ダメージ期待値が異常値を示しています。再入力してください。"
-    document.getElementById("response").innerHTML = response;
-    return response;
-  }
   
   if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
   {
@@ -1943,7 +1936,6 @@ async function monte_carlo_calculate()
       }
     }
     output_exp_dmg = temp_exp_dmg;
-    dmg_error = my_exp_dmg - output_exp_dmg;
     abs_dmg_error = Math.abs(dmg_error);
     //if (abs_dmg_error < 1 ) break;
     break;

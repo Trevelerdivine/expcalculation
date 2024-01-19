@@ -1634,6 +1634,7 @@ async function import_char_parameter()
 
 async function monte_carlo_calculate()
 {
+  document.getElementById("result").innerHTML = "";
   const calculationMessage = document.getElementById("calculationMessage")
   calculationMessage.style.visibility = "visible";
   console.time('myTimer'); // タイマーを開始
@@ -1732,10 +1733,11 @@ async function monte_carlo_calculate()
   fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
 
-  while (n_count < 1)
+  while (n_count < 25)
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
+    af_score = n_count * 10;
     n_count = n_count + 1;
 
     for (let i = 0; i < 10000; i++)
@@ -1936,26 +1938,12 @@ async function monte_carlo_calculate()
       }
     }
     output_exp_dmg = temp_exp_dmg;
-    abs_dmg_error = Math.abs(dmg_error);
-    //if (abs_dmg_error < 1 ) break;
-    break;
-    if (dmg_error < 0)
-    {
-      af_score_upper_limit = af_score;
-      af_score = (af_score_upper_limit + af_score_lower_limit)/2;
-    }
-    else
-    {
-      af_score_lower_limit = af_score;
-      af_score = (af_score_upper_limit + af_score_lower_limit)/2;
-    }
+    output_exp_dmg = output_exp_dmg.toFixed(0);
+    let result = "<br>" +"最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
+    document.getElementById("result").innerHTML += result;
   }
-  output_exp_dmg = output_exp_dmg.toFixed(0);
-
 
   calculationMessage.style.visibility = "hidden";
-  let result = "最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
-  document.getElementById("result").innerHTML = result;
 
   let dlthpScore = document.getElementById("dlt_hp_score");
   let dltAfhp = document.getElementById("dlt_af_hp");

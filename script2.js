@@ -1946,16 +1946,8 @@ async function monte_carlo_calculate()
     output_exp_dmg = output_exp_dmg.toFixed(0);
     //let result = "<br>" +"最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
     //let result = "<br>" + "最適化聖遺物スコア： "+ af_score + "," + output_exp_dmg;
-    if (n_count == 1)
-    {
-      let result = output_exp_dmg;
-      document.getElementById("result").innerHTML += result;
-    }
-    else
-    {
-      let result = "," + output_exp_dmg;
-      document.getElementById("result").innerHTML += result;
-    }
+    let result = "," + output_exp_dmg;
+    document.getElementById("result").innerHTML += result;
   }
 
   calculationMessage.style.visibility = "hidden";

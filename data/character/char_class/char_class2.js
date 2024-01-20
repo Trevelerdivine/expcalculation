@@ -4962,14 +4962,13 @@ class Lyney {
         {
           attckRate = dmg_rate[4][0] + dmg_rate[4][1];
           basicDmg = attckRate * status[4] + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-          return basicDmg;
         }
         else
         {
           basicDmg = dmg_rate[4] * status[4] + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
-          return basicDmg;
         }
       }
+      return basicDmg;
     }
   
     calculate_char_debuff() {

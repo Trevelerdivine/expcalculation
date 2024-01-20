@@ -2143,7 +2143,7 @@ async function monte_carlo_calculate()
     document.getElementById("count_cd_score").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
     //document.getElementById("my_af_cd").innerHTML = (my_af_score_distribution[6]).toFixed(1) + "%";
     document.getElementById("appro_af_cd").innerHTML = (old_score_distribution[6]).toFixed(1) + "%";
-    document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])).toFixed(1) + "%";
+    //document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])).toFixed(1) + "%";
     document.getElementById("count_cd_score3").innerHTML = (old_score_distribution[6]/7.8).toFixed(1); 
   }
   else
@@ -2167,7 +2167,7 @@ async function monte_carlo_calculate()
   //document.getElementById("dlt_af_score").innerHTML = (my_af_score-af_score).toFixed(1);
   //document.getElementById("my_af_score3").innerHTML = my_af_score.toFixed(1);
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
-  document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
+  //document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }

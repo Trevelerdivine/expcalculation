@@ -1949,12 +1949,13 @@ async function monte_carlo_calculate()
     if (n_count == 1)
     {
       let result = output_exp_dmg;
+      document.getElementById("result").innerHTML += result;
     }
     else
     {
       let result = "," + output_exp_dmg;
+      document.getElementById("result").innerHTML += result;
     }
-    document.getElementById("result").innerHTML += result;
   }
 
   calculationMessage.style.visibility = "hidden";

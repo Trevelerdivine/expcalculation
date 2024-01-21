@@ -2160,7 +2160,7 @@ async function monte_carlo_calculate()
     document.getElementById("count_cd_score3").innerHTML = "-";
   }
 
-  document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
+  //document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
   document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";
   //document.getElementById("my_af_score").innerHTML = my_af_score.toFixed(1);
   document.getElementById("appro_af_score").innerHTML = af_score.toFixed(1);

@@ -401,7 +401,7 @@ async function show_attack_method()
   }
   else if (selectedCharId == "1")
   {
-    if (attack_method == 1 && char_constellations < 4)
+    if (char_constellations < 4)
     {
       options = [
         { text: "１段目-１", value: "0", checked: true },
@@ -417,8 +417,6 @@ async function show_attack_method()
   }
   else if (selectedCharId == "2")
   {
-    if (attack_method == 1)
-    {
       options = [
         { text: "１段目", value: "0", checked: true },
         { text: "２段目", value: "1" },
@@ -428,15 +426,9 @@ async function show_attack_method()
         { text: "５段目-２", value: "5"},
         { text: "６段目", value: "6", checked: true },
       ];
-    } 
-    else if (attack_method == 6)
-    {
       options = [
         { text: "重撃", value: "0", checked: true },
       ];
-    }
-    else if (attack_method == 21)
-    {
       let hutao_Q_check = createCheckbox("hutao_Q_effect", true);
       let hutao_Q_label = createLabel("hutao_Q_effect", "胡桃のHP50%以下");
       char_talent.appendChild(hutao_Q_check);
@@ -445,7 +437,6 @@ async function show_attack_method()
       options = [
         { text: "安神秘法", value: "0", checked: true },
       ];
-    }
     createCheckboxList(options);
   }
   else if (selectedCharId == "3")

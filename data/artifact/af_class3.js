@@ -728,12 +728,12 @@ function af29_4(method_index)
 }
 
 
-const set_effect2 = [af0_2(method_index), af1_2(method_index), af2_2(method_index), af3_2(method_index), af4_2(method_index), af5_2(method_index), af6_2(method_index), af7_2(method_index), af8_2(method_index), af9_2(method_index), af10_2(method_index),
-    af11_2(method_index), af12_2(method_index), af13_2(method_index), af14_2(method_index), af15_2(method_index), af16_2(method_index), af17_2(method_index), af18_2(method_index), af19_2(method_index), af20_2(method_index),
-    af21_2(method_index), af22_2(method_index), af23_2(method_index), af24_2(method_index), af25_2(method_index), af26_2(method_index), af27_2(method_index), af28_2(method_index), af29_2(method_index) 
+const set_effect2 = [af0_2, af1_2, af2_2, af3_2, af4_2, af5_2, af6_2, af7_2, af8_2, af9_2, af10_2,
+    af11_2, af12_2, af13_2, af14_2, af15_2, af16_2, af17_2, af18_2, af19_2, af20_2,
+    af21_2, af22_2, af23_2, af24_2, af25_2, af26_2, af27_2, af28_2, af29_2 
     ];
   
-const set_effect4 = [af0_4(method_index), af1_4(method_index), af2_4(method_index), af3_4(method_index), af4_4(method_index), af5_4(method_index), af6_4(method_index), af7_4(method_index), af8_4(method_index), af9_4(method_index), af10_4(method_index),
-    af11_4(method_index), af12_4(method_index), af13_4(method_index), af14_4(method_index), af15_4(method_index), af16_4(method_index), af17_4(method_index), af18_4(method_index), af19_4(method_index), af20_4(method_index),
-    af21_4(method_index), af22_4(method_index), af23_4(method_index), af24_4(method_index), af25_4(method_index), af26_4(method_index), af27_4(method_index), af28_4(method_index), af29_4(method_index)
+const set_effect4 = [af0_4, af1_4, af2_4, af3_4, af4_4, af5_4, af6_4, af7_4, af8_4, af9_4, af10_4,
+    af11_4, af12_4, af13_4, af14_4, af15_4, af16_4, af17_4, af18_4, af19_4, af20_4,
+    af21_4, af22_4, af23_4, af24_4, af25_4, af26_4, af27_4, af28_4, af29_4
     ];

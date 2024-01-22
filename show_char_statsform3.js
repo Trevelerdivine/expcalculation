@@ -368,16 +368,6 @@ async function show_char_statsform()
         { id: "traitCheckbox6", label: "第6重：所持できる丹火の印の最大枚数+1" },
       ];
 
-      options = [
-        { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "通常攻撃（1ループ）", value: "1" },
-        { text: "重撃", value: "6" },
-        { text: "スキル（丹書契約）", value: "16" },
-        { text: "元素爆発（契約成立）", value: "21" }
-      ];
-    
-      createchar_attackmethod(options);
-
       if (char_constellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
@@ -1776,6 +1766,7 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
     showFormElements();
+    await show_attack_method();
   }
 
 function createchar_attackmethod(options)

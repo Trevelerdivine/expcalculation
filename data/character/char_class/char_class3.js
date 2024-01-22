@@ -1465,13 +1465,13 @@ class Lyney {
         elm_react_dmgrate = react_count4 * parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += (attack_count4 - react_count4) * parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
-      } else if (method_index == 3) {
+      } else if (this.method_index == 3) {
         const attack_count5 = parseInt(document.getElementById("yanfei_attack_count5").value);
         const react_count5 = parseInt(document.getElementById("yanfei_react_count5").value);
         elm_react_dmgrate = react_count5 * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate = (attack_count5 - react_count5) * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
-      } else if (method_index == 4) {
+      } else if (this.method_index == 4) {
         const attack_count6 = parseInt(document.getElementById("yanfei_attack_count6").value);
         const react_count6 = parseInt(document.getElementById("yanfei_react_count6").value);
         elm_react_dmgrate = react_count6 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);

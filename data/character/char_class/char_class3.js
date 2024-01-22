@@ -1462,6 +1462,8 @@ class Lyney {
         }
         const attack_count4 = parseInt(document.getElementById("yanfei_attack_count4").value);
         const react_count4 = parseInt(document.getElementById("yanfei_react_count4").value);
+        this.react_attack_count = react_count4;
+        this.nonreact_attack_count = (attack_count4 - react_count4);
         elm_react_dmgrate = react_count4 * parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += (attack_count4 - react_count4) * parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
@@ -1549,7 +1551,6 @@ class Lyney {
     calculate_basic_dmg(dmg_rate, status) {
       let basicDmg;
       let attckRate;
-      console.log(this.method_index);
       if (this.reaction_coeff > 0)
       {
         if (this.method_index != 1)
@@ -1574,7 +1575,7 @@ class Lyney {
         }
         else
         {
-          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + status[5] * 0.8 * status[4] + calculate_weapon_basedmg(2, status, this.weapon_rank, this.base_dmgbuff);
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + (this.react_attack_count + this.nonreact_attack_count) * status[5] * 0.8 * status[4] + calculate_weapon_basedmg(2, status, this.weapon_rank, this.base_dmgbuff);
           basicDmg = attckRate;
         }
       }

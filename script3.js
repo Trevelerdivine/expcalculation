@@ -1752,6 +1752,7 @@ async function monte_carlo_calculate()
     af_score += dlt_af_score
     if (af_score > final_af_score)
     {
+      af_score -= dlt_af_score
       break;
     }
     for (let i = 0; i < 10000; i++)

@@ -1726,6 +1726,7 @@ async function monte_carlo_calculate()
       fixed_buff_list[i] = fixed_buff;
     }
   }
+  console.log(dmg_rate);
   console.log(fixed_buff_list);
 
   const char_debuff = await charInstances[0].calculate_char_debuff();
@@ -1753,7 +1754,7 @@ async function monte_carlo_calculate()
     {
       break;
     }
-    for (let i = 0; i < 1; i++)
+    for (let i = 0; i < 10000; i++)
     {
         exp_dmg = 0;
         score_distribute = await calculate_score_distribute(af_score,depend_status);
@@ -1821,8 +1822,7 @@ async function monte_carlo_calculate()
                 result_status[7] += await (charInstances[x].calculate_char_result_dmg_buff(fixed_status, result_status) + weaponInstances[x].calculate_weapon_result_dmg_buff(fixed_status, result_status));
             }
 
-            basic_dmg = await charInstances[x].calculate_basic_dmg(dmg_rate, result_status);
-            console.log(basic_dmg);
+            basic_dmg = await charInstances[x].calculate_basic_dmg(dmg_rate[x], result_status);
             if (depend_status[2] == 1) {
                 exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
                         * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
@@ -1942,7 +1942,7 @@ async function monte_carlo_calculate()
             result_status[5] = 1;
         }
 
-        basic_dmg = await charInstances[x].calculate_basic_dmg(dmg_rate, result_status);
+        basic_dmg = await charInstances[x].calculate_basic_dmg(dmg_rate[x], result_status);
         if (depend_status[2] == 1) {
             exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);

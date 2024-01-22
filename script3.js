@@ -1823,13 +1823,11 @@ async function monte_carlo_calculate()
             }
 
             basic_dmg = await charInstances[x].calculate_basic_dmg(dmg_rate[x], result_status);
-            if (depend_status[2] == 1) {
-                exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
-                        * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
-            } else {
-                exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
-                        * (1 + result_status[7]) * correct_coeff[8];
-            }
+            exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
+                    * (1 + result_status[7]) * correct_coeff[8];
+        }
+        if (depend_status[2] == 1) {
+            exp_dmg += calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
         }
         if (temp_exp_dmg < exp_dmg)
         {
@@ -1943,14 +1941,12 @@ async function monte_carlo_calculate()
         }
 
         basic_dmg = await charInstances[x].calculate_basic_dmg(dmg_rate[x], result_status);
-        if (depend_status[2] == 1) {
-            exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
-                    * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
-        } else {
-            exp_dmg += basic_dmg * (1 + result_status[5] * result_status[6])
+        exp_dmg += basic_dmg * (1 + result_status[5] * result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8];
-        }
       }
+      if (depend_status[2] == 1) {
+        exp_dmg += calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
+    }
       if (temp_exp_dmg < exp_dmg)
       {
         temp_exp_dmg = exp_dmg;

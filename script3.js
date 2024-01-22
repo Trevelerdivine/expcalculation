@@ -1744,7 +1744,7 @@ async function monte_carlo_calculate()
       zetsuen_check = 1;
     }
   }
-  while (n_count < 50)
+  while (n_count < 5)
   {
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
@@ -1753,7 +1753,7 @@ async function monte_carlo_calculate()
     {
       break;
     }
-    for (let i = 0; i < 10000; i++)
+    for (let i = 0; i < 1; i++)
     {
         score_distribute = await calculate_score_distribute(af_score,depend_status);
         base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
@@ -1829,6 +1829,7 @@ async function monte_carlo_calculate()
                 exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
                         * (1 + result_status[7]) * correct_coeff[8];
             }
+            console.log(exp_dmg);
         }
         if (temp_exp_dmg < exp_dmg)
         {

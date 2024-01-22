@@ -1685,6 +1685,7 @@ async function monte_carlo_calculate()
   let new_score_distribution = [0,0,0,0,0,0,0];
   let basic_dmg;
   let n_count = 0;
+  let exp_dmg = 0;
   
   const char_response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
@@ -1745,7 +1746,6 @@ async function monte_carlo_calculate()
   }
   while (n_count < 50)
   {
-    let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
     af_score += dlt_af_score
@@ -1753,11 +1753,11 @@ async function monte_carlo_calculate()
     {
       break;
     }
-    for (let i = 0; i < 2; i++)
+    for (let i = 0; i < 10000; i++)
     {
         score_distribute = await calculate_score_distribute(af_score,depend_status);
         base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
-        
+        exp_dmg = 0;
         for (let x = 0; x < 5; x++)
         {
             if (method_index_list[x] == 0)
@@ -1841,7 +1841,7 @@ async function monte_carlo_calculate()
     old_score_distribution = temp_score_distribute.slice();
     new_score_distribution = temp_score_distribute.slice();
 
-    for (let k = 0; k < 2; k++)
+    for (let k = 0; k < 5000; k++)
     {
       exp_dmg = 0;
       random_1 = Math.floor(depend_status_index.length * Math.random());

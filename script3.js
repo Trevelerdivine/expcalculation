@@ -287,6 +287,7 @@ async function calculate_depend_status()
       depend_status[3] = 1;
     }
   }
+  console.log(depend_status);
   return depend_status;
 }
 

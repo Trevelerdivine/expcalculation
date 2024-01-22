@@ -1234,8 +1234,6 @@ function identify_condition() {
 
 async function create_afset_instance(method_index) 
 {
-  const attackSelect = document.getElementById("attack_method_id");
-  attack_method = attackSelect.value;
   let set1_buff;
   let set2_buff;
   let buff = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -1648,7 +1646,6 @@ async function monte_carlo_calculate()
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const depend_status = await calculate_depend_status();
-  const team_fix_buff = await calculate_team_fix_buff(base_status);
   const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let response = "";
@@ -1716,6 +1713,7 @@ async function monte_carlo_calculate()
     if (method_index_list[i] > 0) {
       dmg_rate[i] = await charInstances[i].dmg_rate_data();
       let fixed_buff =[0,0,0,0,0,0,0,0];
+      let team_fix_buff = await calculate_team_fix_buff(base_status, i);
       fixed_buff[0] = await (charInstances[i].calculate_char_fixed_hp(fixed_status) + weaponInstances[i].calculate_weapon_fixed_hp(fixed_status) + team_fix_buff[0]);
       fixed_buff[1] = await (charInstances[i].calculate_char_fixed_deff(fixed_status) + weaponInstances[i].calculate_weapon_fixed_deff(fixed_status)+ team_fix_buff[1]);
       fixed_buff[2] = await (charInstances[i].calculate_char_fixed_elm(fixed_status) + weaponInstances[i].calculate_weapon_fixed_elm(fixed_status) + team_fix_buff[2]);
@@ -1727,7 +1725,7 @@ async function monte_carlo_calculate()
       fixed_buff_list[i] = fixed_buff;
     }
   }
-  
+  console.log(fixed_buff_list);
 
   const char_debuff = await char_instance.calculate_char_debuff();
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();

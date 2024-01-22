@@ -1465,7 +1465,7 @@ class Lyney {
         this.react_attack_count = react_count4;
         this.nonreact_attack_count = (attack_count4 - react_count4);
         elm_react_dmgrate = react_count4 * parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
-        elm_nonreact_dmgrate += (attack_count4 - react_count4) * parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
+        elm_nonreact_dmgrate = (attack_count4 - react_count4) * parseFloat(data["重撃"]["詳細"][buff_count]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
       } else if (this.method_index == 3) {
         const attack_count5 = parseInt(document.getElementById("yanfei_attack_count5").value);

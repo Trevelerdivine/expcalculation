@@ -246,23 +246,26 @@ async function calculate_depend_status()
   depend_status = [0,0,0,0,0,0,0];
   const char_response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
-  const weapon_response = await fetch("../data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
-  const weapon_data = await weapon_response.json();
-  const char_attack_index_list = char_data.攻撃手段;
+  const attack_method_index_list = char_data.攻撃手段;
+
   char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
   for (let i = 0; i < 5; i++)
   {
-    if (char_attack_index_list[i] == 1)
+    if (attack_method_index_list[i] > 0)
     {
-        const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
-        for (let j = 0; j < 7; j++)
+        let char_depend_status = char_data[attack_method_name[i]].依存ステータス;
+        for (let k = 0; k < 7; k++)
         {
-            depend_status[i] += char_depend_status[i];
+            depend_status[k] += char_depend_status[k];
         }
     }
   }
+
+  const weapon_response = await fetch("../data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
+  const weapon_data = await weapon_response.json();
   const weapon_depend_status = weapon_data.ステータス.依存ステータス;
-  for (j = 0; j < 7; j++)
+
+  for (i = 0; i < 7; i++)
   {
     depend_status[i] += weapon_depend_status[i];
     if (depend_status[i] > 0)
@@ -279,7 +282,7 @@ async function calculate_depend_status()
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
-    if(zetsuen_checkbox.checked && char_attack_index_list[4] == 1)
+    if(zetsuen_checkbox.checked && attack_method_index == 4)
     {
       depend_status[3] = 1;
     }
@@ -352,159 +355,159 @@ async function calculate_fixed_status(sd,bs,amsb)
   return fixed_status;
 }
 
-async function create_char_instance(base_status, parameter) {
+async function create_char_instance(base_status, parameter,method_index) {
     let char_instance;
   
     switch (selectedCharId) {
       case "71":
-        char_instance = new Lyney(base_status, parameter);
+        char_instance = new Lyney(base_status, parameter,method_index);
         break;
       case "0":
-        char_instance = new dehya(base_status, parameter);
+        char_instance = new dehya(base_status, parameter,method_index);
         break;
       case "1":
-        char_instance = new yoimiya(base_status, parameter);
+        char_instance = new yoimiya(base_status, parameter,method_index);
         break;
       case "2":
-        char_instance = new hutao(base_status, parameter);
+        char_instance = new hutao(base_status, parameter,method_index);
         break;
       case "3":
-        char_instance = new klee(base_status, parameter);
+        char_instance = new klee(base_status, parameter,method_index);
         break;
       case "4":
-        char_instance = new diluc(base_status, parameter);
+        char_instance = new diluc(base_status, parameter,method_index);
         break;
       case "6":
-        char_instance = new yanfei(base_status, parameter);
+        char_instance = new yanfei(base_status, parameter,method_index);
         break;
       case "7":
-        char_instance = new xinyan(base_status, parameter);
+        char_instance = new xinyan(base_status, parameter,method_index);
         break;
       case "8":
-        char_instance = new bennett(base_status, parameter);
+        char_instance = new bennett(base_status, parameter,method_index);
         break;
       case "9":
-        char_instance = new xiangling(base_status, parameter);
+        char_instance = new xiangling(base_status, parameter,method_index);
         break;
       case "10":
-        char_instance = new amber(base_status, parameter);
+        char_instance = new amber(base_status, parameter,method_index);
         break;
       case "74":
-      char_instance = new Furina(base_status, parameter);
+      char_instance = new Furina(base_status, parameter,method_index);
         break;
       case "72":
-        char_instance = new Neuvillette(base_status, parameter);
+        char_instance = new Neuvillette(base_status, parameter,method_index);
         break;
       case "11":
-        char_instance = new nirou(base_status, parameter);
+        char_instance = new nirou(base_status, parameter,method_index);
         break;
       case "12":
-        char_instance = new yelan(base_status, parameter);
+        char_instance = new yelan(base_status, parameter,method_index);
         break;
       case "13":
-        char_instance = new kamisatoayato(base_status, parameter);
+        char_instance = new kamisatoayato(base_status, parameter,method_index);
         break;
       case "15":
-        char_instance = new tartaglia(base_status, parameter);
+        char_instance = new tartaglia(base_status, parameter,method_index);
         break;
       case "19":
-        char_instance = new xingqiu(base_status, parameter);
+        char_instance = new xingqiu(base_status, parameter,method_index);
         break;
       case "73":
-        char_instance = new Wriothesley(base_status, parameter);
+        char_instance = new Wriothesley(base_status, parameter,method_index);
         break;
       case "21":
-        char_instance = new kamisatoayaka(base_status, parameter);
+        char_instance = new kamisatoayaka(base_status, parameter,method_index);
         break;
       case "22":
-        char_instance = new eula(base_status, parameter);
+        char_instance = new eula(base_status, parameter,method_index);
         break;
       case "23":
-        char_instance = new ganyu(base_status, parameter);
+        char_instance = new ganyu(base_status, parameter,method_index);
         break;
       case "28":
-        char_instance = new rosaria(base_status, parameter);
+        char_instance = new rosaria(base_status, parameter,method_index);
         break;
       case "30":
-        char_instance = new chongyun(base_status, parameter);
+        char_instance = new chongyun(base_status, parameter,method_index);
         break;
       case "31":
-        char_instance = new kaeya(base_status, parameter);
+        char_instance = new kaeya(base_status, parameter,method_index);
         break;
       case "32":
-        char_instance = new cyno(base_status, parameter);
+        char_instance = new cyno(base_status, parameter,method_index);
         break;
       case "33":
-        char_instance = new yaemiko(base_status, parameter);
+        char_instance = new yaemiko(base_status, parameter,method_index);
         break;
       case "34":
-        char_instance = new raiden(base_status, parameter);
+        char_instance = new raiden(base_status, parameter,method_index);
         break;
       case "35":
-        char_instance = new keqing(base_status, parameter);
+        char_instance = new keqing(base_status, parameter,method_index);
         break;
       case "38":
-        char_instance = new kujousara(base_status, parameter);
+        char_instance = new kujousara(base_status, parameter,method_index);
         break;
       case "39":
-        char_instance = new fischl(base_status, parameter);
+        char_instance = new fischl(base_status, parameter,method_index);
         break;
       case "40":
-        char_instance = new beidou(base_status, parameter);
+        char_instance = new beidou(base_status, parameter,method_index);
         break;
       case "41":
-        char_instance = new razor(base_status, parameter);
+        char_instance = new razor(base_status, parameter,method_index);
         break;
       case "42":
-        char_instance = new lisa(base_status, parameter);
+        char_instance = new lisa(base_status, parameter,method_index);
         break;
       case "44":
-        char_instance = new wanderer(base_status, parameter);
+        char_instance = new wanderer(base_status, parameter,method_index);
         break;
       case "46":
-        char_instance = new xiao(base_status, parameter);
+        char_instance = new xiao(base_status, parameter,method_index);
         break;
       case "49":
-        char_instance = new faruzan(base_status, parameter);
+        char_instance = new faruzan(base_status, parameter,method_index);
         break;
       case "50":
-        char_instance = new shikanoinheizou(base_status, parameter);
+        char_instance = new shikanoinheizou(base_status, parameter,method_index);
         break;
       case "55":
-        char_instance = new alhaitham(base_status, parameter);
+        char_instance = new alhaitham(base_status, parameter,method_index);
         break;
       case "56":
-        char_instance = new nahida(base_status, parameter);
+        char_instance = new nahida(base_status, parameter,method_index);
         break;
       case "57":
-        char_instance = new tighnari(base_status, parameter);
+        char_instance = new tighnari(base_status, parameter,method_index);
         break;
       case "58":
-        char_instance = new kirara(base_status, parameter);
+        char_instance = new kirara(base_status, parameter,method_index);
         break;
       case "62":
-        char_instance = new travelardendro(base_status, parameter);
+        char_instance = new travelardendro(base_status, parameter,method_index);
         break;
       case "75":
-        char_instance = new Navia(base_status, parameter);
+        char_instance = new Navia(base_status, parameter,method_index);
         break;
       case "63":
-        char_instance = new aratakiitto(base_status, parameter);
+        char_instance = new aratakiitto(base_status, parameter,method_index);
         break;
       case "64":
-        char_instance = new albedo(base_status, parameter);
+        char_instance = new albedo(base_status, parameter,method_index);
         break;
       case "65":
-        char_instance = new zhongli(base_status, parameter);
+        char_instance = new zhongli(base_status, parameter,method_index);
         break;
       case "68":
-        char_instance = new noelle(base_status, parameter);
+        char_instance = new noelle(base_status, parameter,method_index);
         break;
       case "69":
-        char_instance = new ningguang(base_status, parameter);
+        char_instance = new ningguang(base_status, parameter,method_index);
         break;
       case "70":
-        char_instance = new travelergeo(base_status, parameter);
+        char_instance = new travelergeo(base_status, parameter,method_index);
         break;
       default:
         // 未知のキャラクターIDに対する処理を追加することもできます
@@ -512,478 +515,478 @@ async function create_char_instance(base_status, parameter) {
     }
     
     return char_instance;
-}
+  }
   
-async function create_weapon_instance(base_status) {
-    let weapon_instance;
-    switch (selectedWeaponId) {
-      case "0":
-        weapon_instance = new LightofFoliarIncision(base_status);
-        break;
-      case "1":
-        weapon_instance = new KeyofKhajNisut(base_status);
-        break;
-      case "2":
-        weapon_instance = new HaranGeppakuFutsu(base_status);
-        break;
-      case "3":
-        weapon_instance = new MistsplitterReforged(base_status);
-        break;
-      case "4":
-        weapon_instance = new FreedomSworn(base_status);
-        break;
-      case "5":
-        weapon_instance = new PrimordialJadeCutter(base_status);
-        break;
-      case "6":
-        weapon_instance = new SummitShaper(base_status);
-        break;
-      case "7":
-        weapon_instance = new SkywardBlade(base_status);
-        break;
-      case "8":
-        weapon_instance = new AquilaFavonia(base_status);
-        break;
-      case "9":
-        weapon_instance = new TheDockhandsAssistant(base_status);
-        break;
-      case "10":
-        weapon_instance = new WolfFang(base_status);
-        break;
-      case "11":
-        weapon_instance = new FleuveCendreFerryman(base_status);
-        break;
-      case "12":
-        weapon_instance = new FinaleoftheDeep(base_status);
-        break;
-      case "13":
-        weapon_instance = new ToukabouShigure(base_status);
-        break;
-      case "14":
-        weapon_instance = new XiphosMoonlight(base_status);
-        break;
-      case "15":
-        weapon_instance = new SapwoodBlade(base_status);
-        break;
-      case "16":
-        weapon_instance = new KagotsurubeIsshin(base_status);
-        break;
-      case "17":
-        weapon_instance = new CinnabarSpindle(base_status);
-        break;
-      case "18":
-        weapon_instance = new AmenomaKageuchi(base_status);
-        break;
-      case "19":
-        weapon_instance = new TheAlleyFlash(base_status);
-        break;
-      case "20":
-        weapon_instance = new FesteringDesire(base_status);
-        break;
-      case "21":
-        weapon_instance = new TheBlackSword(base_status);
-        break;
-      case "22":
-        weapon_instance = new BlackcliffLongsword(base_status);
-        break;
-      case "23":
-        weapon_instance = new IronSting(base_status);
-        break;
-      case "24":
-        weapon_instance = new PrototypeRancour(base_status);
-        break;
-      case "25":
-        weapon_instance = new LionsRoar(base_status);
-        break;
-      case "26":
-        weapon_instance = new RoyalLongsword(base_status);
-        break;
-      case "27":
-        weapon_instance = new SacrificialSword(base_status);
-        break;
-      case "28":
-        weapon_instance = new TheFlute(base_status);
-        break;
-      case "29":
-        weapon_instance = new FavoniusSword(base_status);
-        break;
-      case "30":
-        weapon_instance = new SkyriderSword(base_status);
-        break;
-      case "31":
-        weapon_instance = new FilletBlade(base_status);
-        break;
-      case "32":
-        weapon_instance = new TravelersHandySword(base_status);
-        break;
-      case "33":
-        weapon_instance = new HarbingerofDawn(base_status);
-        break;
-      case "34":
-        weapon_instance = new CoolSteel(base_status);
-        break;
-      case "156":
-        weapon_instance = new Verdict(base_status);
-        break;
-      case "35":
-        weapon_instance = new BeaconoftheReedSea(base_status);
-        break;
-      case "36":
-        weapon_instance = new RedhornStonethresher(base_status);
-        break;
-      case "37":
-        weapon_instance = new SongofBrokenPines(base_status);
-        break;
-      case "38":
-        weapon_instance = new TheUnforged(base_status);
-        break;
-      case "39":
-        weapon_instance = new WolfsGravestone(base_status);
-        break;
-      case "157":
-        weapon_instance = new UltimateTyrantSuperDevilSword(base_status);
-        break;
-      case "40":
-        weapon_instance = new SkywardPride(base_status);
-        break;
-      case "41":
-        weapon_instance = new PortablePowerSaw(base_status);
-        break;
-      case "42":
-        weapon_instance = new TalkingStick(base_status);
-        break;
-      case "43":
-        weapon_instance = new TidalShadow(base_status);
-        break;
-      case "44":
-        weapon_instance = new MailedFlower(base_status);
-        break;
-      case "45":
-        weapon_instance = new MakhairaAquamarine(base_status);
-        break;
-      case "46":
-        weapon_instance = new ForestRegalia(base_status);
-        break;
-      case "47":
-        weapon_instance = new Akuoumaru(base_status);
-        break;
-      case "48":
-        weapon_instance = new LuxuriousSeaLoad(base_status);
-        break;
-      case "49":
-        weapon_instance = new KatsuragikiriNagamasa(base_status);
-        break;
-      case "50":
-        weapon_instance = new LithicBlade(base_status);
-        break;
-      case "51":
-        weapon_instance = new SnowTombedStarsilver(base_status);
-        break;
-      case "52":
-        weapon_instance = new SerpentSpine(base_status);
-        break;
-      case "53":
-        weapon_instance = new BlackcliffSlasher(base_status);
-        break;
-      case "54":
-        weapon_instance = new Whiteblind(base_status);
-        break;
-      case "55":
-        weapon_instance = new PrototypeArchaic(base_status);
-        break;
-      case "57":
-        weapon_instance = new Rainslasher(base_status);
-        break;
-      case "58":
-        weapon_instance = new SacrificialGreatsword(base_status);
-        break;
-      case "59":
-        weapon_instance = new TheBell(base_status);
-        break;
-      case "60":
-        weapon_instance = new FavoniusGreatsword(base_status);
-        break;
-      case "61":
-        weapon_instance = new SkyriderGreatsword(base_status);
-        break;
-      case "62":
-        weapon_instance = new DebateClub(base_status);
-        break;
-      case "63":
-        weapon_instance = new WhiteIronGreatsword(base_status);
-        break;
-      case "64":
-        weapon_instance = new BloodtaintedGreatsword(base_status);
-        break;
-      case "65":
-        weapon_instance = new FerrousShadow(base_status);
-        break;
-      case "66":
-        weapon_instance = new StaffoftheScarletSands(base_status);
-        break;
-      case "67":
-        weapon_instance = new CalamityQueller(base_status);
-        break;
-      case "68":
-        weapon_instance = new EngulfingLightning(base_status);
-        break;
-      case "69":
-        weapon_instance = new StaffofHoma(base_status);
-        break;
-      case "70":
-        weapon_instance = new VortexVanguisher(base_status);
-        break;
-      case "71":
-        weapon_instance = new SkywardSpine(base_status);
-        break;
-      case "72":
-        weapon_instance = new PrimordialJadeWingedSpear(base_status);
-        break;
-      case "73":
-        weapon_instance = new BalladoftheFjords(base_status);
-        break;
-      case "74":
-        weapon_instance = new RightfulReward(base_status);
-        break;
-      case "75":
-        weapon_instance = new MissiveWindspear(base_status);
-        break;
-      case "76":
-        weapon_instance = new Moonpiercer(base_status);
-        break;
-      case "77":
-        weapon_instance = new WavebreakersFin(base_status);
-        break;
-      case "78":
-        weapon_instance = new TheCatch(base_status);
-        break;
-      case "79":
-        weapon_instance = new KitainCrossSpear(base_status);
-        break;
-      case "80":
-        weapon_instance = new LithicSpear(base_status);
-        break;
-      case "81":
-        weapon_instance = new DragonspineSpear(base_status);
-        break;
-      case "83":
-        weapon_instance = new FavoniusLance(base_status);
-        break;
-      case "84":
-        weapon_instance = new Deathmatch(base_status);
-        break;
-      case "85":
-        weapon_instance = new BlackcliffPole(base_status);
-        break;
-      case "86":
-        weapon_instance = new CrescentPike(base_status);
-        break;
-      case "87":
-        weapon_instance = new PrototypeStarglitter(base_status);
-        break;
-      case "88":
-        weapon_instance = new DragonsBane(base_status);
-        break;
-      case "89":
-        weapon_instance = new BlackTassel(base_status);
-        break;
-      case "90":
-        weapon_instance = new WhiteTassel(base_status);
-        break;
-      case "91":
-        weapon_instance = new TheFirstGreatMagic(base_status);
-        break;
-      case "92":
-        weapon_instance = new HuntersPath(base_status);
-        break;
-      case "93":
-        weapon_instance = new AquaSimulacra(base_status);
-        break;
-      case "94":
-        weapon_instance = new PolarStar(base_status);
-        break;
-      case "95":
-        weapon_instance = new ThunderingPulse(base_status);
-        break;
-      case "96":
-        weapon_instance = new ElegyfortheEnd(base_status);
-        break;
-      case "97":
-        weapon_instance = new AmosBow(base_status);
-        break;
-      case "98":
-        weapon_instance = new SkywardHarp(base_status);
-        break;
-      case "99":
-        weapon_instance = new ScionoftheBlazingSun(base_status);
-        break;
-      case "100":
-        weapon_instance = new SongofStillness(base_status);
-        break;
-      case "101":
-        weapon_instance = new IbisPiercer(base_status);
-        break;
-      case "102":
-        weapon_instance = new KingsSquire(base_status);
-        break;
-      case "103":
-        weapon_instance = new EndoftheLine(base_status);
-        break;
-      case "104":
-        weapon_instance = new FadingTwilight(base_status);
-        break;
-      case "105":
-        weapon_instance = new MouunsMoon(base_status);
-        break;
-      case "106":
-        weapon_instance = new Hamayumi(base_status);
-        break;
-      case "107":
-        weapon_instance = new MitternachtsWaltz(base_status);
-        break;
-      case "108":
-        weapon_instance = new WindblumeOde(base_status);
-        break;
-      case "109":
-        weapon_instance = new AlleyHunter(base_status);
-        break;
-      case "110":
-        weapon_instance = new TheViridescentHunt(base_status);
-        break;
-      case "111":
-        weapon_instance = new BlackcliffWarbow(base_status);
-        break;
-      case "112":
-        weapon_instance = new CompoundBow(base_status);
-        break;
-      case "113":
-        weapon_instance = new PrototypeCrescent(base_status);
-        break;
-      case "114":
-        weapon_instance = new Rust(base_status);
-        break;
-      case "116":
-        weapon_instance = new SacrificialBow(base_status);
-        break;
-      case "117":
-        weapon_instance = new TheStringless(base_status);
-        break;
-      case "118":
-        weapon_instance = new FavoniusWarbow(base_status);
-        break;
-      case "119":
-        weapon_instance = new Messenger(base_status);
-        break;
-      case "120":
-        weapon_instance = new Slingshot(base_status);
-        break;
-      case "121":
-        weapon_instance = new RecurveBow(base_status);
-        break;
-      case "122":
-        weapon_instance = new SharpshootersOath(base_status);
-        break;
-      case "123":
-        weapon_instance = new RavenBow(base_status);
-        break;
-      case "154":
-        weapon_instance = new CashflowSupervision(base_status);
-        break;
-      case "124":
-        weapon_instance = new TomeoftheEternalFlow(base_status);
-        break;
-      case "125":
-        weapon_instance = new JadefallsSplendor(base_status);
-        break;
-      case "126":
-        weapon_instance = new TulaytullahsRemembrance(base_status);
-        break;
-      case "127":
-        weapon_instance = new AThousandFloatingDreams(base_status);
-        break;
-      case "128":
-        weapon_instance = new KagurasVerity(base_status);
-        break;
-      case "129":
-        weapon_instance = new EverlastingMoonglow(base_status);
-        break;
-      case "131":
-        weapon_instance = new LostPrayertotheSacredWinds(base_status);
-        break;
-      case "132":
-        weapon_instance = new SkywardAtlas(base_status);
-        break;
-      case "133":
-        weapon_instance = new BalladOfTheBoundlessBlue(base_status);
-        break;
-      case "134":
-        weapon_instance = new SacrificialJade(base_status);
-        break;
-      case "135":
-        weapon_instance = new FlowingPurity(base_status);
-        break;
-      case "136":
-        weapon_instance = new WanderingEvenstar(base_status);
-        break;
-      case "137":
-        weapon_instance = new FruitofFulfillment(base_status);
-        break;
-      case "138":
-        weapon_instance = new OathswornEye(base_status);
-        break;
-      case "139":
-        weapon_instance = new HakushinRing(base_status);
-        break;
-      case "140":
-        weapon_instance = new DodocoTales(base_status);
-        break;
-      case "141":
-        weapon_instance = new WineandSong(base_status);
-        break;
-      case "142":
-        weapon_instance = new Frostbearer(base_status);
-        break;
-      case "143":
-        weapon_instance = new EyeofPerception(base_status);
-        break;
-      case "144":
-        weapon_instance = new BlackcliffAgate(base_status);
-        break;
-      case "145":
-        weapon_instance = new MappaMare(base_status);
-        break;
-      case "146":
-        weapon_instance = new PrototypeAmber(base_status);
-        break;
-      case "147":
-        weapon_instance = new SolarPearl(base_status);
-        break;
-      case "149":
-        weapon_instance = new SacrificialFragments(base_status);
-        break;
-      case "150":
-        weapon_instance = new TheWidsith(base_status);
-        break;
-      case "151":
-        weapon_instance = new FavoniusCodex(base_status);
-        break;
-      case "152":
-        weapon_instance = new ThrillingTalesofDragonSlayers(base_status);
-        break;
-      case "153":
-        weapon_instance = new MagicGuide(base_status);
-        break;
-      case "155":
-        weapon_instance = new SplendorOfTranquilWaters(base_status);
-        break;
-      default:
-        // 未知の武器IDに対する処理を追加することもできます
-        break;
-    }
-    return weapon_instance;
+async function create_weapon_instance(base_status, method_index) {
+let weapon_instance;
+switch (selectedWeaponId) {
+    case "0":
+    weapon_instance = new LightofFoliarIncision(base_status, method_index);
+    break;
+    case "1":
+    weapon_instance = new KeyofKhajNisut(base_status, method_index);
+    break;
+    case "2":
+    weapon_instance = new HaranGeppakuFutsu(base_status, method_index);
+    break;
+    case "3":
+    weapon_instance = new MistsplitterReforged(base_status, method_index);
+    break;
+    case "4":
+    weapon_instance = new FreedomSworn(base_status, method_index);
+    break;
+    case "5":
+    weapon_instance = new PrimordialJadeCutter(base_status, method_index);
+    break;
+    case "6":
+    weapon_instance = new SummitShaper(base_status, method_index);
+    break;
+    case "7":
+    weapon_instance = new SkywardBlade(base_status, method_index);
+    break;
+    case "8":
+    weapon_instance = new AquilaFavonia(base_status, method_index);
+    break;
+    case "9":
+    weapon_instance = new TheDockhandsAssistant(base_status, method_index);
+    break;
+    case "10":
+    weapon_instance = new WolfFang(base_status, method_index);
+    break;
+    case "11":
+    weapon_instance = new FleuveCendreFerryman(base_status, method_index);
+    break;
+    case "12":
+    weapon_instance = new FinaleoftheDeep(base_status, method_index);
+    break;
+    case "13":
+    weapon_instance = new ToukabouShigure(base_status, method_index);
+    break;
+    case "14":
+    weapon_instance = new XiphosMoonlight(base_status, method_index);
+    break;
+    case "15":
+    weapon_instance = new SapwoodBlade(base_status, method_index);
+    break;
+    case "16":
+    weapon_instance = new KagotsurubeIsshin(base_status, method_index);
+    break;
+    case "17":
+    weapon_instance = new CinnabarSpindle(base_status, method_index);
+    break;
+    case "18":
+    weapon_instance = new AmenomaKageuchi(base_status, method_index);
+    break;
+    case "19":
+    weapon_instance = new TheAlleyFlash(base_status, method_index);
+    break;
+    case "20":
+    weapon_instance = new FesteringDesire(base_status, method_index);
+    break;
+    case "21":
+    weapon_instance = new TheBlackSword(base_status, method_index);
+    break;
+    case "22":
+    weapon_instance = new BlackcliffLongsword(base_status, method_index);
+    break;
+    case "23":
+    weapon_instance = new IronSting(base_status, method_index);
+    break;
+    case "24":
+    weapon_instance = new PrototypeRancour(base_status, method_index);
+    break;
+    case "25":
+    weapon_instance = new LionsRoar(base_status, method_index);
+    break;
+    case "26":
+    weapon_instance = new RoyalLongsword(base_status, method_index);
+    break;
+    case "27":
+    weapon_instance = new SacrificialSword(base_status, method_index);
+    break;
+    case "28":
+    weapon_instance = new TheFlute(base_status, method_index);
+    break;
+    case "29":
+    weapon_instance = new FavoniusSword(base_status, method_index);
+    break;
+    case "30":
+    weapon_instance = new SkyriderSword(base_status, method_index);
+    break;
+    case "31":
+    weapon_instance = new FilletBlade(base_status, method_index);
+    break;
+    case "32":
+    weapon_instance = new TravelersHandySword(base_status, method_index);
+    break;
+    case "33":
+    weapon_instance = new HarbingerofDawn(base_status, method_index);
+    break;
+    case "34":
+    weapon_instance = new CoolSteel(base_status, method_index);
+    break;
+    case "156":
+    weapon_instance = new Verdict(base_status, method_index);
+    break;
+    case "35":
+    weapon_instance = new BeaconoftheReedSea(base_status, method_index);
+    break;
+    case "36":
+    weapon_instance = new RedhornStonethresher(base_status, method_index);
+    break;
+    case "37":
+    weapon_instance = new SongofBrokenPines(base_status, method_index);
+    break;
+    case "38":
+    weapon_instance = new TheUnforged(base_status, method_index);
+    break;
+    case "39":
+    weapon_instance = new WolfsGravestone(base_status, method_index);
+    break;
+    case "157":
+    weapon_instance = new UltimateTyrantSuperDevilSword(base_status, method_index);
+    break;
+    case "40":
+    weapon_instance = new SkywardPride(base_status, method_index);
+    break;
+    case "41":
+    weapon_instance = new PortablePowerSaw(base_status, method_index);
+    break;
+    case "42":
+    weapon_instance = new TalkingStick(base_status, method_index);
+    break;
+    case "43":
+    weapon_instance = new TidalShadow(base_status, method_index);
+    break;
+    case "44":
+    weapon_instance = new MailedFlower(base_status, method_index);
+    break;
+    case "45":
+    weapon_instance = new MakhairaAquamarine(base_status, method_index);
+    break;
+    case "46":
+    weapon_instance = new ForestRegalia(base_status, method_index);
+    break;
+    case "47":
+    weapon_instance = new Akuoumaru(base_status, method_index);
+    break;
+    case "48":
+    weapon_instance = new LuxuriousSeaLoad(base_status, method_index);
+    break;
+    case "49":
+    weapon_instance = new KatsuragikiriNagamasa(base_status, method_index);
+    break;
+    case "50":
+    weapon_instance = new LithicBlade(base_status, method_index);
+    break;
+    case "51":
+    weapon_instance = new SnowTombedStarsilver(base_status, method_index);
+    break;
+    case "52":
+    weapon_instance = new SerpentSpine(base_status, method_index);
+    break;
+    case "53":
+    weapon_instance = new BlackcliffSlasher(base_status, method_index);
+    break;
+    case "54":
+    weapon_instance = new Whiteblind(base_status, method_index);
+    break;
+    case "55":
+    weapon_instance = new PrototypeArchaic(base_status, method_index);
+    break;
+    case "57":
+    weapon_instance = new Rainslasher(base_status, method_index);
+    break;
+    case "58":
+    weapon_instance = new SacrificialGreatsword(base_status, method_index);
+    break;
+    case "59":
+    weapon_instance = new TheBell(base_status, method_index);
+    break;
+    case "60":
+    weapon_instance = new FavoniusGreatsword(base_status, method_index);
+    break;
+    case "61":
+    weapon_instance = new SkyriderGreatsword(base_status, method_index);
+    break;
+    case "62":
+    weapon_instance = new DebateClub(base_status, method_index);
+    break;
+    case "63":
+    weapon_instance = new WhiteIronGreatsword(base_status, method_index);
+    break;
+    case "64":
+    weapon_instance = new BloodtaintedGreatsword(base_status, method_index);
+    break;
+    case "65":
+    weapon_instance = new FerrousShadow(base_status, method_index);
+    break;
+    case "66":
+    weapon_instance = new StaffoftheScarletSands(base_status, method_index);
+    break;
+    case "67":
+    weapon_instance = new CalamityQueller(base_status, method_index);
+    break;
+    case "68":
+    weapon_instance = new EngulfingLightning(base_status, method_index);
+    break;
+    case "69":
+    weapon_instance = new StaffofHoma(base_status, method_index);
+    break;
+    case "70":
+    weapon_instance = new VortexVanguisher(base_status, method_index);
+    break;
+    case "71":
+    weapon_instance = new SkywardSpine(base_status, method_index);
+    break;
+    case "72":
+    weapon_instance = new PrimordialJadeWingedSpear(base_status, method_index);
+    break;
+    case "73":
+    weapon_instance = new BalladoftheFjords(base_status, method_index);
+    break;
+    case "74":
+    weapon_instance = new RightfulReward(base_status, method_index);
+    break;
+    case "75":
+    weapon_instance = new MissiveWindspear(base_status, method_index);
+    break;
+    case "76":
+    weapon_instance = new Moonpiercer(base_status, method_index);
+    break;
+    case "77":
+    weapon_instance = new WavebreakersFin(base_status, method_index);
+    break;
+    case "78":
+    weapon_instance = new TheCatch(base_status, method_index);
+    break;
+    case "79":
+    weapon_instance = new KitainCrossSpear(base_status, method_index);
+    break;
+    case "80":
+    weapon_instance = new LithicSpear(base_status, method_index);
+    break;
+    case "81":
+    weapon_instance = new DragonspineSpear(base_status, method_index);
+    break;
+    case "83":
+    weapon_instance = new FavoniusLance(base_status, method_index);
+    break;
+    case "84":
+    weapon_instance = new Deathmatch(base_status, method_index);
+    break;
+    case "85":
+    weapon_instance = new BlackcliffPole(base_status, method_index);
+    break;
+    case "86":
+    weapon_instance = new CrescentPike(base_status, method_index);
+    break;
+    case "87":
+    weapon_instance = new PrototypeStarglitter(base_status, method_index);
+    break;
+    case "88":
+    weapon_instance = new DragonsBane(base_status, method_index);
+    break;
+    case "89":
+    weapon_instance = new BlackTassel(base_status, method_index);
+    break;
+    case "90":
+    weapon_instance = new WhiteTassel(base_status, method_index);
+    break;
+    case "91":
+    weapon_instance = new TheFirstGreatMagic(base_status, method_index);
+    break;
+    case "92":
+    weapon_instance = new HuntersPath(base_status, method_index);
+    break;
+    case "93":
+    weapon_instance = new AquaSimulacra(base_status, method_index);
+    break;
+    case "94":
+    weapon_instance = new PolarStar(base_status, method_index);
+    break;
+    case "95":
+    weapon_instance = new ThunderingPulse(base_status, method_index);
+    break;
+    case "96":
+    weapon_instance = new ElegyfortheEnd(base_status, method_index);
+    break;
+    case "97":
+    weapon_instance = new AmosBow(base_status, method_index);
+    break;
+    case "98":
+    weapon_instance = new SkywardHarp(base_status, method_index);
+    break;
+    case "99":
+    weapon_instance = new ScionoftheBlazingSun(base_status, method_index);
+    break;
+    case "100":
+    weapon_instance = new SongofStillness(base_status, method_index);
+    break;
+    case "101":
+    weapon_instance = new IbisPiercer(base_status, method_index);
+    break;
+    case "102":
+    weapon_instance = new KingsSquire(base_status, method_index);
+    break;
+    case "103":
+    weapon_instance = new EndoftheLine(base_status, method_index);
+    break;
+    case "104":
+    weapon_instance = new FadingTwilight(base_status, method_index);
+    break;
+    case "105":
+    weapon_instance = new MouunsMoon(base_status, method_index);
+    break;
+    case "106":
+    weapon_instance = new Hamayumi(base_status, method_index);
+    break;
+    case "107":
+    weapon_instance = new MitternachtsWaltz(base_status, method_index);
+    break;
+    case "108":
+    weapon_instance = new WindblumeOde(base_status, method_index);
+    break;
+    case "109":
+    weapon_instance = new AlleyHunter(base_status, method_index);
+    break;
+    case "110":
+    weapon_instance = new TheViridescentHunt(base_status, method_index);
+    break;
+    case "111":
+    weapon_instance = new BlackcliffWarbow(base_status, method_index);
+    break;
+    case "112":
+    weapon_instance = new CompoundBow(base_status, method_index);
+    break;
+    case "113":
+    weapon_instance = new PrototypeCrescent(base_status, method_index);
+    break;
+    case "114":
+    weapon_instance = new Rust(base_status, method_index);
+    break;
+    case "116":
+    weapon_instance = new SacrificialBow(base_status, method_index);
+    break;
+    case "117":
+    weapon_instance = new TheStringless(base_status, method_index);
+    break;
+    case "118":
+    weapon_instance = new FavoniusWarbow(base_status, method_index);
+    break;
+    case "119":
+    weapon_instance = new Messenger(base_status, method_index);
+    break;
+    case "120":
+    weapon_instance = new Slingshot(base_status, method_index);
+    break;
+    case "121":
+    weapon_instance = new RecurveBow(base_status, method_index);
+    break;
+    case "122":
+    weapon_instance = new SharpshootersOath(base_status, method_index);
+    break;
+    case "123":
+    weapon_instance = new RavenBow(base_status, method_index);
+    break;
+    case "154":
+    weapon_instance = new CashflowSupervision(base_status, method_index);
+    break;
+    case "124":
+    weapon_instance = new TomeoftheEternalFlow(base_status, method_index);
+    break;
+    case "125":
+    weapon_instance = new JadefallsSplendor(base_status, method_index);
+    break;
+    case "126":
+    weapon_instance = new TulaytullahsRemembrance(base_status, method_index);
+    break;
+    case "127":
+    weapon_instance = new AThousandFloatingDreams(base_status, method_index);
+    break;
+    case "128":
+    weapon_instance = new KagurasVerity(base_status, method_index);
+    break;
+    case "129":
+    weapon_instance = new EverlastingMoonglow(base_status, method_index);
+    break;
+    case "131":
+    weapon_instance = new LostPrayertotheSacredWinds(base_status, method_index);
+    break;
+    case "132":
+    weapon_instance = new SkywardAtlas(base_status, method_index);
+    break;
+    case "133":
+    weapon_instance = new BalladOfTheBoundlessBlue(base_status, method_index);
+    break;
+    case "134":
+    weapon_instance = new SacrificialJade(base_status, method_index);
+    break;
+    case "135":
+    weapon_instance = new FlowingPurity(base_status, method_index);
+    break;
+    case "136":
+    weapon_instance = new WanderingEvenstar(base_status, method_index);
+    break;
+    case "137":
+    weapon_instance = new FruitofFulfillment(base_status, method_index);
+    break;
+    case "138":
+    weapon_instance = new OathswornEye(base_status, method_index);
+    break;
+    case "139":
+    weapon_instance = new HakushinRing(base_status, method_index);
+    break;
+    case "140":
+    weapon_instance = new DodocoTales(base_status, method_index);
+    break;
+    case "141":
+    weapon_instance = new WineandSong(base_status, method_index);
+    break;
+    case "142":
+    weapon_instance = new Frostbearer(base_status, method_index);
+    break;
+    case "143":
+    weapon_instance = new EyeofPerception(base_status, method_index);
+    break;
+    case "144":
+    weapon_instance = new BlackcliffAgate(base_status, method_index);
+    break;
+    case "145":
+    weapon_instance = new MappaMare(base_status, method_index);
+    break;
+    case "146":
+    weapon_instance = new PrototypeAmber(base_status, method_index);
+    break;
+    case "147":
+    weapon_instance = new SolarPearl(base_status, method_index);
+    break;
+    case "149":
+    weapon_instance = new SacrificialFragments(base_status, method_index);
+    break;
+    case "150":
+    weapon_instance = new TheWidsith(base_status, method_index);
+    break;
+    case "151":
+    weapon_instance = new FavoniusCodex(base_status, method_index);
+    break;
+    case "152":
+    weapon_instance = new ThrillingTalesofDragonSlayers(base_status, method_index);
+    break;
+    case "153":
+    weapon_instance = new MagicGuide(base_status, method_index);
+    break;
+    case "155":
+    weapon_instance = new SplendorOfTranquilWaters(base_status, method_index);
+    break;
+    default:
+    // 未知の武器IDに対する処理を追加することもできます
+    break;
+}
+return weapon_instance;
 }
 
-async function calculate_team_fix_buff(base_status)
+async function calculate_team_fix_buff(base_status, method_index)
 {
   const fix_hp_buff = parseInt(document.getElementById("fix_hp_buff").value) || 0; // 聖遺物HP上昇量
   const fix_hprate_buff = parseFloat(document.getElementById("fix_hp%_buff").value) / 100 || 0; // 聖遺物HP上昇量
@@ -996,7 +999,7 @@ async function calculate_team_fix_buff(base_status)
   const fix_cr_buff = parseFloat(document.getElementById("fix_cr_buff").value) / 100 || 0; // 聖遺物会心率上昇量
   const fix_cd_buff = parseFloat(document.getElementById("fix_cd_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
   const fix_dmg_buff = parseFloat(document.getElementById("fix_dmg_buff").value) / 100 || 0; // 聖遺物会心ダメージ上昇量
-  const af_setbuff = await create_afset_instance();
+  const af_setbuff = await create_afset_instance(method_index);
   let team_buff = [0,0,0,0,0,0,0,0];
 
   const pyroCheckbox = document.getElementById("pyro_reso");
@@ -1234,7 +1237,7 @@ function identify_condition() {
   return 0;
 }
 
-async function create_afset_instance(method_index)
+async function create_afset_instance(method_index) 
 {
   const attackSelect = document.getElementById("attack_method_id");
   attack_method = attackSelect.value;
@@ -1243,13 +1246,13 @@ async function create_afset_instance(method_index)
   let buff = [0, 0, 0, 0, 0, 0, 0, 0];
   if (selectedImageIds[0] == selectedImageIds[1])
   {
-    set1_buff = set_effect2[selectedImageIds[0]]();
-    set2_buff = set_effect4[selectedImageIds[0]]();
+    set1_buff = set_effect2[selectedImageIds[0]](method_index);
+    set2_buff = set_effect4[selectedImageIds[0]](method_index);
   }
   else
   {
-    set1_buff = await set_effect2[selectedImageIds[0]]();
-    set2_buff = await set_effect2[selectedImageIds[1]]();
+    set1_buff = await set_effect2[selectedImageIds[0]](method_index);
+    set2_buff = await set_effect2[selectedImageIds[1]](method_index);
   }
 
  for (let i = 0; i < 8; i++)
@@ -1635,15 +1638,24 @@ async function monte_carlo_calculate()
     calculationMessage.style.visibility = "hidden";
     return;
   }
-  const response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
-  const data = await response.json();
-  const depend_status = await calculate_depend_status();
-  const depend_status_index = await calculate_depend_status_index(depend_status);
-  const char_attack_index_list = data.攻撃手段;
+
+  const checkboxStates = [];
+  const characterInfo = document.getElementById("characterInfo");
+  const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
+  const char_parameter = await import_char_parameter();
+  checkboxes.forEach((checkbox) => {
+    checkboxStates.push(checkbox.checked);
+  });
+  while (checkboxStates.length < 4) {
+    checkboxStates.push(false);
+  }
+
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
+  const depend_status = await calculate_depend_status();
   const team_fix_buff = await calculate_team_fix_buff(base_status);
   const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
+  const depend_status_index = await calculate_depend_status_index(depend_status);
   let response = "";
   let af_score = parseFloat(document.getElementById("initial_af_score").value);
   let dlt_af_score = parseFloat(document.getElementById("dlt_af_score").value);
@@ -1663,6 +1675,9 @@ async function monte_carlo_calculate()
   document.getElementById("response").innerHTML = response;
 
   let score_distribute;
+  let af_score_upper_limit = af_score;
+  let af_score_lower_limit = 0;
+  //af_score = af_score/2;
 
   let base_parameter;
   let fixed_status = [0,0,0,0,0,0,0,0];
@@ -1678,6 +1693,46 @@ async function monte_carlo_calculate()
   let new_score_distribution = [0,0,0,0,0,0,0];
   let basic_dmg;
   let n_count = 0;
+  
+  const char_response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
+  const char_data = await char_response.json();
+  const method_index_list = char_data.攻撃手段;
+
+
+  const createCharInstanceAsync = async (base_status, char_parameter, index) => {
+    return await create_char_instance(base_status, char_parameter, index);
+  };
+  
+  const createWeaponInstanceAsync = async (base_status, index) => {
+    return await create_weapon_instance(base_status, index);
+  };
+  
+  const charInstances = await Promise.all(
+    Array.from({ length: 5 }, (_, i) => createCharInstanceAsync(base_status, char_parameter, i))
+  );
+  
+  const weaponInstances = await Promise.all(
+    Array.from({ length: 5 }, (_, i) => createWeaponInstanceAsync(base_status, i))
+  );
+  
+  let dmg_rate = [0, 0, 0, 0, 0];
+  let fixed_buff_list = [0,0,0,0,0]
+  for (let i = 0; i < 5; i++) {
+    if (method_index_list[i] > 0) {
+      dmg_rate[i] = await charInstances[i].dmg_rate_data();
+      let fixed_buff =[0,0,0,0,0,0,0,0];
+      fixed_buff[0] = await (charInstances[i].calculate_char_fixed_hp(fixed_status) + weaponInstances[i].calculate_weapon_fixed_hp(fixed_status) + team_fix_buff[0]);
+      fixed_buff[1] = await (charInstances[i].calculate_char_fixed_deff(fixed_status) + weaponInstances[i].calculate_weapon_fixed_deff(fixed_status)+ team_fix_buff[1]);
+      fixed_buff[2] = await (charInstances[i].calculate_char_fixed_elm(fixed_status) + weaponInstances[i].calculate_weapon_fixed_elm(fixed_status) + team_fix_buff[2]);
+      fixed_buff[3] = await (charInstances[i].calculate_char_fixed_elm_charge(fixed_status) + weaponInstances[i].calculate_weapon_fixed_elm_charge(fixed_status) + team_fix_buff[3]);
+      fixed_buff[4] = await (charInstances[i].calculate_char_fixed_attck(fixed_status) + weaponInstances[i].calculate_weapon_fixed_attck(fixed_status) + team_fix_buff[4]);
+      fixed_buff[5] = await (charInstances[i].calculate_char_fixed_cr(fixed_status) + weaponInstances[i].calculate_weapon_fixed_cr(fixed_status) + team_fix_buff[5]);
+      fixed_buff[6] = await (charInstances[i].calculate_char_fixed_cd(fixed_status) + weaponInstances[i].calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
+      fixed_buff[7] = await (charInstances[i].calculate_char_fixed_dmg_buff(fixed_status) + weaponInstances[i].calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
+      fixed_buff_list[i] = fixed_buff;
+    }
+  }
+  
 
   const char_debuff = await char_instance.calculate_char_debuff();
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
@@ -1695,9 +1750,6 @@ async function monte_carlo_calculate()
       zetsuen_check = 1;
     }
   }
-
-  let fixed_buff =[0,0,0,0,0,0,0,0];
-
   while (n_count < 50)
   {
     let exp_dmg = 0;
@@ -1710,65 +1762,51 @@ async function monte_carlo_calculate()
     }
     for (let i = 0; i < 10000; i++)
     {
-        for (let at_index = 0; at_index < 5; at_index++)
+        score_distribute = await calculate_score_distribute(af_score,depend_status);
+        base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
+        
+        for (let x = 0; x < 5; x++)
         {
-            attack_method_index == at_index;
-            if (char_attack_index_list[attack_method_index] == 0)
+            if (method_index_list[x] == 0)
             {
-                continue;
+              continue;
             }
-            const char_instance = await create_char_instance(base_status, char_parameter);
-            const weapon_instance = await create_weapon_instance(base_status);
-            const dmg_rate = await char_instance.dmg_rate_data();
-
-            fixed_buff[0] = await (char_instance.calculate_char_fixed_hp(fixed_status) + weapon_instance.calculate_weapon_fixed_hp(fixed_status) + team_fix_buff[0]);
-            fixed_buff[1] = await (char_instance.calculate_char_fixed_deff(fixed_status) + weapon_instance.calculate_weapon_fixed_deff(fixed_status)+ team_fix_buff[1]);
-            fixed_buff[2] = await (char_instance.calculate_char_fixed_elm(fixed_status) + weapon_instance.calculate_weapon_fixed_elm(fixed_status) + team_fix_buff[2]);
-            fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge(fixed_status) + weapon_instance.calculate_weapon_fixed_elm_charge(fixed_status) + team_fix_buff[3]);
-            fixed_buff[4] = await (char_instance.calculate_char_fixed_attck(fixed_status) + weapon_instance.calculate_weapon_fixed_attck(fixed_status) + team_fix_buff[4]);
-            fixed_buff[5] = await (char_instance.calculate_char_fixed_cr(fixed_status) + weapon_instance.calculate_weapon_fixed_cr(fixed_status) + team_fix_buff[5]);
-            fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
-            fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
-
-            score_distribute = await calculate_score_distribute(af_score,depend_status);
-            base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
-            
             for (let g = 0; g < depend_status_index.length; g++)
             {
-                fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
+                fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff_list[x][depend_status_index[g]];
                 result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]];
             }
-            fixed_status[7] = base_parameter[7] + fixed_buff[7];
+            fixed_status[7] = base_parameter[7] + fixed_buff_list[x][7];
             result_status[7] = fixed_status[7] + team_dynamic_buff[7];
 
             if (depend_status[0] == 1)
             {
-                result_status[0] += await (char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
+                result_status[0] += await (charInstances[x].calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
 
             }
 
             if (depend_status[1] == 1)
             {
-                result_status[1] += await (char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
+                result_status[1] += await (charInstances[x].calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
             }
 
             if (depend_status[2] == 1)
             {
-                result_status[2] += await (char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
+                result_status[2] += await (charInstances[x].calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
             }
 
             if (depend_status[3] == 1)
             {
-                result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
+                result_status[3] += await (charInstances[x].calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
             }
 
             if (depend_status[4] == 1)
             {
-                result_status[4] += await (char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
+                result_status[4] += await (charInstances[x].calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
             }
             if (depend_status[5] == 1)
             {
-                result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
+                result_status[5] += await (charInstances[x].calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
                 if (result_status[5] > 1)
                 {
                 result_status[5] = 1;
@@ -1777,20 +1815,20 @@ async function monte_carlo_calculate()
 
             if (depend_status[6] == 1)
             {
-                result_status[6] += await (char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
+                result_status[6] += await (charInstances[x].calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
             }
             
             if(zetsuen_check == 1)
             {
                 zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
-                result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
+                result_status[7] += await (charInstances[x].calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
             }
             else
             {
-                result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
+                result_status[7] += await (charInstances[x].calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
             }
 
-            basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
+            basic_dmg = await charInstances[x].calculate_basic_dmg(dmg_rate, result_status);
             if (depend_status[2] == 1) {
                 exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
                         * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
@@ -1812,130 +1850,125 @@ async function monte_carlo_calculate()
 
     for (let k = 0; k < 5000; k++)
     {
-        exp_dmg = 0;
-        random_1 = Math.floor(depend_status_index.length * Math.random());
-        random_2 = Math.floor(depend_status_index.length * Math.random());
+      exp_dmg = 0;
+      random_1 = Math.floor(depend_status_index.length * Math.random());
+      random_2 = Math.floor(depend_status_index.length * Math.random());
 
-        if (random_1 == random_2)
+      if (random_1 == random_2)
+      {
+        random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;
+      }
+
+      if (new_score_distribution[depend_status_index[random_1]] == 0 || new_score_distribution[depend_status_index[random_2]] == 0)
+      {
+        continue;
+      }
+
+      new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] + dlt_score;
+      new_score_distribution[depend_status_index[random_2]] =  new_score_distribution[depend_status_index[random_2]] - dlt_score;
+
+      if (new_score_distribution[depend_status_index[random_2]] < 0)
+      {
+        new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] +  new_score_distribution[depend_status_index[random_2]];
+        new_score_distribution[depend_status_index[random_2]] = 0;
+      }
+      base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
+      for (x = 0; x < 5; x++)
+      {
+        if (method_index_list[x] == 0)
         {
-            random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;
+          continue;
         }
-
-        if (new_score_distribution[depend_status_index[random_1]] == 0 || new_score_distribution[depend_status_index[random_2]] == 0)
-        {
-            continue;
-        }
-
-        new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] + dlt_score;
-        new_score_distribution[depend_status_index[random_2]] =  new_score_distribution[depend_status_index[random_2]] - dlt_score;
-
-        if (new_score_distribution[depend_status_index[random_2]] < 0)
-        {
-            new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] +  new_score_distribution[depend_status_index[random_2]];
-            new_score_distribution[depend_status_index[random_2]] = 0;
-        }
-
-        base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
         for (g = 0; g < depend_status_index.length; g++)
         {
-            fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
-            result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]]
-        }
-        fixed_status[7] = base_parameter[7] + fixed_buff[7];
-        result_status[7] = fixed_status[7] + team_dynamic_buff[7]
-        for (let s = 0; s < 5; s++)
+            fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff_list[x][depend_status_index[g]];
+            result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]];
+            }
+            fixed_status[7] = base_parameter[7] + fixed_buff_list[x][7];
+            result_status[7] = fixed_status[7] + team_dynamic_buff[7];
+
+        if (depend_status[0] == 1)
         {
-            attack_method_index == s;
-            if (char_attack_index_list[attack_method_index] == 0)
-            {
-                continue;
-            }
-            const char_instance = await create_char_instance(base_status, char_parameter);
-            const weapon_instance = await create_weapon_instance(base_status);
-            const dmg_rate = await char_instance.dmg_rate_data();
-
-            if (depend_status[0] == 1)
-            {
-                result_status[0] += await (char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
-            }
-
-            if (depend_status[1] == 1)
-            {
-                result_status[1] += await (char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
-            }
-
-            if (depend_status[2] == 1)
-            {
-                result_status[2] += await (char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
-            }
-
-            if (depend_status[3] == 1)
-            {
-                result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
-            }
-
-            if (depend_status[4] == 1)
-            {
-                result_status[4] += await (char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
-            }
-
-            if (depend_status[5] == 1)
-            {
-                result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
-            }
-
-            if (depend_status[6] == 1)
-            {
-                result_status[6] += await (char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
-            }
-
-            if(zetsuen_check == 1)
-            {
-                zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
-                result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
-            }
-            else
-            {
-                result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
-            }
-
-            if (result_status[5] > 1)
-            {
-                excess_crscore = (result_status[5] - 1) * 200;
-                new_score_distribution[5] -= excess_crscore;
-                if (new_score_distribution[5] > 0)
-                {
-                new_score_distribution[6] += excess_crscore;
-                result_status[6] += excess_crscore / 100;
-                }
-                else
-                {
-                new_score_distribution[5] = 0;
-                }
-                result_status[5] = 1;
-            }
-
-            basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
-            if (depend_status[2] == 1) {
-                exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
-                        * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
-            } else {
-                exp_dmg += basic_dmg * (1 + result_status[5] * result_status[6])
-                        * (1 + result_status[7]) * correct_coeff[8];
-            }
+            result_status[0] += await (char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
         }
 
-        if (temp_exp_dmg < exp_dmg)
+        if (depend_status[1] == 1)
         {
-            temp_exp_dmg = exp_dmg;
-            temp_status = result_status.slice();
-            old_score_distribution = new_score_distribution.slice();
-            temp_critical_dmg = critical_dmg;
+            result_status[1] += await (char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
+        }
+
+        if (depend_status[2] == 1)
+        {
+            result_status[2] += await (char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
+        }
+
+        if (depend_status[3] == 1)
+        {
+            result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
+        }
+
+        if (depend_status[4] == 1)
+        {
+            result_status[4] += await (char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
+        }
+
+        if (depend_status[5] == 1)
+        {
+            result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
+        }
+
+        if (depend_status[6] == 1)
+        {
+            result_status[6] += await (char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
+        }
+
+        if(zetsuen_check == 1)
+        {
+            zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
+            result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
         }
         else
         {
-            new_score_distribution = old_score_distribution.slice();
+            result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
         }
+
+        if (result_status[5] > 1)
+        {
+            excess_crscore = (result_status[5] - 1) * 200;
+            new_score_distribution[5] -= excess_crscore;
+            if (new_score_distribution[5] > 0)
+            {
+            new_score_distribution[6] += excess_crscore;
+            result_status[6] += excess_crscore / 100;
+            }
+            else
+            {
+            new_score_distribution[5] = 0;
+            }
+            result_status[5] = 1;
+        }
+
+        basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
+        if (depend_status[2] == 1) {
+            exp_dmg += basic_dmg * (1 + result_status[5]*result_status[6])
+                    * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
+        } else {
+            exp_dmg += basic_dmg * (1 + result_status[5] * result_status[6])
+                    * (1 + result_status[7]) * correct_coeff[8];
+        }
+      }
+      
+      if (temp_exp_dmg < exp_dmg)
+      {
+        temp_exp_dmg = exp_dmg;
+        temp_status = result_status.slice();
+        old_score_distribution = new_score_distribution.slice();
+        temp_critical_dmg = critical_dmg;
+      }
+      else
+      {
+        new_score_distribution = old_score_distribution.slice();
+      }
     }
     output_exp_dmg = temp_exp_dmg;
     output_exp_dmg = output_exp_dmg.toFixed(0);

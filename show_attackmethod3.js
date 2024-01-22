@@ -575,45 +575,69 @@ async function show_attack_method()
     attack_method_prop.appendChild(yanfei_text);
     attack_method_prop.appendChild(yanfei_textskill_selectlist);
     attack_method_prop.appendChild(document.createElement("br"));
-    if (attack_method == 1)
-    {
-      options = [
-        { text: "１段目", value: "0", checked: true },
-        { text: "２段目", value: "1" },
-        { text: "３段目", value: "2" },
-      ];
-    }
-    else if (attack_method == 6)
-    {
-      elementsToAddToCharTalent = [
-        createCheckbox("yanfei_Q", true),
-        createLabel("yanfei_Q", "元素爆発：契約成立"),
-        document.createElement("br"),
-        createTextNode("　元素爆発天賦レベル："),
-        createSelectList("yanfeiQ_level", 1, 13, "Lv.", "", 10),
-        document.createElement("br"),
-      ];
-    
-      elementsToAddToCharTalent.forEach(element => {
-        temporary_char_talent.appendChild(element);
-      });
-      options = [
-        { text: "重撃", value: "0", checked: true },
-      ];
-    }
-    else if (attack_method == 16)
-    {
-      options = [
-        { text: "丹書契約", value: "0", checked: true },
-      ];
-    }
-    else if (attack_method == 21)
-    {
-      options = [
-        { text: "契約成立", value: "0", checked: true },
-      ];
-    }
-    createCheckboxList(options);
+
+    elementsToAddToCharTalent = [
+      createCheckbox("yanfei_Q", true),
+      createLabel("yanfei_Q", "元素爆発：契約成立"),
+      document.createElement("br"),
+      createTextNode("　元素爆発天賦レベル："),
+      createSelectList("yanfeiQ_level", 1, 13, "Lv.", "", 10),
+      document.createElement("br"),
+    ];
+  
+    elementsToAddToCharTalent.forEach(element => {
+      temporary_char_talent.appendChild(element);
+    });
+
+    traits = [
+      document.createElement("br"),
+      createLabel("yanfei_attack_count1", "　通常１段："),
+      createSelectList("yanfei_attack_count1", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_attack_count2", "　通常２段："),
+      createSelectList("yanfei_attack_count2", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_attack_count3", "　通常３段："),
+      createSelectList("yanfei_attack_count3", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_attack_count4", "　重撃："),
+      createSelectList("yanfei_attack_count4", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_attack_count5", "　元素スキル："),
+      createSelectList("yanfei_attack_count5", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_attack_count6", "　元素爆発："),
+      createSelectList("yanfei_attack_count6", 0, 10, "", "回", 0),
+      document.createElement("br"),
+    ];
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+
+    traits = [
+      document.createElement("br"),
+      createLabel("yanfei_react_count1", "　通常１段："),
+      createSelectList("yanfei_react_count1", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_react_count2", "　通常２段："),
+      createSelectList("yanfei_react_count2", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_react_count3", "　通常３段："),
+      createSelectList("yanfei_react_count3", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_react_count4", "　重撃："),
+      createSelectList("yanfei_react_count4", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_react_count5", "　元素スキル："),
+      createSelectList("yanfei_react_count5", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yanfei_react_count6", "　元素爆発："),
+      createSelectList("yanfei_react_count6", 0, 10, "", "回", 0),
+      document.createElement("br"),
+    ];
+    traits.forEach(element => {
+      select_reaction_method.appendChild(element);
+    });
   }
   else if (selectedCharId == "7")
   {

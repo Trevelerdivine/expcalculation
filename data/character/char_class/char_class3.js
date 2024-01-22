@@ -1561,9 +1561,9 @@ class Lyney {
         }
         else
         {
-          attckRate = status[4] * (dmg_rate[4][0] + this.react_list[0] * status[5] * 0.8) + calculate_weapon_basedmg(this.react_attack_count * 2, status, this.weapon_rank, this.base_dmgbuff);
+          attckRate = status[4] * (dmg_rate[4][0] +  this.react_attack_count[0] * status[5] * 0.8) + calculate_weapon_basedmg(this.react_attack_count * (1 + status[5]), status, this.weapon_rank, this.base_dmgbuff);
           basicDmg = attckRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400))
-                   + status[4] * (dmg_rate[4][1] + this.nonreact_list[0] * status[5] * 0.8) + calculate_weapon_basedmg(this.nonreact_attack_count * 2, status, this.weapon_rank, this.base_dmgbuff);
+                   + status[4] * (dmg_rate[4][1] + this.nonreact_attack_count[0] * status[5] * 0.8) + calculate_weapon_basedmg(this.nonreact_attack_count * (1 + status[5]), status, this.weapon_rank, this.base_dmgbuff);
         }
       }
       else
@@ -1575,7 +1575,7 @@ class Lyney {
         }
         else
         {
-          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + (this.react_attack_count + this.nonreact_attack_count) * status[5] * 0.8 * status[4] + calculate_weapon_basedmg(2, status, this.weapon_rank, this.base_dmgbuff);
+          attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + (this.react_attack_count + this.nonreact_attack_count) * status[5] * 0.8 * status[4] + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
           basicDmg = attckRate;
         }
       }

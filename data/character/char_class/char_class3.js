@@ -1549,6 +1549,7 @@ class Lyney {
     calculate_basic_dmg(dmg_rate, status) {
       let basicDmg;
       let attckRate;
+      console.log(this.method_index);
       if (this.reaction_coeff > 0)
       {
         if (this.method_index != 1)

@@ -1708,7 +1708,7 @@ async function monte_carlo_calculate()
   );
   
   let dmg_rate = [0, 0, 0, 0, 0];
-  let fixed_buff_list = [0,0,0,0,0]
+  let fixed_buff_list = [0, 0, 0, 0, 0];
   for (let i = 0; i < 5; i++) {
     if (method_index_list[i] > 0) {
       dmg_rate[i] = await charInstances[i].dmg_rate_data();
@@ -1727,8 +1727,8 @@ async function monte_carlo_calculate()
   }
   console.log(fixed_buff_list);
 
-  const char_debuff = await char_instance.calculate_char_debuff();
-  const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
+  const char_debuff = await charInstances[0].calculate_char_debuff();
+  const weapon_debuff =  await weaponInstances[0].calculate_weapon_debuff();
   const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
   const reaction_check = document.getElementById("reactionoff_flag");
   const reaction_count_list = create_reactioncount_list();

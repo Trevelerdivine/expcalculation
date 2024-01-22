@@ -1,6 +1,5 @@
 async function show_attack_method()
-{
-  attack_method = document.getElementById("attack_method_id").value;     
+{     
   const select_reaction_method = document.getElementById("select_reaction_method");
   select_reaction_method.innerHTML = "";
   const elemental_reaction = document.getElementById("element_action");

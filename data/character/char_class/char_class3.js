@@ -5345,11 +5345,11 @@ class Lyney {
         const attack_count3 = parseInt(document.getElementById("cyno_attack_count3").value);
         const attack_count4 = parseInt(document.getElementById("cyno_attack_count4").value) * 2;
         const attack_count5 = parseInt(document.getElementById("cyno_attack_count5").value);
-        dmg_attack_rate = react_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
-                        + react_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
-                        + react_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
-                        + react_count4 * parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]])
-                        + react_count5 * parseFloat(data["通常攻撃"]["詳細"][4]["数値"][this.parameter[3]]);
+        dmg_attack_rate = attack_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                        + attack_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                        + attack_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+                        + attack_count4 * parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]])
+                        + attack_count5 * parseFloat(data["通常攻撃"]["詳細"][4]["数値"][this.parameter[3]]);
         this.attack_hit_count1 = attack_count1
                                + attack_count2
                                + attack_count3

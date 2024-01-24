@@ -5360,9 +5360,9 @@ class Lyney {
       } else if (this.method_index == 3) {
         let dmg_attack_rate1 = 0;
         let dmg_attack_rate2 = 0;
-        const cyno_E_count = parseInt(document.getElementById("cyno_attack_count5").value);
-        const cyno_adE_count = parseInt(document.getElementById("cyno_attack_count6").value);
-        const cyno_talent1_count = parseInt(document.getElementById("cyno_attack_count7").value);
+        const cyno_E_count = parseInt(document.getElementById("cyno_attack_count6").value);
+        const cyno_adE_count = parseInt(document.getElementById("cyno_attack_count7").value);
+        const cyno_talent1_count = parseInt(document.getElementById("cyno_attack_count8").value);
         this.base_dmg_buff = cyno_talent1_count * 2.5;
         if (this.reaction_coeff > 0)
         {

@@ -5288,7 +5288,7 @@ class Lyney {
   }
   
   class cyno {
-    constructor(base_status_array, parameter) 
+    constructor(base_status_array, parameter, method_index)
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
@@ -5301,6 +5301,7 @@ class Lyney {
       this.skill_buff = 0;
       this.attack_hit_count1 = 0;
       this.attack_hit_count2 = 0;
+      this.method_index = method_index;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
       const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
@@ -5310,28 +5311,22 @@ class Lyney {
   
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
-  
       // チェックボックスとチェックされた数を取得
-      const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
       {
         this.aggcount1 = parseInt(document.getElementById("cyno_agg_count").value);
-        if (attack_method == 16)
+        if (this.method_index == 16)
         {
           this.aggcount2 = parseInt(document.getElementById("cyno_talent1_agg_count").value);
         }
         this.reaction_coeff = 1.15
       }
-  
-      if (attack_method == 1)
-      {
-        this.base_dmg_buff = 6 * 1.5
+      const reaction_flag = document.getElementById("reactionon_flag");
+      const Aggravate = document.getElementById("Aggravate");
+      if (Aggravate.checked && reaction_flag.checked) {
+        this.reaction_coeff = 1.15;
       }
-      else
-      {
-        this.base_dmg_buff = parseInt(document.getElementById("cyno_talent1_count").value) *2.5;
-      }
-    
+
       if (this.char_constellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
@@ -5350,20 +5345,34 @@ class Lyney {
       let dmg_attack_rate = 0;
       let burst_bonus;
       
-      if (attack_method == 1) {
-        for (let i = 0; i < 6; i++) {
-          dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-        }
-        this.attack_hit_count1 = 6;
+      if (this.method_index == 0) {
+        const attack_count1 = parseInt(document.getElementById("cyno_attack_count1").value);
+        const attack_count2 = parseInt(document.getElementById("cyno_attack_count2").value);
+        const attack_count3 = parseInt(document.getElementById("cyno_attack_count3").value);
+        const attack_count4 = parseInt(document.getElementById("cyno_attack_count4").value) * 2;
+        const attack_count5 = parseInt(document.getElementById("cyno_attack_count5").value);
+        dmg_attack_rate = react_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                        + react_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                        + react_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+                        + react_count4 * parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]])
+                        + react_count5 * parseFloat(data["通常攻撃"]["詳細"][4]["数値"][this.parameter[3]]);
+        this.attack_hit_count1 = attack_count1
+                               + attack_count2
+                               + attack_count3
+                               + attack_count4
+                               + attack_count5;
+        this.base_dmg_buff = this.attack_hit_count1 * 1.5
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
-      } else if (attack_method == 16) {
+      } else if (this.method_index == 3) {
         let dmg_attack_rate1 = 0;
         let dmg_attack_rate2 = 0;
-        const cyno_E_count = parseInt(document.getElementById("cyno_E_count").value);
-        const cyno_adE_count = parseInt(document.getElementById("cyno_adE_count").value);
-        const cyno_talent1_count = parseInt(document.getElementById("cyno_talent1_count").value);
-        this.aggcount1 = parseInt(document.getElementById("cyno_agg_count").value);
-        this.aggcount2 = parseInt(document.getElementById("cyno_talent1_agg_count").value);
+        const cyno_E_count = parseInt(document.getElementById("cyno_attack_count5").value);
+        const cyno_adE_count = parseInt(document.getElementById("cyno_attack_count6").value);
+        const cyno_talent1_count = parseInt(document.getElementById("cyno_attack_count7").value);
+        this.base_dmg_buff = cyno_talent1_count * 2.5;
+        this.aggcount1 = parseInt(document.getElementById("cyno_react_count2").value);
+                       + parseInt(document.getElementById("cyno_react_count4").value);
+        this.aggcount2 = parseInt(document.getElementById("cyno_react_count3").value);
   
         this.attack_hit_count1 = cyno_E_count + cyno_talent1_count;
         this.attack_hit_count2 = cyno_adE_count;
@@ -5442,7 +5451,7 @@ class Lyney {
       let basicDmg
       if (this.reaction_coeff > 0)
       {
-        if (attack_method == 1)
+        if (this.method_index == 0)
         {
           const attckRate = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank, this.base_dmgbuff);
           basicDmg = (attckRate + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
@@ -5461,9 +5470,9 @@ class Lyney {
       }
       else
       {
-        if (attack_method == 1)
+        if (this.method_index == 0)
         {
-          basicDmg = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
+          basicDmg = status[4] * dmg_rate[4] + this.base_dmg_buff * status[2] + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank, this.base_dmgbuff);
         }
         else
         {

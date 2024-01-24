@@ -5373,7 +5373,7 @@ class Lyney {
   
         this.attack_hit_count1 = cyno_E_count + cyno_talent1_count;
         this.attack_hit_count2 = cyno_adE_count;
-        dmg_attack_rate1 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * cyno_E_count + cyno_talent1_count
+        dmg_attack_rate1 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * cyno_E_count + cyno_talent1_count;
         dmg_attack_rate2 = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * cyno_adE_count;
         dmg_rate = [0, 0, 0, 0, [dmg_attack_rate1, dmg_attack_rate2], 0, 0];
       }
@@ -5456,13 +5456,13 @@ class Lyney {
         else
         {
           basicDmg = status[4] * dmg_rate[4][0] 
-                          + this.base_dmg_buff * status[2]
-                          + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank, this.base_dmgbuff)
-                          + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200))
-                          + (calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank, this.base_dmgbuff)
-                          + status[4] * dmg_rate[4][1]
-                          + this.aggcount2 * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)))
-                            * (1 + status[7] + 0.35) / (1 + status[7]);
+                   + this.base_dmg_buff * status[2]
+                   + calculate_weapon_basedmg(this.attack_hit_count1, status, this.weapon_rank, this.base_dmgbuff)
+                   + this.aggcount1 * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200))
+                   + (calculate_weapon_basedmg(this.attack_hit_count2, status, this.weapon_rank, this.base_dmgbuff)
+                   + status[4] * dmg_rate[4][1]
+                   + this.aggcount2 * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)))
+                    * (1 + status[7] + 0.35) / (1 + status[7]);
         }
       }
       else

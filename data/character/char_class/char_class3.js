@@ -5311,16 +5311,6 @@ class Lyney {
   
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
-      // チェックボックスとチェックされた数を取得
-      if (reaction_check.checked)
-      {
-        this.aggcount1 = parseInt(document.getElementById("cyno_agg_count").value);
-        if (this.method_index == 16)
-        {
-          this.aggcount2 = parseInt(document.getElementById("cyno_talent1_agg_count").value);
-        }
-        this.reaction_coeff = 1.15
-      }
       const reaction_flag = document.getElementById("reactionon_flag");
       const Aggravate = document.getElementById("Aggravate");
       if (Aggravate.checked && reaction_flag.checked) {
@@ -5346,6 +5336,10 @@ class Lyney {
       let burst_bonus;
       
       if (this.method_index == 0) {
+        if (this.reaction_coeff > 0)
+        {
+          this.aggcount1 = parseInt(document.getElementById("cyno_react_count1").value);
+        }
         const attack_count1 = parseInt(document.getElementById("cyno_attack_count1").value);
         const attack_count2 = parseInt(document.getElementById("cyno_attack_count2").value);
         const attack_count3 = parseInt(document.getElementById("cyno_attack_count3").value);
@@ -5370,9 +5364,12 @@ class Lyney {
         const cyno_adE_count = parseInt(document.getElementById("cyno_attack_count6").value);
         const cyno_talent1_count = parseInt(document.getElementById("cyno_attack_count7").value);
         this.base_dmg_buff = cyno_talent1_count * 2.5;
-        this.aggcount1 = parseInt(document.getElementById("cyno_react_count2").value);
-                       + parseInt(document.getElementById("cyno_react_count4").value);
-        this.aggcount2 = parseInt(document.getElementById("cyno_react_count3").value);
+        if (this.reaction_coeff > 0)
+        {
+          this.aggcount1 = parseInt(document.getElementById("cyno_react_count2").value)
+                        + parseInt(document.getElementById("cyno_react_count4").value);
+          this.aggcount2 = parseInt(document.getElementById("cyno_react_count3").value);
+        }
   
         this.attack_hit_count1 = cyno_E_count + cyno_talent1_count;
         this.attack_hit_count2 = cyno_adE_count;

@@ -954,14 +954,6 @@ async function show_char_statsform()
         { id: "traitCheckbox2", label: "第2重：令儀・拝謁返霊 雷元素ダメージ " },
       ];
 
-      options = [
-        { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "通常攻撃1ループ（啓途誓使）", value: "1" },
-        { text: "元素スキル（律淵渡魂 冥祭）", value: "16" },
-      ];
-    
-      createchar_attackmethod(options);
-
       if (char_constellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);

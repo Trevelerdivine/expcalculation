@@ -188,6 +188,20 @@ async function show_attack_method()
     elemental_reaction.appendChild(ReactionOnRadio_label);
     elemental_reaction.appendChild(document.createElement("br"));
 
+    const traitCheckbox1 = document.createElement("input");
+    traitCheckbox1.type = "radio";
+    traitCheckbox1.name = "elemental-reaction";
+    traitCheckbox1.id = elm_reaction_obj[5].id;
+    traitCheckbox1.value = elm_reaction_obj[5].id;
+
+    const traitLabel1 = document.createElement("label");
+    traitLabel1.htmlFor = elm_reaction_obj[5].id;
+    traitLabel1.textContent = elm_reaction_obj[5].label;
+
+    select_reaction_method.appendChild(traitCheckbox1);
+    select_reaction_method.appendChild(traitLabel1);
+    select_reaction_method.appendChild(document.createElement("br"));
+
     elements_const_dmg = [
       createLabel("Overloaded", "　過負荷回数："),
       createSelectList("Overloaded", 0, 50, "", "回", 0),
@@ -1835,43 +1849,51 @@ async function show_attack_method()
   }
   else if (selectedCharId == "32")
   {
-    let cyno_selectlist;
-    if (attack_method == 1)
-    {
-      cyno_agg_countlist = createSelectList("cyno_agg_count", 0, 10, "", "回", 2);
-      elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-      elemental_reaction.appendChild(cyno_agg_countlist); // ラベルを select_reaction_method に追加
-      elemental_reaction.appendChild(document.createElement("br"));
-    }
-    else if (attack_method == 16)
-    {
-      let cyno_E_text = createTextNode("　冥祭ヒット回数：")
-      let cyno_E_count = createSelectList("cyno_E_count", 0, 15, "", "回", 0);
-      let cyno_adE_text = createTextNode("　[裁定]冥祭ヒット回数：")
-      let cyno_adE_count = createSelectList("cyno_adE_count", 0, 15, "", "回", 5);
-      let cyno_talent1_text = createTextNode("　渡荒の雷ヒット回数：")
-      let cyno_talent1_count = createSelectList("cyno_talent1_count", 0, 60, "", "回", 15);
-      attack_method_prop.appendChild(cyno_E_text);
-      attack_method_prop.appendChild(cyno_E_count);
-      attack_method_prop.appendChild(document.createElement("br"));
-      attack_method_prop.appendChild(cyno_adE_text);
-      attack_method_prop.appendChild(cyno_adE_count);
-      attack_method_prop.appendChild(document.createElement("br"));
-      attack_method_prop.appendChild(cyno_talent1_text);
-      attack_method_prop.appendChild(cyno_talent1_count);
-      attack_method_prop.appendChild(document.createElement("br"));
-
-      let cyno_agg_text = createTextNode("　冥祭＆渡荒の雷 超激化回数：")
-      let cyno_agg_count = createSelectList("cyno_agg_count", 0, 30, "", "回", 0);
-      let cyno_talent1_agg_text = createTextNode("　[裁定]冥祭 超激化回数：")
-      let cyno_talent1_agg_count = createSelectList("cyno_talent1_agg_count", 0, 30, "", "回", 5);
-      elemental_reaction.appendChild(cyno_agg_text); // チェックボックスを select_reaction_method に追加
-      elemental_reaction.appendChild(cyno_agg_count); // ラベルを select_reaction_method に追加
-      elemental_reaction.appendChild(document.createElement("br"));
-      elemental_reaction.appendChild(cyno_talent1_agg_text); // チェックボックスを select_reaction_method に追加
-      elemental_reaction.appendChild(cyno_talent1_agg_count); // ラベルを select_reaction_method に追加
-      elemental_reaction.appendChild(document.createElement("br"));
-    }
+    traits = [
+      document.createElement("br"),
+      createLabel("cyno_attack_count1", "　通常１段："),
+      createSelectList("cyno_attack_count1", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("cyno_attack_count2", "　通常２段："),
+      createSelectList("cyno_attack_count2", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("cyno_attack_count3", "　通常３段："),
+      createSelectList("cyno_attack_count3", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("cyno_attack_count4", "　通常４段："),
+      createSelectList("cyno_attack_count4", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("cyno_attack_count5", "　冥祭："),
+      createSelectList("cyno_attack_count5", 0, 15, "", "回", 0),
+      document.createElement("br"),
+      createLabel("cyno_attack_count6", "　[裁定]冥祭："),
+      createSelectList("cyno_attack_count6", 0, 15, "", "回", 4),
+      document.createElement("br"),
+      createLabel("cyno_attack_count6", "　渡荒の雷："),
+      createSelectList("cyno_attack_count6", 0, 30, "", "回", 12),
+      document.createElement("br"),
+    ];
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+    traits = [
+      document.createElement("br"),
+      createLabel("cyno_react_count1", "　通常攻撃："),
+      createSelectList("cyno_react_count1", 0, 10, "", "回", 4),
+      document.createElement("br"),
+      createLabel("cyno_react_count2", "　冥祭："),
+      createSelectList("cyno_react_count2", 0, 15, "", "回", 0),
+      document.createElement("br"),
+      createLabel("cyno_react_count3", "　[裁定]冥祭："),
+      createSelectList("cyno_react_count3", 0, 15, "", "回", 4),
+      document.createElement("br"),
+      createLabel("cyno_react_count4", "　渡荒の雷"),
+      createSelectList("cyno_react_count4", 0, 30, "", "回", 4),
+      document.createElement("br"),
+    ];
+    traits.forEach(element => {
+      select_reaction_method.appendChild(element);
+    });
   }
   else if (selectedCharId == "33")
   {

@@ -1755,7 +1755,7 @@ async function monte_carlo_calculate()
       af_score -= dlt_af_score
       break;
     }
-    for (let i = 0; i < 15000; i++)
+    for (let i = 0; i < 20000; i++)
     {
         exp_dmg = 0;
         score_distribute = await calculate_score_distribute(af_score,depend_status);
@@ -1841,7 +1841,7 @@ async function monte_carlo_calculate()
     old_score_distribution = temp_score_distribute.slice();
     new_score_distribution = temp_score_distribute.slice();
 
-    for (let k = 0; k < 10000; k++)
+    for (let k = 0; k < 3000; k++)
     {
       exp_dmg = 0;
       random_1 = Math.floor(depend_status_index.length * Math.random());

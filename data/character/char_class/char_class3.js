@@ -5532,7 +5532,7 @@ class Lyney {
     
       // 攻撃方法に応じてダメージ率を計算
       let dmg_rate;
-      let dmg_attck_rate = 0;
+      let dmg_attack_rate = 0;
     
       if (this.method_index == 0) {
         if (this.reaction_coeff > 0)
@@ -5548,7 +5548,7 @@ class Lyney {
         this.attack_hit_count = attack_count1
                               + attack_count2
                               + attack_count3;
-        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (this.method_index == 1) {
         if (this.reaction_coeff > 0)
         {
@@ -5557,7 +5557,7 @@ class Lyney {
         const attack_count4 = parseInt(document.getElementById("yaemiko_attack_count4").value);
         dmg_attack_rate = attack_count4 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
         this.attack_hit_count = attack_count4;
-        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (this.method_index == 3) {
         if (this.reaction_coeff > 0)
         {
@@ -5566,8 +5566,8 @@ class Lyney {
         this.attack_hit_count = parseInt(document.getElementById("yaemiko_attack_count5").value);
         this.talent2effect = 1;
         const yae_skill_rank = document.getElementById("yaemiko_E").value - 1;
-        dmg_attck_rate = this.attack_hit_count* parseFloat(data["元素スキル"]["詳細"][yae_skill_rank]["数値"][this.parameter[3]])*3;
-        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+        dmg_attack_rate = this.attack_hit_count* parseFloat(data["元素スキル"]["詳細"][yae_skill_rank]["数値"][this.parameter[3]])*3;
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (this.method_index == 21) {
         if (this.reaction_coeff > 0)
         {

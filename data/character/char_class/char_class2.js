@@ -5401,9 +5401,10 @@ class Lyney {
       let burst_bonus;
       
       if (attack_method == 1) {
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 5; i++) {
           dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
+        dmg_attack_rate +=  parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]]);
         this.attack_hit_count1 = 6;
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 16) {

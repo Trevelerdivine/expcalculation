@@ -1967,7 +1967,7 @@ async function monte_carlo_calculate()
     let result = "," + output_exp_dmg;
     document.getElementById("result").innerHTML += result;
   }
-
+  console.log();
   calculationMessage.style.visibility = "hidden";
 
   let dlthpScore = document.getElementById("dlt_hp_score");

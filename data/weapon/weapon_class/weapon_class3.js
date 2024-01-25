@@ -2122,10 +2122,11 @@ class AThousandFloatingDreams {
   }
   
   class KagurasVerity {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.weapon_buff_count = parseInt(document.getElementById("KagurasVerity_buff").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -2186,7 +2187,10 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let weapon_dmg_buff = 0;
-      weapon_dmg_buff = (this.weapon_rank + 3) * 0.03 * this.weapon_buff_count;
+      if (this.method_index == 3)
+      {
+        weapon_dmg_buff = (this.weapon_rank + 3) * 0.03 * this.weapon_buff_count;
+      }
       if (this.weapon_buff_count == 3)
       {
         weapon_dmg_buff += (this.weapon_rank + 3) * 0.03

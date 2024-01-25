@@ -5491,7 +5491,7 @@ class Lyney {
   }
   
   class yaemiko {
-    constructor(base_status_array, parameter) {
+    constructor(base_status_array, parameter, method_index){
       this.base_status_array = base_status_array;
       this.parameter = parameter;
       this.aggcount = 0;
@@ -5502,6 +5502,7 @@ class Lyney {
       this.char_constellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
       const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
@@ -5510,12 +5511,10 @@ class Lyney {
   
     async dmg_rate_data() {
       this.char_constellations = document.getElementById("char_constellations").value;
-  
-      const reaction_check = document.getElementById("reactionon_flag");
-      if (reaction_check.checked)
-      {
-        this.aggcount = parseInt(document.getElementById("yaemiko_agg_count").value);
-        this.reaction_coeff = 1.15
+      const reaction_flag = document.getElementById("reactionon_flag");
+      const Aggravate = document.getElementById("Aggravate");
+      if (Aggravate.checked && reaction_flag.checked) {
+        this.reaction_coeff = 1.15;
       }
     
       // JSON データを取得
@@ -5535,27 +5534,50 @@ class Lyney {
       let dmg_rate;
       let dmg_attck_rate = 0;
     
-      if (attack_method == 1) {
-        this.attack_hit_count = 3;
-        for (let i = 0; i < 3; i++) {
-          dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      if (this.method_index == 0) {
+        if (this.reaction_coeff > 0)
+        {
+          this.aggcount = parseInt(document.getElementById("yaemiko_react_count1").value);
         }
+        const attack_count1 = parseInt(document.getElementById("yaemiko_attack_count1").value);
+        const attack_count2 = parseInt(document.getElementById("yaemiko_attack_count2").value);
+        const attack_count3 = parseInt(document.getElementById("yaemiko_attack_count3").value);
+        dmg_attack_rate = attack_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                        + attack_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                        + attack_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+        this.attack_hit_count = attack_count1
+                              + attack_count2
+                              + attack_count3;
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-      } else if (attack_method == 6) {
-        this.attack_hit_count = 1;
-        dmg_attck_rate = parseFloat(data["重撃"]["数値"][this.parameter[3]]);
+      } else if (this.method_index == 1) {
+        if (this.reaction_coeff > 0)
+        {
+          this.aggcount = parseInt(document.getElementById("yaemiko_react_count2").value);
+        }
+        const attack_count4 = parseInt(document.getElementById("yaemiko_attack_count4").value);
+        dmg_attack_rate = attack_count4 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+        this.attack_hit_count = attack_count4;
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-      } else if (attack_method == 16) {
-        this.attack_hit_count = 3;
+      } else if (this.method_index == 3) {
+        if (this.reaction_coeff > 0)
+        {
+          this.aggcount = parseInt(document.getElementById("yaemiko_react_count3").value);
+        }
+        this.attack_hit_count = parseInt(document.getElementById("yaemiko_attack_count5").value);
         this.talent2effect = 1;
         const yae_skill_rank = document.getElementById("yaemiko_E").value - 1;
-        dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][yae_skill_rank]["数値"][this.parameter[3]])*3;
+        dmg_attck_rate = this.attack_hit_count* parseFloat(data["元素スキル"]["詳細"][yae_skill_rank]["数値"][this.parameter[3]])*3;
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-      } else if (attack_method == 21) {
-        this.attack_hit_count = 4;
-        const first_dmg_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-        const second_dmg_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-        const Q_dmg_rate = first_dmg_rate + second_dmg_rate * 3;
+      } else if (this.method_index == 21) {
+        if (this.reaction_coeff > 0)
+        {
+          this.aggcount = parseInt(document.getElementById("yaemiko_react_count4").value);
+        }
+        const attack_count6 = parseInt(document.getElementById("yaemiko_attack_count6").value);
+        this.attack_hit_count = 4 * attack_count6;
+        const first_dmg_rate = attack_count6 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+        const second_dmg_rate = attack_count6 * 3 * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
+        const Q_dmg_rate = first_dmg_rate + second_dmg_rate;
         dmg_rate = [0, 0, 0, 0, Q_dmg_rate, 0, 0];
       }
       return dmg_rate;
@@ -5654,7 +5676,7 @@ class Lyney {
       if (this.char_constellations >3)
       {
         const six_conste_check = document.getElementById("traitCheckbox4");
-        if(six_conste_check.checked && attack_method == 16)
+        if(six_conste_check.checked && this.method_index == 3)
         {
           char_debuff = [0,0,0.6];
         }

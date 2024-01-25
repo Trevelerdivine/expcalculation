@@ -1930,7 +1930,6 @@ async function show_attack_method()
       attack_method_prop.appendChild(element);
     });
     traits = [
-      document.createElement("br"),
       createLabel("yaemiko_react_count1", "　通常攻撃："),
       createSelectList("yaemiko_react_count1", 0, 10, "", "回", 4),
       document.createElement("br"),
@@ -1941,7 +1940,7 @@ async function show_attack_method()
       createSelectList("yaemiko_react_count3", 0, 15, "", "回", 4),
       document.createElement("br"),
       createLabel("yaemiko_react_count4", "　元素爆発"),
-      createSelectList("yaemiko_react_count4", 0, 30, "", "回", 4),
+      createSelectList("yaemiko_react_count4", 0, 20, "", "回", 0),
       document.createElement("br"),
     ];
     traits.forEach(element => {

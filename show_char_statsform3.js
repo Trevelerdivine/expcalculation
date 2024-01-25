@@ -975,17 +975,6 @@ async function show_char_statsform()
         { id: "traitCheckbox4", label: "第6重：敵の防御力の60%無視" },
       ];
 
-      options = [
-        { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "通常攻撃（1ループ）", value: "1" },
-        { text: "重撃", value: "6" },
-        { text: "スキル（殺生櫻３ヒット）", value: "16" },
-        { text: "大密法・天狐顕現（元素爆発４ヒット）", value: "21" }
-      ];
-    
-      createchar_attackmethod(options);
-    
-
       if (char_constellations > 2)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);

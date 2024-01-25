@@ -5555,7 +5555,7 @@ class Lyney {
           this.aggcount = parseInt(document.getElementById("yaemiko_react_count2").value);
         }
         const attack_count4 = parseInt(document.getElementById("yaemiko_attack_count4").value);
-        dmg_attack_rate = attack_count4 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
+        dmg_attack_rate = attack_count4 * parseFloat(data["重撃"]["数値"][this.parameter[3]]);
         this.attack_hit_count = attack_count4;
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (this.method_index == 3) {

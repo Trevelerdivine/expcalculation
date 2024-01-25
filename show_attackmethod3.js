@@ -1881,7 +1881,7 @@ async function show_attack_method()
     });
     traits = [
       document.createElement("br"),
-      createLabel("cyno_react_count1", "　通常攻撃："),
+      createLabel("cyno_react_count1", "　[啓途誓使]通常攻撃："),
       createSelectList("cyno_react_count1", 0, 10, "", "回", 4),
       document.createElement("br"),
       createLabel("cyno_react_count2", "　冥祭："),
@@ -1900,31 +1900,53 @@ async function show_attack_method()
   }
   else if (selectedCharId == "33")
   {
-    if (attack_method == 1)
-    {
-      yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
-    }
-    else if (attack_method == 6)
-    {
-      yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
-      createCheckboxList(options);
-    }
-    else if (attack_method==16)
-    {
-      const yaeskill_text = createTextNode("　殺生櫻：");
-      const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
-      attack_method_prop.appendChild(yaeskill_text);
-      attack_method_prop.appendChild(yaeskill_selectlist);
-      attack_method_prop.appendChild(document.createElement("br"));
-      yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 1);
-    } 
-    else if (attack_method==21)
-    {
-      yaemiko_agg_countlist = createSelectList("yaemiko_agg_count", 0, 30, "", "回", 4);
-    }
-    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
-    elemental_reaction.appendChild(yaemiko_agg_countlist); // ラベルを select_reaction_method に追加
-    elemental_reaction.appendChild(document.createElement("br"));
+    const yaeskill_text = createTextNode("　殺生櫻：");
+    const yaeskill_selectlist = createSelectList("yaemiko_E", 1, 4, "階位", "", 3);
+    attack_method_prop.appendChild(yaeskill_text);
+    attack_method_prop.appendChild(yaeskill_selectlist);
+    attack_method_prop.appendChild(document.createElement("br"));
+    traits = [
+      document.createElement("br"),
+      createLabel("yaemiko_attack_count1", "　通常１段："),
+      createSelectList("yaemiko_attack_count1", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yaemiko_attack_count2", "　通常２段："),
+      createSelectList("yaemiko_attack_count2", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yaemiko_attack_count3", "　通常３段："),
+      createSelectList("yaemiko_attack_count3", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("yaemiko_attack_count4", "　重撃"),
+      createSelectList("yaemiko_attack_count4", 0, 15, "", "回", 0),
+      document.createElement("br"),
+      createLabel("yaemiko_attack_count5", "　殺生櫻："),
+      createSelectList("yaemiko_attack_count5", 0, 30, "", "回", 15),
+      document.createElement("br"),
+      createLabel("yaemiko_attack_count6", "　元素爆発："),
+      createSelectList("yaemiko_attack_count6", 0, 5, "", "回", 0),
+      document.createElement("br"),
+    ];
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+    traits = [
+      document.createElement("br"),
+      createLabel("yaemiko_react_count1", "　通常攻撃："),
+      createSelectList("yaemiko_react_count1", 0, 10, "", "回", 4),
+      document.createElement("br"),
+      createLabel("yaemiko_react_count2", "　重撃："),
+      createSelectList("yaemiko_react_count2", 0, 15, "", "回", 0),
+      document.createElement("br"),
+      createLabel("yaemiko_react_count3", "　殺生櫻：："),
+      createSelectList("yaemiko_react_count3", 0, 15, "", "回", 4),
+      document.createElement("br"),
+      createLabel("yaemiko_react_count4", "　元素爆発"),
+      createSelectList("yaemiko_react_count4", 0, 30, "", "回", 4),
+      document.createElement("br"),
+    ];
+    traits.forEach(element => {
+      select_reaction_method.appendChild(element);
+    })
   }
   else if (selectedCharId == "34")
   {

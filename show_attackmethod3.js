@@ -1936,10 +1936,10 @@ async function show_attack_method()
       createLabel("yaemiko_react_count2", "　重撃："),
       createSelectList("yaemiko_react_count2", 0, 15, "", "回", 0),
       document.createElement("br"),
-      createLabel("yaemiko_react_count3", "　殺生櫻：："),
+      createLabel("yaemiko_react_count3", "　殺生櫻："),
       createSelectList("yaemiko_react_count3", 0, 15, "", "回", 4),
       document.createElement("br"),
-      createLabel("yaemiko_react_count4", "　元素爆発"),
+      createLabel("yaemiko_react_count4", "　元素爆発："),
       createSelectList("yaemiko_react_count4", 0, 20, "", "回", 0),
       document.createElement("br"),
     ];

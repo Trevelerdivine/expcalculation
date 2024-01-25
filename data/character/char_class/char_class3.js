@@ -5566,7 +5566,7 @@ class Lyney {
         this.attack_hit_count = parseInt(document.getElementById("yaemiko_attack_count5").value);
         this.talent2effect = 1;
         const yae_skill_rank = document.getElementById("yaemiko_E").value - 1;
-        dmg_attack_rate = this.attack_hit_count* parseFloat(data["元素スキル"]["詳細"][yae_skill_rank]["数値"][this.parameter[3]])*3;
+        dmg_attack_rate = this.attack_hit_count* parseFloat(data["元素スキル"]["詳細"][yae_skill_rank]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (this.method_index == 4) {
         if (this.reaction_coeff > 0)

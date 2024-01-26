@@ -8421,6 +8421,7 @@ class Lyney {
       this.skill_buff = 0;
       this.char_constellations = 0;
       this.attack_hit_count = 0;
+      this.method_index = method_index;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
       const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
@@ -8449,16 +8450,24 @@ class Lyney {
       // 攻撃方法に応じてダメージ率を計算
       let dmg_rate;
       let dmg_attck_rate = 0;
-      if (attack_method == 1) {
+      if (this.method_index == 0) {
+        const attack_count1 = parseInt(document.getElementById("navia_attack_count1").value);
+        const attack_count2 = parseInt(document.getElementById("navia_attack_count2").value);
+        const attack_count3 = parseInt(document.getElementById("navia_attack_count3").value) * 3;
+        const attack_count4 = parseInt(document.getElementById("navia_attack_count4").value);
         this.talent1_buff = 0.4;
-        this.attack_hit_count = 6;
-        for (let i = 0; i < 6; i++) {
-          dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-        }
+        this.attack_hit_count = attack_count1
+                              + attack_count2
+                              + attack_count3
+                              + attack_count4;
+        dmg_attck_rate += attack_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                        + attack_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                        + attack_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+                        + attack_count4 * parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       } 
-      else if (attack_method == 16) {
-        this.attack_hit_count = 1;
+      else if (this.method_index == 3) {
+        this.attack_hit_count = parseInt(document.getElementById("navia_attack_count5").value);
         let dmg_buff = [1, 1.05, 1.1, 1.15, 1.2, 1.36, 1.40, 1.60, 1.666, 1.9, 2];
         let hit_count = parseInt(document.getElementById("navia_hitcount").value) - 1;
         let buff_count = parseInt(document.getElementById("navia_buff_count").value);
@@ -8472,12 +8481,12 @@ class Lyney {
         {
           this.sixth_conste_buff = Math.max(0,buff_count - 3) * 0.45;
         }
-        dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * dmg_buff[hit_count];
+        dmg_attck_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * dmg_buff[hit_count] * this.attack_hit_count;
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       } 
-      else if (attack_method == 21) {
-        const attack_count1 = parseInt(document.getElementById("navia_hitcount1").value);
-        const attack_count2 = parseInt(document.getElementById("navia_hitcount2").value);
+      else if (this.method_index == 4) {
+        const attack_count1 = parseInt(document.getElementById("navia_attack_count6").value);
+        const attack_count2 = parseInt(document.getElementById("navia_attack_count7").value);
         this.attack_hit_count = attack_count1 + attack_count2;
         dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
                        + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;

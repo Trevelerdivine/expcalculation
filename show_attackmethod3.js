@@ -2603,39 +2603,45 @@ async function show_attack_method()
   }
   else if (selectedCharId == "75")
   {
-    {
-      let navia_talent;
-      if (attack_method == 16)
-      {
-        elementsToAddToCharTalent = [
-          createLabel("navia_hitcount", "　ロースラ晶弾ヒットカウント"),
-          createSelectList("navia_hitcount", 1, 11, "", "回", 11),
-          document.createElement("br"),
-          createLabel("navia_buff_count", "　裂晶の欠片消費数"),
-          createSelectList("navia_buff_count", 0, 6, "", "回", 6),
-          document.createElement("br"),
-        ];
-  
-        elementsToAddToCharTalent.forEach(element => {
-          attack_method_prop.appendChild(element);
-        });
-      }
-      else if (attack_method == 21)
-      {
-        elementsToAddToCharTalent = [
-          createLabel("navia_hitcount1", "　初撃ヒット回数"),
-          createSelectList("navia_hitcount1", 0, 1, "", "回", 1),
-          document.createElement("br"),
-          createLabel("navia_hitcount2", "　火力支援ヒット回数"),
-          createSelectList("navia_hitcount2", 0, 17, "", "個", 17),
-          document.createElement("br"),
-        ];
-  
-        elementsToAddToCharTalent.forEach(element => {
-          attack_method_prop.appendChild(element);
-        });
-      }
-    }
+    elementsToAddToCharTalent = [
+      createLabel("navia_hitcount", "　ロースラ晶弾ヒットカウント"),
+      createSelectList("navia_hitcount", 1, 11, "", "回", 11),
+      document.createElement("br"),
+      createLabel("navia_buff_count", "　裂晶の欠片消費数"),
+      createSelectList("navia_buff_count", 0, 6, "", "回", 6),
+      document.createElement("br"),
+    ];
+
+    elementsToAddToCharTalent.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+    traits = [
+      document.createElement("br"),
+      createLabel("navia_attack_count1", "　通常１段："),
+      createSelectList("navia_attack_count1", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("navia_attack_count2", "　通常２段："),
+      createSelectList("navia_attack_count2", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("navia_attack_count3", "　通常３段："),
+      createSelectList("navia_attack_count3", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("navia_attack_count4", "　通常４段"),
+      createSelectList("navia_attack_count4", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("navia_attack_count5", "　元素スキル"),
+      createSelectList("navia_attack_count5", 0, 10, "", "回", 3),
+      document.createElement("br"),
+      createLabel("navia_attack_count6", "　爆発初撃："),
+      createSelectList("navia_attack_count6", 0, 2, "", "回", 1),
+      document.createElement("br"),
+      createLabel("navia_attack_count7", "　火力支援："),
+      createSelectList("navia_attack_count7", 0, 34, "", "回", 17),
+      document.createElement("br"),
+    ];
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
   }
   else if (selectedCharId == "63")
   {

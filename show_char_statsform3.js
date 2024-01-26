@@ -1509,13 +1509,6 @@ async function show_char_statsform()
         },
       ];
 
-      const options = [
-        { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "通常攻撃1ループ(岩元素)", value: "1" },        
-        { text: "元素スキル(セレモニアル・クリスタルショット)", value: "16" },
-        { text: "元素爆発(晴天を衝く霰弾のサルート)", value: "21" },
-      ];
-
       if (char_constellations > 2)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
@@ -1524,8 +1517,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
-      }
-      createchar_attackmethod(options)  
+      } 
     }
     else if (selectedCharId == "63")
     {

@@ -1650,7 +1650,8 @@ async function monte_carlo_calculate()
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let response = "";
   let af_score = parseFloat(document.getElementById("initial_af_score").value);
-  let dlt_af_score = parseFloat(document.getElementById("dlt_af_score").value);
+  //let dlt_af_score = parseFloat(document.getElementById("dlt_af_score").value);
+  dlt_af_score = 0.001;
   let final_af_score = parseFloat(document.getElementById("final_af_score").value);
   if (af_score > final_af_score || af_score < 0 || dlt_af_score < 0 || final_af_score < 0 || !Number.isFinite(af_score))
   {

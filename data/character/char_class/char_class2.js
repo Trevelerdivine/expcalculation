@@ -8473,11 +8473,19 @@ class Lyney {
       let dmg_rate;
       let dmg_attck_rate = 0;
       if (attack_method == 1) {
+        const attack_count1 = 1;
+        const attack_count2 = 1;
+        const attack_count3 = 3;
+        const attack_count4 = 1;
         this.talent1_buff = 0.4;
-        this.attack_hit_count = 6;
-        for (let i = 0; i < 6; i++) {
-          dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
-        }
+        this.attack_hit_count = attack_count1
+                              + attack_count2
+                              + attack_count3
+                              + attack_count4;
+        dmg_attck_rate += attack_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                        + attack_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                        + attack_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+                        + attack_count4 * parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
       } 
       else if (attack_method == 16) {

@@ -1648,7 +1648,7 @@ async function monte_carlo_calculate()
   const depend_status = await calculate_depend_status();
   const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
-  const LoopCount = parseint(document.getElementById("loop_count").value);
+  const LoopCount = parseInt(document.getElementById("loop_count").value);
   let response = "";
   let af_score = parseFloat(document.getElementById("initial_af_score").value);
   //let dlt_af_score = parseFloat(document.getElementById("dlt_af_score").value);

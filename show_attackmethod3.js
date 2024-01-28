@@ -1908,22 +1908,22 @@ async function show_attack_method()
     traits = [
       document.createElement("br"),
       createLabel("yaemiko_attack_count1", "　通常１段："),
-      createSelectList("yaemiko_attack_count1", 0, 10, "", "回", 3),
+      createSelectList("yaemiko_attack_count1", 0, 10, "", "回", 0),
       document.createElement("br"),
       createLabel("yaemiko_attack_count2", "　通常２段："),
-      createSelectList("yaemiko_attack_count2", 0, 10, "", "回", 3),
+      createSelectList("yaemiko_attack_count2", 0, 10, "", "回", 0),
       document.createElement("br"),
       createLabel("yaemiko_attack_count3", "　通常３段："),
-      createSelectList("yaemiko_attack_count3", 0, 10, "", "回", 3),
+      createSelectList("yaemiko_attack_count3", 0, 10, "", "回", 0),
       document.createElement("br"),
       createLabel("yaemiko_attack_count4", "　重撃"),
       createSelectList("yaemiko_attack_count4", 0, 15, "", "回", 0),
       document.createElement("br"),
       createLabel("yaemiko_attack_count5", "　殺生櫻："),
-      createSelectList("yaemiko_attack_count5", 0, 30, "", "回", 15),
+      createSelectList("yaemiko_attack_count5", 0, 30, "", "回", 30),
       document.createElement("br"),
       createLabel("yaemiko_attack_count6", "　元素爆発："),
-      createSelectList("yaemiko_attack_count6", 0, 5, "", "回", 0),
+      createSelectList("yaemiko_attack_count6", 0, 5, "", "回", 1),
       document.createElement("br"),
     ];
     traits.forEach(element => {
@@ -1931,16 +1931,16 @@ async function show_attack_method()
     });
     traits = [
       createLabel("yaemiko_react_count1", "　通常攻撃："),
-      createSelectList("yaemiko_react_count1", 0, 10, "", "回", 4),
+      createSelectList("yaemiko_react_count1", 0, 10, "", "回", 0),
       document.createElement("br"),
       createLabel("yaemiko_react_count2", "　重撃："),
       createSelectList("yaemiko_react_count2", 0, 15, "", "回", 0),
       document.createElement("br"),
       createLabel("yaemiko_react_count3", "　殺生櫻："),
-      createSelectList("yaemiko_react_count3", 0, 15, "", "回", 4),
+      createSelectList("yaemiko_react_count3", 0, 15, "", "回", 10),
       document.createElement("br"),
       createLabel("yaemiko_react_count4", "　元素爆発："),
-      createSelectList("yaemiko_react_count4", 0, 20, "", "回", 0),
+      createSelectList("yaemiko_react_count4", 0, 20, "", "回", 4),
       document.createElement("br"),
     ];
     traits.forEach(element => {

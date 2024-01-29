@@ -1747,16 +1747,16 @@ async function monte_carlo_calculate()
       zetsuen_check = 1;
     }
   }
-  while (n_count < 5)
+  while (n_count < 1)
   {
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
-    af_score += dlt_af_score
-    if (af_score > final_af_score)
-    {
-      af_score -= dlt_af_score
-      break;
-    }
+    //af_score += dlt_af_score
+    //if (af_score > final_af_score)
+    //{
+      //af_score -= dlt_af_score
+      //break;
+    //}
     for (let i = 0; i < LoopCount; i++)
     {
         exp_dmg = 0;
@@ -1968,6 +1968,7 @@ async function monte_carlo_calculate()
     //let result = "<br>" + "最適化聖遺物スコア： "+ af_score + "," + output_exp_dmg;
     let result = "," + output_exp_dmg;
     document.getElementById("result").innerHTML += result;
+    break;
   }
   console.log();
   calculationMessage.style.visibility = "hidden";

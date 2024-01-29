@@ -7777,7 +7777,7 @@ class Lyney {
     }
   
     calculate_char_result_cr(fixstatus,status) {
-      if (attack_method_index == 3)
+      if (this.method_index == 3)
       {
         return Math.min(Math.max(0, status[2] - 200), 800) * 0.0003 * this.skill_buff;
       }

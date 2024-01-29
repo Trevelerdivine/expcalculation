@@ -7601,7 +7601,7 @@ class Lyney {
   }
   
   class nahida {
-    constructor(base_status_array, parameter) {
+    constructor(base_status_array, parameter, method_index){
       this.base_status_array = base_status_array;
       this.dmg_rateCache = null;
       this.parameter = parameter;

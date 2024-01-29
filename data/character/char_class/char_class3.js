@@ -7614,6 +7614,7 @@ class Lyney {
       this.four_conste_buff = 0;
       this.char_constellations = 0;
       this.attack_hit_count = 0;
+      this.method_index = method_index;
       this.team_elm = parseInt(document.getElementById("element-mastery").value) || 0;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -7634,12 +7635,12 @@ class Lyney {
         this.mytalent1 = 1;
       }
   
-      const reaction_check = document.getElementById("reactionon_flag");
-      if (reaction_check.checked)
-      {
-        this.aggcount = parseInt(document.getElementById("nahida_agg_count").value);
-        this.reaction_coeff = 1.25
-      }    
+      this.char_constellations = document.getElementById("char_constellations").value;
+      const reaction_flag = document.getElementById("reactionon_flag");
+      const Spread = document.getElementById("Spread");
+      if (Spread.checked && reaction_flag.checked) {
+        this.reaction_coeff = 1.25;
+      }  
     
       // JSON データを取得
       const response = await fetch("../data/character/char_data/nahida.json");
@@ -7647,7 +7648,7 @@ class Lyney {
     
       // 攻撃方法に応じてダメージ率を計算
       let dmg_rate;
-      let dmg_attck_rate = 0;
+      let dmg_attack_rate = 0;
     
       if (this.char_constellations > 2)
       {
@@ -7659,18 +7660,44 @@ class Lyney {
         }
       }
   
-      if (attack_method == 1) {
-        this.attack_hit_count = 4;
-        for (let i = 0; i < 4; i++) {
-          dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
+      if (this.method_index == 0) {
+        if (this.reaction_coeff > 0)
+        {
+          this.aggcount = parseInt(document.getElementById("nahida_react_count1").value);
         }
-        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-      } else if (attack_method == 6) {
-        this.attack_hit_count = 1;
-        dmg_attck_rate = parseFloat(data["重撃"]["数値"]["攻撃力"][this.parameter[3]]);
-        dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
-      } else if (attack_method == 16) {
-        this.attack_hit_count = 1;
+        const attack_count1 = parseInt(document.getElementById("nahida_attack_count1").value);
+        const attack_count2 = parseInt(document.getElementById("nahida_attack_count2").value);
+        const attack_count3 = parseInt(document.getElementById("nahida_attack_count3").value);
+        const attack_count4 = parseInt(document.getElementById("nahida_attack_count4").value);
+        dmg_attack_rate = attack_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
+                        + attack_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
+                        + attack_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
+                        + attack_count4 * parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]]);
+        this.attack_hit_count = attack_count1
+                              + attack_count2
+                              + attack_count3
+                              + attack_count4;
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      } else if (this.method_index == 1) {
+        if (this.reaction_coeff > 0)
+        {
+          this.aggcount = parseInt(document.getElementById("nahida_react_count2").value);
+        }
+        const attack_count5 = parseInt(document.getElementById("nahida_attack_count5").value);
+        dmg_attack_rate = attack_count5 * parseFloat(data["重撃"]["数値"]["攻撃力"][this.parameter[3]]);
+        this.attack_hit_count = attack_count5;
+        dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
+      } else if (this.method_index == 3) {
+        if (this.reaction_coeff > 0)
+        {
+          this.aggcount = parseInt(document.getElementById("nahida_react_count3").value)
+                        + parseInt(document.getElementById("nahida_react_count4").value);
+        }
+        const sixthconste_dmg_rate = [0, 0, 400, 0, 200, 0, 0];
+        const attack_count6 = parseInt(document.getElementById("nahida_attack_count6").value);
+        const attack_count7 = parseInt(document.getElementById("nahida_attack_count7").value);
+        this.attack_hit_count = attack_count6 + attack_count7;
+        this.skill_buff = 1;
         if (nahida_Q.checked) {
           let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
           if (this.char_constellations > 0) {
@@ -7682,16 +7709,12 @@ class Lyney {
             this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][nahida_Q_level]) / 100;
           }
         }
-        const dmg_attck_rate = parseFloat(data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]]);
-        const dmg_elm_rate = parseFloat(data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]]);
-        this.skill_buff = 1;
-        dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attck_rate, 0, 0];
-      } else if (attack_method == 17) {
-        this.attack_hit_count = 1;
-        this.skill_buff = 1;
-        dmg_rate = [0, 0, 400, 0, 200, 0, 0];
+        const dmg_attack_rate = attack_count6 * parseFloat(data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]])
+                              + attack_count7 * sixthconste_dmg_rate[4];
+        const dmg_elm_rate = attack_count6 * parseFloat(data["元素スキル"]["数値"]["元素熟知"][this.parameter[3]])
+                           + attack_count7 * sixthconste_dmg_rate[2];
+        dmg_rate = [0, 0, dmg_elm_rate, 0, dmg_attack_rate, 0, 0];
       }
-    
       // 計算結果をキャッシュして返す
       this.dmg_rateCache = dmg_rate;
       return dmg_rate;
@@ -7777,7 +7800,7 @@ class Lyney {
     }
   
     calculate_char_result_dmg_buff(fixstatus,status) {
-      if (attack_method_index == 3)
+      if (this.method_index == 3)
       {
         return Math.min(Math.max(0, status[2] - 200), 800) * 0.001 * this.skill_buff;
       }
@@ -7793,7 +7816,7 @@ class Lyney {
       let elmRate;
       if (this.reaction_coeff > 0)
       {
-        if (attack_method == 16 || attack_method == 17)
+        if (this.method_index == 3)
         { 
           attckRate = status[4] * dmg_rate[4] / 100;
           elmRate = status[2] * dmg_rate[2] / 100;
@@ -7808,7 +7831,7 @@ class Lyney {
       }
       else
       {
-        if (attack_method == 16 || attack_method == 17)
+        if (this.method_index == 3)
         {
           attckRate = status[4] * dmg_rate[4] / 100;
           elmRate = status[2] * dmg_rate[2] / 100;

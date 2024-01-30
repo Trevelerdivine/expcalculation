@@ -1663,8 +1663,6 @@ async function monte_carlo_calculate()
   }
   //af_score -= dlt_af_score;
   const dlt_score = 0.05;
-  let critical_dmg;
-  let temp_critical_dmg;
   let excess_crscore;
   document.getElementById("response").innerHTML = response;
 
@@ -1846,6 +1844,7 @@ async function monte_carlo_calculate()
     for (let k = 0; k < 100000; k++)
     {
       exp_dmg = 0;
+      dlt_score = Math.random();
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
 
@@ -1924,7 +1923,7 @@ async function monte_carlo_calculate()
         }
         else
         {
-            result_status[7] += await (charInstances[x].calculate_char_result_dmg_buff(fixed_status, result_status) + weaponInstances[x].calculate_weapon_result_dmg_buff(fixed_status, result_status));
+          result_status[7] += await (charInstances[x].calculate_char_result_dmg_buff(fixed_status, result_status) + weaponInstances[x].calculate_weapon_result_dmg_buff(fixed_status, result_status));
         }
 
         if (result_status[5] > 1)
@@ -1933,12 +1932,12 @@ async function monte_carlo_calculate()
             new_score_distribution[5] -= excess_crscore;
             if (new_score_distribution[5] > 0)
             {
-            new_score_distribution[6] += excess_crscore;
-            result_status[6] += excess_crscore / 100;
+              new_score_distribution[6] += excess_crscore;
+              result_status[6] += excess_crscore / 100;
             }
             else
             {
-            new_score_distribution[5] = 0;
+              new_score_distribution[5] = 0;
             }
             result_status[5] = 1;
         }
@@ -1947,15 +1946,15 @@ async function monte_carlo_calculate()
         exp_dmg += basic_dmg * (1 + result_status[5] * result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8];
       }
-      if (depend_status[2] == 1) {
+      if (depend_status[2] == 1)
+      {
         exp_dmg += calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
-    }
+      }
       if (temp_exp_dmg < exp_dmg)
       {
         temp_exp_dmg = exp_dmg;
         temp_status = result_status.slice();
         old_score_distribution = new_score_distribution.slice();
-        temp_critical_dmg = critical_dmg;
       }
       else
       {

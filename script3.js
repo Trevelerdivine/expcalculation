@@ -1662,7 +1662,7 @@ async function monte_carlo_calculate()
     return response;
   }
   //af_score -= dlt_af_score;
-  const dlt_score = 0.01;
+  const dlt_score = 0.001;
   let excess_crscore;
   document.getElementById("response").innerHTML = response;
 

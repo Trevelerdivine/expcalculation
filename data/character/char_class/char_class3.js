@@ -5645,7 +5645,15 @@ class Lyney {
     }
   
     calculate_char_fixed_dmg_buff(fixstatus,status) {
+      const dmg_buff = parseInt(document.getElementById("dlt_af_score").value)/100;
+      if (this.method_index == 3)
+      {
+        return this.four_conste_buff + dmg_buff;
+      }
+      else
+      {
         return this.four_conste_buff;
+      }
     }
   
     calculate_char_result_dmg_buff(fixstatus,status) {

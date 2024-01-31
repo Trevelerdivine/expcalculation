@@ -1854,7 +1854,7 @@ async function monte_carlo_calculate()
       {
         dlt_score = 0.001
       }
-      
+
       if (random_1 == random_2)
       {
         random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;
@@ -1936,17 +1936,6 @@ async function monte_carlo_calculate()
 
         if (result_status[5] > 1)
         {
-            excess_crscore = (result_status[5] - 1) * 200;
-            new_score_distribution[5] -= excess_crscore;
-            if (new_score_distribution[5] > 0)
-            {
-              new_score_distribution[6] += excess_crscore;
-              result_status[6] += excess_crscore / 100;
-            }
-            else
-            {
-              new_score_distribution[5] = 0;
-            }
             result_status[5] = 1;
         }
 

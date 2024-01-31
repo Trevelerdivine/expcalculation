@@ -1662,7 +1662,7 @@ async function monte_carlo_calculate()
     return response;
   }
   //af_score -= dlt_af_score;
-  const dlt_score = 0.01;
+  const dlt_score = 0.001;
   let excess_crscore;
   document.getElementById("response").innerHTML = response;
 
@@ -1960,6 +1960,7 @@ async function monte_carlo_calculate()
         new_score_distribution = old_score_distribution.slice();
       }
     }
+    console.log(new_score_distribution);
     output_exp_dmg = temp_exp_dmg;
     output_exp_dmg = output_exp_dmg.toFixed(0);
     //let result = "<br>" +"最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;

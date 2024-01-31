@@ -1841,22 +1841,28 @@ async function monte_carlo_calculate()
     old_score_distribution = temp_score_distribute.slice();
     new_score_distribution = temp_score_distribute.slice();
 
-    for (let k = 0; k < 100000; k++)
+    for (let k = 0; k < 10000; k++)
     {
       exp_dmg = 0;
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
-      if (k < 10000)
+      if (k < 1000)
       {
         dlt_score = 0.1;
       }
-      else if (k < 50000)
+      else if (k < 5000)
       {
         dlt_score = 0.01
       }
       else
       {
         dlt_score = 0.001
+      }
+
+      if (k % 1000 == 0)
+      {
+
+        console.log(new_score_distribution)
       }
       
       if (random_1 == random_2)
@@ -1878,10 +1884,6 @@ async function monte_carlo_calculate()
         new_score_distribution[depend_status_index[random_2]] = 0;
       }
 
-      if (k % 10000 == 0)
-      {
-        console.log(new_score_distribution)
-      }
       base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
       for (x = 0; x < 5; x++)
       {

@@ -1854,12 +1854,6 @@ async function monte_carlo_calculate()
       {
         dlt_score = 0.001
       }
-
-      if (k % 1000 == 0)
-      {
-
-        console.log(new_score_distribution)
-      }
       
       if (random_1 == random_2)
       {

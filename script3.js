@@ -1846,11 +1846,7 @@ async function monte_carlo_calculate()
       exp_dmg = 0;
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
-      if (k < 10000)
-      {
-        dlt_score = 0.1;
-      }
-      else if (k < 50000)
+      if (k < 50000)
       {
         dlt_score = 0.01
       }

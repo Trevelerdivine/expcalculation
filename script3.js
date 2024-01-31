@@ -1841,18 +1841,22 @@ async function monte_carlo_calculate()
     old_score_distribution = temp_score_distribute.slice();
     new_score_distribution = temp_score_distribute.slice();
 
-    for (let k = 0; k < 20000; k++)
+    for (let k = 0; k < 100000; k++)
     {
       exp_dmg = 0;
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
-      if (k < 5000)
+      if (k < 10000)
       {
-        dlt_score = 0.01
+        dlt_score = 0.01;
+      }
+      else if (k < 50000)
+      {
+        dlt_score = 0.001;
       }
       else
       {
-        dlt_score = 0.001
+        dlt_score = 0.0001;
       }
       if (random_1 == random_2)
       {

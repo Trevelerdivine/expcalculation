@@ -1662,7 +1662,7 @@ async function monte_carlo_calculate()
     return response;
   }
   //af_score -= dlt_af_score;
-  const dlt_score = 0.001;
+  let dlt_score = 0.001;
   let excess_crscore;
   document.getElementById("response").innerHTML = response;
 
@@ -1846,6 +1846,18 @@ async function monte_carlo_calculate()
       exp_dmg = 0;
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
+      if (k < 10000)
+      {
+        dlt_score = 0.1;
+      }
+      else if (k < 50000)
+      {
+        dlt_score = 0.01
+      }
+      else
+      {
+        dlt_score = 0.001
+      }
 
       if (random_1 == random_2)
       {

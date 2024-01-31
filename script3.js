@@ -2019,7 +2019,7 @@ async function monte_carlo_calculate()
   if (depend_status[0] == 1)
   {
     //document.getElementById("my_result_hp").innerHTML = my_result_status[0].toFixed(0);
-    document.getElementById("appro_result_hp").innerHTML =temp_status[0].toFixed(0);
+    document.getElementById("appro_result_hp").innerHTML =temp_status[0].toFixed(5);
     //document.getElementById("my_hp_score").innerHTML = my_af_score_distribution[0].toFixed(5);
     document.getElementById("appro_hp_score").innerHTML = old_score_distribution[0].toFixed(5);
     document.getElementById("count_hp_score").innerHTML = (old_score_distribution[0]/7.8).toFixed(5);
@@ -2044,7 +2044,7 @@ async function monte_carlo_calculate()
   if (depend_status[1] == 1)
   {
     //document.getElementById("my_result_deff").innerHTML = my_result_status[1].toFixed(0);
-    document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(0);
+    document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(5);
     //document.getElementById("my_deff_score").innerHTML = my_af_score_distribution[1].toFixed(5);
     document.getElementById("appro_deff_score").innerHTML = old_score_distribution[1].toFixed(5);
     document.getElementById("count_deff_score").innerHTML = (old_score_distribution[1]/7.8).toFixed(5);
@@ -2069,7 +2069,7 @@ async function monte_carlo_calculate()
   if (depend_status[2] == 1)
   {
     //document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(0);
-    document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(0);
+    document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(5);
     //document.getElementById("my_elm_score").innerHTML = my_af_score_distribution[2].toFixed(5);
     document.getElementById("appro_elm_score").innerHTML = old_score_distribution[2].toFixed(5);
     document.getElementById("count_elm_score").innerHTML = (old_score_distribution[2]/7.8).toFixed(5);
@@ -2119,7 +2119,7 @@ async function monte_carlo_calculate()
   if (depend_status[4] == 1)
   {
     //document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(0);
-    document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(0);
+    document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(5);
     //document.getElementById("my_attck_score").innerHTML = my_af_score_distribution[4].toFixed(5);
     document.getElementById("appro_attck_score").innerHTML = old_score_distribution[4].toFixed(5);
     document.getElementById("count_attck_score").innerHTML = (old_score_distribution[4]/7.8).toFixed(5);

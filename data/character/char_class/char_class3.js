@@ -5611,7 +5611,7 @@ class Lyney {
       let fix_elm = 0;
       if (this.method_index == 4)
       {
-        fix_elm = 250;
+        fix_elm = 0;
       }
       return fix_elm;
     }

@@ -1935,7 +1935,7 @@ async function show_attack_method()
       createSelectList("yaemiko_attack_count4", 0, 15, "", "回", 0),
       document.createElement("br"),
       createLabel("yaemiko_attack_count5", "　殺生櫻："),
-      createSelectList("yaemiko_attack_count5", 0, 40, "", "回", 40),
+      createSelectList("yaemiko_attack_count5", 0, 50, "", "回", 45),
       document.createElement("br"),
       createLabel("yaemiko_attack_count6", "　元素爆発："),
       createSelectList("yaemiko_attack_count6", 0, 5, "", "回", 1),

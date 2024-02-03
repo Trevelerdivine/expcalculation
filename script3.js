@@ -1163,9 +1163,9 @@ async function calculate_table_status()
       {
         resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, resultStatus);
         buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
-        document.getElementById(`table_buff_${tablePrefix}`).innerHTML = buffStatus[index].toFixed(0);
-        document.getElementById(`table_af_${tablePrefix}`).innerHTML = afBuff[index].toFixed(0);
-        document.getElementById(`table_final_${tablePrefix}`).innerHTML =resultStatus[index].toFixed(0);
+        document.getElementById(`table_buff_${tablePrefix}`).innerHTML = buffStatus[index].toFixed(5);
+        document.getElementById(`table_af_${tablePrefix}`).innerHTML = afBuff[index].toFixed(5);
+        document.getElementById(`table_final_${tablePrefix}`).innerHTML =resultStatus[index].toFixed(5);
       }
     } 
     else
@@ -1963,7 +1963,7 @@ async function monte_carlo_calculate()
     }
     console.log(new_score_distribution);
     output_exp_dmg = temp_exp_dmg;
-    output_exp_dmg = output_exp_dmg.toFixed(0);
+    output_exp_dmg = output_exp_dmg.toFixed(5);
     //let result = "<br>" +"最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
     //let result = "<br>" + "最適化聖遺物スコア： "+ af_score + "," + output_exp_dmg;
     let result = "," + output_exp_dmg;
@@ -1975,13 +1975,13 @@ async function monte_carlo_calculate()
 
   if (depend_status[0] == 1)
   {
-    //document.getElementById("my_result_hp").innerHTML = my_result_status[0].toFixed(0);
-    document.getElementById("appro_result_hp").innerHTML =temp_status[0].toFixed(0);
+    //document.getElementById("my_result_hp").innerHTML = my_result_status[0].toFixed(5);
+    document.getElementById("appro_result_hp").innerHTML =temp_status[0].toFixed(5);
     //document.getElementById("my_hp_score").innerHTML = my_af_score_distribution[0].toFixed(1);
     document.getElementById("appro_hp_score").innerHTML = old_score_distribution[0].toFixed(1);
     document.getElementById("count_hp_score").innerHTML = (old_score_distribution[0]/7.8).toFixed(1);
-    //document.getElementById("my_af_hp").innerHTML = (base_status[0]*my_af_score_distribution[0]*3/400).toFixed(0);
-    document.getElementById("appro_af_hp").innerHTML = (base_status[0]*old_score_distribution[0]*3/400).toFixed(0);
+    //document.getElementById("my_af_hp").innerHTML = (base_status[0]*my_af_score_distribution[0]*3/400).toFixed(5);
+    document.getElementById("appro_af_hp").innerHTML = (base_status[0]*old_score_distribution[0]*3/400).toFixed(5);
     document.getElementById("count_hp_score3").innerHTML = (old_score_distribution[0]/7.8).toFixed(1);
   }
   else
@@ -2000,13 +2000,13 @@ async function monte_carlo_calculate()
 
   if (depend_status[1] == 1)
   {
-    //document.getElementById("my_result_deff").innerHTML = my_result_status[1].toFixed(0);
-    document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(0);
+    //document.getElementById("my_result_deff").innerHTML = my_result_status[1].toFixed(5);
+    document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(5);
     //document.getElementById("my_deff_score").innerHTML = my_af_score_distribution[1].toFixed(1);
     document.getElementById("appro_deff_score").innerHTML = old_score_distribution[1].toFixed(1);
     document.getElementById("count_deff_score").innerHTML = (old_score_distribution[1]/7.8).toFixed(1);
-    //document.getElementById("my_af_deff").innerHTML = (base_status[1]*my_af_score_distribution[1]*15/1600).toFixed(0);
-    document.getElementById("appro_af_deff").innerHTML = (base_status[1]*old_score_distribution[1]*15/1600).toFixed(0);
+    //document.getElementById("my_af_deff").innerHTML = (base_status[1]*my_af_score_distribution[1]*15/1600).toFixed(5);
+    document.getElementById("appro_af_deff").innerHTML = (base_status[1]*old_score_distribution[1]*15/1600).toFixed(5);
     document.getElementById("count_deff_score3").innerHTML = (old_score_distribution[1]/7.8).toFixed(1);
   }
   else
@@ -2025,13 +2025,13 @@ async function monte_carlo_calculate()
 
   if (depend_status[2] == 1)
   {
-    //document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(0);
-    document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(0);
+    //document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(5);
+    document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(5);
     //document.getElementById("my_elm_score").innerHTML = my_af_score_distribution[2].toFixed(1);
     document.getElementById("appro_elm_score").innerHTML = old_score_distribution[2].toFixed(1);
     document.getElementById("count_elm_score").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
-    //document.getElementById("my_af_elm").innerHTML = (my_af_score_distribution[2]*3).toFixed(0);
-    document.getElementById("appro_af_elm").innerHTML = (old_score_distribution[2]*3).toFixed(0);
+    //document.getElementById("my_af_elm").innerHTML = (my_af_score_distribution[2]*3).toFixed(5);
+    document.getElementById("appro_af_elm").innerHTML = (old_score_distribution[2]*3).toFixed(5);
     document.getElementById("count_elm_score3").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
   }
   else
@@ -2075,13 +2075,13 @@ async function monte_carlo_calculate()
 
   if (depend_status[4] == 1)
   {
-    //document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(0);
-    document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(0);
+    //document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(5);
+    document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(5);
     //document.getElementById("my_attck_score").innerHTML = my_af_score_distribution[4].toFixed(1);
     document.getElementById("appro_attck_score").innerHTML = old_score_distribution[4].toFixed(1);
     document.getElementById("count_attck_score").innerHTML = (old_score_distribution[4]/7.8).toFixed(1);
-    //document.getElementById("my_af_attck").innerHTML = (base_status[4]*my_af_score_distribution[4]*3/400).toFixed(0);
-    document.getElementById("appro_af_attck").innerHTML = (base_status[4]*old_score_distribution[4]*3/400).toFixed(0);
+    //document.getElementById("my_af_attck").innerHTML = (base_status[4]*my_af_score_distribution[4]*3/400).toFixed(5);
+    document.getElementById("appro_af_attck").innerHTML = (base_status[4]*old_score_distribution[4]*3/400).toFixed(5);
     document.getElementById("count_attck_score3").innerHTML = (old_score_distribution[4]/7.8).toFixed(1);
     }
   else

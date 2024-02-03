@@ -1841,7 +1841,7 @@ async function monte_carlo_calculate()
     old_score_distribution = temp_score_distribute.slice();
     new_score_distribution = temp_score_distribute.slice();
 
-    for (let k = 0; k < 30000; k++)
+    for (let k = 0; k < 50000; k++)
     {
       exp_dmg = 0;
       random_1 = Math.floor(depend_status_index.length * Math.random());
@@ -1850,7 +1850,7 @@ async function monte_carlo_calculate()
       {
         dlt_score = 0.01;
       }
-      else if (k < 15000)
+      else if (k < 25000)
       {
         dlt_score = 0.001;
       }

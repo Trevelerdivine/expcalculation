@@ -1,9 +1,10 @@
 class AThousandFloatingDreams {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.select1 = 0; // select1の初期値を0に設定
       this.select2 = 0; // select2の初期値を0に設定
       this.weapon_rank = 1;
+      this.method_index = method_index;
       this.updateSelectValues(); // 初期値を取得するためにupdateSelectValuesを呼び出す
     }
   
@@ -86,9 +87,10 @@ class AThousandFloatingDreams {
   }
   
   class SacrificialFragments {
-    constructor(base_status_array) 
+    constructor(base_status_array, method_index) 
     {
       this.base_status_array = base_status_array;
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -163,10 +165,11 @@ class AThousandFloatingDreams {
   }
   
   class EngulfingLightning {
-    constructor(base_status_array) 
+    constructor(base_status_array, method_index) 
     {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -248,10 +251,11 @@ class AThousandFloatingDreams {
   }
   
   class TheCatch {
-    constructor(base_status_array) 
+    constructor(base_status_array, method_index) 
     {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -313,7 +317,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
-      if (attack_method_index == 4)
+      if (this.method_index == 4)
       {
         dmg_buff = 0.04 * (this.weapon_rank + 3)
       }
@@ -332,9 +336,10 @@ class AThousandFloatingDreams {
   }
   
   class StaffofHoma {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -415,9 +420,10 @@ class AThousandFloatingDreams {
   }
   
   class HuntersPath {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -496,9 +502,10 @@ class AThousandFloatingDreams {
   }
   
   class SkywardHarp {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -572,9 +579,10 @@ class AThousandFloatingDreams {
   }
   
   class RedhornStonethresher {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -648,11 +656,12 @@ class AThousandFloatingDreams {
   }
   
   class Whiteblind {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.buff_count = parseInt(document.getElementById("Whiteblind_effect").value);
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.weapon_effect = parseInt(document.getElementById("Whiteblind_effect").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -726,8 +735,9 @@ class AThousandFloatingDreams {
   }
   
   class CinnabarSpindle {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -801,12 +811,13 @@ class AThousandFloatingDreams {
   }
   
   class LostPrayertotheSacredWinds {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.weapon_count = parseInt(document.getElementById("bursLostPrayertotheSacredWindst_buff").value);
       const weaponeffectCheckbox = document.getElementById("LostPrayertotheSacredWinds_dmg_buff");
       this.weapon_effect = weaponeffectCheckbox.checked ? 1 : 0;
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -885,10 +896,11 @@ class AThousandFloatingDreams {
   }
   
   class TheWidsith {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.weapon_buffkind = parseInt(document.getElementById("TheWidsith_buff").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -977,9 +989,10 @@ class AThousandFloatingDreams {
   }
   
   class DragonsBane {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1059,9 +1072,10 @@ class AThousandFloatingDreams {
   }
   
   class Rust {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1122,11 +1136,11 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let weapon_dmg_buff = 0;
-      if (attack_method_index == 0)
+      if (this.method_index == 0)
       {
         weapon_dmg_buff = (this.weapon_rank + 3) * 0.1;
       }
-      else if (attack_method_index == 1)
+      else if (this.method_index == 1)
       {
         weapon_dmg_buff = -0.1;
       }
@@ -1144,9 +1158,10 @@ class AThousandFloatingDreams {
   }
   
   class Slingshot {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1208,11 +1223,11 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let weapon_dmg_buff = 0;
       const weapon_effect_check = document.getElementById("Slingshot_dmgbuff")
-      if (weapon_effect_check.checked && (attack_method_index == 0 || attack_method_index == 1) && selectedCharId != 23 && selectedCharId != 57)
+      if (weapon_effect_check.checked && (this.method_index == 0 || this.method_index == 1) && selectedCharId != 23 && selectedCharId != 57)
       {
         weapon_dmg_buff = (this.weapon_rank + 5) * 0.06;
       }
-      else if (!weapon_effect_check.checked && (attack_method_index == 0 || attack_method_index == 1) && selectedCharId != 23 && selectedCharId != 57)
+      else if (!weapon_effect_check.checked && (this.method_index == 0 || this.method_index == 1) && selectedCharId != 23 && selectedCharId != 57)
       {
         weapon_dmg_buff = -0.1;
       }
@@ -1230,10 +1245,11 @@ class AThousandFloatingDreams {
   }
   
   class ThunderingPulse {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.weapon_effect = parseInt(document.getElementById("ThunderingPulse_count").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1295,7 +1311,7 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let weapon_dmg_buff = 0;
       const buff_mag = [0, 0.03, 0.06, 0.1]
-      if (attack_method_index == 0)
+      if (this.method_index == 0)
       {
         weapon_dmg_buff = (this.weapon_rank + 3) * buff_mag[this.weapon_effect];
       }
@@ -1313,8 +1329,9 @@ class AThousandFloatingDreams {
   }
   
   class FavoniusWarbow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1388,10 +1405,11 @@ class AThousandFloatingDreams {
   }
   
   class WolfsGravestone {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.weapon_effect = 0;
+      this.method_index = method_index;
       const weapon_effect_check = document.getElementById("WolfsGravestone_attack_buff");
       if(weapon_effect_check.checked)
       {
@@ -1471,9 +1489,10 @@ class AThousandFloatingDreams {
   }
   
   class LightofFoliarIncision {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1547,11 +1566,12 @@ class AThousandFloatingDreams {
   }
   
   class MistsplitterReforged {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.weapon_effectcount = parseInt(document.getElementById("Whiteblind_effect").value);
       this.elmental_flag = 0;
+      this.method_index = method_index;
       if (char_propaty[0] != 7)
       {
         this.elmental_flag = 1;
@@ -1639,9 +1659,10 @@ class AThousandFloatingDreams {
   }
   
   class PrimordialJadeCutter {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1715,9 +1736,10 @@ class AThousandFloatingDreams {
   }
   
   class PolarStar {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1788,7 +1810,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let weapon_dmg_buff = 0;
-      if(attack_method_index == 3 || attack_method_index ==4)
+      if(this.method_index == 3 || this.method_index ==4)
       {
         weapon_dmg_buff = (this.weapon_rank + 3) * 0.03
       }
@@ -1806,9 +1828,10 @@ class AThousandFloatingDreams {
   }
   
   class AquaSimulacra {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1888,9 +1911,10 @@ class AThousandFloatingDreams {
   }
   
   class TheStringless {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -1951,7 +1975,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let weapon_dmg_buff = 0;
-      if(char_propaty[0] != 7 && (attack_method_index == 3 || attack_method_index == 4))
+      if(char_propaty[0] != 7 && (this.method_index == 3 || this.method_index == 4))
       {
         weapon_dmg_buff = (this.weapon_rank + 3) * 0.06
       }
@@ -1969,9 +1993,10 @@ class AThousandFloatingDreams {
   }
   
   class SacrificialSword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -2045,10 +2070,11 @@ class AThousandFloatingDreams {
   }
   
   class StaffoftheScarletSands {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.weapon_buff_count = parseInt(document.getElementById("StaffoftheScarletSands_effect").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -2120,7 +2146,7 @@ class AThousandFloatingDreams {
       return weapon_debuff
     }
   }
-  
+
   class KagurasVerity {
     constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
@@ -2209,10 +2235,11 @@ class AThousandFloatingDreams {
   }
   
   class HarbingerofDawn {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.weapon_effect = 0;
+      this.method_index = method_index;
       const prop_checkbox = document.getElementById("HarbingerofDawn_crbuff");
       if (prop_checkbox.checked)
       {
@@ -2291,9 +2318,10 @@ class AThousandFloatingDreams {
   }
   
   class FavoniusSword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -2367,9 +2395,10 @@ class AThousandFloatingDreams {
   }
   
   class PrototypeAmber {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -2443,11 +2472,12 @@ class AThousandFloatingDreams {
   }
   
   class SplendorOfTranquilWaters {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.dmg_buff_count = parseInt(document.getElementById("dmg_buff_count").value);
       this.hpbuff_count = parseInt(document.getElementById("HP_buff_count").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -2508,7 +2538,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
-      if (attack_method_index == 3)
+      if (this.method_index == 3)
       {
         dmg_buff = 0.02 * (this.weapon_rank + 3) * this.dmg_buff_count;
       }
@@ -2526,10 +2556,11 @@ class AThousandFloatingDreams {
   }
   
   class KeyofKhajNisut {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_count = parseInt(document.getElementById("KeyofKhajNisut_count").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -2608,16 +2639,17 @@ class AThousandFloatingDreams {
   }
   
   class HaranGeppakuFutsu {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       const buff_count = parseInt(document.getElementById("HaranGeppakuFutsu_count").value);
       this.dmg_buff = 0;
+      this.method_index = method_index;
       if (char_propaty[0] != 7)
       {
         this.dmg_buff += 0.03 * (this.weapon_rank + 3);
       }
-      if (attack_method_index == 0)
+      if (method_index == 0)
       {
         this.dmg_buff += 0.05 * buff_count * (this.weapon_rank + 3);
       }
@@ -2694,16 +2726,17 @@ class AThousandFloatingDreams {
   }
   
   class FreedomSworn {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.attack_buff = 0;
       this.dmg_buff = 0.025 * (this.weapon_rank + 3);
+      this.method_index = method_index;
       const buff_check = document.getElementById("FreedomSworn_buff_check");
       if (buff_check.checked)
       {
         this.attack_buff = 0.05 * (this.weapon_rank + 3);
-        if (attack_method_index == 0 || attack_method_index == 1 || attack_method_index == 2)
+        if (this.method_index == 0 || this.method_index == 1 || this.method_index == 2)
         this.dmg_buff += 0.04 * (this.weapon_rank + 3);
       }
     }
@@ -2779,11 +2812,12 @@ class AThousandFloatingDreams {
   }
   
   class SummitShaper {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       const buff_count = parseInt(document.getElementById("SummitShaper").value);
       this.attack_buff = 0.01 * (this.weapon_rank + 3) * buff_count;
+      this.method_index = method_index;
       const buff_check = document.getElementById("SummitShaper_onfield");
       if (buff_check.checked)
       {
@@ -2862,9 +2896,10 @@ class AThousandFloatingDreams {
   }
   
   class SkywardBlade {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -2938,10 +2973,11 @@ class AThousandFloatingDreams {
   }
   
   class AquilaFavonia {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.attack_buff = 0.05 * (this.weapon_rank + 3);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3015,11 +3051,12 @@ class AThousandFloatingDreams {
   }
   
   class TheDockhandsAssistant {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       const buff_count = parseInt(document.getElementById("TheDockhandsAssistant").value);
       this.elm_buff = 10 * buff_count * (this.weapon_rank + 3);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3093,9 +3130,10 @@ class AThousandFloatingDreams {
   }
   
   class WolfFang {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3142,11 +3180,11 @@ class AThousandFloatingDreams {
       const skill_buff_count = parseInt(document.getElementById("WolfFang_skillbuff").value);
       const burst_buff_count = parseInt(document.getElementById("WolfFang_burstbuff").value);
       let cr_buff = 0;
-      if (attack_method_index == 3)
+      if (this.method_index == 3)
       {
         cr_buff = 0.005 * (this.weapon_rank + 3) * skill_buff_count
       }
-      if (attack_method_index == 4)
+      if (this.method_index == 4)
       {
         cr_buff = 0.005 * (this.weapon_rank + 3) * burst_buff_count
       }
@@ -3167,7 +3205,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
-      if (attack_method_index == 3 || attack_method_index == 4)
+      if (this.method_index == 3 || this.method_index == 4)
       {
         dmg_buff = 0.04 * (this.weapon_rank + 3);
       }
@@ -3185,9 +3223,10 @@ class AThousandFloatingDreams {
   }
   
   class FleuveCendreFerryman {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3238,7 +3277,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_cr(fixstatus,status) {
       let cr_buff = 0;
-      if (attack_method_index == 3)
+      if (this.method_index == 3)
       {
         cr_buff = 0.02 * (this.weapon_rank + 3);
       }
@@ -3272,10 +3311,11 @@ class AThousandFloatingDreams {
   }
   
   class FinaleoftheDeep {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.effect_flag = 0;
+      this.method_index = method_index;
       const effect_check = document.getElementById("FinaleoftheDeep_effect");
       if (effect_check.checked)
       {
@@ -3361,9 +3401,10 @@ class AThousandFloatingDreams {
   }
   
   class ToukabouShigure {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3443,9 +3484,10 @@ class AThousandFloatingDreams {
   }
   
   class XiphosMoonlight {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3519,9 +3561,10 @@ class AThousandFloatingDreams {
   }
   
   class SapwoodBlade {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3601,9 +3644,10 @@ class AThousandFloatingDreams {
   }
   
   class KagotsurubeIsshin {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3683,9 +3727,10 @@ class AThousandFloatingDreams {
   }
   
   class AmenomaKageuchi {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3759,9 +3804,10 @@ class AThousandFloatingDreams {
   }
   
   class TheAlleyFlash {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3841,9 +3887,10 @@ class AThousandFloatingDreams {
   }
   
   class FesteringDesire {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3888,7 +3935,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_cr(fixstatus,status) {
       let cr_buff = 0
-      if (attack_method_index == 3)
+      if (this.method_index == 3)
       {
         cr_buff = 0.015 * (this.weapon_rank + 3);
       }
@@ -3909,7 +3956,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
-      if (attack_method_index == 3)
+      if (this.method_index == 3)
       {
         dmg_buff = 0.04 * (this.weapon_rank + 3)
       }
@@ -3927,9 +3974,10 @@ class AThousandFloatingDreams {
   }
   
   class TheBlackSword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -3990,7 +4038,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
-      if (attack_method_index == 0 || attack_method_index == 1)
+      if (this.method_index == 0 || this.method_index == 1)
       {
         dmg_buff = 0.05 * (this.weapon_rank + 3)
       }
@@ -4008,9 +4056,10 @@ class AThousandFloatingDreams {
   }
   
   class BlackcliffLongsword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4086,9 +4135,10 @@ class AThousandFloatingDreams {
   }
   
   class IronSting {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4165,10 +4215,11 @@ class AThousandFloatingDreams {
   }
   
   class PrototypeRancour {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_count = parseInt(document.getElementById("PrototypeRancour_buff").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4242,9 +4293,10 @@ class AThousandFloatingDreams {
   }
   
   class LionsRoar {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4324,9 +4376,10 @@ class AThousandFloatingDreams {
   }
   
   class RoyalLongsword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4403,7 +4456,7 @@ class AThousandFloatingDreams {
   }
   
   class TheFlute {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
     }
@@ -4479,9 +4532,10 @@ class AThousandFloatingDreams {
   }
   
   class SkyriderSword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4561,9 +4615,10 @@ class AThousandFloatingDreams {
   }
   
   class FilletBlade {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4637,9 +4692,10 @@ class AThousandFloatingDreams {
   }
   
   class TravelersHandySword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4713,9 +4769,10 @@ class AThousandFloatingDreams {
   }
   
   class CoolSteel {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4795,9 +4852,10 @@ class AThousandFloatingDreams {
   }
   
   class BeaconoftheReedSea {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4890,9 +4948,10 @@ class AThousandFloatingDreams {
   }
   
   class SongofBrokenPines {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -4972,9 +5031,10 @@ class AThousandFloatingDreams {
   }
   
   class TheUnforged {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5057,9 +5117,10 @@ class AThousandFloatingDreams {
   }
   
   class SkywardPride {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5133,9 +5194,10 @@ class AThousandFloatingDreams {
   }
   
   class PortablePowerSaw {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5211,9 +5273,10 @@ class AThousandFloatingDreams {
   }
   
   class TalkingStick {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5299,9 +5362,10 @@ class AThousandFloatingDreams {
   }
   
   class TidalShadow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5381,10 +5445,11 @@ class AThousandFloatingDreams {
   }
   
   class MailedFlower {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_flag = 0;
+      this.method_index = method_index;
       const buff_check = document.getElementById("MailedFlower_buff1");
       if (buff_check.checked)
       {
@@ -5465,9 +5530,10 @@ class AThousandFloatingDreams {
   }
   
   class MakhairaAquamarine {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5541,9 +5607,10 @@ class AThousandFloatingDreams {
   }
   
   class ForestRegalia {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5623,9 +5690,10 @@ class AThousandFloatingDreams {
   }
   
   class Akuoumaru {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5687,7 +5755,7 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       const total_burst_point = Math.max(0,parseInt(document.getElementById("Akuoumaru_buff1").value));
       let dmg_buff = 0
-      if (attack_method_index == 4)
+      if (this.method_index == 4)
       {
         dmg_buff = Math.min(0.1 * (this.weapon_rank + 3), 0.0003 * total_burst_point * (this.weapon_rank + 3));
       }
@@ -5705,9 +5773,10 @@ class AThousandFloatingDreams {
   }
   
   class LuxuriousSeaLoad {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5768,7 +5837,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
-      if (attack_method_index == 4)
+      if (this.method_index == 4)
       {
         dmg_buff = 0.03 * (this.weapon_rank + 3);
       }
@@ -5786,9 +5855,10 @@ class AThousandFloatingDreams {
   }
   
   class KatsuragikiriNagamasa {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5849,7 +5919,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
-      if (attack_method_index == 3)
+      if (this.method_index == 3)
       {
         dmg_buff = 0.015 * (this.weapon_rank + 3);
       }
@@ -5867,10 +5937,11 @@ class AThousandFloatingDreams {
   }
   
   class LithicBlade {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_count = parseInt(document.getElementById("LithicBlade_buff1").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -5944,9 +6015,10 @@ class AThousandFloatingDreams {
   }
   
   class SnowTombedStarsilver {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6020,10 +6092,11 @@ class AThousandFloatingDreams {
   }
   
   class SerpentSpine {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_count = parseInt(document.getElementById("SerpentSpine_buff1").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6097,9 +6170,10 @@ class AThousandFloatingDreams {
   }
   
   class BlackcliffSlasher {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6176,9 +6250,10 @@ class AThousandFloatingDreams {
   }
   
   class PrototypeArchaic {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6252,9 +6327,10 @@ class AThousandFloatingDreams {
   }
   
   class Rainslasher {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6334,9 +6410,10 @@ class AThousandFloatingDreams {
   }
   
   class SacrificialGreatsword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6410,9 +6487,10 @@ class AThousandFloatingDreams {
   }
   
   class TheBell {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6492,9 +6570,10 @@ class AThousandFloatingDreams {
   }
   
   class FavoniusGreatsword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6568,9 +6647,10 @@ class AThousandFloatingDreams {
   }
   
   class SkyriderGreatsword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6646,9 +6726,10 @@ class AThousandFloatingDreams {
   }
   
   class DebateClub {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6722,9 +6803,10 @@ class AThousandFloatingDreams {
   }
   
   class WhiteIronGreatsword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6798,9 +6880,10 @@ class AThousandFloatingDreams {
   }
   
   class BloodtaintedGreatsword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6880,9 +6963,10 @@ class AThousandFloatingDreams {
   }
   
   class FerrousShadow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -6944,7 +7028,7 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
       const buff_check = document.getElementById("FerrousShadow_buff1");
-      if (buff_check.checked && attack_method_index == 1)
+      if (buff_check.checked && this.method_index == 1)
       {
         dmg_buff = 0.05 * (this.weapon_rank + 5);
       }
@@ -6962,9 +7046,10 @@ class AThousandFloatingDreams {
   }
   
   class CalamityQueller {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7052,9 +7137,10 @@ class AThousandFloatingDreams {
   }
   
   class VortexVanguisher {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7137,9 +7223,10 @@ class AThousandFloatingDreams {
   }
   
   class SkywardSpine {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7213,10 +7300,11 @@ class AThousandFloatingDreams {
   }
   
   class PrimordialJadeWingedSpear {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_count = parseInt(document.getElementById("PrimordialJadeWingedSpear_count").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7296,9 +7384,10 @@ class AThousandFloatingDreams {
   }
   
   class BalladoftheFjords {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7378,9 +7467,10 @@ class AThousandFloatingDreams {
   }
   
   class RightfulReward {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7454,10 +7544,11 @@ class AThousandFloatingDreams {
   }
   
   class MissiveWindspear {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_flag = 0;
+      this.method_index = method_index;
       const buff_check = document.getElementById("MissiveWindspear_effect");
       if (buff_check.checked)
       {
@@ -7536,9 +7627,10 @@ class AThousandFloatingDreams {
   }
   
   class Moonpiercer {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7618,9 +7710,10 @@ class AThousandFloatingDreams {
   }
   
   class WavebreakersFin {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7682,7 +7775,7 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       const total_burst_point = Math.max(0,parseInt(document.getElementById("Wavebreaker_buff1").value));
       let dmg_buff = 0
-      if (attack_method_index == 4)
+      if (this.method_index == 4)
       {
         dmg_buff = Math.min(0.1 * (this.weapon_rank + 3), 0.0003 * total_burst_point * (this.weapon_rank + 3));
       }
@@ -7700,9 +7793,10 @@ class AThousandFloatingDreams {
   }
   
   class KitainCrossSpear {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7763,7 +7857,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0
-      if (attack_method_index == 3)
+      if (this.method_index == 3)
       {
         dmg_buff = 0.015 * (this.weapon_rank + 3);
       }
@@ -7781,10 +7875,11 @@ class AThousandFloatingDreams {
   }
   
   class LithicSpear {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_count = parseInt(document.getElementById("LithicSpear_effect").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7858,9 +7953,10 @@ class AThousandFloatingDreams {
   }
   
   class DragonspineSpear {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -7934,9 +8030,10 @@ class AThousandFloatingDreams {
   }
   
   class FavoniusLance {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8010,9 +8107,10 @@ class AThousandFloatingDreams {
   }
   
   class Deathmatch {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8106,9 +8204,10 @@ class AThousandFloatingDreams {
   }
   
   class BlackcliffPole {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8185,9 +8284,10 @@ class AThousandFloatingDreams {
   }
   
   class CrescentPike {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8261,9 +8361,10 @@ class AThousandFloatingDreams {
   }
   
   class PrototypeStarglitter {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8337,9 +8438,10 @@ class AThousandFloatingDreams {
   }
   
   class BlackTassel {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8419,9 +8521,10 @@ class AThousandFloatingDreams {
   }
   
   class WhiteTassel {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8482,7 +8585,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
-      if (attack_method_index == 0)
+      if (this.method_index == 0)
       {
         dmg_buff = 0.06 * (this.weapon_rank + 3);
       }
@@ -8500,9 +8603,10 @@ class AThousandFloatingDreams {
   }
   
   class TheFirstGreatMagic {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8573,7 +8677,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
-      if (attack_method_index == 1)
+      if (this.method_index == 1)
       {
         dmg_buff = 0.04 * (this.weapon_rank + 3);
       }
@@ -8591,9 +8695,10 @@ class AThousandFloatingDreams {
   }
   
   class ElegyfortheEnd {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8679,9 +8784,10 @@ class AThousandFloatingDreams {
   }
   
   class ScionoftheBlazingSun {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8743,7 +8849,7 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
       const buff_check = document.getElementById("ScionoftheBlazingSun_effect");
-      if (buff_check.checked && attack_method_index == 1)
+      if (buff_check.checked && this.method_index == 1)
       {
         dmg_buff = 0.07 * (this.weapon_rank + 3)
       }
@@ -8761,9 +8867,10 @@ class AThousandFloatingDreams {
   }
   
   class SongofStillness {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8843,9 +8950,10 @@ class AThousandFloatingDreams {
   }
   
   class IbisPiercer {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -8922,9 +9030,10 @@ class AThousandFloatingDreams {
   }
   
   class KingsSquire {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9004,9 +9113,10 @@ class AThousandFloatingDreams {
   }
   
   class EndoftheLine {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9080,9 +9190,10 @@ class AThousandFloatingDreams {
   }
   
   class FadingTwilight {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9162,9 +9273,10 @@ class AThousandFloatingDreams {
   }
   
   class MouunsMoon {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9226,7 +9338,7 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       const total_burst_point = Math.max(0,parseInt(document.getElementById("MouunsMoon_buff1").value));
       let dmg_buff = 0
-      if (attack_method_index == 4)
+      if (this.method_index == 4)
       {
         dmg_buff = Math.min(0.1 * (this.weapon_rank + 3), 0.0003 * total_burst_point * (this.weapon_rank + 3));
       }
@@ -9244,9 +9356,10 @@ class AThousandFloatingDreams {
   }
   
   class Hamayumi {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9313,11 +9426,11 @@ class AThousandFloatingDreams {
       {
         buff_count = 2;
       }
-      if (attack_method_index == 0)
+      if (this.method_index == 0)
       {
         dmg_buff = 0.04 * (this.weapon_rank + 3) * buff_count;
       }
-      if (attack_method_index == 1)
+      if (this.method_index == 1)
       {
         dmg_buff = 0.03 * (this.weapon_rank + 3) * buff_count;
       }
@@ -9335,9 +9448,10 @@ class AThousandFloatingDreams {
   }
   
   class MitternachtsWaltz {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9400,11 +9514,11 @@ class AThousandFloatingDreams {
       const buff_check1 = document.getElementById("MitternachtsWaltz_effect1");
       const buff_check2 = document.getElementById("MitternachtsWaltz_effect2");
       let dmg_buff = 0;
-      if (buff_check1.checked && attack_method_index == 0)
+      if (buff_check1.checked && this.method_index == 0)
       {
         dmg_buff = 0.05 * (this.weapon_rank + 3);
       }
-      if (buff_check2.checked && attack_method_index == 3)
+      if (buff_check2.checked && this.method_index == 3)
       {
         dmg_buff = 0.05 * (this.weapon_rank + 3);
       }
@@ -9422,9 +9536,10 @@ class AThousandFloatingDreams {
   }
   
   class WindblumeOde {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9504,9 +9619,10 @@ class AThousandFloatingDreams {
   }
   
   class AlleyHunter {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9582,9 +9698,10 @@ class AThousandFloatingDreams {
   }
   
   class TheViridescentHunt {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9658,9 +9775,10 @@ class AThousandFloatingDreams {
   }
   
   class BlackcliffWarbow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9736,9 +9854,10 @@ class AThousandFloatingDreams {
   }
   
   class CompoundBow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9814,9 +9933,10 @@ class AThousandFloatingDreams {
   }
   
   class PrototypeCrescent {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9896,9 +10016,10 @@ class AThousandFloatingDreams {
   }
   
   class SacrificialBow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -9972,9 +10093,10 @@ class AThousandFloatingDreams {
   }
   
   class Messenger {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10048,9 +10170,10 @@ class AThousandFloatingDreams {
   }
   
   class RecurveBow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10124,9 +10247,10 @@ class AThousandFloatingDreams {
   }
   
   class SharpshootersOath {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10206,9 +10330,10 @@ class AThousandFloatingDreams {
   }
   
   class RavenBow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10288,10 +10413,11 @@ class AThousandFloatingDreams {
   }
   
   class TomeoftheEternalFlow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_count = parseInt(document.getElementById("TomeoftheEternalFlow_count").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10354,7 +10480,7 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
       const buff_count = parseInt(document.getElementById("TomeoftheEternalFlow_count").value);
-      if (attack_method_index == 1)
+      if (this.method_index == 1)
       {
         dmg_buff = (0.02 + 0.04 * (this.weapon_rank + 2)) * buff_count;
       }
@@ -10372,9 +10498,10 @@ class AThousandFloatingDreams {
   }
   
   class JadefallsSplendor {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10441,7 +10568,7 @@ class AThousandFloatingDreams {
       let dmg_buff = 0;
       const buff_check = document.getElementById("JadefallsSplendor_effect");
       let buff_count = status[0] / 1000;
-      if (buff_check.checked && attack_method_index != 7)
+      if (buff_check.checked && this.method_index != 7)
       {
         dmg_buff = Math.min((0.04 * (this.weapon_rank * 2 + 1)), (this.weapon_rank * 0.002 + 0.001) * buff_count);
       }
@@ -10455,9 +10582,10 @@ class AThousandFloatingDreams {
   }
   
   class TulaytullahsRemembrance {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10523,7 +10651,7 @@ class AThousandFloatingDreams {
     calculate_weapon_result_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
       const buff_count = parseInt(document.getElementById("TulaytullahsRemembrance_count").value);
-      if (attack_method_index ==0)
+      if (this.method_index ==0)
       {
         dmg_buff = 0.012 * (this.weapon_rank + 3) * buff_count;
       }
@@ -10537,9 +10665,10 @@ class AThousandFloatingDreams {
   }
   
   class EverlastingMoonglow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10613,9 +10742,10 @@ class AThousandFloatingDreams {
   }
   
   class MemoryofDust {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10698,9 +10828,10 @@ class AThousandFloatingDreams {
   }
   
   class SkywardAtlas {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10779,9 +10910,10 @@ class AThousandFloatingDreams {
   }
   
   class BalladOfTheBoundlessBlue {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -10843,11 +10975,11 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
       const buff_count = parseInt(document.getElementById("BalladOfTheBoundlessBlue_effect").value);
-      if (attack_method_index == 0)
+      if (this.method_index == 0)
       {
         dmg_buff = 0.02 * (this.weapon_rank + 3) * buff_count;
       }
-      if (attack_method_index == 1)
+      if (this.method_index == 1)
       {
         dmg_buff = 0.015 * (this.weapon_rank + 3) * buff_count;
       }
@@ -10865,11 +10997,12 @@ class AThousandFloatingDreams {
   }
   
   class SacrificialJade {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       const buff_check = document.getElementById("SacrificialJade_effect");
       this.buff_flag = 0;
+      this.method_index = method_index;
       if (buff_check.checked)
       {
         this.buff_flag = 1;
@@ -10947,10 +11080,11 @@ class AThousandFloatingDreams {
   }
   
   class FlowingPurity {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.effect_flag = 0;
+      this.method_index = method_index;
       const effect_check = document.getElementById("FlowingPurity_effect");
       if (effect_check.checked)
       {
@@ -11035,9 +11169,10 @@ class AThousandFloatingDreams {
   }
   
   class WanderingEvenstar {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11111,10 +11246,11 @@ class AThousandFloatingDreams {
   }
   
   class FruitofFulfillment {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
       this.buff_count = parseInt(document.getElementById("FruitofFulfillmenty_count").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11188,9 +11324,10 @@ class AThousandFloatingDreams {
   }
   
   class OathswornEye {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11264,9 +11401,10 @@ class AThousandFloatingDreams {
   }
   
   class HakushinRing {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11346,9 +11484,10 @@ class AThousandFloatingDreams {
   }
   
   class DodocoTales {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11416,7 +11555,7 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0;
       const buff_check = document.getElementById("DodocoTales_dmg_buff");
-      if (buff_check.checked && attack_method_index == 1)
+      if (buff_check.checked && this.method_index == 1)
       {
         dmg_buff = 0.04 * (this.weapon_rank + 3);
       }
@@ -11434,9 +11573,10 @@ class AThousandFloatingDreams {
   }
   
   class WineandSong {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11516,9 +11656,10 @@ class AThousandFloatingDreams {
   }
   
   class Frostbearer {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11592,9 +11733,10 @@ class AThousandFloatingDreams {
   }
   
   class EyeofPerception {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11668,9 +11810,10 @@ class AThousandFloatingDreams {
   }
   
   class BlackcliffAgate {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11745,9 +11888,10 @@ class AThousandFloatingDreams {
   }
   
   class MappaMare {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11827,9 +11971,10 @@ class AThousandFloatingDreams {
   }
   
   class SolarPearl {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11893,11 +12038,11 @@ class AThousandFloatingDreams {
       const buff_check1 = document.getElementById("SolarPearl_effect1");
       const buff_check2 = document.getElementById("SolarPearl_effect2");
   
-      if (buff_check1.checked && (attack_method_index == 3 || attack_method_index == 4))
+      if (buff_check1.checked && (this.method_index == 3 || this.method_index == 4))
       {
         dmg_buff = 0.05 * (this.weapon_rank + 3); 
       }
-      if (buff_check2.checked && attack_method_index == 0)
+      if (buff_check2.checked && this.method_index == 0)
       {
         dmg_buff = 0.05 * (this.weapon_rank + 3); 
       }
@@ -11915,9 +12060,10 @@ class AThousandFloatingDreams {
   }
   
   class FavoniusCodex {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -11991,9 +12137,10 @@ class AThousandFloatingDreams {
   }
   
   class ThrillingTalesofDragonSlayers {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -12067,9 +12214,10 @@ class AThousandFloatingDreams {
   }
   
   class MagicGuide {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -12149,9 +12297,10 @@ class AThousandFloatingDreams {
   }
   
   class AmosBow {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -12212,7 +12361,7 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let weapon_dmg_buff = 0.03 * (this.weapon_rank + 3);
-      if ((attack_method_index == 0 || attack_method_index == 1) && selectedCharId != 23 && selectedCharId != 57)
+      if ((this.method_index == 0 || this.method_index == 1) && selectedCharId != 23 && selectedCharId != 57)
       {
         const buff_count = parseInt(document.getElementById("AmosBow_dmgbuff").value);
         weapon_dmg_buff += 0.02 * (this.weapon_rank + 3) * buff_count;
@@ -12314,9 +12463,10 @@ class AThousandFloatingDreams {
   }
   
   class UltimateTyrantSuperDevilSword {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -12390,9 +12540,10 @@ class AThousandFloatingDreams {
   }
   
   class CashflowSupervision {
-    constructor(base_status_array) {
+    constructor(base_status_array, method_index) {
       this.base_status_array = base_status_array;
       this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.method_index = method_index;
     }
   
     calculate_weapon_fixed_hp(fixstatus,status) {
@@ -12454,11 +12605,11 @@ class AThousandFloatingDreams {
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0
       let buff_count = parseInt(document.getElementById("CashflowSupervision_count").value);
-      if (attack_method_index == 0)
+      if (this.method_index == 0)
       {
         dmg_buff = 0.04 * (this.weapon_rank + 3) * buff_count;
       }
-      else if (attack_method_index == 1)
+      else if (this.method_index == 1)
       {
         dmg_buff = 0.035 * (this.weapon_rank + 3) * buff_count;
       }

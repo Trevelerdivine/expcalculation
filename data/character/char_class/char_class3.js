@@ -5608,12 +5608,7 @@ class Lyney {
     }
   
     calculate_char_fixed_elm(fixstatus,status) {
-      let fix_elm = 0;
-      if (this.method_index == 4)
-      {
-        fix_elm = 0;
-      }
-      return fix_elm;
+      return 0;
     }
   
     calculate_char_result_elm(fixstatus,status) {

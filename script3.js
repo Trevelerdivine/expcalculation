@@ -1846,6 +1846,7 @@ async function monte_carlo_calculate()
       exp_dmg = 0;
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
+      let normal_status = 0;
       if (k < 10000)
       {
         dlt_score = 0.01;
@@ -1944,6 +1945,10 @@ async function monte_carlo_calculate()
         basic_dmg = await charInstances[x].calculate_basic_dmg(dmg_rate[x], result_status);
         exp_dmg += basic_dmg * (1 + result_status[5] * result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8];
+       if (x == 0)
+       {
+        normal_status = result_status.slice();
+       }
       }
       if (depend_status[2] == 1)
       {
@@ -1952,7 +1957,7 @@ async function monte_carlo_calculate()
       if (temp_exp_dmg < exp_dmg)
       {
         temp_exp_dmg = exp_dmg;
-        temp_status = result_status.slice();
+        temp_status = normal_status.slice();
         old_score_distribution = new_score_distribution.slice();
       }
       else

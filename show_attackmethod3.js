@@ -2447,7 +2447,7 @@ async function show_attack_method()
       createSelectList("nahida_attack_count6", 0, 30, "", "回", 30),
       document.createElement("br"),
       createLabel("nahida_attack_count7", "　滅浄三業·破業障："),
-      createSelectList("nahida_attack_count7", 0, 5, "", "回", 1),
+      createSelectList("nahida_attack_count7", 0, 12, "", "回", 6),
       document.createElement("br"),
     ];
     traits.forEach(element => {

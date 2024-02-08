@@ -1990,11 +1990,11 @@ async function monte_carlo_calculate()
     document.getElementById("appro_result_hp").innerHTML = "-";
     //document.getElementById("my_hp_score").innerHTML = "-";
     document.getElementById("appro_hp_score").innerHTML = "-";
-    document.getElementById("dlt_hp_score").innerHTML = "-";
+    //document.getElementById("dlt_hp_score").innerHTML = "-";
     document.getElementById("count_hp_score").innerHTML = "-";
     //document.getElementById("my_af_hp").innerHTML = "-";
     document.getElementById("appro_af_hp").innerHTML = "-";
-    document.getElementById("dlt_af_hp").innerHTML = "-";
+    //document.getElementById("dlt_af_hp").innerHTML = "-";
     document.getElementById("count_hp_score3").innerHTML = "-";
   }
 
@@ -2015,11 +2015,11 @@ async function monte_carlo_calculate()
     document.getElementById("appro_result_deff").innerHTML = "-";
     //document.getElementById("my_deff_score").innerHTML = "-";
     document.getElementById("appro_deff_score").innerHTML = "-";
-    document.getElementById("dlt_deff_score").innerHTML = "-";
+    //document.getElementById("dlt_deff_score").innerHTML = "-";
     document.getElementById("count_deff_score").innerHTML = "-";
     //document.getElementById("my_af_deff").innerHTML = "-";
     document.getElementById("appro_af_deff").innerHTML = "-";
-    document.getElementById("dlt_af_deff").innerHTML = "-";
+    //document.getElementById("dlt_af_deff").innerHTML = "-";
     document.getElementById("count_deff_score3").innerHTML = "-";
   }
 
@@ -2040,11 +2040,11 @@ async function monte_carlo_calculate()
     document.getElementById("appro_result_elm").innerHTML = "-";
     //document.getElementById("my_elm_score").innerHTML = "-";
     document.getElementById("appro_elm_score").innerHTML = "-";
-    document.getElementById("dlt_elm_score").innerHTML = "-";
+    //document.getElementById("dlt_elm_score").innerHTML = "-";
     document.getElementById("count_elm_score").innerHTML = "-";
     //document.getElementById("my_af_elm").innerHTML = "-";
     document.getElementById("appro_af_elm").innerHTML = "-";
-    document.getElementById("dlt_af_elm").innerHTML = "-";
+    //document.getElementById("dlt_af_elm").innerHTML = "-";
     document.getElementById("count_elm_score3").innerHTML = "-";
   }
 
@@ -2065,11 +2065,11 @@ async function monte_carlo_calculate()
     document.getElementById("appro_result_elm_charge").innerHTML = "-";
     //document.getElementById("my_elm_charge_score").innerHTML = "-";
     document.getElementById("appro_elm_charge_score").innerHTML = "-";
-    document.getElementById("dlt_elm_charge_score").innerHTML = "-";
+    //document.getElementById("dlt_elm_charge_score").innerHTML = "-";
     document.getElementById("count_elm_charge_score").innerHTML = "-";
     //document.getElementById("my_af_elm_charge").innerHTML = "-";
     document.getElementById("appro_af_elm_charge").innerHTML = "-";
-    document.getElementById("dlt_af_elm_charge").innerHTML = "-";
+    //document.getElementById("dlt_af_elm_charge").innerHTML = "-";
     document.getElementById("count_elm_charge_score3").innerHTML = "-";
   }
 
@@ -2090,11 +2090,11 @@ async function monte_carlo_calculate()
     document.getElementById("appro_result_attck").innerHTML = "-";
     //document.getElementById("my_attck_score").innerHTML = "-";
     document.getElementById("appro_attck_score").innerHTML = "-";
-    document.getElementById("dlt_attck_score").innerHTML = "-";
+    //document.getElementById("dlt_attck_score").innerHTML = "-";
     document.getElementById("count_attck_score").innerHTML = "-";
     //document.getElementById("my_af_attck").innerHTML = "-";
     document.getElementById("appro_af_attck").innerHTML = "-";
-    document.getElementById("dlt_af_attck").innerHTML = "-";
+    //document.getElementById("dlt_af_attck").innerHTML = "-";
     document.getElementById("count_attck_score3").innerHTML = "-";
   }
 
@@ -2115,11 +2115,11 @@ async function monte_carlo_calculate()
     document.getElementById("appro_result_cr").innerHTML = "-";
     //document.getElementById("my_cr_score").innerHTML = "-";
     document.getElementById("appro_cr_score").innerHTML = "-";
-    document.getElementById("dlt_cr_score").innerHTML = "-";
+   //document.getElementById("dlt_cr_score").innerHTML = "-";
     document.getElementById("count_cr_score").innerHTML = "-";
     //document.getElementById("my_af_cr").innerHTML = "-";
     document.getElementById("appro_af_cr").innerHTML = "-";
-    document.getElementById("dlt_af_cr").innerHTML = "-";
+    //document.getElementById("dlt_af_cr").innerHTML = "-";
     document.getElementById("count_cr_score3").innerHTML = "-";
   }
 
@@ -2144,11 +2144,11 @@ async function monte_carlo_calculate()
     document.getElementById("appro_result_cd").innerHTML = "-";
     //document.getElementById("my_cd_score").innerHTML = "-";
     document.getElementById("appro_cd_score").innerHTML = "-";
-    document.getElementById("dlt_cd_score").innerHTML = "-";
+    //document.getElementById("dlt_cd_score").innerHTML = "-";
     document.getElementById("count_cd_score").innerHTML = "-";
     //document.getElementById("my_af_cd").innerHTML = "-";
     document.getElementById("appro_af_cd").innerHTML = "-";
-    document.getElementById("dlt_af_cd").innerHTML = "-";
+    //document.getElementById("dlt_af_cd").innerHTML = "-";
     document.getElementById("count_cd_score3").innerHTML = "-";
   }
 

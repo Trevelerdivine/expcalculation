@@ -1845,8 +1845,6 @@ async function monte_carlo_calculate()
     for (let k = 0; k < 100000; k++)
     {
       exp_dmg = 0;
-      random_1 = Math.floor(depend_status_index.length * Math.random());
-      random_2 = Math.floor(depend_status_index.length * Math.random());
       let normal_status = 0;
       if (k < 10000)
       {
@@ -1861,23 +1859,28 @@ async function monte_carlo_calculate()
         dlt_score = 0.0001;
       }
       CaluCount += 1;
-      if (random_1 == random_2)
+      for (g = 0; g < 2; g++)
       {
-        random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;
-      }
+        random_1 = Math.floor(depend_status_index.length * Math.random());
+        random_2 = Math.floor(depend_status_index.length * Math.random());
+        if (random_1 == random_2)
+        {
+          random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;
+        }
 
-      if (new_score_distribution[depend_status_index[random_1]] == 0 || new_score_distribution[depend_status_index[random_2]] == 0)
-      {
-        continue;
-      }
+        //if (new_score_distribution[depend_status_index[random_1]] == 0 || new_score_distribution[depend_status_index[random_2]] == 0)
+        //{
+          //continue;
+        //}
 
-      new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] + dlt_score;
-      new_score_distribution[depend_status_index[random_2]] =  new_score_distribution[depend_status_index[random_2]] - dlt_score;
+        new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] + dlt_score;
+        new_score_distribution[depend_status_index[random_2]] =  new_score_distribution[depend_status_index[random_2]] - dlt_score;
 
-      if (new_score_distribution[depend_status_index[random_2]] < 0)
-      {
-        new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] +  new_score_distribution[depend_status_index[random_2]];
-        new_score_distribution[depend_status_index[random_2]] = 0;
+        if (new_score_distribution[depend_status_index[random_2]] < 0)
+        {
+          new_score_distribution[depend_status_index[random_1]] =  new_score_distribution[depend_status_index[random_1]] +  new_score_distribution[depend_status_index[random_2]];
+          new_score_distribution[depend_status_index[random_2]] = 0;
+        }
       }
 
       base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);

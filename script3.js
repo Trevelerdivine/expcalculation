@@ -1163,9 +1163,9 @@ async function calculate_table_status()
       {
         resultStatus[index] = dynamicBuff[index] + fixed_status[index] + await calculateResultFunction(fixed_status, resultStatus);
         buffStatus[index] = resultStatus[index] - afBuff[index] - baseStatus[index];
-        document.getElementById(`table_buff_${tablePrefix}`).innerHTML = buffStatus[index].toFixed(0);
-        document.getElementById(`table_af_${tablePrefix}`).innerHTML = afBuff[index].toFixed(0);
-        document.getElementById(`table_final_${tablePrefix}`).innerHTML =resultStatus[index].toFixed(0);
+        document.getElementById(`table_buff_${tablePrefix}`).innerHTML = buffStatus[index].toFixed(1);
+        document.getElementById(`table_af_${tablePrefix}`).innerHTML = afBuff[index].toFixed(1);
+        document.getElementById(`table_final_${tablePrefix}`).innerHTML =resultStatus[index].toFixed(1);
       }
     } 
     else
@@ -1963,7 +1963,7 @@ async function monte_carlo_calculate()
     }
     console.log(new_score_distribution);
     output_exp_dmg = temp_exp_dmg;
-    output_exp_dmg = output_exp_dmg.toFixed(0);
+    output_exp_dmg = output_exp_dmg.toFixed(1);
     //let result = "<br>" +"最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
     //let result = "<br>" + "最適化聖遺物スコア： "+ af_score + "," + output_exp_dmg;
     let result = "," + output_exp_dmg;
@@ -1973,45 +1973,16 @@ async function monte_carlo_calculate()
   console.log();
   calculationMessage.style.visibility = "hidden";
 
-  let dlthpScore = document.getElementById("dlt_hp_score");
-  let dltAfhp = document.getElementById("dlt_af_hp");
-  let dltdeffScore = document.getElementById("dlt_deff_score");
-  let dltAfdeff = document.getElementById("dlt_af_deff");
-  let dltElmScore = document.getElementById("dlt_elm_score");
-  let dltAfElm = document.getElementById("dlt_af_elm");
-  let dltelmchargeScore = document.getElementById("dlt_elm_charge_score");
-  let dltAfelmcharge = document.getElementById("dlt_af_elm_charge");
-  let dltattckScore = document.getElementById("dlt_attck_score");
-  let dltAfattck = document.getElementById("dlt_af_attck");
-  let dltcrScore = document.getElementById("dlt_cr_score");
-  let dltAfcr = document.getElementById("dlt_af_cr");
-  let dltcdScore = document.getElementById("dlt_cd_score");
-  let dltAfcd = document.getElementById("dlt_af_cd");
-  dlthpScore.style.color = "black";
-  dltAfhp.style.color = "black";
-  dltdeffScore.style.color = "black";
-  dltAfdeff.style.color = "black";
-  dltElmScore.style.color = "black";
-  dltAfElm.style.color = "black";
-  dltelmchargeScore.style.color = "black";
-  dltAfelmcharge.style.color = "black";
-  dltattckScore.style.color = "black";
-  dltAfattck.style.color = "black";
-  dltcrScore.style.color = "black";
-  dltAfcr.style.color = "black";
-  dltcdScore.style.color = "black";
-  dltAfcd.style.color = "black";
-
   if (depend_status[0] == 1)
   {
-    //document.getElementById("my_result_hp").innerHTML = my_result_status[0].toFixed(0);
-    document.getElementById("appro_result_hp").innerHTML =temp_status[0].toFixed(5);
-    //document.getElementById("my_hp_score").innerHTML = my_af_score_distribution[0].toFixed(5);
-    document.getElementById("appro_hp_score").innerHTML = old_score_distribution[0].toFixed(5);
-    document.getElementById("count_hp_score").innerHTML = (old_score_distribution[0]/7.8).toFixed(5);
-    //document.getElementById("my_af_hp").innerHTML = (base_status[0]*my_af_score_distribution[0]*3/400).toFixed(0);
-    document.getElementById("appro_af_hp").innerHTML = (base_status[0]*old_score_distribution[0]*3/400).toFixed(0);
-    document.getElementById("count_hp_score3").innerHTML = (old_score_distribution[0]/7.8).toFixed(5);
+    //document.getElementById("my_result_hp").innerHTML = my_result_status[0].toFixed(1);
+    document.getElementById("appro_result_hp").innerHTML =temp_status[0].toFixed(1);
+    //document.getElementById("my_hp_score").innerHTML = my_af_score_distribution[0].toFixed(1);
+    document.getElementById("appro_hp_score").innerHTML = old_score_distribution[0].toFixed(1);
+    document.getElementById("count_hp_score").innerHTML = (old_score_distribution[0]/7.8).toFixed(1);
+    //document.getElementById("my_af_hp").innerHTML = (base_status[0]*my_af_score_distribution[0]*3/400).toFixed(1);
+    document.getElementById("appro_af_hp").innerHTML = (base_status[0]*old_score_distribution[0]*3/400).toFixed(1);
+    document.getElementById("count_hp_score3").innerHTML = (old_score_distribution[0]/7.8).toFixed(1);
   }
   else
   {
@@ -2029,14 +2000,14 @@ async function monte_carlo_calculate()
 
   if (depend_status[1] == 1)
   {
-    //document.getElementById("my_result_deff").innerHTML = my_result_status[1].toFixed(0);
-    document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(5);
-    //document.getElementById("my_deff_score").innerHTML = my_af_score_distribution[1].toFixed(5);
-    document.getElementById("appro_deff_score").innerHTML = old_score_distribution[1].toFixed(5);
-    document.getElementById("count_deff_score").innerHTML = (old_score_distribution[1]/7.8).toFixed(5);
-    //document.getElementById("my_af_deff").innerHTML = (base_status[1]*my_af_score_distribution[1]*15/1600).toFixed(0);
-    document.getElementById("appro_af_deff").innerHTML = (base_status[1]*old_score_distribution[1]*15/1600).toFixed(0);
-    document.getElementById("count_deff_score3").innerHTML = (old_score_distribution[1]/7.8).toFixed(5);
+    //document.getElementById("my_result_deff").innerHTML = my_result_status[1].toFixed(1);
+    document.getElementById("appro_result_deff").innerHTML =temp_status[1].toFixed(1);
+    //document.getElementById("my_deff_score").innerHTML = my_af_score_distribution[1].toFixed(1);
+    document.getElementById("appro_deff_score").innerHTML = old_score_distribution[1].toFixed(1);
+    document.getElementById("count_deff_score").innerHTML = (old_score_distribution[1]/7.8).toFixed(1);
+    //document.getElementById("my_af_deff").innerHTML = (base_status[1]*my_af_score_distribution[1]*15/1600).toFixed(1);
+    document.getElementById("appro_af_deff").innerHTML = (base_status[1]*old_score_distribution[1]*15/1600).toFixed(1);
+    document.getElementById("count_deff_score3").innerHTML = (old_score_distribution[1]/7.8).toFixed(1);
   }
   else
   {
@@ -2054,14 +2025,14 @@ async function monte_carlo_calculate()
 
   if (depend_status[2] == 1)
   {
-    //document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(0);
-    document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(5);
-    //document.getElementById("my_elm_score").innerHTML = my_af_score_distribution[2].toFixed(5);
-    document.getElementById("appro_elm_score").innerHTML = old_score_distribution[2].toFixed(5);
-    document.getElementById("count_elm_score").innerHTML = (old_score_distribution[2]/7.8).toFixed(5);
-    //document.getElementById("my_af_elm").innerHTML = (my_af_score_distribution[2]*3).toFixed(0);
-    document.getElementById("appro_af_elm").innerHTML = (old_score_distribution[2]*3).toFixed(0);
-    document.getElementById("count_elm_score3").innerHTML = (old_score_distribution[2]/7.8).toFixed(5);
+    //document.getElementById("my_result_elm").innerHTML = my_result_status[2].toFixed(1);
+    document.getElementById("appro_result_elm").innerHTML =temp_status[2].toFixed(1);
+    //document.getElementById("my_elm_score").innerHTML = my_af_score_distribution[2].toFixed(1);
+    document.getElementById("appro_elm_score").innerHTML = old_score_distribution[2].toFixed(1);
+    document.getElementById("count_elm_score").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
+    //document.getElementById("my_af_elm").innerHTML = (my_af_score_distribution[2]*3).toFixed(1);
+    document.getElementById("appro_af_elm").innerHTML = (old_score_distribution[2]*3).toFixed(1);
+    document.getElementById("count_elm_score3").innerHTML = (old_score_distribution[2]/7.8).toFixed(1);
   }
   else
   {
@@ -2079,14 +2050,14 @@ async function monte_carlo_calculate()
 
   if (depend_status[3] == 1)
   {
-    //document.getElementById("my_result_elm_charge").innerHTML = (my_result_status[3]*100).toFixed(5) + "％";
-    document.getElementById("appro_result_elm_charge").innerHTML =(temp_status[3]*100).toFixed(5) + "％";
-    //document.getElementById("my_elm_charge_score").innerHTML = my_af_score_distribution[3].toFixed(5);
-    document.getElementById("appro_elm_charge_score").innerHTML = old_score_distribution[3].toFixed(5);
-    document.getElementById("count_elm_charge_score").innerHTML = (old_score_distribution[3]/7.8).toFixed(5);
-    //document.getElementById("my_af_elm_charge").innerHTML = (my_af_score_distribution[3]*5/6).toFixed(5) + "％";
-    document.getElementById("appro_af_elm_charge").innerHTML = (old_score_distribution[3]*5/6).toFixed(5) + "％";
-    document.getElementById("count_elm_charge_score3").innerHTML = (old_score_distribution[3]/7.8).toFixed(5);
+    //document.getElementById("my_result_elm_charge").innerHTML = (my_result_status[3]*100).toFixed(1) + "％";
+    document.getElementById("appro_result_elm_charge").innerHTML =(temp_status[3]*100).toFixed(1) + "％";
+    //document.getElementById("my_elm_charge_score").innerHTML = my_af_score_distribution[3].toFixed(1);
+    document.getElementById("appro_elm_charge_score").innerHTML = old_score_distribution[3].toFixed(1);
+    document.getElementById("count_elm_charge_score").innerHTML = (old_score_distribution[3]/7.8).toFixed(1);
+    //document.getElementById("my_af_elm_charge").innerHTML = (my_af_score_distribution[3]*5/6).toFixed(1) + "％";
+    document.getElementById("appro_af_elm_charge").innerHTML = (old_score_distribution[3]*5/6).toFixed(1) + "％";
+    document.getElementById("count_elm_charge_score3").innerHTML = (old_score_distribution[3]/7.8).toFixed(1);
   }
   else
   {
@@ -2104,14 +2075,14 @@ async function monte_carlo_calculate()
 
   if (depend_status[4] == 1)
   {
-    //document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(0);
-    document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(5);
-    //document.getElementById("my_attck_score").innerHTML = my_af_score_distribution[4].toFixed(5);
-    document.getElementById("appro_attck_score").innerHTML = old_score_distribution[4].toFixed(5);
-    document.getElementById("count_attck_score").innerHTML = (old_score_distribution[4]/7.8).toFixed(5);
-    //document.getElementById("my_af_attck").innerHTML = (base_status[4]*my_af_score_distribution[4]*3/400).toFixed(0);
-    document.getElementById("appro_af_attck").innerHTML = (base_status[4]*old_score_distribution[4]*3/400).toFixed(0);
-    document.getElementById("count_attck_score3").innerHTML = (old_score_distribution[4]/7.8).toFixed(5);
+    //document.getElementById("my_result_attck").innerHTML = my_result_status[4].toFixed(1);
+    document.getElementById("appro_result_attck").innerHTML =temp_status[4].toFixed(1);
+    //document.getElementById("my_attck_score").innerHTML = my_af_score_distribution[4].toFixed(1);
+    document.getElementById("appro_attck_score").innerHTML = old_score_distribution[4].toFixed(1);
+    document.getElementById("count_attck_score").innerHTML = (old_score_distribution[4]/7.8).toFixed(1);
+    //document.getElementById("my_af_attck").innerHTML = (base_status[4]*my_af_score_distribution[4]*3/400).toFixed(1);
+    document.getElementById("appro_af_attck").innerHTML = (base_status[4]*old_score_distribution[4]*3/400).toFixed(1);
+    document.getElementById("count_attck_score3").innerHTML = (old_score_distribution[4]/7.8).toFixed(1);
     }
   else
   {
@@ -2129,14 +2100,14 @@ async function monte_carlo_calculate()
 
   if (depend_status[5] == 1)
   {
-    //document.getElementById("my_result_cr").innerHTML = (my_result_status[5]*100).toFixed(5) + "%";
-    document.getElementById("appro_result_cr").innerHTML = (temp_status[5]*100).toFixed(5) + "%";
-    //document.getElementById("my_cr_score").innerHTML = my_af_score_distribution[5].toFixed(5);
-    document.getElementById("appro_cr_score").innerHTML = old_score_distribution[5].toFixed(5);
-    document.getElementById("count_cr_score").innerHTML = (old_score_distribution[5]/7.8).toFixed(5);
-    //document.getElementById("my_af_cr").innerHTML = (my_af_score_distribution[5]/2).toFixed(5) + "%";
-    document.getElementById("appro_af_cr").innerHTML = (old_score_distribution[5]/2).toFixed(5) + "%";
-    document.getElementById("count_cr_score3").innerHTML = (old_score_distribution[5]/7.8).toFixed(5);
+    //document.getElementById("my_result_cr").innerHTML = (my_result_status[5]*100).toFixed(1) + "%";
+    document.getElementById("appro_result_cr").innerHTML = (temp_status[5]*100).toFixed(1) + "%";
+    //document.getElementById("my_cr_score").innerHTML = my_af_score_distribution[5].toFixed(1);
+    document.getElementById("appro_cr_score").innerHTML = old_score_distribution[5].toFixed(1);
+    document.getElementById("count_cr_score").innerHTML = (old_score_distribution[5]/7.8).toFixed(1);
+    //document.getElementById("my_af_cr").innerHTML = (my_af_score_distribution[5]/2).toFixed(1) + "%";
+    document.getElementById("appro_af_cr").innerHTML = (old_score_distribution[5]/2).toFixed(1) + "%";
+    document.getElementById("count_cr_score3").innerHTML = (old_score_distribution[5]/7.8).toFixed(1);
   }
   else
   {
@@ -2156,16 +2127,16 @@ async function monte_carlo_calculate()
   {
     //let result_dltcd = (my_af_score_distribution[6] - old_score_distribution[6])
     //let cdcolor;
-    //document.getElementById("my_result_cd").innerHTML = (my_result_status[6]*100).toFixed(5) + "%";
-    document.getElementById("appro_result_cd").innerHTML = (temp_status[6]*100).toFixed(5) + "%";
-    //document.getElementById("my_cd_score").innerHTML = my_af_score_distribution[6].toFixed(5);
-    document.getElementById("appro_cd_score").innerHTML = old_score_distribution[6].toFixed(5);
-    //document.getElementById("dlt_cd_score").innerHTML = (my_af_score_distribution[6] - old_score_distribution[6]).toFixed(5);
-    document.getElementById("count_cd_score").innerHTML = (old_score_distribution[6]/7.8).toFixed(5);
-    //document.getElementById("my_af_cd").innerHTML = (my_af_score_distribution[6]).toFixed(5) + "%";
-    document.getElementById("appro_af_cd").innerHTML = (old_score_distribution[6]).toFixed(5) + "%";
-    //document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])).toFixed(5) + "%";
-    document.getElementById("count_cd_score3").innerHTML = (old_score_distribution[6]/7.8).toFixed(5); 
+    //document.getElementById("my_result_cd").innerHTML = (my_result_status[6]*100).toFixed(1) + "%";
+    document.getElementById("appro_result_cd").innerHTML = (temp_status[6]*100).toFixed(1) + "%";
+    //document.getElementById("my_cd_score").innerHTML = my_af_score_distribution[6].toFixed(1);
+    document.getElementById("appro_cd_score").innerHTML = old_score_distribution[6].toFixed(1);
+    //document.getElementById("dlt_cd_score").innerHTML = (my_af_score_distribution[6] - old_score_distribution[6]).toFixed(1);
+    document.getElementById("count_cd_score").innerHTML = (old_score_distribution[6]/7.8).toFixed(1);
+    //document.getElementById("my_af_cd").innerHTML = (my_af_score_distribution[6]).toFixed(1) + "%";
+    document.getElementById("appro_af_cd").innerHTML = (old_score_distribution[6]).toFixed(1) + "%";
+    //document.getElementById("dlt_af_cd").innerHTML = ((my_af_score_distribution[6] - old_score_distribution[6])).toFixed(1) + "%";
+    document.getElementById("count_cd_score3").innerHTML = (old_score_distribution[6]/7.8).toFixed(1); 
   }
   else
   {
@@ -2181,14 +2152,14 @@ async function monte_carlo_calculate()
     document.getElementById("count_cd_score3").innerHTML = "-";
   }
 
-  //document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(5) + "％";
-  document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(5) + "％";
-  //document.getElementById("my_af_score").innerHTML = my_af_score.toFixed(5);
-  document.getElementById("appro_af_score").innerHTML = af_score.toFixed(5);
-  //document.getElementById("dlt_af_score").innerHTML = (my_af_score-af_score).toFixed(5);
-  //document.getElementById("my_af_score3").innerHTML = my_af_score.toFixed(5);
-  document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(5);
-  //document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(5);
+  //document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
+  document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";
+  //document.getElementById("my_af_score").innerHTML = my_af_score.toFixed(1);
+  document.getElementById("appro_af_score").innerHTML = af_score.toFixed(1);
+  //document.getElementById("dlt_af_score").innerHTML = (my_af_score-af_score).toFixed(1);
+  //document.getElementById("my_af_score3").innerHTML = my_af_score.toFixed(1);
+  document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
+  //document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }

@@ -1686,6 +1686,7 @@ async function monte_carlo_calculate()
   let basic_dmg;
   let n_count = 0;
   let exp_dmg = 0;
+  let CaluCount = 0;
   
   const char_response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
   const char_data = await char_response.json();
@@ -1859,6 +1860,7 @@ async function monte_carlo_calculate()
       {
         dlt_score = 0.0001;
       }
+      CaluCount += 1;
       if (random_1 == random_2)
       {
         random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;
@@ -1956,6 +1958,7 @@ async function monte_carlo_calculate()
       }
       if (temp_exp_dmg < exp_dmg)
       {
+        CaluCount = 0;
         temp_exp_dmg = exp_dmg;
         temp_status = normal_status.slice();
         old_score_distribution = new_score_distribution.slice();
@@ -1974,7 +1977,7 @@ async function monte_carlo_calculate()
     document.getElementById("result").innerHTML += result;
     break;
   }
-  console.log();
+  console.log(CaluCount);
   calculationMessage.style.visibility = "hidden";
 
   if (depend_status[0] == 1)

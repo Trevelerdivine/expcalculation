@@ -372,7 +372,7 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
-        { text: "スキル（瑞獣登楼）", value: "16" },
+        { text: "スキル（瑞獣登楼）", value: "11" },
         { text: "元素爆発（燦炎金猊の舞）", value: "21" }
       ];
     

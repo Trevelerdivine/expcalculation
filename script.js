@@ -2279,7 +2279,7 @@ async function monte_carlo_calculate()
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
-  create_radarchart(depend_status, my_result_status, old_score_distribution)
+  create_radarchart(depend_status, my_af_score_distribution, old_score_distribution)
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 

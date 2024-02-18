@@ -2297,9 +2297,8 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
         TheoreticalData.push(1);
       }
   }
-      let ctx = document.getElementById("myChart");
-      let canvasData = ctx.getContext("2d");
-      canvasData.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // キャンバスをクリア
+      let canvas = document.getElementById("myChart");
+      let ctx = canvas.getContext("2d");
       let myChart = new Chart(ctx, {
           //グラフの種類
           type: 'radar',

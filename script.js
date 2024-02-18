@@ -2290,93 +2290,81 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
   let TheoreticalData = [];
 
   for (let i = 0; i < 7; i++) {
-      if (depend_index[i] == 1)
-      {
-        itemList.push(statusList[i]);
-        myData.push(1 + (myStatus[i] - TheoreticalStatus[i]) / 100);
-        TheoreticalData.push(1);
+      if (depend_index[i] == 1) {
+          itemList.push(statusList[i]);
+          myData.push(1 + (myStatus[i] - TheoreticalStatus[i]) / 100);
+          TheoreticalData.push(1);
       }
-    }
-    let maxElement = Math.max(...myData);
-    let maxborder = 0;
-    if (maxElement < 1.5)
-    {
-      maxborder = 1.5
-    }
-    else
-    {
-      maxborder = 2
-    }
-    let canvas = document.getElementById("myChart");
-    let ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // キャンバスをクリア
-    let myChart = new Chart(ctx, {
-        //グラフの種類
-        type: 'radar',
-        //データの設定
-        data: {
-          //データ項目のラベル
-          labels: itemList, // リストをラベルとして使用
-          //データセット
-          datasets: [{
-              label: "ステータスバランス",
-              //背景色
-              backgroundColor: "rgba(51,255,51,0.5)",
-              //枠線の色
-              borderColor: "rgba(51,255,51,1)",
-              //結合点の背景色
-              pointBackgroundColor: "rgba(51,255,51,1)",
-              //結合点の枠線の色
-              pointBorderColor: "#fff",
-              //結合点の背景色（ホバ時）
-              pointHoverBackgroundColor: "#fff",
-              //結合点の枠線の色（ホバー時）
-              pointHoverBorderColor: "rgba(51,255,51,1)",
-              //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
-              hitRadius: 5,
-              //グラフのデータ
-              data: myData
-          },
-          {
-              label: "理論値",
-              backgroundColor: "rgba(255,51,51,0.5)",
-              borderColor: "rgba(255,51,51,1)",
-              pointBackgroundColor: "rgba(255,51,51,1)",
-              pointBorderColor: "#fff",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(255,51,51,1)",
-              hitRadius: 5,
-              data: TheoreticalData
-          }]
+  }
+
+  let maxElement = Math.max(...myData);
+  let maxborder = 0;
+  if (maxElement < 1.4)
+  {
+    maxborder = 1.4;
+  }
+  else
+  {
+    maxborder = 2;
+  }
+
+  let ctx = document.getElementById("myChart");
+
+  // 既存のチャートを削除する
+  if (window.myChart instanceof Chart) {
+      window.myChart.destroy();
+  }
+
+  // 新しいチャートを作成する
+  window.myChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+          labels: itemList,
+          datasets: [
+              {
+                  label: "ステータスバランス",
+                  backgroundColor: "rgba(51,255,51,0.5)",
+                  borderColor: "rgba(51,255,51,1)",
+                  pointBackgroundColor: "rgba(51,255,51,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(51,255,51,1)",
+                  hitRadius: 5,
+                  data: myData
+              },
+              {
+                  label: "理論値",
+                  backgroundColor: "rgba(255,51,51,0.5)",
+                  borderColor: "rgba(255,51,51,1)",
+                  pointBackgroundColor: "rgba(255,51,51,1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(255,51,51,1)",
+                  hitRadius: 5,
+                  data: TheoreticalData
+              }
+          ]
       },
-      //オプションの設定
       options: {
-          // レスポンシブ指定
           responsive: true,
           maintainAspectRatio: false,
           scale: {
               ticks: {
-                  // 最小値の値を0指定
                   beginAtZero: true,
                   min: 0,
                   stepSize: 0.2,
-                  // 最大値を指定
                   max: maxborder,
               },
               pointLabels: {
                   fontSize: 10
               }
           },
-          //ラベル非表示
           legend: {
-              // display: false
               fontSize: 10,
               labels: {
-                  // このフォント設定はグローバルプロパティを上書きします。
                   fontSize: 14,
               }
           }
-
       }
   });
 }

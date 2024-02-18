@@ -2279,5 +2279,92 @@ async function monte_carlo_calculate()
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
+  create_radarchart(depend_status, my_result_status, old_score_distribution)
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+}
+
+function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
+  let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];
+  let itemList = [];
+  let myData = [];
+  let TheoreticalData = [];
+
+  for (let i = 0; i < 7; i++) {
+      if (depend_index[i] == 1)
+      {
+        itemList.push(statusList[i]);
+        myData.push(1 + (myStatus[i] - TheoreticalStatus[i] / 10));
+        TheoreticalData.push(1);
+      }
+  }
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+          //グラフの種類
+          type: 'radar',
+          //データの設定
+          data: {
+            //データ項目のラベル
+            labels: itemList, // リストをラベルとして使用
+            //データセット
+            datasets: [{
+                label: "ステータスバランス",
+                //背景色
+                backgroundColor: "rgba(51,255,51,0.5)",
+                //枠線の色
+                borderColor: "rgba(51,255,51,1)",
+                //結合点の背景色
+                pointBackgroundColor: "rgba(51,255,51,1)",
+                //結合点の枠線の色
+                pointBorderColor: "#fff",
+                //結合点の背景色（ホバ時）
+                pointHoverBackgroundColor: "#fff",
+                //結合点の枠線の色（ホバー時）
+                pointHoverBorderColor: "rgba(51,255,51,1)",
+                //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
+                hitRadius: 5,
+                //グラフのデータ
+                data: myData
+            },
+            {
+                label: "理論値",
+                backgroundColor: "rgba(255,51,51,0.5)",
+                borderColor: "rgba(255,51,51,1)",
+                pointBackgroundColor: "rgba(255,51,51,1)",
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "rgba(255,51,51,1)",
+                hitRadius: 5,
+                data: TheoreticalData
+            }]
+        },
+        //オプションの設定
+        options: {
+            // レスポンシブ指定
+            responsive: true,
+            maintainAspectRatio: false,
+            scale: {
+                ticks: {
+                    // 最小値の値を0指定
+                    beginAtZero: true,
+                    min: 0,
+                    stepSize: 0.2,
+                    // 最大値を指定
+                    max: 2,
+                },
+                pointLabels: {
+                    fontSize: 10
+                }
+            },
+            //ラベル非表示
+            legend: {
+                // display: false
+                fontSize: 10,
+                labels: {
+                    // このフォント設定はグローバルプロパティを上書きします。
+                    fontSize: 14,
+                }
+            }
+
+        }
+    });
 }

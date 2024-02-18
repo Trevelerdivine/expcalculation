@@ -548,6 +548,16 @@ text-align: center;
   transition: border-color 0.3s;
 }
 
+.chart-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto; /* 左右中央に配置 */
+  text-align: center; /* 中央揃え */
+}
+
+
+
 
 
     /* CSSスタイル */

@@ -880,8 +880,8 @@ text-align: center;
     position: relative;
     width: 320px;
     height: 320px;
-    margin: 0 auto; /* 左右中央に配置 */
+    margin: 20px auto 0; /* 上側に20pxの空白を追加して左右中央に配置 */
     text-align: center; /* 中央揃え */
-  }
+}
 
 }

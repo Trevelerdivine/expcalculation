@@ -2293,7 +2293,7 @@ function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
       if (depend_index[i] == 1)
       {
         itemList.push(statusList[i]);
-        myData.push(1 + (myStatus[i] - TheoreticalStatus[i] / 10));
+        myData.push(1 + (myStatus[i] - TheoreticalStatus[i]) / 10);
         TheoreticalData.push(1);
       }
   }

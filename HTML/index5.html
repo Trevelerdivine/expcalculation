@@ -10,7 +10,7 @@
     <script>
         async function getUserData(userId) {
             try {
-                const endpoint = `https://enka.network/api/uid/816087867`;
+                const endpoint = `https://enka.network/u/${userId}/_data.json`;
                 const response = await fetch(endpoint);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -27,7 +27,7 @@
 
         // ボタンをクリックしたときにgetUserData関数を実行する
         document.getElementById('fetchButton').onclick = function() {
-            const userId = ''; // ユーザーIDを設定する
+            const userId = '816087867'; // ユーザーIDを設定する
             getUserData(userId);
         };
     </script>

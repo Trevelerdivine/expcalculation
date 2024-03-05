@@ -29,24 +29,35 @@
 
         }
 
-        async function getData(url = "") {
-            const response = await fetch(url, {
-                method: "GET",
-                mode: "cors",
-                cache: "no-cache",
-                credentials: "same-origin",
-                headers: {
-                "Content-Type": "application/json"
-                },
-                redirect: "follow",
-                referrerPolicy: "no-referrer"
-            });
-            return response;
+        function sendPatchRequest(url, data) {
+            // XMLHttpRequest オブジェクトを作成する
+            var xhr = new XMLHttpRequest();
+
+            // リクエストの準備をする
+            xhr.open("PATCH", url, true);
+
+            // 必要に応じてリクエストヘッダーを設定する
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // リクエストが完了した時の処理を定義する
+            xhr.onload = function () {
+                // レスポンスを処理する
+                if (xhr.status >= 200 && xhr.status < 300) {
+                // 成功した場合の処理
+                console.log(xhr.responseText);
+                } else {
+                // エラーが発生した場合の処理
+                console.error("リクエストに失敗しました");
+                }
+            };
+
+            // リクエストを送信する
+            xhr.send(JSON.stringify(data));
         }
 
         // ボタンをクリックしたときにgetUserData関数を実行する
         document.getElementById('fetchButton').onclick = function() {
-            getData("https://enka.network/api/uid/816087867").then((data) => {
+            sendPatchRequest("https://enka.network/api/uid/816087867", { key: "value" }).then((data) => {
             console.log(data);
             });
         };

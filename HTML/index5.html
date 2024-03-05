@@ -28,27 +28,16 @@
                 });
 
         }
-        function fetchGenshinData(uid, scoretype, charaName) {
-            const url = `https://genshin-api.kuroneko6423.com/api/genshindata/?uid=${uid}&scoretype=${scoretype}&charaName=${encodeURIComponent(charaName)}`;
+        async function callApi() {
+            const res = await fetch("https://jsonplaceholder.typicode.com/users");
+            const users = await res.json();
+            console.log(users)
+            };
 
-            return fetch(url)
-                .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-                })
-                .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-                });
-            }
 
         // ボタンをクリックしたときにgetUserData関数を実行する
         document.getElementById('fetchButton').onclick = function() {
-            fetchGenshinData(830322314, 'ATTACK', 'ディオナ')
-            .then(data => {
-                console.log(data);
-            });
+            callApi();
         };
     </script>
 </body>

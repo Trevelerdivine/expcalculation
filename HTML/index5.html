@@ -28,16 +28,31 @@
                 });
 
         }
-        async function callApi() {
-            const res = await fetch("https://genshin-api.kuroneko6423.com/api/genshindata/?uid=830322314&scoretype=ATTACK&charaName=ディオナ");
-            const users = await res.json();
-            console.log(users)
-            };
+        async function fetchData() {
+            const url = 'https://genshin-api.kuroneko6423.com/api/genshindata/?uid=830322314&scoretype=ATTACK&charaName=ディオナ';
+            
+            try {
+                const response = await fetch(url);
+
+                // レスポンスが正常でない場合はエラーをスローする
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                // JSON データを取得して JavaScript オブジェクトに変換する
+                const data = await response.json();
+
+                // データを処理する（例えば、コンソールに表示する）
+                console.log(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
 
 
         // ボタンをクリックしたときにgetUserData関数を実行する
         document.getElementById('fetchButton').onclick = function() {
-            callApi();
+            fetchData();
         };
     </script>
 </body>

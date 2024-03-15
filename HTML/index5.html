@@ -9,7 +9,7 @@
 
     <script>
         async function getUserData(userId) {
-                fetch('https://enka.network/u/${userId}/__data.json')
+                fetch('https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/import_enkaAPI')
                 .then(response => {
                     // レスポンスが成功した場合
                     if (!response.ok) {

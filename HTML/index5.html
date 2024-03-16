@@ -10,26 +10,7 @@
         ユーザーネーム：
     </div>
     <script>
-        async function getUserData(userId) {
-                fetch('https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/import_enkaAPI')
-                .then(response => {
-                    // レスポンスが成功した場合
-                    if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                    }
-                    // レスポンスをJSON形式に変換して返す
-                    return response.json();
-                })
-                .then(data => {
-                    // レスポンスデータを取得して利用する
-                    console.log(data);
-                })
-                .catch(error => {
-                    // エラーハンドリング
-                    console.error('There was a problem with the fetch operation:', error);
-                });
-
-        }
+        // fetchData() 関数を定義
         function fetchData() {
             const url = 'https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/ImportEnkaApi';
             const xhr = new XMLHttpRequest();
@@ -51,10 +32,7 @@
             xhr.send();
         }
 
-
-
-
-        // ボタンをクリックしたときにgetUserData関数を実行する
+        // ボタンをクリックしたときに fetchData() 関数を実行する
         document.getElementById('fetchButton').onclick = function() {
             fetchData();
         };

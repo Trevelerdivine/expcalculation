@@ -6,7 +6,9 @@
 </head>
 <body>
     <button id="fetchButton">データを取得する</button>
-
+    <div id="nickname">
+        ユーザーネーム：
+    </div>
     <script>
         async function getUserData(userId) {
                 fetch('https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/import_enkaAPI')
@@ -36,7 +38,9 @@
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
                         const data = JSON.parse(xhr.responseText);
-                        console.log(data);
+                        // ニックネームをHTMLに出力する
+                        const nicknameElement = document.getElementById('nickname');
+                        nicknameElement.textContent = data.playerInfo.nickname;
                     } else {
                         console.error('Error fetching data:', xhr.statusText);
                     }
@@ -46,6 +50,7 @@
             xhr.open('GET', url);
             xhr.send();
         }
+
 
 
 

@@ -2,17 +2,47 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch API Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <button id="fetchButton">データを取得する</button>
     <div id="nickname">
         ユーザーネーム：
     </div>
+    <input type="text" id="uidInput" placeholder="UIDを入力してください">
+    <button id="fetchButton">データを取得する</button>
+
     <script>
         // fetchData() 関数を定義
         async function fetchData() {
-            const url = 'https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/ImportEnkaApi';
+            const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
+
+            // uidが空白の場合はメッセージを表示して処理を中断
+            if (uid === '') {
+                const nicknameElement = document.getElementById('nickname');
+                nicknameElement.textContent = "UIDを入力してください";
+                return;
+            }
+
+            const url = `https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/ImportEnkaApi?uid=${uid}`;
 
             try {
                 const response = await fetch(url);
@@ -31,11 +61,11 @@
             }
         }
 
+// ボタンをクリックしたときに fetchData() 関数を実行する
+document.getElementById('fetchButton').onclick = function() {
+    fetchData();
+};
 
-        // ボタンをクリックしたときに fetchData() 関数を実行する
-        document.getElementById('fetchButton').onclick = function() {
-            fetchData();
-        };
     </script>
 </body>
 </html>

@@ -30,25 +30,24 @@
                 });
 
         }
-        async function fetchData() {
-    const url = 'https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/ImportEnkaApi';
+        function fetchData() {
+            const url = 'https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/ImportEnkaApi';
+            const xhr = new XMLHttpRequest();
 
-    try {
-        const response = await fetch(url);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        const data = JSON.parse(xhr.responseText);
+                        console.log(data);
+                    } else {
+                        console.error('Error fetching data:', xhr.statusText);
+                    }
+                }
+            };
 
-        if (!response.ok) {
-            throw new Error('Failed to fetch data');
+            xhr.open('GET', url);
+            xhr.send();
         }
-
-        const data = await response.json();
-        // ニックネームをHTMLに出力する
-        const nicknameElement = document.getElementById('nickname');
-        nicknameElement.textContent = data.playerInfo.nickname;
-    } catch (error) {
-        console.error('Error fetching data:', error.message);
-    }
-}
-
 
 
 

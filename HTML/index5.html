@@ -39,6 +39,8 @@
                     if (xhr.status === 200) {
                         const data = JSON.parse(xhr.responseText);
                         console.log(data);
+                        const nicknameElement = document.getElementById('nickname');
+                        nicknameElement.textContent = data.playerInfo.nickname;
                     } else {
                         console.error('Error fetching data:', xhr.statusText);
                     }

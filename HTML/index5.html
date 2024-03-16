@@ -55,8 +55,9 @@
                 console.log(data);
                 // ニックネームをHTMLに出力する
                 const nicknameElement = document.getElementById('nickname');
-                nicknameElement.textContent = "ユーザーネーム：" + data.data.playerInfo.nickname
-                                             + "<br>" + "取得アチーブメント数：" + data.data.playerInfo.finishAchievementNum;
+                nicknameElement.innerHTML = "ユーザーネーム：" + data.data.playerInfo.nickname +
+                             "<br>" +
+                             "取得アチーブメント数：" + data.data.playerInfo.finishAchievementNum;
             } catch (error) {
                 console.error('Error fetching data:', error);
                 const nicknameElement = document.getElementById('nickname');

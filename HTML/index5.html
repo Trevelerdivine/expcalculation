@@ -24,11 +24,11 @@
     </style>
 </head>
 <body>
+    <input type="text" id="uidInput" placeholder="UIDを入力してください">
+    <button id="fetchButton">データを取得する</button>
     <div id="nickname">
         ユーザーネーム：
     </div>
-    <input type="text" id="uidInput" placeholder="UIDを入力してください">
-    <button id="fetchButton">データを取得する</button>
 
     <script>
         // fetchData() 関数を定義
@@ -55,7 +55,7 @@
                 console.log(data);
                 // ニックネームをHTMLに出力する
                 const nicknameElement = document.getElementById('nickname');
-                nicknameElement.textContent = data.data.playerInfo.nickname;
+                nicknameElement.textContent = "ユーザーネーム：" + data.data.playerInfo.nickname;
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

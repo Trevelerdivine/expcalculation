@@ -59,6 +59,9 @@
                                              + "<br>" + "取得アチーブメント数：" + data.data.playerInfo.finishAchievementNum;
             } catch (error) {
                 console.error('Error fetching data:', error);
+                const nicknameElement = document.getElementById('nickname');
+                nicknameElement.textContent = "入力したUIDに問題があるようです。";
+                return;
             }
         }
 

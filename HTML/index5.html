@@ -11,26 +11,26 @@
     </div>
     <script>
         // fetchData() 関数を定義
-        function fetchData() {
+        async function fetchData() {
             const url = 'https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/ImportEnkaApi';
-            const xhr = new XMLHttpRequest();
 
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        const data = JSON.parse(xhr.responseText);
-                        console.log(data);
-                        const nicknameElement = document.getElementById('nickname');
-                        nicknameElement.textContent = data.playerInfo.nickname;
-                    } else {
-                        console.error('Error fetching data:', xhr.statusText);
-                    }
+            try {
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
                 }
-            };
 
-            xhr.open('GET', url);
-            xhr.send();
+                const data = await response.json();
+                console.log(data);
+                // ニックネームをHTMLに出力する
+                const nicknameElement = document.getElementById('nickname');
+                nicknameElement.textContent = data.playerInfo.nickname;
+            } catch (error) {
+                console.error('Error fetching data:', error.message);
+            }
         }
+
 
         // ボタンをクリックしたときに fetchData() 関数を実行する
         document.getElementById('fetchButton').onclick = function() {

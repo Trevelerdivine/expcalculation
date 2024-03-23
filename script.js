@@ -384,6 +384,9 @@ async function create_char_instance(base_status, parameter) {
     case "4":
       char_instance = new diluc(base_status, parameter);
       break;
+    case "76":
+      char_instance = new gaming(base_status, parameter);
+      break;
     case "6":
       char_instance = new yanfei(base_status, parameter);
       break;

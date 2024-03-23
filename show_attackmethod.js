@@ -606,8 +606,8 @@ async function show_attack_method()
     else if (attack_method == 6)
     {
       elementsToAddToCharTalent = [
-        createLabel("gaming_count", "　連続重撃ヒット回数："),
-        createSelectList("gaming_count", 0, 20, "", "回", 10),
+        createLabel("gaming_count1", "　連続重撃ヒット回数："),
+        createSelectList("gaming_count1", 0, 20, "", "回", 10),
         document.createElement("br"),
         createLabel("gaming_count2", "　重撃フィニッシュヒット回数："),
         createSelectList("gaming_count2", 0, 1, "", "回", 1),
@@ -642,7 +642,7 @@ async function show_attack_method()
     {
       traits = [
         createLabel("gaming_attack_count", "　燦炎金猊の舞ヒット回数："),
-        createSelectList("gaming_attack_count", 0, 5, "", "回", 5),
+        createSelectList("gaming_attack_count", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {
@@ -651,7 +651,7 @@ async function show_attack_method()
 
       traits = [
         createLabel("gaming_react_count", "　燦炎金猊の舞反応回数："),
-        createSelectList("gaming_react_count", 0, 5, "", "回", 5),
+        createSelectList("gaming_react_count", 0, 1, "", "回", 1),
         document.createElement("br"),
       ];
       traits.forEach(element => {

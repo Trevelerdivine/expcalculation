@@ -1384,9 +1384,7 @@ class gaming {
   constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;
     this.parameter = parameter;
-    this.first_conste_buff = 0;
     this.second_conste_buff = 0;
-    this.fourth_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.reaction_coeff = 0;
@@ -1421,7 +1419,7 @@ class gaming {
       const second_conste_check = document.getElementById("traitCheckbox2");
       if (second_conste_check.checked)
       {
-        this.second_conste_buff = parseFloat(document.getElementById("diluc_conste2").value) / 100;
+        this.second_conste_buff = 0.2;
       }
     }
 
@@ -1444,6 +1442,20 @@ class gaming {
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
     else if (attack_method == 11) {
+      if (this.char_constellations > 3)
+      {
+        const sixth_conste_check = document.getElementById("traitCheckbox6");
+        if (sixth_conste_check.checked)
+        {
+          this.sixth_conste_buff = 0.2;
+        }
+      }
+
+      const talent2_check = document.getElementById("gaming_talent2");
+      if (talent2_check.checked)
+      {
+        this.talent2_buff = 0.2
+      }
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked) {
@@ -1495,7 +1507,8 @@ class gaming {
   }
 
   calculate_char_fixed_attck(fixstatus,status) {
-    return 0;
+    let attack_buff = this.base_status_array[4] * this.second_conste_buff;
+    return attack_buff;
   }
 
   calculate_char_result_attck(fixstatus,status) {
@@ -1527,7 +1540,7 @@ class gaming {
   }
 
   calculate_char_fixed_cr(fixstatus,status) {
-    return 0;
+    return this.sixth_conste_buff;
   }
 
   calculate_char_result_cr(fixstatus,status) {
@@ -1535,7 +1548,7 @@ class gaming {
   }
 
   calculate_char_fixed_cd(fixstatus,status) {
-    return 0;
+    return this.sixth_conste_buff * 2;
   }
 
   calculate_char_result_cd(fixstatus,status) {
@@ -1543,7 +1556,7 @@ class gaming {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return 0;
+    return this.talent2_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {

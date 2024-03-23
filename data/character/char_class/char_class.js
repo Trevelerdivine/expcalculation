@@ -1561,7 +1561,7 @@ class gaming {
     }
     else
     {
-      attckRate = status[4] * (dmg_rate[4][0] + dmg_rate[4][1]) + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+      attckRate = status[4] * dmg_rate[4]+ calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
       basicDmg = attckRate;
     }
     return basicDmg;

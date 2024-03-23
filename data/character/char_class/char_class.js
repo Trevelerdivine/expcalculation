@@ -1405,15 +1405,6 @@ class gaming {
     const response = await fetch("./data/character/char_data/gaming.json");
     const data = await response.json();
 
-    if (this.char_constellations > 0)
-    {
-      const first_conste_check = document.getElementById("traitCheckbox1");
-      if (first_conste_check.checked)
-      {
-        this.first_conste_buff = 0.15;
-      }
-    }
-
     if (this.char_constellations > 1)
     {
       const second_conste_check = document.getElementById("traitCheckbox2");

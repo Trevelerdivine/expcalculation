@@ -620,6 +620,14 @@ async function show_attack_method()
     }
     else if (attack_method == 11)
     {
+      gaming_talent = [
+        createCheckbox("gaming_talent2", true),
+        createLabel("gaming_talent2", "固有天賦2：HP50%以上"),
+        document.createElement("br"),
+      ];
+      gaming_talent.forEach(element => {
+        temporary_char_talent.appendChild(element);
+      });
       traits = [
         createLabel("gaming_attack_count", "　落下攻撃・踏雲献瑞ヒット回数："),
         createSelectList("gaming_attack_count", 0, 5, "", "回", 5),

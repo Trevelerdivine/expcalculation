@@ -1563,7 +1563,7 @@ class gaming {
     {
       if (attack_method == 1 || attack_method == 6)
       {
-        attckRate = status[4] * dmg_rate[4]+ calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+        attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.react_attack_count + this.nonreact_attack_count, status, this.weapon_rank, this.base_dmgbuff);
         basicDmg = attckRate;
       }
       else

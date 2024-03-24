@@ -106,9 +106,109 @@
             0, 1, 1, 0, 0
         ];
 
+        const characterImages = [
+            "",
+            "",
+            "../character/kamisatoayaka.webp",
+            "",
+            "",
+            "",
+            "../character/lisa.jpg",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "../character/kaeya.jpg",
+            "../character/diluc.jpg",
+            "",
+            "",
+            "",
+            "../character/razor.jpg",
+            "../character/amber.jpg",
+            "",
+            "../character/xiangling.webp",
+            "../character/beidou.webp",
+            "../character/xingqiu.webp",
+            "../character/xiao.webp",
+            "../character/ningguang.webp",
+            "",
+            "../character/klee.webp",
+            "../character/zhongli.webp",
+            "../character/fischl.webp",
+            "../character/bennett.webp",
+            "../character/tartaglia.webp",
+            "../character/noelle.jpg",
+            "",
+            "../character/chongyun.webp",
+            "../character/ganyu.webp",
+            "../character/albedo.jpg",
+            "",
+            "",
+            "",
+            "../character/keqing.jpg",
+            "",
+            "../character/xinyan.webp",
+            "../character/rosaria.webp",
+            "../character/hutao.jpg",
+            "",
+            "../character/yanfei.webp",
+            "../character/yoimiya.webp",
+            "",
+            "../character/eula.webp",
+            "../character/raidenshougun.jpg",
+            "",
+            "",
+            "",
+            "../character/kujousara.jpg",
+            "../character/aratakiitto.webp",
+            "../character/yaemiko.webp",
+            "../character/shikanoinheizou.webp",
+            "../character/yelan.webp",
+            "./character/kirara.webp",
+            "",
+            "",
+            "",
+            "",
+            "../character/kamisatoayato.jpg",
+            "",
+            "../character/tighnari.webp",
+            "../character/nirou.webp",
+            "../character/cyno.jpg",
+            "",
+            "../character/nahida.webp",
+            "",
+            "../character/wanderer.webp",
+            "../character/faruzan.webp",
+            "",
+            "../character/alhaitham.webp",
+            "../character/dehya.webp",
+            "",
+            "",
+            "",
+            "",
+            "../character/Lyney.webp",
+            "",
+            "../character/Wriothesley.webp",
+            "../character/Neuvillette.webp",
+            "",
+            "../character/Furina.webp",
+            "",
+            "../character/Navia.webp",
+            "../character/gaming.webp",
+            "",
+            "",
+        ];
+
+
 
         // fetchData() 関数を定義
         async function fetchData() {
+            const img_grid = document.getElementById("imageGrid");
+            img_grid.innerHTML = "";
             const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
 
             // uidが空白の場合はメッセージを表示して処理を中断
@@ -149,13 +249,16 @@
                 }
                 console.log(char_ids);
 
-                const images = [
-                    { src: "../character/Lyney.webp", alt: "Image 1" },
-                    { src: "../character/dehya.webp", alt: "Image 2" },
-                    { src: "../character/Lyney.webp", alt: "Image 1" },
-                    { src: "../character/dehya.webp", alt: "Image 2" },
-                    { src: "../character/dehya.webp", alt: "Image 3" }
-                ];
+                const images = [];
+
+                // 画像を生成して配列に追加
+                for (let i = 1; i <= char_ids.length; i++) {
+                    const image = {
+                        src: characterImages[char_ids[i]],
+                        alt: `Image ${i}`
+                    };
+                    images.push(image);
+                }
 
                 // 画像要素を生成し、動的にHTMLに追加する
                 const imageGrid = document.getElementById("imageGrid");

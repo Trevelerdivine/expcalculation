@@ -33,6 +33,21 @@
     </div>
 
     <script>
+        const characters = [
+            "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
+            "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
+            "ディルック", "該当なし", "該当なし", "該当なし", "レザー", "アンバー", "ウェンティ", "香菱",
+            "北斗", "行秋", "魈", "凝光", "該当なし", "クレー", "鍾離", "フィッシュル",
+            "ベネット", "タルタリヤ", "ノエル", "七七", "重雲", "甘雨", "アルベド", "ディオナ",
+            "該当なし", "モナ", "刻晴", "スクロース", "辛炎", "ロサリア", "胡桃", "楓原万葉",
+            "煙緋",  "宵宮", "トーマ", "エウルア", "雷電将軍", "早袖", "珊瑚宮心海", "ゴロー",
+            "九条裟羅", "荒瀧一斗", "八重神子", "鹿野院平蔵", "夜蘭", "モモカ", "アーロイ", "申鶴",
+            "雲菫", "忍", "神里綾人", "コレイ", "ドリー", "ティナリ", "ニィロウ", "セノ",
+            "キャンディス", "ナヒーダ", "レイラ", "放浪者", "ファルザン", "ヨォーヨ", "アルハイゼン", "ディシア",
+            "ミカ", "カーヴェ", "白朮", "リネット", "リネ", "フレミネ", "リオセスリ", "ヌヴィレット",
+            "シャルロット", "フリーナ", "シュヴルーズ", "ナヴィア", "嘉明", "閑雲", "千織"
+        ];
+
         // fetchData() 関数を定義
         async function fetchData() {
             const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
@@ -57,6 +72,8 @@
                 console.log(data);
                 // ニックネームをHTMLに出力する
                 const nicknameElement = document.getElementById('nickname');
+                const avatarIds = data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
+                console.log(avatarIds);
                 nicknameElement.innerHTML = "ユーザーネーム：" + data.data.playerInfo.nickname +
                              "<br>" +
                              "取得アチーブメント数：" + data.data.playerInfo.finishAchievementNum;

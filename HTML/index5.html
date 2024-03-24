@@ -48,6 +48,20 @@
             "シャルロット", "フリーナ", "シュヴルーズ", "ナヴィア", "嘉明", "閑雲", "千織"
         ];
 
+        const char_flag = [
+            0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+            1, 1, 0, 1, 1, 1, 1, 1, 0, 1,
+            1, 1, 1, 1, 1, 1, 0, 1, 1, 1,
+            0, 0, 0, 1, 0, 1, 1, 1, 0, 1,
+            1, 0, 1, 1, 0, 0, 0, 1, 1, 1,
+            1, 1, 0, 0, 0, 0, 0, 1, 1, 0,
+            1, 1, 1, 0, 1, 0, 1, 1, 0, 1,
+            1, 0, 0, 0, 0, 1, 0, 1, 1, 0,
+            1, 0, 1, 1, 0, 0
+        ];
+
+
         // fetchData() 関数を定義
         async function fetchData() {
             const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
@@ -67,7 +81,7 @@
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
-
+                let char_ids = [];
                 const data = await response.json();
                 console.log(data);
                 // ニックネームをHTMLに出力する
@@ -79,6 +93,16 @@
                              "取得アチーブメント数：" + data.data.playerInfo.finishAchievementNum + 
                              "<br>" +
                              "キャラクターID：" + avatarIds;
+                
+                for (let i = 0; i < avatarIds.length; i++)
+                {
+                    let charId = parseInt(avatarIds[i]) - 10000000;
+                    if(char_flag[charId] == 1)
+                    {
+                        char_ids.append(characters[charId]);
+                    }
+                }
+                console.log(char_ids);
             } catch (error) {
                 console.error('Error fetching data:', error);
                 const nicknameElement = document.getElementById('nickname');

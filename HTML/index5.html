@@ -251,7 +251,7 @@
                     }
                 }
                 console.log(char_names);
-
+                console.log(char_ids);
                 const images = [];
 
                 // 画像を生成して配列に追加
@@ -262,7 +262,7 @@
                     };
                     images.push(image);
                 }
-
+                console.log(images);
                 // 画像要素を生成し、動的にHTMLに追加する
                 const imageGrid = document.getElementById("imageGrid");
                 images.forEach(image => {

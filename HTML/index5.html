@@ -21,6 +21,33 @@
             width: 100%;
             margin-top: 20px;
         }
+
+        .image-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px; /* 画像の間隔 */
+    }
+
+    .image-grid img {
+        max-width: 100%; /* 画像の最大幅を100%に設定 */
+        height: auto; /* アスペクト比を維持したまま高さを自動調整 */
+    }
+
+    /* 画像の数に応じて列数を調整 */
+    @media (min-width: 768px) {
+        .image-grid {
+            width: 100%; /* 横幅いっぱいに広がる */
+        }
+        .image-grid img {
+            width: calc(100% / 3 - 5px); /* 幅が1/3になるように設定（画像間の隙間を考慮） */
+        }
+    }
+
+    @media (max-width: 767px) {
+        .image-grid img {
+            width: calc(100% / 2 - 5px); /* 幅が1/2になるように設定（画像間の隙間を考慮） */
+        }
+    }
     </style>
 </head>
 <body>
@@ -30,6 +57,10 @@
     <button id="fetchButton">データを取得する</button>
     <br>
     <div id="nickname">
+    </div>
+    <br>
+    <br>
+    <div class="image-grid" id="imageGrid">
     </div>
 
     <script>
@@ -103,6 +134,28 @@
                     }
                 }
                 console.log(char_ids);
+
+                for (let i = 1; i <= imageCount; i++) {
+                const image = {
+                    src: `image${i}.jpg`,
+                    alt: `Image ${i}`
+                };
+                images.push(image);
+                }
+                const images = [
+                    { src: "../character/Lyney.webp", alt: "Image 1" },
+                    { src: "../character/dehya.webp", alt: "Image 2" },
+                    { src: "../character/dehya.webp", alt: "Image 3" }
+                ];
+
+                // 画像要素を生成し、動的にHTMLに追加する
+                const imageGrid = document.getElementById("imageGrid");
+                images.forEach(image => {
+                    const imgElement = document.createElement("img");
+                    imgElement.src = image.src;
+                    imgElement.alt = image.alt;
+                    imageGrid.appendChild(imgElement);
+                });
             } catch (error) {
                 console.error('Error fetching data:', error);
                 const nicknameElement = document.getElementById('nickname');

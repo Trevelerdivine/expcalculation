@@ -227,6 +227,7 @@
                     throw new Error('Failed to fetch data');
                 }
                 let char_ids = [];
+                let char_names = [];
                 const data = await response.json();
                 console.log(data);
                 // ニックネームをHTMLに出力する
@@ -244,10 +245,11 @@
                     let charId = parseInt(avatarIds[i]) - 10000000;
                     if(char_flag[charId] == 1)
                     {
-                        char_ids.push(characters[charId]);
+                        char_names.push(characters[charId]);
+                        char_ids.push(charId);
                     }
                 }
-                console.log(char_ids);
+                console.log(char_names);
 
                 const images = [];
 

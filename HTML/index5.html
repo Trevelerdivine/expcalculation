@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch API Example</title>
+    <link rel="stylesheet" href="../data/css/style.css">
+    <script src="../script.js"></script>
+    <script src="../data/character/char_class/char_class.js"></script>
+    <script src="../data/weapon/weapon_class/weapon_class.js"></script>
+    <script src="../data/artifact/af_class.js"></script>
+    <script src="../show_char_statsform.js"></script>
+    <script src="../show_weapon_statsform.js"></script>
+    <script src="../show_artifact.js"></script>
+    <script src="../show_attackmethod.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-
         input[type="text"] {
             padding: 10px;
             font-size: 16px;
@@ -261,7 +261,8 @@
                 for (let i = 0; i < char_ids.length; i++) {
                     const image = {
                         src: characterImages[char_ids[i]],
-                        alt: `Image ${i}`
+                        alt: `Image ${i}`,
+                        id: char_ids[i] // 画像に割り当てるID属性を生成
                     };
                     images.push(image);
                 }
@@ -272,6 +273,7 @@
                     const imgElement = document.createElement("img");
                     imgElement.src = image.src;
                     imgElement.alt = image.alt;
+                    imgElement.id = image.id; // 画像にID属性を設定
                     imageGrid.appendChild(imgElement);
                 });
             } catch (error) {

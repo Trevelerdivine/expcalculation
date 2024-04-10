@@ -1635,6 +1635,55 @@ async function import_char_parameter()
   return parameter;
 }
 
+async function DefineMainStatus(DependStatusList) {
+  let MainStatusList = [];
+  let ClockMainStatus = [];
+  let GobletMainStatus = [];
+  let CircletMainStatus = [];
+
+  if (DependStatusList[0] == 1) {
+    ClockMainStatus.push(0);
+    GobletMainStatus.push(0);
+    CircletMainStatus.push(0);
+  } 
+  if (DependStatusList[1] == 1) {
+    ClockMainStatus.push(1);
+    GobletMainStatus.push(1);
+    CircletMainStatus.push(1); 
+  }
+  if (DependStatusList[2] == 1) {
+    ClockMainStatus.push(2);
+    GobletMainStatus.push(2);
+    CircletMainStatus.push(2); 
+  }
+  if (DependStatusList[4] == 1) {
+    ClockMainStatus.push(4);
+    GobletMainStatus.push(4);
+    CircletMainStatus.push(4); 
+  }
+  if (DependStatusList[5] == 1) {
+    CircletMainStatus.push(5); 
+  }
+  if (DependStatusList[6] == 1) {
+    CircletMainStatus.push(6); 
+  }
+  const ClockMainStatusIndex = parseInt(document.getElementById("clock_mainstatus").value);
+  if (ClockMainStatusIndex == 3)
+  {
+    ClockMainStatus = [3]
+  }
+  if(char_propaty[0] !=7)
+  {
+    GobletMainStatus.push(7);
+  }
+  else
+  {
+    GobletMainStatus.push(8);
+  }
+  MainStatusList = [ClockMainStatus, GobletMainStatus, CircletMainStatus];
+  return MainStatusList;
+}
+
 async function monte_carlo_calculate()
 {
   const calculationMessage = document.getElementById("calculationMessage")
@@ -2272,6 +2321,9 @@ async function monte_carlo_calculate()
     document.getElementById("dlt_af_cd").innerHTML = "-";
     document.getElementById("count_cd_score3").innerHTML = "-";
   }
+
+  const MainStatusIndexList = await DefineMainStatus(depend_status);
+  console.log(MainStatusIndexList);
 
   document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
   document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";

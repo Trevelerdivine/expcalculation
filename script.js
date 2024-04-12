@@ -2056,9 +2056,8 @@ async function monte_carlo_calculate()
       {
         exp_dmg = 0;
         temp_exp_dmg = 0;
-        let MainStatusList = [MainStatusIndexList[x],MainStatusIndexList[y], MainStatusIndexList[z]];
+        let MainStatusList = [MainStatusIndexList[0][x],MainStatusIndexList[1][y], MainStatusIndexList[2][z]];
         let MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
-        console.log(MainStatusBuff);
         for (let i = 0; i < 5000; i++)
         {
           score_distribute = await calculate_score_distribute(af_score,depend_status);

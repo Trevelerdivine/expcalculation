@@ -1712,7 +1712,7 @@ async function CalculateExpDmg(
                                result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
                                char_parameter, reaction_check, reaction_count_list, reaction_bonus_list
                               )
-{    
+{
   for (let g = 0; g < depend_status_index.length; g++)
   {
     fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
@@ -2104,7 +2104,7 @@ async function monte_carlo_calculate()
             new_score_distribution[depend_status_index[random_2]] = 0;
           }
 
-          base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
+          base_parameter = await calculate_fixed_status(new_score_distribution,base_status,MainStatusBuff,depend_status);
           for (g = 0; g < depend_status_index.length; g++)
           {
             fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];

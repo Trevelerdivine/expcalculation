@@ -2046,6 +2046,7 @@ async function monte_carlo_calculate()
   }
   const MainStatusIndexList = await DefineMainStatus(depend_status);
   console.log(MainStatusIndexList);
+  console.log(af_score);
   let ExpDmgList = [];
   for (let x = 0; x < MainStatusIndexList[0].length; x++)
   {
@@ -2057,7 +2058,7 @@ async function monte_carlo_calculate()
         temp_exp_dmg = 0;
         let MainStatusList = [MainStatusIndexList[x],MainStatusIndexList[y], MainStatusIndexList[z]];
         let MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
-        for (let i = 0; i < 10000; i++)
+        for (let i = 0; i < 5000; i++)
         {
           score_distribute = await calculate_score_distribute(af_score,depend_status);
           base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
@@ -2192,7 +2193,7 @@ async function monte_carlo_calculate()
             new_score_distribution = old_score_distribution.slice();
           }
         }
-        ExpDmgList.push(exp_dmg);
+        ExpDmgList.push(temp_exp_dmg);
       }
     }
   }

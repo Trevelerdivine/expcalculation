@@ -2048,6 +2048,7 @@ async function monte_carlo_calculate()
   console.log(MainStatusIndexList);
   console.log(af_score);
   let ExpDmgList = [];
+  let AllPatternResult;
   for (let x = 0; x < MainStatusIndexList[0].length; x++)
   {
     for (let y = 0; y < MainStatusIndexList[1].length; y++)
@@ -2193,7 +2194,8 @@ async function monte_carlo_calculate()
             new_score_distribution = old_score_distribution.slice();
           }
         }
-        ExpDmgList.push(temp_exp_dmg);
+        AllPatternResult = [temp_exp_dmg,MainStatusList]
+        ExpDmgList.push(AllPatternResult);
       }
     }
   }

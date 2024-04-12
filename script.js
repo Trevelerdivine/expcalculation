@@ -1708,11 +1708,13 @@ async function CalculateIdealAfMainStatusBuff(status_array)
 }
 
 async function CalculateExpDmg(
-                               score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
+                               score_distribute, base_parameter, depend_status_index, fixed_buff,
                                team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
                                reaction_check, reaction_count_list, reaction_bonus_list
                               )
-{    
+{   
+  let fixed_status = [0,0,0,0,0,0,0,0];
+  let result_status = [0,0,0,0,0,0,0,0];
   for (let g = 0; g < depend_status_index.length; g++)
   {
     fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
@@ -1842,8 +1844,6 @@ async function monte_carlo_calculate()
   af_score = af_score/2;
 
   let base_parameter;
-  let fixed_status = [0,0,0,0,0,0,0,0];
-  let result_status = [0,0,0,0,0,0,0,0];
   let random_1;
   let random_2;
   let output_exp_dmg;
@@ -1897,7 +1897,7 @@ async function monte_carlo_calculate()
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
       exp_dmg = await CalculateExpDmg(
-                                        score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
+                                        score_distribute, base_parameter, depend_status_index, fixed_buff,
                                         team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
                                         reaction_check, reaction_count_list, reaction_bonus_list
                                       );

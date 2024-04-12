@@ -1111,7 +1111,7 @@ async function calculate_table_status()
   let zetsuen_dmgbuff = 0;
   identify_condition();
 
-  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
+  if (selectedImageIds[0] == 17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
     if(zetsuen_checkbox.checked)
@@ -1684,12 +1684,110 @@ async function DefineMainStatus(DependStatusList) {
   return MainStatusList;
 }
 
+async function CalculateIdealAfMainStatusBuff(status_array)
+{
+  const af_main_status = [0.466, 0.583, 187, 51.8, 0.466, 31.1, 62.2, 0.466, 0.583];
+  let set_main_status = [0,0,0,0,0,0,0,0,0];
+  let af_main_status_buff = [0,0,0,0,0,0,0,0,0];
+  set_main_status[status_array[0]] += 1;
+  set_main_status[status_array[1]] += 1;
+  set_main_status[status_array[2]] += 1;
+  for (let i = 0; i < 7; i++)
+  {
+    af_main_status_buff[i] = af_main_status[i] *  set_main_status[i];
+  }
+  if(char_propaty[0] !=7)
+  {
+    af_main_status_buff[7] = af_main_status[7] *  set_main_status[7];
+  }
+  else
+  {
+    af_main_status_buff[7] = af_main_status[8] *  set_main_status[8];
+  }
+  return af_main_status_buff;
+}
+
+async function CalculateExpDmg(
+                               score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
+                               team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
+                               reaction_check, reaction_count_list, reaction_bonus_list
+                              )
+{    
+  let fixed_status = [0,0,0,0,0,0,0,0];
+  let result_status = [0,0,0,0,0,0,0,0];
+  for (let g = 0; g < depend_status_index.length; g++)
+  {
+    fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
+    result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]];
+  }
+  fixed_status[7] = base_parameter[7] + fixed_buff[7];
+  result_status[7] = fixed_status[7] + team_dynamic_buff[7];
+
+  if (depend_status[0] == 1)
+  {
+    result_status[0] += await (char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
+  }
+
+  if (depend_status[1] == 1)
+  {
+    result_status[1] += await (char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
+  }
+
+  if (depend_status[2] == 1)
+  {
+    result_status[2] += await (char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
+  }
+
+  if (depend_status[3] == 1)
+  {
+    result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
+  }
+
+  if (depend_status[4] == 1)
+  {
+    result_status[4] += await (char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
+  }
+  if (depend_status[5] == 1)
+  {
+    result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
+    if (result_status[5] > 1)
+    {
+      result_status[5] = 1;
+    }
+  }
+
+  if (depend_status[6] == 1)
+  {
+    result_status[6] += await (char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
+  }
+  
+  if(zetsuen_check == 1)
+  {
+    let zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
+    result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
+  }
+  else
+  {
+    result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
+  }
+
+  let basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
+  let exp_dmg;
+  if (depend_status[2] == 1) {
+    exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
+            * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
+  } else {
+    exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
+            * (1 + result_status[7]) * correct_coeff[8];
+  }
+  return exp_dmg
+}
+
 async function monte_carlo_calculate()
 {
   const calculationMessage = document.getElementById("calculationMessage")
   calculationMessage.style.visibility = "visible";
-  console.time('myTimer'); // タイマーを開始
-  //入力チェック
+  console.time('myTimer'); 
   const input_check = identify_condition();
   if (input_check ==1)
   {
@@ -1796,77 +1894,16 @@ async function monte_carlo_calculate()
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
-
     for (let i = 0; i < 10000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
-      
-      for (let g = 0; g < depend_status_index.length; g++)
-      {
-        fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
-        result_status[depend_status_index[g]] = fixed_status[depend_status_index[g]] + team_dynamic_buff[depend_status_index[g]];
-      }
-      fixed_status[7] = base_parameter[7] + fixed_buff[7];
-      result_status[7] = fixed_status[7] + team_dynamic_buff[7];
+      exp_dmg = await CalculateExpDmg(
+                                        score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
+                                        team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
+                                        reaction_check, reaction_count_list, reaction_bonus_list
+                                      );
 
-      if (depend_status[0] == 1)
-      {
-        result_status[0] += await (char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status));
-
-      }
-
-      if (depend_status[1] == 1)
-      {
-        result_status[1] += await (char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status));
-      }
-
-      if (depend_status[2] == 1)
-      {
-        result_status[2] += await (char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status));
-      }
-
-      if (depend_status[3] == 1)
-      {
-        result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
-      }
-
-      if (depend_status[4] == 1)
-      {
-        result_status[4] += await (char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status));
-      }
-      if (depend_status[5] == 1)
-      {
-        result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
-        if (result_status[5] > 1)
-        {
-          result_status[5] = 1;
-        }
-      }
-
-      if (depend_status[6] == 1)
-      {
-        result_status[6] += await (char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status));
-      }
-      
-      if(zetsuen_check == 1)
-      {
-        zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
-        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
-      }
-      else
-      {
-        result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
-      }
-
-      basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
-      if (depend_status[2] == 1) {
-        exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
-      } else {
-        exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                * (1 + result_status[7]) * correct_coeff[8];
-      }
 
       if (temp_exp_dmg < exp_dmg)
       {
@@ -2008,6 +2045,20 @@ async function monte_carlo_calculate()
     {
       af_score_lower_limit = af_score;
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
+    }
+  }
+  const MainStatusIndexList = await DefineMainStatus(depend_status);
+  console.log(MainStatusIndexList);
+  for (let x = 0; x < MainStatusIndexList[0].length; x++)
+  {
+    for (let y = 0; y < MainStatusIndexList[1].length; y++)
+    {
+      for (let z = 0; z < MainStatusIndexList[2].length; z++)
+      {
+        let MainStatusList = [MainStatusIndexList[x],MainStatusIndexList[y], MainStatusIndexList[z]];
+        let MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
+
+      }
     }
   }
   output_exp_dmg = output_exp_dmg.toFixed(0);
@@ -2321,9 +2372,6 @@ async function monte_carlo_calculate()
     document.getElementById("dlt_af_cd").innerHTML = "-";
     document.getElementById("count_cd_score3").innerHTML = "-";
   }
-
-  const MainStatusIndexList = await DefineMainStatus(depend_status);
-  console.log(MainStatusIndexList);
 
   document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
   document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";

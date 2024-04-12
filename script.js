@@ -1713,8 +1713,6 @@ async function CalculateExpDmg(
                                reaction_check, reaction_count_list, reaction_bonus_list
                               )
 {    
-  let fixed_status = [0,0,0,0,0,0,0,0];
-  let result_status = [0,0,0,0,0,0,0,0];
   for (let g = 0; g < depend_status_index.length; g++)
   {
     fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];

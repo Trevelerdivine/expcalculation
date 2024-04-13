@@ -1781,6 +1781,25 @@ async function CalculateExpDmg(
   return exp_dmg
 }
 
+async function calculateAndStoreResult(resultList) {
+  let list = []; // 初期化
+  resultList.forEach(pair => {
+      const num = pair[0]; // 数値を取得
+      for (let i = 0; i < list.length; i++) {
+          if (num > list[i][0]) {
+              list.splice(i, 0, pair);
+              list = list.slice(0, 5); // 上位5つのみを残す
+              break;
+          }
+      }
+      if (list.length < 5) { // listが5未満の場合、末尾に追加
+          list.push(pair);
+      }
+  });
+  return list;
+}
+
+
 async function monte_carlo_calculate()
 {
   const calculationMessage = document.getElementById("calculationMessage")
@@ -1855,6 +1874,7 @@ async function monte_carlo_calculate()
   let new_score_distribution = [0,0,0,0,0,0,0];
   let basic_dmg;
   let n_count = 0;
+  let 
 
   const char_instance = await create_char_instance(base_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status);
@@ -2200,6 +2220,7 @@ async function monte_carlo_calculate()
       }
     }
   }
+  ExpDmgList = await calculateAndStoreResult(ExpDmgList);
   console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);
 

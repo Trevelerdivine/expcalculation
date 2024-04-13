@@ -1890,6 +1890,7 @@ async function monte_carlo_calculate()
   const reaction_count_list = create_reactioncount_list();
   const reaction_bonus_list = create_reactionbonus_list();
   console.log(correct_coeff);
+  console.log(my_exp_dmg);
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
@@ -2267,7 +2268,7 @@ async function monte_carlo_calculate()
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
-    for (let i = 0; i < 10000; i++)
+    for (let i = 0; i < 8000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
@@ -2292,7 +2293,19 @@ async function monte_carlo_calculate()
     {
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
-
+      if (k < 500)
+      {
+        dlt_score = 0.01;
+      }
+      else if (k < 2500)
+      {
+        dlt_score = 0.001;
+      }
+      else
+      {
+        dlt_score = 0.0001;
+      }
+      
       if (random_1 == random_2)
       {
         random_2 = (random_2 + Math.floor((depend_status_index.length - 1)*Math.random() + 1)) % depend_status_index.length;

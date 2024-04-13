@@ -2064,7 +2064,7 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
-  save_status = tempstatus.slice();
+  save_status = temp_status.slice();
   const MainStatusIndexList = await DefineMainStatus(depend_status);
   console.log(MainStatusIndexList);
   console.log(af_score);

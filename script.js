@@ -2555,8 +2555,8 @@ async function monte_carlo_calculate()
 
     document.getElementById(ClockId).innerHTML = main_status_name[ExpDmgList[i-1][1][0]];
     document.getElementById(GobletId).innerHTML = main_status_name[ExpDmgList[i-1][1][1]];
-    document.getElementById(GobletId).innerHTML = main_status_name[ExpDmgList[i-1][1][2]];
-    document.getElementById(DmgrateId).innerHTML = (ExpDmgList[0][0] * 100/ExpDmgList[0][i-1]).toFixed(1) + "％";
+    document.getElementById(CircletId).innerHTML = main_status_name[ExpDmgList[i-1][1][2]];
+    document.getElementById(DmgrateId).innerHTML = (ExpDmgList[0][0] * 100/ExpDmgList[i-1][0]).toFixed(1) + "％";
 
 }
 

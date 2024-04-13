@@ -2073,7 +2073,6 @@ async function monte_carlo_calculate()
   save_af_score = af_score;
   const MainStatusIndexList = await DefineMainStatus(depend_status);
   console.log(MainStatusIndexList);
-  console.log(af_score);
   let ExpDmgList = [];
   let AllPatternResult;
   for (let x = 0; x < MainStatusIndexList[0].length; x++)
@@ -2239,6 +2238,7 @@ async function monte_carlo_calculate()
 
   while (n_count < 30)
   {
+    console.log(af_score);
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
@@ -2380,7 +2380,6 @@ async function monte_carlo_calculate()
     }
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
-    console.log(dmg_error);
     abs_dmg_error = Math.abs(dmg_error);
     if (abs_dmg_error < 1 ) break;
 

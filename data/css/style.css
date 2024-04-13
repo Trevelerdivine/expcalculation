@@ -300,7 +300,7 @@ text-align: center;
 
 .status_table thead tr{
   background-color: #fd6767;
-  color:#a9a9a9;
+  color:#fff;
 }
 
 .status_table tbody th {
@@ -339,7 +339,7 @@ text-align: center;
 
 .main_combination_table thead tr{
   background-color: #7fffd4;
-  color:#fff;
+  color:#a9a9a9;
 }
 
 .main_combination_table tbody th {

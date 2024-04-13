@@ -1865,6 +1865,7 @@ async function monte_carlo_calculate()
   let result_status = [0,0,0,0,0,0,0,0];
   let save_status = [0,0,0,0,0,0,0,0];
   let save_score_distribute = [0,0,0,0,0,0,0,0];
+  let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","元素ダメバフ","物理ダメバフ"]
   let random_1;
   let random_2;
   let output_exp_dmg;
@@ -2223,6 +2224,7 @@ async function monte_carlo_calculate()
     }
   }
   temp_status = save_status.slice();
+  old_score_distribution = save_score_distribute.slice();
   ExpDmgList = await calculateAndStoreResult(ExpDmgList);
   console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);
@@ -2536,7 +2538,6 @@ async function monte_carlo_calculate()
     document.getElementById("dlt_af_cd").innerHTML = "-";
     document.getElementById("count_cd_score3").innerHTML = "-";
   }
-
   document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
   document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";
   document.getElementById("my_af_score").innerHTML = my_af_score.toFixed(1);
@@ -2545,6 +2546,21 @@ async function monte_carlo_calculate()
   document.getElementById("my_af_score3").innerHTML = my_af_score.toFixed(1);
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
+
+  for (let i = 1; i <= 5; i++) {
+    const ClockId = "clock" + i;
+    const GobletId = "goblet" + i;
+    const CircletId = "circlet" + i;
+    const DmgrateId = "dmgrate" + i;
+
+    document.getElementById(ClockId).innerHTML = main_status_name[ExpDmgList[i-1][1][0]];
+    document.getElementById(GobletId).innerHTML = main_status_name[ExpDmgList[i-1][1][1]];
+    document.getElementById(GobletId).innerHTML = main_status_name[ExpDmgList[i-1][1][2]];
+    document.getElementById(DmgrateId).innerHTML = (ExpDmgList[0][0] * 100/ExpDmgList[0][i-1]).toFixed(1) + "％";
+
+}
+
+
   console.log(n_count);
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示

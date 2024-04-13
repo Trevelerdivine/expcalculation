@@ -2064,7 +2064,6 @@ async function monte_carlo_calculate()
         new_score_distribution = old_score_distribution.slice();
       }
     }
-    console.log(temp_exp_dmg);
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
     abs_dmg_error = Math.abs(dmg_error);
@@ -2099,7 +2098,7 @@ async function monte_carlo_calculate()
         temp_exp_dmg = 0;
         MainStatusList = [MainStatusIndexList[0][x],MainStatusIndexList[1][y], MainStatusIndexList[2][z]];
         MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
-        for (let i = 0; i < 8000; i++)
+        for (let i = 0; i < 10000; i++)
         {
           score_distribute = await calculate_score_distribute(af_score,depend_status);
           base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
@@ -2260,12 +2259,12 @@ async function monte_carlo_calculate()
   MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], ExpDmgList[0][1][2]];
   MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
 
-  while (n_count < 15)
+  while (n_count < 20)
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
-    for (let i = 0; i < 8000; i++)
+    for (let i = 0; i < 10000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
@@ -2415,7 +2414,6 @@ async function monte_carlo_calculate()
     }
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
-    console.log(dmg_error);
     abs_dmg_error = Math.abs(dmg_error);
     if (abs_dmg_error < 1 ) break;
 

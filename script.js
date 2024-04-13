@@ -1834,7 +1834,7 @@ async function monte_carlo_calculate()
   let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
   let af_score = my_af_score_distribution[7];
   const my_af_score = my_af_score_distribution[7];
-  const dlt_score = 0.1;
+  let dlt_score;
   let critical_dmg;
   let temp_critical_dmg;
   let excess_crscore;
@@ -1916,7 +1916,7 @@ async function monte_carlo_calculate()
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
-    for (let i = 0; i < 10000; i++)
+    for (let i = 0; i < 8000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
@@ -1941,6 +1941,18 @@ async function monte_carlo_calculate()
     {
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
+      if (k < 500)
+      {
+        dlt_score = 0.01;
+      }
+      else if (k < 2500)
+      {
+        dlt_score = 0.001;
+      }
+      else
+      {
+        dlt_score = 0.0001;
+      }
 
       if (random_1 == random_2)
       {
@@ -2087,7 +2099,7 @@ async function monte_carlo_calculate()
         temp_exp_dmg = 0;
         MainStatusList = [MainStatusIndexList[0][x],MainStatusIndexList[1][y], MainStatusIndexList[2][z]];
         MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
-        for (let i = 0; i < 10000; i++)
+        for (let i = 0; i < 8000; i++)
         {
           score_distribute = await calculate_score_distribute(af_score,depend_status);
           base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
@@ -2111,6 +2123,18 @@ async function monte_carlo_calculate()
         {
           random_1 = Math.floor(depend_status_index.length * Math.random());
           random_2 = Math.floor(depend_status_index.length * Math.random());
+          if (k < 500)
+          {
+            dlt_score = 0.01;
+          }
+          else if (k < 2500)
+          {
+            dlt_score = 0.001;
+          }
+          else
+          {
+            dlt_score = 0.0001;
+          }
 
           if (random_1 == random_2)
           {
@@ -2238,7 +2262,7 @@ async function monte_carlo_calculate()
   MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], ExpDmgList[0][1][2]];
   MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
 
-  while (n_count < 30)
+  while (n_count < 15)
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;

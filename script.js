@@ -2075,6 +2075,8 @@ async function monte_carlo_calculate()
   console.log(MainStatusIndexList);
   let ExpDmgList = [];
   let AllPatternResult;
+  let MainStatusList;
+  let MainStatusBuff;
   for (let x = 0; x < MainStatusIndexList[0].length; x++)
   {
     for (let y = 0; y < MainStatusIndexList[1].length; y++)
@@ -2083,8 +2085,8 @@ async function monte_carlo_calculate()
       {
         exp_dmg = 0;
         temp_exp_dmg = 0;
-        let MainStatusList = [MainStatusIndexList[0][x],MainStatusIndexList[1][y], MainStatusIndexList[2][z]];
-        let MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
+        MainStatusList = [MainStatusIndexList[0][x],MainStatusIndexList[1][y], MainStatusIndexList[2][z]];
+        MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
         for (let i = 0; i < 10000; i++)
         {
           score_distribute = await calculate_score_distribute(af_score,depend_status);
@@ -2233,12 +2235,11 @@ async function monte_carlo_calculate()
   af_score_upper_limit = af_score;
   af_score_lower_limit = 0;
   af_score = save_af_score / 2;
-  MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], MainStatusIndexList[0][1][2]];
+  MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], ExpDmgList[0][1][2]];
   MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
 
   while (n_count < 30)
   {
-    console.log(af_score);
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;

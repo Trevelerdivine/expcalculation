@@ -2232,7 +2232,8 @@ async function monte_carlo_calculate()
 
   n_count = 0;
   af_score_upper_limit = af_score;
-  af_score = 0;
+  af_score_lower_limit = 0;
+  af_score = save_af_score / 2;
   MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], MainStatusIndexList[0][1][2]];
   MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
 

@@ -2230,8 +2230,12 @@ async function monte_carlo_calculate()
   old_score_distribution = save_score_distribute.slice();
   ExpDmgList = await calculateAndStoreResult(ExpDmgList);
 
+  n_count = 0;
+  af_score_upper_limit = af_score;
+  af_score = 0;
   MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], MainStatusIndexList[0][1][2]];
   MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
+
   while (n_count < 30)
   {
     let exp_dmg = 0;

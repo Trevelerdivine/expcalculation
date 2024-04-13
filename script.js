@@ -1890,7 +1890,6 @@ async function monte_carlo_calculate()
   const reaction_count_list = create_reactioncount_list();
   const reaction_bonus_list = create_reactionbonus_list();
   console.log(correct_coeff);
-  console.log(my_exp_dmg);
   let zetsuen_check = 0;
   let zetsuen_dmgbuff;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
@@ -2252,8 +2251,6 @@ async function monte_carlo_calculate()
       }
     }
   }
-  temp_status = save_status.slice();
-  old_score_distribution = save_score_distribute.slice();
   ExpDmgList = await calculateAndStoreResult(ExpDmgList);
 
   n_count = 0;
@@ -2418,6 +2415,7 @@ async function monte_carlo_calculate()
     }
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
+    console.log(dmg_error);
     abs_dmg_error = Math.abs(dmg_error);
     if (abs_dmg_error < 1 ) break;
 

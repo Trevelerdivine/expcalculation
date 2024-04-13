@@ -2380,6 +2380,7 @@ async function monte_carlo_calculate()
     }
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
+    console.log(dmg_error);
     abs_dmg_error = Math.abs(dmg_error);
     if (abs_dmg_error < 1 ) break;
 
@@ -2394,7 +2395,6 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
-  console.log(af_score);
   console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);
   optimaize_af_score = af_score;

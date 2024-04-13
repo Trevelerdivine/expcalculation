@@ -1863,6 +1863,7 @@ async function monte_carlo_calculate()
   let base_parameter;
   let fixed_status = [0,0,0,0,0,0,0,0];
   let result_status = [0,0,0,0,0,0,0,0];
+  let save_status = [0,0,0,0,0,0,0,0];
   let random_1;
   let random_2;
   let output_exp_dmg;
@@ -2063,6 +2064,7 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
+  save_status = tempstatus.slice();
   const MainStatusIndexList = await DefineMainStatus(depend_status);
   console.log(MainStatusIndexList);
   console.log(af_score);
@@ -2078,7 +2080,7 @@ async function monte_carlo_calculate()
         temp_exp_dmg = 0;
         let MainStatusList = [MainStatusIndexList[0][x],MainStatusIndexList[1][y], MainStatusIndexList[2][z]];
         let MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
-        for (let i = 0; i < 5000; i++)
+        for (let i = 0; i < 10000; i++)
         {
           score_distribute = await calculate_score_distribute(af_score,depend_status);
           base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
@@ -2218,6 +2220,7 @@ async function monte_carlo_calculate()
       }
     }
   }
+  temp_status = save_status.slice();
   ExpDmgList = await calculateAndStoreResult(ExpDmgList);
   console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);

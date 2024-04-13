@@ -2064,6 +2064,7 @@ async function monte_carlo_calculate()
         new_score_distribution = old_score_distribution.slice();
       }
     }
+    console.log(temp_exp_dmg);
     output_exp_dmg = temp_exp_dmg;
     dmg_error = my_exp_dmg - output_exp_dmg;
     abs_dmg_error = Math.abs(dmg_error);
@@ -2084,7 +2085,6 @@ async function monte_carlo_calculate()
   save_score_distribute = old_score_distribution.slice();
   save_af_score = af_score;
   const MainStatusIndexList = await DefineMainStatus(depend_status);
-  console.log(MainStatusIndexList);
   let ExpDmgList = [];
   let AllPatternResult;
   let MainStatusList;

@@ -1864,6 +1864,7 @@ async function monte_carlo_calculate()
   let fixed_status = [0,0,0,0,0,0,0,0];
   let result_status = [0,0,0,0,0,0,0,0];
   let save_status = [0,0,0,0,0,0,0,0];
+  let save_score_distribute = [0,0,0,0,0,0,0,0];
   let random_1;
   let random_2;
   let output_exp_dmg;
@@ -2065,6 +2066,7 @@ async function monte_carlo_calculate()
     }
   }
   save_status = temp_status.slice();
+  save_score_distribute = old_score_distribution.slice();
   const MainStatusIndexList = await DefineMainStatus(depend_status);
   console.log(MainStatusIndexList);
   console.log(af_score);
@@ -2544,7 +2546,7 @@ async function monte_carlo_calculate()
   document.getElementById("appro_af_score3").innerHTML = af_score.toFixed(1);
   document.getElementById("dlt_af_score3").innerHTML = (my_af_score-af_score).toFixed(1);
   console.log(n_count);
-  create_radarchart(depend_status, my_af_score_distribution, old_score_distribution)
+  create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 

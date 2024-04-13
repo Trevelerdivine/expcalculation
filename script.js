@@ -2432,6 +2432,7 @@ async function monte_carlo_calculate()
   output_exp_dmg = output_exp_dmg.toFixed(0);
   optimaize_af_score = af_score;
   af_score = save_af_score;
+  old_score_distribution = save_score_distribute;
 
 
   calculationMessage.style.visibility = "hidden";

@@ -1865,6 +1865,8 @@ async function monte_carlo_calculate()
   let result_status = [0,0,0,0,0,0,0,0];
   let save_status = [0,0,0,0,0,0,0,0];
   let save_score_distribute = [0,0,0,0,0,0,0,0];
+  let save_af_score;
+  let optimaize_af_score;
   let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","元素ダメバフ","物理ダメバフ"]
   let random_1;
   let random_2;
@@ -2068,6 +2070,7 @@ async function monte_carlo_calculate()
   }
   save_status = temp_status.slice();
   save_score_distribute = old_score_distribution.slice();
+  save_af_score = af_score;
   const MainStatusIndexList = await DefineMainStatus(depend_status);
   console.log(MainStatusIndexList);
   console.log(af_score);
@@ -2237,7 +2240,7 @@ async function monte_carlo_calculate()
     for (let i = 0; i < 10000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
-      base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
+      base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
       exp_dmg = await CalculateExpDmg(
                                         score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
                                         result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
@@ -2279,7 +2282,7 @@ async function monte_carlo_calculate()
         new_score_distribution[depend_status_index[random_2]] = 0;
       }
 
-      base_parameter = await calculate_fixed_status(new_score_distribution,base_status,af_main_status_buff,depend_status);
+      base_parameter = await calculate_fixed_status(new_score_distribution,base_status,MainStatusBuff,depend_status);
       for (g = 0; g < depend_status_index.length; g++)
       {
         fixed_status[depend_status_index[g]] = base_parameter[depend_status_index[g]] + fixed_buff[depend_status_index[g]];
@@ -2388,10 +2391,12 @@ async function monte_carlo_calculate()
   }
   console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);
+  optimaize_af_score = af_score;
+  af_score = save_af_score;
 
 
   calculationMessage.style.visibility = "hidden";
-  let result = "最適化聖遺物スコア： " + af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
+  let result = "最適化聖遺物スコア： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
   let dlthpScore = document.getElementById("dlt_hp_score");

@@ -1802,8 +1802,6 @@ async function calculateAndStoreResult(resultList) {
 
 async function monte_carlo_calculate()
 {
-  const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
   console.time('myTimer'); 
   const input_check = identify_condition();
   if (input_check ==1)
@@ -2772,6 +2770,20 @@ async function monte_carlo_calculate()
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
+
+
+async function DoCalculate() {
+  const calculationMessage = document.getElementById("calculationMessage");
+  calculationMessage.style.visibility = "visible";
+
+  // メッセージを表示してから計算を開始する
+  await new Promise(resolve => {
+    setTimeout(resolve, 0); // 0ミリ秒後に解決するPromiseを作成し、非同期的に実行を待機
+  });
+
+  await monte_carlo_calculate();
+}
+
 
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {

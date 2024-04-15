@@ -2771,14 +2771,14 @@ async function monte_carlo_calculate()
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
-
 async function DoCalculate() {
   const calculationMessage = document.getElementById("calculationMessage");
   calculationMessage.style.visibility = "visible";
-    // 計算中のメッセージを表示した後、非同期的に計算を開始
-    setTimeout(async () => {
-      await monte_carlo_calculate();
-    }, 0);
+
+  // 計算中のメッセージを表示した後、非同期的に計算を開始
+  await new Promise(requestAnimationFrame);
+
+  await monte_carlo_calculate();
 }
 
 

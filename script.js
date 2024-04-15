@@ -2441,6 +2441,7 @@ async function monte_carlo_calculate()
   output_exp_dmg = output_exp_dmg.toFixed(0);
   optimaize_af_score = af_score;
   af_score = save_af_score;
+  temp_status = save_status.slice();
   old_score_distribution = save_score_distribute;
 
 

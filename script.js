@@ -2257,7 +2257,7 @@ async function monte_carlo_calculate()
   }
   ExpDmgList = await calculateAndStoreResult(ExpDmgList);
 
-  if (MyAfMainList[0] != ExpDmgList[0][1][0] && MyAfMainList[1] != ExpDmgList[0][1][1] && MyAfMainList[2] != ExpDmgList[0][1][2])
+  if (MyAfMainList[0] != ExpDmgList[0][1][0] || MyAfMainList[1] != ExpDmgList[0][1][1] || MyAfMainList[2] != ExpDmgList[0][1][2])
   {
     n_count = 0;
     af_score_upper_limit = af_score;

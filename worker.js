@@ -1,7 +1,7 @@
-self.onmessage = function(event) {
+self.onmessage = async function(event) {
     console.log('計算中...');
     // 重い計算を行う
-    monte_carlo_calculate();
+    await monte_carlo_calculate();
     console.log('計算が完了しました。');
     // 計算結果をメインスレッドに送信する
     self.postMessage('計算が完了しました。');
@@ -2779,18 +2779,6 @@ self.onmessage = function(event) {
     create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
   }
-  
-  
-  async function DoCalculate() {
-    const calculationMessage = document.getElementById("calculationMessage");
-    calculationMessage.style.visibility = "visible";
-      // 計算中のメッセージを表示した後、非同期的に計算を開始
-      setTimeout(async () => {
-        await monte_carlo_calculate();
-        calculationMessage.style.visibility = "hidden"; // 計算が終了したらメッセージを非表示にする
-      }, 0);
-  }
-  
   
   
   function create_radarchart(depend_index, myStatus, TheoreticalStatus) {

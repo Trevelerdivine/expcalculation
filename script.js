@@ -2775,13 +2775,10 @@ async function monte_carlo_calculate()
 async function DoCalculate() {
   const calculationMessage = document.getElementById("calculationMessage");
   calculationMessage.style.visibility = "visible";
-
-  // メッセージを表示してから計算を開始する
-  await new Promise(resolve => {
-    setTimeout(resolve, 0); // 0ミリ秒後に解決するPromiseを作成し、非同期的に実行を待機
-  });
-
-  await monte_carlo_calculate();
+    // 計算中のメッセージを表示した後、非同期的に計算を開始
+    setTimeout(async () => {
+      await monte_carlo_calculate();
+    }, 0);
 }
 
 

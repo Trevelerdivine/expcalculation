@@ -2259,7 +2259,7 @@ async function monte_carlo_calculate()
   MainStatusList = [ExpDmgList[0][1][0],ExpDmgList[0][1][1], ExpDmgList[0][1][2]];
   MainStatusBuff = await CalculateIdealAfMainStatusBuff(MainStatusList);
 
-  while (n_count < 20)
+  while (n_count < 30)
   {
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
@@ -2428,6 +2428,7 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
+  console.log(n_count);
   console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);
   optimaize_af_score = af_score;

@@ -1,7 +1,7 @@
 self.onmessage = function(event) {
     console.log('計算中...');
     // 重い計算を行う
-    await monte_carlo_calculate();
+    monte_carlo_calculate();
     console.log('計算が完了しました。');
     // 計算結果をメインスレッドに送信する
     self.postMessage('計算が完了しました。');

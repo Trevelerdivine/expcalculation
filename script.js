@@ -2771,17 +2771,13 @@ async function monte_carlo_calculate()
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
-async function DisplayCharacter()
-{
-  const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
-}
 
-async function DoCalculate()
-{
-  await DisplayCharacter();
+async function DoCalculate() {
+  const calculationMessage = document.getElementById("calculationMessage");
+  calculationMessage.style.visibility = "visible";
   await monte_carlo_calculate();
 }
+
 
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {

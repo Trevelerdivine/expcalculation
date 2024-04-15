@@ -1802,8 +1802,6 @@ async function calculateAndStoreResult(resultList) {
 
 async function monte_carlo_calculate()
 {
-  const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
   console.time('myTimer'); 
   const input_check = identify_condition();
   if (input_check ==1)
@@ -2772,6 +2770,19 @@ async function monte_carlo_calculate()
   create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
+
+async function DisplayCharacter()
+{
+  const calculationMessage = document.getElementById("calculationMessage")
+  calculationMessage.style.visibility = "visible";
+}
+
+async function DoCalculate()
+{
+  await DisplayCharacter();
+  await monte_carlo_calculate();
+}
+
 
 function create_radarchart(depend_index, myStatus, TheoreticalStatus) {
   let statusList = ["HP%", "防御力％", "元素熟知", "元素チャージ効率", "攻撃力％", "会心率", "会心ダメージ"];

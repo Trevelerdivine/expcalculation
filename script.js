@@ -1802,8 +1802,6 @@ async function calculateAndStoreResult(resultList) {
 
 async function monte_carlo_calculate()
 {
-  const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
   console.time('myTimer'); 
   const input_check = identify_condition();
   if (input_check ==1)

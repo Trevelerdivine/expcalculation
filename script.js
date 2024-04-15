@@ -1916,7 +1916,7 @@ async function monte_carlo_calculate()
     let exp_dmg = 0;
     let temp_exp_dmg = 0;
     n_count = n_count + 1;
-    for (let i = 0; i < 8000; i++)
+    for (let i = 0; i < 10000; i++)
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
@@ -1937,15 +1937,15 @@ async function monte_carlo_calculate()
     old_score_distribution = temp_score_distribute.slice();
     new_score_distribution = temp_score_distribute.slice();
 
-    for (let k = 0; k < 5000; k++)
+    for (let k = 0; k < 10000; k++)
     {
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
-      if (k < 1000)
+      if (k < 2000)
       {
         dlt_score = 0.1;
       }
-      else if (k < 4000)
+      else if (k < 8000)
       {
         dlt_score = 0.01;
       }
@@ -2118,15 +2118,15 @@ async function monte_carlo_calculate()
         old_score_distribution = temp_score_distribute.slice();
         new_score_distribution = temp_score_distribute.slice();
 
-        for (let k = 0; k < 5000; k++)
+        for (let k = 0; k < 10000; k++)
         {
           random_1 = Math.floor(depend_status_index.length * Math.random());
           random_2 = Math.floor(depend_status_index.length * Math.random());
-          if (k < 1000)
+          if (k < 2000)
           {
             dlt_score = 0.1;
           }
-          else if (k < 4000)
+          else if (k < 8000)
           {
             dlt_score = 0.01;
           }
@@ -2285,15 +2285,15 @@ async function monte_carlo_calculate()
     old_score_distribution = temp_score_distribute.slice();
     new_score_distribution = temp_score_distribute.slice();
 
-    for (let k = 0; k < 5000; k++)
+    for (let k = 0; k < 10000; k++)
     {
       random_1 = Math.floor(depend_status_index.length * Math.random());
       random_2 = Math.floor(depend_status_index.length * Math.random());
-      if (k < 1000)
+      if (k < 2000)
       {
         dlt_score = 0.1;
       }
-      else if (k < 4000)
+      else if (k < 8000)
       {
         dlt_score = 0.01;
       }
@@ -2436,7 +2436,7 @@ async function monte_carlo_calculate()
 
 
   calculationMessage.style.visibility = "hidden";
-  let result = "最適化聖遺物スコア： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
+  let result = "最適化聖遺物スコア (メインステータス考慮)： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
   let dlthpScore = document.getElementById("dlt_hp_score");

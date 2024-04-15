@@ -1802,6 +1802,8 @@ async function calculateAndStoreResult(resultList) {
 
 async function monte_carlo_calculate()
 {
+  const calculationMessage = document.getElementById("calculationMessage")
+  calculationMessage.style.visibility = "visible";
   console.time('myTimer'); 
   const input_check = identify_condition();
   if (input_check ==1)
@@ -2771,7 +2773,7 @@ async function monte_carlo_calculate()
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
-async function DisplayCharacter()
+function DisplayCharacter()
 {
   const calculationMessage = document.getElementById("calculationMessage")
   calculationMessage.style.visibility = "visible";

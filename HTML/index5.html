@@ -1197,6 +1197,7 @@
 
     <script>
         let SelectedCharId = "56";
+        let CharConstellations;
         let selectedWeaponId = "127";
         let weapon_type_index = 4;
         const characters = [
@@ -1396,7 +1397,7 @@
                     imgElement.src = image.src;
                     imgElement.alt = image.alt;
                     imgElement.id = image.id; // 画像にID属性を設定
-                    imgElement.addEventListener("click", function() {
+                    imgElement.addEventListener("click", async function() {
                         // クリックされた画像のsrc属性を取得
                         const imageUrl = this.src;
                         const CharId = this.id;
@@ -1406,7 +1407,8 @@
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
                         SelectedCharId = parseInt(upperDigits); // 文字列を数値に変換
                         const imageContainer = document.getElementById("CharImage");
-                        DisplayCharStatus(CharSortOrder);
+                        await DisplayCharStatus(CharSortOrder);
+                        await show_char_statsform();
                         // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
                         if (existingImage) {
@@ -1438,13 +1440,13 @@
             }
         }
 
-        function DisplayCharStatus(SortOrder){
+        async function DisplayCharStatus(SortOrder){
             // SortOrder の値が有効なインデックスであることを確認
             if (SortOrder >= 0 && SortOrder < UserData.data.avatarInfoList.length)
             {
                 let CharLevel = UserData.data.avatarInfoList[SortOrder].propMap["4001"].val;
                 // talentIdList が存在するかどうかを確認し、その長さを取得
-                let CharConstellations = UserData.data.avatarInfoList[SortOrder].talentIdList ? UserData.data.avatarInfoList[SortOrder].talentIdList.length : 0;
+                CharConstellations = UserData.data.avatarInfoList[SortOrder].talentIdList ? UserData.data.avatarInfoList[SortOrder].talentIdList.length : 0;
                 const LevelDisplay = document.getElementById("CharLevel");
                 const ConsteDisplay = document.getElementById("CharConstellations");
                 LevelDisplay.innerHTML = "Lv." + CharLevel;

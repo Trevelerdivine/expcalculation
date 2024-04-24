@@ -1434,7 +1434,7 @@
                         const CharSortOrder = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
                         // 画像を表示するdiv要素を取得
                         const imageContainer = document.getElementById("CharImage");
-
+                        DisplayCharStatus(CharSortOrder);
                         // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
                         if (existingImage) {

@@ -1554,10 +1554,6 @@
             try {
                 const response = await fetch(url);
 
-                if (response.status === 500) {
-                    throw new Error('EnkaNetWorkサーバーのエラー');
-                }
-
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
@@ -1608,10 +1604,17 @@
                     imageGrid.appendChild(imgElement);
                 });
             } catch (error) {
-                console.error('Error fetching data:', error);
-                const nicknameElement = document.getElementById('nickname');
-                nicknameElement.textContent = "入力したUIDに問題があるようです。";
-                return;
+                if (response.status === 500)
+                {
+                    throw new Error('EnkaNetWorkサーバーのエラー');   
+                }
+                else
+                {
+                    console.error('Error fetching data:', error);
+                    const nicknameElement = document.getElementById('nickname');
+                    nicknameElement.textContent = "入力したUIDに問題があるようです。";
+                    return;
+                }
             }
         }
 

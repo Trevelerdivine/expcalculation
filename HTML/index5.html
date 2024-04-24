@@ -1510,8 +1510,6 @@
                     imgElement.src = image.src;
                     imgElement.alt = image.alt;
                     imgElement.id = image.id; // 画像にID属性を設定
-                    imageGrid.appendChild(imgElement);
-
                     imgElement.addEventListener("click", function() {
                         // クリックされた画像のsrc属性を取得
                         const imageUrl = this.src;
@@ -1526,6 +1524,7 @@
                         imageContainer.innerHTML = "";
                         imageContainer.appendChild(imageElement);
                     });
+                    imageGrid.appendChild(imgElement);
                 });
             } catch (error) {
                 if(ErrorId == 500)

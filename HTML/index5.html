@@ -109,9 +109,9 @@
                     <div>
                         <table>
                             <td id = choose_char_weapon >
-                                <span id="CharLevel"  style="font-size: smaller;">Lv.</span>    
+                                <span id="CharLevel"  style="font-size: smaller; width: 100px; height: 25px;">Lv.</span>    
                                 <br>
-                                <span id="CharConstellations"  style="font-size: smaller;">C</span>  
+                                <span id="CharConstellations"  style="font-size: smaller; width: 100px; height: 25px;">C</span>  
                             </td>
                             <td>
                                 <label class="open_char" for="pop-up_char">
@@ -1470,12 +1470,12 @@
             // SortOrder の値が有効なインデックスであることを確認
             if (SortOrder >= 0 && SortOrder < UserData.data.avatarInfoList.length)
             {
-                let CharLavel = UserData.data.avatarInfoList[SortOrder].propMap["4001"].val;
+                let CharLevel = UserData.data.avatarInfoList[SortOrder].propMap["4001"].val;
                 // talentIdList が存在するかどうかを確認し、その長さを取得
                 let CharConstellations = UserData.data.avatarInfoList[SortOrder].talentIdList ? UserData.data.avatarInfoList[SortOrder].talentIdList.length : 0;
-                const LevelDisplay = document.getElementById("CharLavel");
+                const LevelDisplay = document.getElementById("CharLevel");
                 const ConsteDisplay = document.getElementById("CharConstellations");
-                LevelDisplay.innerHTML = "Lv." + CharLavel;
+                LevelDisplay.innerHTML = "Lv." + CharLevel;
                 ConsteDisplay.innerHTML = "C" + CharConstellations;
             }
             else

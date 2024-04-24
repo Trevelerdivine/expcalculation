@@ -1554,13 +1554,6 @@
             try {
                 const response = await fetch(url);
 
-                if (response.status === 500) {
-                    throw new Error('EnkaNetWorkサーバーのエラー');
-                    const nicknameElement = document.getElementById('nickname');
-                    nicknameElement.textContent = "EnkaNetWorkサーバーのエラー";
-                    return;
-                }
-
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
@@ -1573,10 +1566,10 @@
                 const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
                 console.log(avatarIds);
                 nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
-                             "<br>" +
-                             "取得アチーブメント数：" + UserData.data.playerInfo.finishAchievementNum + 
-                             "<br>" +
-                             "キャラクターID：" + avatarIds;
+                            "<br>" +
+                            "取得アチーブメント数：" + UserData.data.playerInfo.finishAchievementNum + 
+                            "<br>" +
+                            "キャラクターID：" + avatarIds;
                 
                 for (let i = 0; i < avatarIds.length; i++)
                 {
@@ -1611,10 +1604,16 @@
                     imageGrid.appendChild(imgElement);
                 });
             } catch (error) {
-                console.error('Error fetching data:', error);
-                const nicknameElement = document.getElementById('nickname');
-                nicknameElement.textContent = "入力したUIDに問題があるようです。";
-                return;
+                if (error.response && error.response.status === 500)
+                {
+                    throw new Error('EnkaNetWorkサーバーのエラー');   
+                }
+                else
+                {
+                    const nicknameElement = document.getElementById('nickname');
+                    nicknameElement.textContent = "入力したUIDに問題があるようです。";
+                    return;
+                }
             }
         }
 

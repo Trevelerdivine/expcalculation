@@ -109,13 +109,9 @@
                     <div>
                         <table>
                             <td id = choose_char_weapon >
-                                <fieldset id="char_level" style="width: 100px; height: 25px;">
-                                    <span id="CharLevel">Lv.</span>    
-                                </fieldset>
+                                <span id="CharLevel"  style="font-size: smaller;">Lv.</span>    
                                 <br>
-                                <fieldset id="CharConstellations" style="width: 100px; height: 25px;">
-                                    <span id="CharLevel">C</span>  
-                                </fieldset>
+                                <span id="CharConstellations"  style="font-size: smaller;">C</span>  
                             </td>
                             <td>
                                 <label class="open_char" for="pop-up_char">
@@ -1362,8 +1358,6 @@
 
         let UserData;
 
-
-
         // fetchData() 関数を定義
         async function fetchData() {
             let ErrorId;
@@ -1404,7 +1398,8 @@
                 for (let i = 0; i < avatarIds.length; i++)
                 {
                     let charId = parseInt(avatarIds[i]) - 10000000;
-                    if(char_flag[charId] == 1)
+                    let CharAdvanceLevel = UserData.data.avatarInfoList[i].propMap[2001].val;
+                    if(char_flag[charId] == 1 && CharAdvanceLevel > 3)
                     {
                         char_names.push(characters[charId]);
                         char_ids.push(charId);
@@ -1412,6 +1407,7 @@
                 }
                 console.log(char_names);
                 console.log(char_ids);
+                console.log(CharAdvanceLevel);
                 const images = [];
 
                 // 画像を生成して配列に追加
@@ -1419,7 +1415,7 @@
                     const image = {
                         src: characterImages[char_ids[i]],
                         alt: `Image ${i}`,
-                        id: char_ids[i] // 画像に割り当てるID属性を生成
+                        id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
                         
                     };
                     images.push(image);
@@ -1435,7 +1431,8 @@
                     imgElement.addEventListener("click", function() {
                         // クリックされた画像のsrc属性を取得
                         const imageUrl = this.src;
-
+                        const CharId = this.id;
+                        const CharSortOrder = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
                         // 画像を表示するdiv要素を取得
                         const imageContainer = document.getElementById("CharImage");
 
@@ -1469,6 +1466,25 @@
                 return;
             }
         }
+
+        function DisplayCharStatus(SortOrder){
+            // SortOrder の値が有効なインデックスであることを確認
+            if (SortOrder >= 0 && SortOrder < UserData.data.avatarInfoList.length)
+            {
+                let CharLavel = UserData.data.avatarInfoList[SortOrder].propMap["4001"].val;
+                // talentIdList が存在するかどうかを確認し、その長さを取得
+                let CharConstellations = UserData.data.avatarInfoList[SortOrder].talentIdList ? UserData.data.avatarInfoList[SortOrder].talentIdList.length : 0;
+                const LevelDisplay = document.getElementById("CharLavel");
+                const ConsteDisplay = document.getElementById("CharConstellations");
+                LevelDisplay.innerHTML = "Lv." + CharLavel;
+                ConsteDisplay.innerHTML = "C" + CharConstellations;
+            }
+            else
+            {
+                console.error("Invalid SortOrder value");
+            }
+        }
+
 
 // ボタンをクリックしたときに fetchData() 関数を実行する
 document.getElementById('fetchButton').onclick = function() {

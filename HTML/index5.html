@@ -1566,10 +1566,10 @@
                 const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
                 console.log(avatarIds);
                 nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
-                             "<br>" +
-                             "取得アチーブメント数：" + UserData.data.playerInfo.finishAchievementNum + 
-                             "<br>" +
-                             "キャラクターID：" + avatarIds;
+                            "<br>" +
+                            "取得アチーブメント数：" + UserData.data.playerInfo.finishAchievementNum + 
+                            "<br>" +
+                            "キャラクターID：" + avatarIds;
                 
                 for (let i = 0; i < avatarIds.length; i++)
                 {
@@ -1604,19 +1604,21 @@
                     imageGrid.appendChild(imgElement);
                 });
             } catch (error) {
-                if (response.status === 500)
+                console.error('Error fetching data:', error);
+                const nicknameElement = document.getElementById('nickname');
+                if (error.response && error.response.status === 500)
                 {
+                    nicknameElement.textContent = "EnkaNetWorkサーバーのエラー";
                     throw new Error('EnkaNetWorkサーバーのエラー');   
                 }
                 else
                 {
-                    console.error('Error fetching data:', error);
-                    const nicknameElement = document.getElementById('nickname');
                     nicknameElement.textContent = "入力したUIDに問題があるようです。";
-                    return;
                 }
+                return;
             }
         }
+
 
 // ボタンをクリックしたときに fetchData() 関数を実行する
 document.getElementById('fetchButton').onclick = function() {

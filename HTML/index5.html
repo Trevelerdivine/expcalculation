@@ -101,30 +101,21 @@
         <br>
         <div class="image-grid" id="imageGrid">
         </div>
+        <br>
+        <br>
         <div class="wrapper">
             <div>
                 <div>
                     <div>
                         <table>
                             <td id = choose_char_weapon >
-                                <select id="char_level" style="width: 100px; height: 25px;">
-                                    <option value="60+">Lv.60+</option>
-                                    <option value="70">Lv.70</option>
-                                    <option value="70+">Lv.70+</option>
-                                    <option value="80">Lv.80</option>
-                                    <option value="80+">Lv.80+</option>
-                                    <option value="90" selected>Lv.90</option>
-                                </select>
+                                <fieldset id="char_level" style="width: 100px; height: 25px;">
+                                    <span id="CharLevel">Lv.</span>    
+                                </fieldset>
                                 <br>
-                                <select id="char_constellations" onchange="show_char_statsform()" style="width: 100px; height: 25px;">
-                                    <option value="0" selected>C0</option>
-                                    <option value="1">C1</option>
-                                    <option value="2">C2</option>
-                                    <option value="2">C3</option>
-                                    <option value="3">C4</option>
-                                    <option value="3">C5</option>
-                                    <option value="4">C6</option>
-                                </select>
+                                <fieldset id="CharConstellations" style="width: 100px; height: 25px;">
+                                    <span id="CharLevel">C</span>  
+                                </fieldset>
                             </td>
                             <td>
                                 <label class="open_char" for="pop-up_char">
@@ -461,77 +452,6 @@
         <br>
         <div class="wrapper">
             <div>
-                <div id="status_setting">
-                    <form class="af-buff-form">
-                        <table>
-                            <thead>
-                                <tr>
-                                <th></th>
-                                <th>聖遺物ステータス上昇</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr id="hp_form">
-                                    <td><label for="af_hp">HP</label></td>
-                                    <td>
-                                        <div>
-                                            <input type="number" id="af_hp" required min="0" name="af_hp" placeholder="HP">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="attck_form">
-                                    <td><label for="af_attck">攻撃力</label></td>
-                                    <td>
-                                        <div>
-                                            <input type="number" id="af_attck" required min="0" name="af_attck" placeholder="攻撃力">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="deff_form">
-                                    <td><label for="af_deff">防御力</label></td>
-                                    <td>
-                                        <div>
-                                            <input type="number" id="af_deff" required min="0" name="af_deff" placeholder="防御力">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="elm_form">
-                                    <td><label for="af_elm">元素熟知</label></td>
-                                    <td>
-                                        <div>
-                                            <input type="number" id="af_elm" required min="0" name="af_elm" placeholder="元素熟知">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="elm_charge_form">
-                                    <td><label for="af_elm_charge">元素チャージ効率</label></td>
-                                    <td>
-                                        <div>
-                                            <input type="number" id="af_elm_charge" required min="0" name="af_elm_charge" placeholder="元素チャージ効率">(%)
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="cr_form">
-                                    <td><label for="af_cr">会心率</label></td>
-                                    <td>
-                                        <div>
-                                            <input type="number" id="af_cr" required min="0" name="af_cr" placeholder="会心率">(%)
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="cd_form">
-                                    <td><label for="af_cd">会心ダメージ</label></td>
-                                    <td>
-                                        <div>
-                                            <input type="number" id="af_cd" required min="0" name="af_cd" placeholder="会心ダメージ">(%)
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-                <br>
                 <div id="team_buff_info">
                     <form class="team-buff-form">
                         <table class="table-borderless" style="width: auto;">

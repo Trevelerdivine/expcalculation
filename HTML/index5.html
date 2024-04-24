@@ -128,7 +128,9 @@
                             </td>
                             <td>
                                 <label class="open_char" for="pop-up_char">
-                                    <img class="popup-image" src="../character/nahida.webp" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;" id = CharImage>
+                                    <div id = "CharImage">
+                                        <img class="popup-image" src="../character/nahida.webp" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
+                                    </div>
                                 </label>
                                 <div id="Charindex-display" style=" display: flex; justify-content: center; align-items: center;">
                                 </div>
@@ -1517,12 +1519,18 @@
                         // 画像を表示するdiv要素を取得
                         const imageContainer = document.getElementById("CharImage");
 
-                        // 画像を表示するdiv要素に画像を追加
-                        const imageElement = document.createElement("img");
-                        imageElement.src = imageUrl;
-                        imageElement.alt = "Clicked Image";
-                        imageContainer.innerHTML = "";
-                        imageContainer.appendChild(imageElement);
+                        // 画像を置き換える
+                        const existingImage = imageContainer.querySelector("img");
+                        if (existingImage) {
+                            existingImage.src = imageUrl;
+                            existingImage.alt = "Clicked Image";
+                        } else {
+                            // 既存の画像が存在しない場合は新しい画像を追加
+                            const imageElement = document.createElement("img");
+                            imageElement.src = imageUrl;
+                            imageElement.alt = "Clicked Image";
+                            imageContainer.appendChild(imageElement);
+                        }
                     });
                     imageGrid.appendChild(imgElement);
                 });

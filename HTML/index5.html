@@ -1532,6 +1532,8 @@
             "",
         ];
 
+        let User_data;
+
 
 
         // fetchData() 関数を定義
@@ -1557,15 +1559,15 @@
                 }
                 let char_ids = [];
                 let char_names = [];
-                const data = await response.json();
-                console.log(data);
+                User_data = await response.json();
+                console.log(User_data);
                 // ニックネームをHTMLに出力する
                 const nicknameElement = document.getElementById('nickname');
-                const avatarIds = data.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
+                const avatarIds = User_data.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
                 console.log(avatarIds);
-                nicknameElement.innerHTML = "ユーザーネーム：" + data.data.playerInfo.nickname +
+                nicknameElement.innerHTML = "ユーザーネーム：" + User_data.data.playerInfo.nickname +
                              "<br>" +
-                             "取得アチーブメント数：" + data.data.playerInfo.finishAchievementNum + 
+                             "取得アチーブメント数：" + User_data.data.playerInfo.finishAchievementNum + 
                              "<br>" +
                              "キャラクターID：" + avatarIds;
                 

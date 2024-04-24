@@ -1,6 +1,5 @@
 async function show_char_statsform()
   {
-    const char_constellations = document.getElementById("char_constellations").value;
     const characterInfo = document.getElementById("characterInfo");
     const elemental_reaction = document.getElementById("element_action");
     const method_container = document.getElementById("attack_method");
@@ -39,7 +38,7 @@ async function show_char_statsform()
         { text: "通常攻撃（1ループ）", value: "1" },
         { text: "重撃", value: "6" },
         { text: "スキル（滅浄三業）", value: "16" },
-        { text: "滅浄三業·破業障(6重)", disabled: char_constellations < 4, value: "17" }
+        { text: "滅浄三業·破業障(6重)", disabled: CharConstellations < 4, value: "17" }
       ];
   
       createchar_attackmethod(options);
@@ -73,7 +72,7 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
     
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -83,7 +82,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[2].id, true);
         traitLabel = createLabel(traits[2].id, traits[2].label);
@@ -125,7 +124,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -136,7 +135,7 @@ async function show_char_statsform()
         characterInfo.appendChild(Lyney_secondbuff_list);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -158,7 +157,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
 
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -198,7 +197,7 @@ async function show_char_statsform()
         ];
     
         createchar_attackmethod(options);
-        if (char_constellations > 0)
+        if (CharConstellations > 0)
         {
           traitCheckbox = createCheckbox(traits[0].id, true);
           traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -207,7 +206,7 @@ async function show_char_statsform()
           characterInfo.appendChild(traitLabel);
           characterInfo.appendChild(document.createElement("br"));
         }
-        if (char_constellations > 1)
+        if (CharConstellations > 1)
         {
           traitCheckbox = createCheckbox(traits[1].id, true);
           traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -247,7 +246,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -274,7 +273,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -284,7 +283,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
 
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -322,7 +321,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 0)
+      if (CharConstellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -331,7 +330,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -342,7 +341,7 @@ async function show_char_statsform()
         characterInfo.appendChild(diluc_talent1_list);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[2].id, true);
         traitLabel = createLabel(traits[2].id, traits[2].label);
@@ -351,7 +350,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[3].id, true);
         traitLabel = createLabel(traits[3].id, traits[3].label);
@@ -378,7 +377,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -387,7 +386,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -414,7 +413,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -423,7 +422,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -459,7 +458,7 @@ async function show_char_statsform()
       ];
     
       createchar_attackmethod(options);
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -468,7 +467,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -506,7 +505,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -535,7 +534,7 @@ async function show_char_statsform()
       let talent2_label = createLabel("xiangling_talent2", "激辛唐辛子：攻撃力+10%");
       char_talent.appendChild(talent2_box);
       char_talent.appendChild(talent2_label);
-      if (char_constellations > 0)
+      if (CharConstellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -544,7 +543,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -575,7 +574,7 @@ async function show_char_statsform()
       characterInfo.appendChild(traitLabel);
       characterInfo.appendChild(document.createElement("br"));
 
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -600,8 +599,8 @@ async function show_char_statsform()
       });
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "通常攻撃1ループ（6重 水付与）", disabled: char_constellations < 4, value: "1" },
-        { text: "重撃（6重 水付与）", disabled: char_constellations < 4, value: "6" },
+        { text: "通常攻撃1ループ（6重 水付与）", disabled: CharConstellations < 4, value: "1" },
+        { text: "重撃（6重 水付与）", disabled: CharConstellations < 4, value: "6" },
         { text: "スキル（サロン・ソリティア）", value: "16" },
         { text: "元素爆発(万民のカルナバル)", value: "21" }
       ];
@@ -652,7 +651,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -696,7 +695,7 @@ async function show_char_statsform()
       char_talent.appendChild(talent2_label);
       char_talent.appendChild(yelan_talent1_list);
 
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitLabel = createLabel(traits[0].id, traits[0].label);
         const yelan_selectlist = createSelectList("yelan_forth_buff", 1, 4, "", "体", 4);
@@ -731,7 +730,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 0)
+      if (CharConstellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -768,7 +767,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -822,7 +821,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -858,7 +857,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 0)
+      if (CharConstellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -867,7 +866,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -908,7 +907,7 @@ async function show_char_statsform()
         { text: "元素爆発(降衆天華)", value: "21" },
       ];
 
-      if (char_constellations > 0)
+      if (CharConstellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -917,7 +916,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -1008,7 +1007,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1040,7 +1039,7 @@ async function show_char_statsform()
       createchar_attackmethod(options);
     
 
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -1049,7 +1048,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[2].id, true);
         traitLabel = createLabel(traits[2].id, traits[2].label);
@@ -1086,7 +1085,7 @@ async function show_char_statsform()
         { text: "元素爆発（奥義・夢想真説）", value: "21" },
       ];
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1117,7 +1116,7 @@ async function show_char_statsform()
         { text: "元素爆発（天街巡遊）", value: "21" },
       ];
 
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1125,7 +1124,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitLabel = createLabel(traits[1].id, traits[1].label);
         const keqing_conste6_list = createanySelectList("keqing_conste6", 0, 4, "+", "%", 3, 4);
@@ -1163,7 +1162,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
 
-      if (char_constellations == 4)
+      if (CharConstellations == 4)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1198,7 +1197,7 @@ async function show_char_statsform()
         }
       ];
 
-      if (char_constellations == 4)
+      if (CharConstellations == 4)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1243,21 +1242,21 @@ async function show_char_statsform()
         },
       ];
 
-      if (char_constellations > 0)
+      if (CharConstellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
-        if (char_constellations > 1)
+        if (CharConstellations > 1)
         {
           traitCheckbox = createCheckbox(traits[1].id, true);
           traitLabel = createLabel(traits[1].id, traits[1].label);
           characterInfo.appendChild(traitCheckbox);
           characterInfo.appendChild(traitLabel);
           characterInfo.appendChild(document.createElement("br"));
-          if (char_constellations > 2)
+          if (CharConstellations > 2)
           {
             traitCheckbox = createCheckbox(traits[2].id, true);
             traitLabel = createLabel(traits[2].id, traits[2].label);
@@ -1390,7 +1389,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitLabel = createLabel(traits[0].id, traits[0].label);
         const elmbuff_list = createanySelectList("alhaitham_second_buff", 0, 4, "+", "", 4, 50);
@@ -1399,7 +1398,7 @@ async function show_char_statsform()
         characterInfo.appendChild(elmbuff_list);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         elementsToAddToCharTalent = [
           createLabel("alhaitham_fourth1", "　琢光鏡生成数 "),
@@ -1412,7 +1411,7 @@ async function show_char_statsform()
           characterInfo.appendChild(element);
         });
       }
-      if (char_constellations == 4)
+      if (CharConstellations == 4)
       {
         traitCheckbox = createCheckbox(traits[2].id, true);
         traitLabel = createLabel(traits[2].id, traits[2].label);
@@ -1449,7 +1448,7 @@ async function show_char_statsform()
         { text: "元素爆発(造成・蔓纏いの矢)", value: "21" },
       ];
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1458,7 +1457,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -1500,7 +1499,7 @@ async function show_char_statsform()
         { text: "元素爆発(秘法・サプライズ特別配送)", value: "21" },
       ];
       createchar_attackmethod(options);
-      if (char_constellations == 4)
+      if (CharConstellations == 4)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1545,7 +1544,7 @@ async function show_char_statsform()
       characterInfo.appendChild(traitLabel);
       characterInfo.appendChild(document.createElement("br"));
 
-      if (char_constellations == 4)
+      if (CharConstellations == 4)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1581,7 +1580,7 @@ async function show_char_statsform()
         { text: "元素爆発(晴天を衝く霰弾のサルート)", value: "21" },
       ];
 
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1627,7 +1626,7 @@ async function show_char_statsform()
         { text: "元素スキル(魔殺絶技・岩牛発破!)", value: "16" },
       ];
 
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1636,7 +1635,7 @@ async function show_char_statsform()
         characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -1678,7 +1677,7 @@ async function show_char_statsform()
         { text: "元素爆発(誕生式・大地の潮)", value: "21" },
       ];
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1691,7 +1690,7 @@ async function show_char_statsform()
         characterInfo.appendChild(second_conste_list);
         characterInfo.appendChild(document.createElement("br"));
       }
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[1].id, true);
         traitLabel = createLabel(traits[1].id, traits[1].label);
@@ -1742,7 +1741,7 @@ async function show_char_statsform()
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃１ループ(爆発中)", value: "1" },
       ];
-      if (char_constellations > 3)
+      if (CharConstellations > 3)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);
@@ -1801,7 +1800,7 @@ async function show_char_statsform()
       characterInfo.appendChild(traitLabel);
       characterInfo.appendChild(document.createElement("br"));
 
-      if (char_constellations > 0)
+      if (CharConstellations > 0)
       {
         traitCheckbox = createCheckbox(traits[0].id, false);
         traitLabel = createLabel(traits[0].id, traits[0].label);

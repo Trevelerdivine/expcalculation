@@ -9,7 +9,7 @@
     <script src="../data/character/char_class/char_class.js"></script>
     <script src="../data/weapon/weapon_class/weapon_class.js"></script>
     <script src="../data/artifact/af_class.js"></script>
-    <script src="../show_char_statsform.js"></script>
+    <script src="../show_char_statsform5.js"></script>
     <script src="../show_weapon_statsform.js"></script>
     <script src="../show_artifact.js"></script>
     <script src="../show_attackmethod.js"></script>
@@ -109,9 +109,14 @@
                     <div>
                         <table>
                             <td id = choose_char_weapon >
-                                <fieldset id="CharLevel"  style="font-size: smaller; width: 100px; height: 25px;">Lv.</fieldset>    
+                                <fieldset id="CharLevel" style="font-size: smaller; width: 100px; height: 25px; position: relative;">
+                                    <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Lv.</span>
+                                </fieldset>
                                 <br>
-                                <fieldset id="CharConstellations"  style="font-size: smaller; width: 100px; height: 25px;">C</fieldset>  
+                                <fieldset id="CharConstellations" style="font-size: smaller; width: 100px; height: 25px; position: relative;">
+                                    <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">C</span>
+                                </fieldset>
+                                
                             </td>
                             <td>
                                 <label class="open_char" for="pop-up_char">
@@ -1191,6 +1196,9 @@
     </footer>
 
     <script>
+        let SelectedCharId = "56";
+        let selectedWeaponId = "127";
+        let weapon_type_index = 4;
         const characters = [
             "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
             "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
@@ -1394,6 +1402,9 @@
                         const CharId = this.id;
                         const CharSortOrder = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
                         // 画像を表示するdiv要素を取得
+                        const digits = String(number); // 数値を文字列に変換
+                        const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
+                        SelectedCharId = parseInt(upperDigits); // 文字列を数値に変換
                         const imageContainer = document.getElementById("CharImage");
                         DisplayCharStatus(CharSortOrder);
                         // 画像を置き換える

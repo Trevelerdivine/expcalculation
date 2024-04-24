@@ -1532,6 +1532,8 @@
             "",
         ];
 
+        let UserData;
+
 
 
         // fetchData() 関数を定義
@@ -1552,20 +1554,24 @@
             try {
                 const response = await fetch(url);
 
+                if (response.status === 500) {
+                    throw new Error('EnkaNetWorkサーバーのエラー');
+                }
+
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
                 let char_ids = [];
                 let char_names = [];
-                const data = await response.json();
-                console.log(data);
+                UserData = await response.json();
+                console.log(UserData);
                 // ニックネームをHTMLに出力する
                 const nicknameElement = document.getElementById('nickname');
-                const avatarIds = data.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
+                const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
                 console.log(avatarIds);
-                nicknameElement.innerHTML = "ユーザーネーム：" + data.data.playerInfo.nickname +
+                nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
                              "<br>" +
-                             "取得アチーブメント数：" + data.data.playerInfo.finishAchievementNum + 
+                             "取得アチーブメント数：" + UserData.data.playerInfo.finishAchievementNum + 
                              "<br>" +
                              "キャラクターID：" + avatarIds;
                 

@@ -1402,7 +1402,7 @@
                         const CharId = this.id;
                         const CharSortOrder = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
                         // 画像を表示するdiv要素を取得
-                        const digits = String(number); // 数値を文字列に変換
+                        const digits = String(CharId); // 数値を文字列に変換
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
                         SelectedCharId = parseInt(upperDigits); // 文字列を数値に変換
                         const imageContainer = document.getElementById("CharImage");

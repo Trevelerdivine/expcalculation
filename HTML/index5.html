@@ -1398,7 +1398,7 @@
                 for (let i = 0; i < avatarIds.length; i++)
                 {
                     let charId = parseInt(avatarIds[i]) - 10000000;
-                    let CharAdvanceLevel = UserData.data.avatarInfoList[i].propMap[2001].val;
+                    let CharAdvanceLevel = UserData.data.avatarInfoList[i].propMap["2001"].val;
                     if(char_flag[charId] == 1 && CharAdvanceLevel > 3)
                     {
                         char_names.push(characters[charId]);

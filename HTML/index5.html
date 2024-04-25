@@ -1460,12 +1460,12 @@
         }
 
         function AfSetReffer(SortOrder){
-            let AfJsonList = UserData.data.avatarInfoList;
+            let AfJsonList = UserData.data.avatarInfoList[SortOrder];
             // "itemId" の値を格納するための配列を初期化
             let AfIdList = [];
 
             // JSON配列の各要素を走査して、"itemId" の要素を取り出す
-            AfJsonList.forEach(item => {
+            Object.values(AfJsonList).forEach(item => {
                 // "charStatus" 配列が存在する場合
                 if (item.hasOwnProperty("equipList")) {
                     // "charStatus" 配列内の各オブジェクトを走査

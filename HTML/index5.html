@@ -1465,16 +1465,10 @@
             let AfIdList = [];
 
             // JSON配列の各要素を走査して、"itemId" の要素を取り出す
-            Object.values(AfJsonList).forEach(item => {
-                // "charStatus" 配列が存在する場合
-                if (item.hasOwnProperty("equipList")) {
-                    // "charStatus" 配列内の各オブジェクトを走査
-                    item.equipList.forEach(status => {
-                        // オブジェクトから "itemId" の要素を取り出して配列に追加
-                        if (status.hasOwnProperty("itemId")) {
-                            AfIdList.push(status["itemId"]);
-                        }
-                    });
+            AfJsonList.forEach(obj => {
+                // オブジェクトから "itemId" の要素を取り出して配列に追加
+                if (obj.hasOwnProperty("itemId")) {
+                    AfIdList.push(obj["itemId"]);
                 }
             });
             console.log(AfIdList);

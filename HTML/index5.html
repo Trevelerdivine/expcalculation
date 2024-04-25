@@ -109,11 +109,11 @@
                     <div>
                         <table>
                             <td id = choose_char_weapon >
-                                <fieldset id="CharLevel" style="font-size: smaller; width: 100px; height: 25px; position: relative; text-align: center;">
+                                <span id="CharLevel" style = " width: 100px; height: 25px;">
                                     Lv.
-                                </fieldset>
+                                </span>
                                 <br>
-                                <fieldset id="CharConstellations" style="font-size: smaller; width: 100px; height: 25px; position: relative; text-align: center;">
+                                <fieldset id="CharConstellations" style="width: 100px; height: 25px;">
                                     C
                                 </fieldset>                                
                             </td>
@@ -1450,7 +1450,7 @@
                 const LevelDisplay = document.getElementById("CharLevel");
                 const ConsteDisplay = document.getElementById("CharConstellations");
                 LevelDisplay.innerHTML = "Lv." + CharLevel;
-                ConsteDisplay.innerHTML = "C" + CharConstellations;
+                ConsteDisplay.innerHTML = "命の星座" + CharConstellations + "重";
             }
             else
             {

@@ -1457,7 +1457,7 @@
             }
         }
 
-        function AfSetReffer(SortOrder){
+        async function AfSetReffer(SortOrder){
             let AfJsonList = UserData.data.avatarInfoList[SortOrder].equipList;
             // "itemId" の値を格納するための配列を初期化
             let AfIdList = [];
@@ -1499,9 +1499,37 @@
                     selectedImageIds.push(result[i][0]);
                     selectedImageIds.push(result[i][0]);
                 }
-                console.log(selectedImageIds);
+            }
+            console.log(selectedImageIds);
+
+            let set_eff1;
+            let set_eff2;
+            let AfName1;
+            let AfName2
+            const afresponse = await fetch("../data/url/url.json");
+            const afdata = await afresponse.json();
+            
+            if (selectedImageIds[0] === selectedImageIds[1]) {
+                set_eff1 = afdata["AfMap"][selectedImageIds[0].String()]["2セット効果"];
+                set_eff2 = afdata["AfMap"][selectedImageIds[1].String()]["4セット効果"];
+                AfName1 = afdata["AfMap"][selectedImageIds[0].String()]["名前"];
+                AfName2 = afdata["AfMap"][selectedImageIds[1].String()]["名前"];
+                document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
+                document.getElementById("set_eff2").innerHTML = `${AfName2}：4セット効果<br>${set_eff2}`;
+            } else {
+                set_eff1 = afdata["AfMap"][selectedImageIds[0].String()]["2セット効果"];
+                set_eff2 = afdata["AfMap"][selectedImageIds[1].String()]["2セット効果"];
+                AfName1 = afdata["AfMap"][selectedImageIds[0].String()]["名前"];
+                AfName2 = afdata["AfMap"][selectedImageIds[1].String()]["名前"];
+                document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
+                document.getElementById("set_eff2").innerHTML = `${AfName1}：2セット効果<br>${set_eff2}`;
             }
 
+            // 選択された聖遺物の画像設定
+            selectedImageIds.forEach((selectedImageId, index) => {
+            const selectedImageSrc = afdata["AfMap"][selectedImageIds.String()]["url"] || '';
+            console.log(selectedImageSrc);
+            });
 
             return result;
         }

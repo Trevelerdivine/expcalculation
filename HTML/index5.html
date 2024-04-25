@@ -370,8 +370,8 @@
             <div>
                 <div>
                     <label class="open" for="pop-up" style="display: inline-block;">
-                        <img class="popup-image" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
-                        <img class="popup-image" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
+                        <img id ="AfImage1" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
+                        <img id ="AfImage2" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
                     </label>
                 </div>
                 <br>
@@ -1526,10 +1526,10 @@
             }
 
             // 選択された聖遺物の画像設定
-            selectedImageIds.forEach((selectedImageId, index) => {
-            const selectedImageSrc = afdata["AfMap"][selectedImageIds.toString()]["url"] || '';
-            console.log(selectedImageSrc);
-            });
+            const selectedImageSrc1 = afdata["AfMap"][selectedImageIds[0].toString()]["url"] || '';
+            const selectedImageSrc2 = afdata["AfMap"][selectedImageIds[1].toString()]["url"] || '';
+            document.getElementById("AfImage1").src = selectedImageSrc1;
+            document.getElementById("AfImage2").src = selectedImageSrc2;
 
             return result;
         }

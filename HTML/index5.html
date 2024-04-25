@@ -1479,7 +1479,7 @@
             });
             
             // 各リスト内の文字列の上2文字を取り出して数字に変換する
-            let AfNumList = AfIdList.map(item => parseInt(item.substring(0, 2)));
+            let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));
 
             // 数値の出現回数を記録するオブジェクトを作成
             const countMap = {};

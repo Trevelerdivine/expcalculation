@@ -1530,10 +1530,10 @@
             const selectedImageSrc2 = afdata["AfMap"][SelectedAfId[1].toString()]["url"] || '';
             document.getElementById("AfImage1").src = selectedImageSrc1;
             document.getElementById("AfImage2").src = selectedImageSrc2;
-            selectedImageIds[0] = selectedImageSrc1 = afdata["AfMap"][SelectedAfId[0].toString()]["id"] || 0;
-            selectedImageIds[1] = selectedImageSrc1 = afdata["AfMap"][SelectedAfId[1].toString()]["id"] || 0;
+            selectedImageIds[0] = afdata["AfMap"][SelectedAfId[0].toString()]["id"] || 0;
+            selectedImageIds[1] = afdata["AfMap"][SelectedAfId[1].toString()]["id"] || 0;
             console.log(selectedImageIds);
-            
+
             return result;
         }
 

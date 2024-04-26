@@ -1331,22 +1331,38 @@
 
         window.addEventListener("DOMContentLoaded", function() {
             showTable("table1","tablebutton1");
+            showOption("option1", "parameterbutton1");
         });
 
         function showTable(tableId, buttonId)
-  {
-    // すべての表コンテナを非表示にする
-    let tableContainers = document.getElementsByClassName("tablestyle");
-    let buttonstyle = document.getElementsByClassName("button-2");
-    for (var i = 0; i < tableContainers.length; i++) 
-    {
-      tableContainers[i].classList.remove("active");
-      buttonstyle[i].classList.remove("button-active");
-    }
-    // 選択された表コンテナを表示する
-    document.getElementById(tableId).classList.add("active");
-    document.getElementById(buttonId).classList.add("button-active");
-  }
+        {
+            // すべての表コンテナを非表示にする
+            let tableContainers = document.getElementsByClassName("tablestyle");
+            let buttonstyle = document.getElementsByClassName("button-2");
+            for (var i = 0; i < tableContainers.length; i++) 
+            {
+            tableContainers[i].classList.remove("active");
+            buttonstyle[i].classList.remove("button-active");
+            }
+            // 選択された表コンテナを表示する
+            document.getElementById(tableId).classList.add("active");
+            document.getElementById(buttonId).classList.add("button-active");
+        }
+
+        function showOption(tableId, buttonId)
+        {
+            // すべての表コンテナを非表示にする
+            let optionContainers = document.getElementsByClassName("option-field");
+            let buttonstyle = document.getElementsByClassName("button-1");
+            for (let i = 0; i < optionContainers.length; i++) 
+            {
+            optionContainers[i].classList.remove("active");
+            buttonstyle[i].classList.remove("button-active");
+            }
+            // 選択された表コンテナを表示する
+            document.getElementById(tableId).classList.add("active");
+            document.getElementById(buttonId).classList.add("button-active");
+        }
 
         // fetchData() 関数を定義
         async function fetchData() {

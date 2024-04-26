@@ -1200,7 +1200,7 @@
         let selectedWeaponId = "127";
         let weapon_type_index = 4;
         let char_propaty = [5,0];
-        let selectedImageIds;
+        let selectedImageIds = [0,0];
         const characters = [
             "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
             "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
@@ -1488,19 +1488,19 @@
 
             // ソートされたキーの配列を使って、数値とその個数のペアを作成
             const result = sortedKeys.map(key => [parseInt(key), countMap[key]]);
-            selectedImageIds = [];
+            let SelectedAfId = [];
             for (let i = 0; i < result.length; i++) {
                 if (result[i][1] > 1 && result[i][1] < 4)
                 {
-                    selectedImageIds.push(result[i][0]);
+                    SelectedAfId.push(result[i][0]);
                 }
                 else if (result[i][1] > 3 && result[i][1] < 6)
                 {
-                    selectedImageIds.push(result[i][0]);
-                    selectedImageIds.push(result[i][0]);
+                    SelectedAfId.push(result[i][0]);
+                    SelectedAfId.push(result[i][0]);
                 }
             }
-            console.log(selectedImageIds);
+            console.log(SelectedAfId);
 
             let set_eff1;
             let set_eff2;
@@ -1509,28 +1509,31 @@
             const afresponse = await fetch("../data/url/url.json");
             const afdata = await afresponse.json();
             
-            if (selectedImageIds[0] === selectedImageIds[1]) {
-                set_eff1 = afdata["AfMap"][selectedImageIds[0].toString()]["2セット効果"];
-                set_eff2 = afdata["AfMap"][selectedImageIds[1].toString()]["4セット効果"];
-                AfName1 = afdata["AfMap"][selectedImageIds[0].toString()]["名前"];
-                AfName2 = afdata["AfMap"][selectedImageIds[1].toString()]["名前"];
+            if (SelectedAfId[0] === SelectedAfId[1]) {
+                set_eff1 = afdata["AfMap"][SelectedAfId[0].toString()]["2セット効果"];
+                set_eff2 = afdata["AfMap"][SelectedAfId[1].toString()]["4セット効果"];
+                AfName1 = afdata["AfMap"][SelectedAfId[0].toString()]["名前"];
+                AfName2 = afdata["AfMap"][SelectedAfId[1].toString()]["名前"];
                 document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
                 document.getElementById("set_eff2").innerHTML = `${AfName2}：4セット効果<br>${set_eff2}`;
             } else {
-                set_eff1 = afdata["AfMap"][selectedImageIds[0].toString()]["2セット効果"];
-                set_eff2 = afdata["AfMap"][selectedImageIds[1].toString()]["2セット効果"];
-                AfName1 = afdata["AfMap"][selectedImageIds[0].toString()]["名前"];
-                AfName2 = afdata["AfMap"][selectedImageIds[1].toString()]["名前"];
+                set_eff1 = afdata["AfMap"][SelectedAfId[0].toString()]["2セット効果"];
+                set_eff2 = afdata["AfMap"][SelectedAfId[1].toString()]["2セット効果"];
+                AfName1 = afdata["AfMap"][SelectedAfId[0].toString()]["名前"];
+                AfName2 = afdata["AfMap"][SelectedAfId[1].toString()]["名前"];
                 document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
                 document.getElementById("set_eff2").innerHTML = `${AfName1}：2セット効果<br>${set_eff2}`;
             }
 
             // 選択された聖遺物の画像設定
-            const selectedImageSrc1 = afdata["AfMap"][selectedImageIds[0].toString()]["url"] || '';
-            const selectedImageSrc2 = afdata["AfMap"][selectedImageIds[1].toString()]["url"] || '';
+            const selectedImageSrc1 = afdata["AfMap"][SelectedAfId[0].toString()]["url"] || '';
+            const selectedImageSrc2 = afdata["AfMap"][SelectedAfId[1].toString()]["url"] || '';
             document.getElementById("AfImage1").src = selectedImageSrc1;
             document.getElementById("AfImage2").src = selectedImageSrc2;
-
+            selectedImageIds[0] = selectedImageSrc1 = afdata["AfMap"][SelectedAfId[0].toString()]["id"] || 0;
+            selectedImageIds[1] = selectedImageSrc1 = afdata["AfMap"][SelectedAfId[1].toString()]["id"] || 0;
+            console.log(selectedImageIds);
+            
             return result;
         }
 

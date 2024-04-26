@@ -1585,7 +1585,7 @@
             });
 
             AfIdList.pop();
-            const fourthDigits = numbers.map(number => {
+            const fourthDigits = AfIdList.map(number => {
                 const numberAsString = number.toString();
                 const fourthDigit = numberAsString.charAt(3); // 4桁目の数値のインデックスは3
                 return parseInt(fourthDigit); // 文字列から数値に変換して返す

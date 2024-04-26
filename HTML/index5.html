@@ -1396,10 +1396,7 @@
                 const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
                 console.log(avatarIds);
                 nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
-                             "<br>" +
-                             "取得アチーブメント数：" + UserData.data.playerInfo.finishAchievementNum + 
-                             "<br>" +
-                             "キャラクターID：" + avatarIds;
+                             "<br>";
                 
                 for (let i = 0; i < avatarIds.length; i++)
                 {
@@ -1442,6 +1439,7 @@
                         const imageContainer = document.getElementById("CharImage");
                         await DisplayCharStatus(CharSortOrder);
                         AfSetReffer(CharSortOrder);
+                        await SetMainStatus(CharSortOrder);
                         await show_char_statsform();
                         // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
@@ -1570,6 +1568,29 @@
             console.log(selectedImageIds);
 
             return result;
+        }
+
+
+        async function SetMainStatus(SortOrder){
+            let AfJsonList = UserData.data.avatarInfoList[SortOrder].equipList;
+            // "itemId" の値を格納するための配列を初期化
+            let AfIdList = [];
+
+            // JSON配列の各要素を走査して、"itemId" の要素を取り出す
+            AfJsonList.forEach(status => {
+                // オブジェクトから "itemId" の要素を取り出して配列に追加
+                if (status.hasOwnProperty("itemId")) {
+                    AfIdList.push(status["itemId"]);
+                }
+            });
+
+            AfIdList.pop();
+            const fourthDigits = numbers.map(number => {
+                const numberAsString = number.toString();
+                const fourthDigit = numberAsString.charAt(3); // 4桁目の数値のインデックスは3
+                return parseInt(fourthDigit); // 文字列から数値に変換して返す
+            });
+            console.log(fourthDigits);
         }
 
 

@@ -374,7 +374,7 @@
                         <img id ="AfImage2" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
                     </label>
                 </div>
-                
+                <br>
                 <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 1em;">
                     <span style="width: 30%;">
                         <div>時の砂</div>
@@ -1428,7 +1428,9 @@
                         await DisplayCharStatus(CharSortOrder);
                         AfSetReffer(CharSortOrder);
                         await SetMainStatus(CharSortOrder);
+                        await SetMainStatus(CharSortOrder);
                         await show_char_statsform();
+
                         // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
                         if (existingImage) {
@@ -1560,11 +1562,12 @@
 
 
         async function SetMainStatus(SortOrder){
-            let MainName = ["HP%", "HP固定値", "攻撃力%", "攻撃力固定値", "防御力%", "防御力固定値", "元素熟知", "チャージ効率", "会心率", "会心ダメージ"];
             let AfJsonList = UserData.data.avatarInfoList[SortOrder].equipList;
             let ClockMainStatus = "装備無し";
             let GobletMainStatus = "装備無し";
             let CircletMainStatus = "装備無し";
+            const afresponse = await fetch("../data/url/MainStatusName.json");
+            const AfNameList = await afresponse.json();
             // "itemId" の値を格納するための配列を初期化
             let AfIdList = [];
 
@@ -1587,17 +1590,20 @@
             for (let i = 0; i <fourthDigits.length; i++) {
                 if (fourthDigits == 5)
                 {
-
+                    ClockMainStatus = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
                 }
                 else if (fourthDigits == 1)
                 {
-
+                    GobletMainStatus = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
                 }
                 else if (fourthDigits == 3)
                 {
-
+                    CircletMainStatus = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
                 }
             }
+            document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
+            document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
+            document.getElementById("CircletMainStatus").innerHTML = CircletMainStatus;
         }
 
 

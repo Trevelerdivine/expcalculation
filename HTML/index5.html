@@ -375,32 +375,21 @@
                     </label>
                 </div>
                 <br>
-                <select id="clock_mainstatus">
-                    <option disabled selected >時計メインステ</option>
-                    <option value="0">HP％</option>
-                    <option value="4">攻撃力％</option>
-                    <option value="1">防御力％</option>
-                    <option value="2">元素熟知</option>
-                    <option value="3">元素チャージ効率</option>
-                </select>
-                <select id="goblet_mainstatus">
-                    <option disabled selected>杯メインステ</option>
-                    <option value="0">HP％</option>
-                    <option value="4">攻撃力％</option>
-                    <option value="1">防御力％</option>
-                    <option value="2">元素熟知</option>
-                    <option value="7">元素ダメージバフ</option> 
-                    <option value="8">物理ダメージバフ</option> 
-                </select>
-                <select id="circlet_mainstatus">
-                    <option disabled selected>冠メインステ</option>
-                    <option value="0">HP％</option>
-                    <option value="4">攻撃力％</option>
-                    <option value="1">防御力％</option>
-                    <option value="2">元素熟知</option>
-                    <option value="5">会心率</option>  
-                    <option value="6">会心ダメージ</option>  
-                </select>
+                <span>
+                    <div>時の砂</dv>
+                    <br>
+                    <div id = "ClockMainStatus"></div>
+                </span>
+                <span>
+                    <div>空の杯</dv>
+                    <br>
+                    <div id = "GobletMainStatus"></div>
+                </span>
+                <span>
+                    <div>理の冠</dv>
+                    <br>
+                    <div id = "CircletMainStatus"></div>
+                </span>
                 <div id="index-display"></div>
                 <fieldset id="artifactInfo" style="max-width: 476px;">
                     <legend>聖遺物情報</legend>
@@ -1572,7 +1561,11 @@
 
 
         async function SetMainStatus(SortOrder){
+            let MainName = ["HP%", "HP固定値", "攻撃力%", "攻撃力固定値", "防御力%", "防御力固定値", "元素熟知", "チャージ効率", "会心率", "会心ダメージ"];
             let AfJsonList = UserData.data.avatarInfoList[SortOrder].equipList;
+            let ClockMainStatus = "装備無し";
+            let GobletMainStatus = "装備無し";
+            let CircletMainStatus = "装備無し";
             // "itemId" の値を格納するための配列を初期化
             let AfIdList = [];
 
@@ -1591,6 +1584,21 @@
                 return parseInt(fourthDigit); // 文字列から数値に変換して返す
             });
             console.log(fourthDigits);
+
+            for (let i = 0; i <fourthDigits.length; i++) {
+                if (fourthDigits == 5)
+                {
+
+                }
+                else if (fourthDigits == 1)
+                {
+
+                }
+                else if (fourthDigits == 3)
+                {
+
+                }
+            }
         }
 
 

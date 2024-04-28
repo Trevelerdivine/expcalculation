@@ -1566,6 +1566,7 @@
             let ClockMainStatus = "装備無し";
             let GobletMainStatus = "装備無し";
             let CircletMainStatus = "装備無し";
+            let PropName;
             const afresponse = await fetch("../data/url/MainStatusName.json");
             const AfNameList = await afresponse.json();
             // "itemId" の値を格納するための配列を初期化
@@ -1590,15 +1591,18 @@
             for (let i = 0; i <fourthDigits.length; i++) {
                 if (fourthDigits[i] == 5)
                 {
-                    ClockMainStatus = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
+                    PropName = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
+                    ClockMainStatus = AfNameList[PropName]["名前"];
                 }
                 else if (fourthDigits[i] == 1)
                 {
-                    GobletMainStatus = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
+                    PropName = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
+                    GobletMainStatus = AfNameList[PropName]["名前"];
                 }
                 else if (fourthDigits[i] == 3)
                 {
-                    CircletMainStatus = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
+                    PropName = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
+                    CircletMainStatus = AfNameList[PropName]["名前"];
                 }
             }
             document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;

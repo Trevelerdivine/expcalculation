@@ -1197,7 +1197,7 @@
         let weapon_type_index = 4;
         let char_propaty = [5,0];
         let selectedImageIds = [0,0];
-        const CharDataJson = fetch("../data/JsonData/CharacterData.json").json();
+        let CharDataJson;
         const characters = [
             "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
             "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
@@ -1253,6 +1253,8 @@
         // fetchData() 関数を定義
         async function fetchData() {
             let ErrorId;
+            const DataResponse = await fetch("../data/JsonData/CharacterData.json");
+            CharDataJson =  DataResponse.json();
             const img_grid = document.getElementById("imageGrid");
             img_grid.innerHTML = "";
             const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
@@ -1317,8 +1319,6 @@
                         // クリックされた画像のsrc属性を取得
                         const imageUrl = this.src;
                         const CharId = this.id;
-                        const DataResponse = await fetch("../data/JsonData/CharacterData.json");
-                        const CharDataJson =  DataResponse.json();
                         const CharSortOrder = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
                         // 画像を表示するdiv要素を取得
                         const digits = String(CharId); // 数値を文字列に変換

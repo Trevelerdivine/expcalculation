@@ -1537,7 +1537,7 @@
             let set_eff2;
             let AfName1;
             let AfName2
-            const afresponse = await fetch("../data/url/url.json");
+            const afresponse = await fetch("../data/JsonData/url.json");
             const afdata = await afresponse.json();
             
             if (SelectedAfId[0] === SelectedAfId[1]) {
@@ -1575,7 +1575,7 @@
             let GobletMainStatus = "装備無し";
             let CircletMainStatus = "装備無し";
             let PropName;
-            const afresponse = await fetch("../data/url/MainStatusName.json");
+            const afresponse = await fetch("../data/JsonData/MainStatusName.json");
             const AfNameList = await afresponse.json();
             // "itemId" の値を格納するための配列を初期化
             let AfIdList = [];
@@ -1663,7 +1663,7 @@
                 }
             }
 
-            const afresponse = await fetch("../data/url/url.json");
+            const afresponse = await fetch("../data/JsonData/url.json");
             const afdata = await afresponse.json();
             let AfSerch;
             for (let i = 0; i < SelectedAfId.length; i++) {

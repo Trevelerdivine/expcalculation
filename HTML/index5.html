@@ -1197,7 +1197,8 @@
         let weapon_type_index = 4;
         let char_propaty = [5,0];
         let selectedImageIds = [0,0];
-        const CharDataJson =  await fetch("../data/JsonData/CharacterData.json").json();
+        const CharRespomse = await fetch("../data/JsonData/CharacterData.json")
+        const CharDataJson = CharRespomse.json();
         const characters = [
             "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
             "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",

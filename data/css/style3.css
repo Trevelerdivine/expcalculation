@@ -602,35 +602,37 @@
     max-width: 500px; /* 適切な幅に調整してください */
 }
 
-.accordion-container {
-  max-width: 600px;
-  margin: 0 auto;
+details {
+    border: 1px solid #ccc;
+    width: 100%; /* 追加 */
+    max-width: 500px; /* 追加 */
+    margin-bottom: 20px;
 }
 
-.accordion-item {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  overflow: hidden;
+details summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px;
+    color: #242323;
+    font-weight: bold;
+    position: relative; /* 追加 */
 }
 
-.accordion-title {
-  font-weight: bold;
-  padding: 10px 15px;
-  cursor: pointer;
-  background-color: #adb2cf;
-  color: #fff;
-  outline: none;
+details summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    transition: transform 0.3s ease; /* アニメーション追加 */
 }
 
-.accordion-content {
-  padding: 10px 15px;
-  border-top: 1px solid #ccc;
+details[open] summary::after {
+    content: '-';
+    transform: rotate(90deg); /* アイコンを回転させて閉じた状態を示す */
 }
 
-.accordion-item[open] .accordion-title {
-  background-color: #90aaf7;
-  color: #fff;
+details p {
+    margin: 0;
+    padding: 20px;
 }
 
 

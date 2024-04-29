@@ -598,6 +598,9 @@
   details {
     border: 1px solid #ccc;
     max-width: 500px; /* 追加 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   details:not(:last-child) {

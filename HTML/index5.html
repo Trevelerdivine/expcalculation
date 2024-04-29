@@ -1290,7 +1290,7 @@
                 {
                     let charId = parseInt(avatarIds[i]) - 10000000;
                     let CharAdvanceLevel = UserData.data.avatarInfoList[i].propMap["1002"].val;
-                    if(CharDataJson["CharMap"][charId] && CharAdvanceLevel > 3)
+                    if(CharDataJson["CharMap"][String(CharId)] && CharAdvanceLevel > 3)
                     {
                         char_names.push(characters[charId]);
                         char_ids.push(charId);

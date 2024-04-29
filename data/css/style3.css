@@ -614,7 +614,6 @@
   }
 
   details {
-    border: 1px solid #ccc;
     width: 100%; /* 追加 */
     max-width: 500px; /* 追加 */
     margin-bottom: 20px;

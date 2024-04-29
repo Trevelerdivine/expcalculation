@@ -1,0 +1,160 @@
+{
+    "星4":{
+        "片手剣": {
+            "1": {
+                "名前": "西風剣",
+                "url": "../weapon_img/Sword/FavoniusSword.webp",
+                "id":"29"
+            },
+            "2": {
+                "名前": "笛の剣",
+                "url": "../weapon_img/Sword/TheFlute.webp",
+                "id":"28"
+            },
+            "3": {
+                "名前": "祭礼の剣",
+                "url": "../weapon_img/Sword/SacrificialSword.webp",
+                "id":"27"
+            },
+            "5": {
+                "名前": "匣中龍吟",
+                "url": "../weapon_img/Sword/LionsRoar.webp",
+                "id":"25"
+            },
+            "6": {
+                "名前": "斬岩·試作",
+                "url": "../weapon_img/Sword/PrototypeRancour.webp",
+                "id":"24"
+            },
+            "7": {
+                "名前": "鉄蜂の刺し",
+                "url": "../weapon_img/Sword/IronSting.webp",
+                "id":"23"
+            },
+            "8": {
+                "名前": "黒岩の長剣",
+                "url": "../weapon_img/Sword/BlackcliffLongsword.webp",
+                "id":"22"
+            },
+            "9": {
+                "名前": "黒剣",
+                "url": "../weapon_img/Sword/TheBlackSword.webp",
+                "id":"21"
+            },
+            "10": {
+                "名前": "ダークアレイの閃光",
+                "url": "../weapon_img/Sword/TheAlleyFlash.webp",
+                "id":"19"
+            },
+            "13": {
+                "名前": "腐植の剣",
+                "url": "../weapon_img/Sword/FesteringDesire.webp",
+                "id":"20"
+            },
+            "14": {
+                "名前": "天目影打",
+                "url": "../weapon_img/Sword/AmenomaKageuchi.webp",
+                "id":"18"
+            },
+            "15": {
+                "名前": "シナバースピンドル",
+                "url": "../weapon_img/Sword/CinnabarSpindle.webp",
+                "id":"17"
+            },
+            "16": {
+                "名前": "籠釣瓶一心",
+                "url": "../weapon_img/Sword/KagotsurubeIsshin.webp",
+                "id":"16"
+            },
+            "17": {
+                "名前": "原木刀",
+                "url": "../weapon_img/Sword/SapwoodBlade.webp",
+                "id":"15"
+            },
+            "18": {
+                "名前": "サイフォスの月明かり",
+                "url": "../weapon_img/Sword/XiphosMoonlight.webp",
+                "id":"14"
+            },
+            "22": {
+                "名前": "東花坊時雨",
+                "url": "../weapon_img/Sword/ToukabouShigure.webp",
+                "id":"13"
+            },
+            "24": {
+                "名前": "狼牙",
+                "url": "../weapon_img/Sword/WolfFang.webp",
+                "id":"10"
+            },
+            "25": {
+                "名前": "海淵のフィナーレ",
+                "url": "../weapon_img/Sword/FinaleoftheDeep.webp",
+                "id":"12"
+            },
+            "26": {
+                "名前": "サーンドルの渡し守",
+                "url": "../weapon_img/Sword/FleuveCendreFerryman.webp",
+                "id":"11"
+            },
+            "27": {
+                "名前": "船渠剣",
+                "url": "../weapon_img/Sword/TheDockhandsAssistant.webp",
+                "id":"9"
+            }
+        }
+    },
+    "星5":{
+        "片手剣": {
+            "1": {
+                "名前": "風鷹剣",
+                "url": "../weapon_img/Sword/AquilaFavonia.webp",
+                "id":"8"
+            },
+            "2": {
+                "名前": "天空の刃",
+                "url": "../weapon_img/Sword/SkywardBlade.webp",
+                "id":"7"
+            },
+            "3": {
+                "名前": "蒼古なる自由への誓い",
+                "url": "../weapon_img/Sword/FreedomSworn.webp",
+                "id":"4"
+            },
+            "4": {
+                "名前": "斬山の刃",
+                "url": "../weapon_img/Sword/SummitShaper.webp",
+                "id":"6"
+            },
+            "5": {
+                "名前": "磐岩結緑",
+                "url": "../weapon_img/Sword/PrimordialJadeCutter.webp",
+                "id":"5"
+            },
+            "9": {
+                "名前": "霧切の廻光",
+                "url": "../weapon_img/Sword/MistsplitterReforged.webp",
+                "id":"3"
+            },
+            "10": {
+                "名前": "波乱月白経津",
+                "url": "../weapon_img/Sword/HaranGeppakuFutsu.webp",
+                "id":"2"
+            },
+            "11": {
+                "名前": "聖顕の鍵",
+                "url": "../weapon_img/Sword/KeyofKhajNisut.webp",
+                "id":"1"
+            },
+            "12": {
+                "名前": "萃光の裁葉",
+                "url": "../weapon_img/Sword/LightofFoliarIncision.webp",
+                "id":"0"
+            },
+            "13": {
+                "名前": "静水流転の輝き",
+                "url": "../weapon_img/Sword/SplendorOfTranquilWaters.webp",
+                "id":"155"
+            }
+        }
+    }
+}

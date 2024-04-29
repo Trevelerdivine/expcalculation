@@ -595,48 +595,42 @@
     text-align: center; /* 中央揃え */
   }
 
-  details {
+  .centered-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+details {
     border: 1px solid #ccc;
     width: 100%; /* 追加 */
     max-width: 500px; /* 追加 */
-  }
-  
-  details:not(:last-child) {
     margin-bottom: 20px;
-  }
-  
-  details summary {
+}
+
+details summary {
     list-style: none;
     cursor: pointer;
     padding: 20px;
     color: #242323;
     font-weight: bold;
-  }
-  
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-  
-  details summary::before {
-    font-family: FontAwesome;
-    content: '\f067';
+    position: relative;
+}
+
+details summary::before {
+    content: '\25B6'; /* 右向きの矢印 */
     margin-right: 20px;
-  }
-  
-  details[open] summary::before {
-    content: '\f068';
-  }
-  
-  details p {
+    transition: transform 0.3s ease; /* アニメーション追加 */
+}
+
+details[open] summary::before {
+    transform: rotate(90deg); /* 開いているときは下向きの矢印に回転 */
+}
+
+details p {
     margin: 0;
     padding: 20px;
-  }
-  
-  .centered-details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+}
 
 
   

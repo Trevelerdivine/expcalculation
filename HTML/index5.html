@@ -1324,7 +1324,7 @@
                         // 画像を表示するdiv要素を取得
                         const digits = String(CharId); // 数値を文字列に変換
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
-                        SelectedCharId = parseInt(upperDigits); // 文字列を数値に変換
+                        SelectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
                         const imageContainer = document.getElementById("CharImage");
                         await DisplayCharStatus(CharSortOrder);
                         AfSetReffer(CharSortOrder);

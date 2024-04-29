@@ -1220,6 +1220,7 @@
             showOption("option1", "parameterbutton1");
             const DataResponse = await fetch("../data/JsonData/CharacterData.json");
             CharDataJson =  DataResponse.json();
+            console.log(CharDataJson);
         });
 
         function showTable(tableId, buttonId)

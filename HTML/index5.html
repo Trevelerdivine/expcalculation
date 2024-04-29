@@ -1197,6 +1197,7 @@
         let weapon_type_index = 4;
         let char_propaty = [5,0];
         let selectedImageIds = [0,0];
+        const CharDataJson =  await fetch("../data/JsonData/CharacterData.json").json();
         const characters = [
             "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
             "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
@@ -1210,117 +1211,6 @@
             "キャンディス", "ナヒーダ", "レイラ", "放浪者", "ファルザン", "ヨォーヨ", "アルハイゼン", "ディシア",
             "ミカ", "カーヴェ", "白朮", "リネット", "リネ", "フレミネ", "リオセスリ", "ヌヴィレット",
             "シャルロット", "フリーナ", "シュヴルーズ", "ナヴィア", "嘉明", "閑雲", "千織"
-        ];
-
-        const char_flag = [
-            0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
-            0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
-            1, 1, 0, 1, 1, 1, 1, 1, 0, 1,
-            1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 
-            0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 
-            0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 
-            1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 
-            1, 1, 0, 1, 0, 1, 1, 0, 1, 1,
-            0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 
-            0, 1, 1, 0, 0
-        ];
-
-        const characterImages = [
-            "",
-            "",
-            "../character/kamisatoayaka.webp",
-            "",
-            "",
-            "",
-            "../character/lisa.jpg",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "../character/kaeya.jpg",
-            "../character/diluc.jpg",
-            "",
-            "",
-            "",
-            "../character/razor.jpg",
-            "../character/amber.jpg",
-            "",
-            "../character/xiangling.webp",
-            "../character/beidou.webp",
-            "../character/xingqiu.webp",
-            "../character/xiao.webp",
-            "../character/ningguang.webp",
-            "",
-            "../character/klee.webp",
-            "../character/zhongli.webp",
-            "../character/fischl.webp",
-            "../character/bennett.webp",
-            "../character/tartaglia.webp",
-            "../character/noelle.jpg",
-            "",
-            "../character/chongyun.webp",
-            "../character/ganyu.webp",
-            "../character/albedo.jpg",
-            "",
-            "",
-            "",
-            "../character/keqing.jpg",
-            "",
-            "../character/xinyan.webp",
-            "../character/rosaria.webp",
-            "../character/hutao.jpg",
-            "",
-            "../character/yanfei.webp",
-            "../character/yoimiya.webp",
-            "",
-            "../character/eula.webp",
-            "../character/raidenshougun.jpg",
-            "",
-            "",
-            "",
-            "../character/kujousara.jpg",
-            "../character/aratakiitto.webp",
-            "../character/yaemiko.webp",
-            "../character/shikanoinheizou.webp",
-            "../character/yelan.webp",
-            "./character/kirara.webp",
-            "",
-            "",
-            "",
-            "",
-            "../character/kamisatoayato.jpg",
-            "",
-            "",
-            "../character/tighnari.webp",
-            "../character/nirou.webp",
-            "../character/cyno.jpg",
-            "",
-            "../character/nahida.webp",
-            "",
-            "../character/wanderer.webp",
-            "../character/faruzan.webp",
-            "",
-            "../character/alhaitham.webp",
-            "../character/dehya.webp",
-            "",
-            "",
-            "",
-            "",
-            "../character/Lyney.webp",
-            "",
-            "../character/Wriothesley.webp",
-            "../character/Neuvillette.webp",
-            "",
-            "../character/Furina.webp",
-            "",
-            "../character/Navia.webp",
-            "../character/gaming.webp",
-            "",
-            "",
         ];
 
         let UserData;
@@ -1398,7 +1288,7 @@
                 {
                     let charId = parseInt(avatarIds[i]) - 10000000;
                     let CharAdvanceLevel = UserData.data.avatarInfoList[i].propMap["1002"].val;
-                    if(char_flag[charId] == 1 && CharAdvanceLevel > 3)
+                    if(CharDataJson["CharMap"][charId] && CharAdvanceLevel > 3)
                     {
                         char_names.push(characters[charId]);
                         char_ids.push(charId);
@@ -1409,7 +1299,7 @@
                 // 画像を生成して配列に追加
                 for (let i = 0; i < char_ids.length; i++) {
                     const image = {
-                        src: characterImages[char_ids[i]],
+                        src: CharDataJson["CharMap"][char_ids[i]][url],
                         alt: `Image ${i}`,
                         id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
                         
@@ -1427,11 +1317,13 @@
                         // クリックされた画像のsrc属性を取得
                         const imageUrl = this.src;
                         const CharId = this.id;
+                        const DataResponse = await fetch("../data/JsonData/CharacterData.json");
+                        const CharDataJson =  DataResponse.json();
                         const CharSortOrder = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
                         // 画像を表示するdiv要素を取得
                         const digits = String(CharId); // 数値を文字列に変換
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
-                        //SelectedCharId = parseInt(upperDigits); // 文字列を数値に変換
+                        SelectedCharId = parseInt(upperDigits); // 文字列を数値に変換
                         const imageContainer = document.getElementById("CharImage");
                         await DisplayCharStatus(CharSortOrder);
                         AfSetReffer(CharSortOrder);

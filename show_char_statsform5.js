@@ -24,7 +24,7 @@ async function show_char_statsform()
     let traitLabel;
     let elementsToAddToCharTalent = [];
 
-    if (SelectedCharId == "73")
+    if (SelectedCharId == "56")
     {
       traits = [
         { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
@@ -1020,7 +1020,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "58")
+    else if (SelectedCharId == "33")
     {
       traits = [
         { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },

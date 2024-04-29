@@ -1219,7 +1219,7 @@
             showTable("table1","tablebutton1");
             showOption("option1", "parameterbutton1");
             const DataResponse = await fetch("../data/JsonData/CharacterData.json");
-            CharDataJson =  DataResponse.json();
+            CharDataJson = await DataResponse.json();
             console.log(CharDataJson);
         });
 

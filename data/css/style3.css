@@ -601,36 +601,48 @@
     align-items: center;
 }
 
+.centered-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 details {
-    border: 1px solid #ccc;
-    width: 100%; /* 追加 */
-    max-width: 500px; /* 追加 */
-    margin-bottom: 20px;
+  border: 1px solid #ccc;
+  width: 100%; /* 追加 */
+  max-width: 500px; /* 追加 */
+  margin-bottom: 20px;
 }
 
 details summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 20px;
-    color: #242323;
-    font-weight: bold;
-    position: relative;
+  list-style: none;
+  cursor: pointer;
+  padding: 20px;
+  color: #242323;
+  font-weight: bold;
+  position: relative;
 }
 
 details summary::before {
-    content: '\25BE'; /* 下向きの矢印 */
-    margin-right: 20px;
-    transition: transform 0.3s ease; /* アニメーション追加 */
+  content: '\25B6'; /* 右向きの矢印 */
+  margin-right: 20px;
+  transition: transform 0.3s ease; /* アニメーション追加 */
 }
 
 details[open] summary::before {
-    transform: rotate(180deg); /* 開いているときは上向きの矢印に回転 */
+  transform: rotate(90deg); /* 開いているときは下向きの矢印に回転 */
+}
+
+details[open] summary::before {
+  content: '\25BC'; /* 下向きの矢印 */
+  transform: none; /* 回転をリセット */
 }
 
 details p {
-    margin: 0;
-    padding: 20px;
+  margin: 0;
+  padding: 20px;
 }
+
 
 
   

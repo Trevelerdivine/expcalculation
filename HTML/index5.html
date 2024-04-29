@@ -1302,7 +1302,7 @@
                 // 画像を生成して配列に追加
                 for (let i = 0; i < char_ids.length; i++) {
                     const image = {
-                        src: CharDataJson["CharMap"][char_ids[i].toString()][url],
+                        src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
                         alt: `Image ${i}`,
                         id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
                         

@@ -1049,14 +1049,6 @@
 
         let UserData = 0;
 
-        window.addEventListener("DOMContentLoaded", async function() {
-            showTable("table1","tablebutton1");
-            showOption("option1", "parameterbutton1");
-            const DataResponse = await fetch("../data/JsonData/CharacterData.json");
-            CharDataJson = await DataResponse.json();
-            console.log(CharDataJson);
-        });
-
         function showTable(tableId, buttonId)
         {
             // すべての表コンテナを非表示にする
@@ -1495,7 +1487,12 @@
         }
 
         // ページの読み込みが完了したら、カウントダウンを再開
-        window.onload = function() {
+        window.onload = async function() {
+            showTable("table1","tablebutton1");
+            showOption("option1", "parameterbutton1");
+            const DataResponse = await fetch("../data/JsonData/CharacterData.json");
+            CharDataJson = await DataResponse.json();
+            console.log(CharDataJson);
             // ローカルストレージからカウントダウン終了時刻を取得
             const endTime = localStorage.getItem(localStorageKey);
             // 現在時刻を取得

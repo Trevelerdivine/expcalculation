@@ -280,6 +280,98 @@
                 "url": "../weapon_img/Polearm/RightfulReward.webp",
                 "id":"74"
             }
+        },
+        "法器":{
+            "1": {
+                "名前": "西風秘典",
+                "url": "../weapon_img/Catalyst/FavoniusCodex.webp",
+                "id":"151"
+            },
+            "2": {
+                "名前": "流浪楽章",
+                "url": "../weapon_img/Catalyst/TheWidsith.webp",
+                "id":"150"
+            },
+            "3": {
+                "名前": "祭礼の断片",
+                "url": "../weapon_img/Catalyst/SacrificialFragments.webp",
+                "id":"149"
+            },
+            "5": {
+                "名前": "匣中日月",
+                "url": "../weapon_img/Catalyst/SolarPearl.webp",
+                "id":"147"
+            },
+            "6": {
+                "名前": "金珀·試作",
+                "url": "../weapon_img/Catalyst/PrototypeAmber.webp",
+                "id":"146"
+            },
+            "7": {
+                "名前": "万国諸海の図譜",
+                "url": "../weapon_img/Catalyst/MappaMare.webp",
+                "id":"145"
+            },
+            "8": {
+                "名前": "黒岩の緋玉",
+                "url": "../weapon_img/Catalyst/BlackcliffAgate.webp",
+                "id":"144"
+            },
+            "9": {
+                "名前": "昭心",
+                "url": "../weapon_img/Catalyst/EyeofPerception.webp",
+                "id":"143"
+            },
+            "10": {
+                "名前": "ダークアレイの酒と詩",
+                "url": "../weapon_img/Catalyst/WineandSong.webp",
+                "id":"141"
+            },
+            "12": {
+                "名前": "冬忍びの実",
+                "url": "../weapon_img/Catalyst/Frostbearer.webp",
+                "id":"142"
+            },
+            "13": {
+                "名前": "ドドコの物語",
+                "url": "../weapon_img/Catalyst/DodocoTales.webp",
+                "id":"140"
+            },
+            "14": {
+                "名前": "白辰の輪",
+                "url": "../weapon_img/Catalyst/HakushinRing.webp",
+                "id":"139"
+            },
+            "15": {
+                "名前": "誓いの明瞳",
+                "url": "../weapon_img/Catalyst/OathswornEye.webp",
+                "id":"138"
+            },
+            "16": {
+                "名前": "彷徨える星",
+                "url": "../weapon_img/Catalyst/WanderingEvenstar.webp",
+                "id":"136"
+            },
+            "17": {
+                "名前": "満悦の実",
+                "url": "../weapon_img/Catalyst/FruitofFulfillment.webp",
+                "id":"137"
+            },
+            "25": {
+                "名前": "古祠の瓏",
+                "url": "../weapon_img/Catalyst/SacrificialJade.webp",
+                "id":"134"
+            },
+            "26": {
+                "名前": "純水流華",
+                "url": "../weapon_img/Catalyst/FlowingPurity.webp",
+                "id":"135"
+            },
+            "27": {
+                "名前": "果てなき紺碧の唄",
+                "url": "../weapon_img/Catalyst/BalladOfTheBoundlessBlue.webp",
+                "id":"133"
+            }
         }
     },
     "星5":{
@@ -407,6 +499,58 @@
                 "名前": "赤砂の杖",
                 "url": "../weapon_img/Polearm/StaffoftheScarletSands.webp",
                 "id":"66"
+            }
+        },
+        "法器":{
+            "1": {
+                "名前": "天空の巻",
+                "url": "../weapon_img/Catalyst/SkywardAtlas.webp",
+                "id":"132"
+            },
+            "2": {
+                "名前": "四風原典",
+                "url": "../weapon_img/Catalyst/LostPrayertotheSacredWinds.webp",
+                "id":"131"
+            },
+            "4": {
+                "名前": "浮世の錠",
+                "url": "../weapon_img/Catalyst/MemoryofDust.webp",
+                "id":"130"
+            },
+            "5": {
+                "名前": "碧落の瓏",
+                "url": "../weapon_img/Catalyst/JadefallsSplendor.webp",
+                "id":"125"
+            },
+            "6": {
+                "名前": "不滅の月華",
+                "url": "../weapon_img/Catalyst/EverlastingMoonglow.webp",
+                "id":"129"
+            },
+            "9": {
+                "名前": "神楽の真意",
+                "url": "../weapon_img/Catalyst/KagurasVerity.webp",
+                "id":"128"
+            },
+            "11": {
+                "名前": "千夜に浮かぶ夢",
+                "url": "../weapon_img/Catalyst/AThousandFloatingDreams.webp",
+                "id":"127"
+            },
+            "12": {
+                "名前": "トゥライトゥーラの記憶",
+                "url": "../weapon_img/Catalyst/TulaytullahsRemembrance.webp",
+                "id":"126"
+            },
+            "13": {
+                "名前": "凛流の監視者",
+                "url": "../weapon_img/Catalyst/CashflowSupervision.webp",
+                "id":"154"
+            },
+            "14": {
+                "名前": "久遠流転の大典",
+                "url": "../weapon_img/Catalyst/TomeoftheEternalFlow.webp",
+                "id":"124"
             }
         }
     }

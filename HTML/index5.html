@@ -1444,61 +1444,61 @@
         }
 
         
-  function startCountdown() {
-    // ボタンを無効にする
-    fetchButton.disabled = true;
+        function startCountdown() {
+            // ボタンを無効にする
+            fetchButton.disabled = true;
 
-    // 現在時刻にAPIのttlを加算して、カウントダウン終了時刻を計算
-    const endTime = new Date().getTime() + apiTTL * 1000;
+            // 現在時刻にAPIのttlを加算して、カウントダウン終了時刻を計算
+            const endTime = new Date().getTime() + apiTTL * 1000;
 
-    // カウントダウンを表示する要素
-    const countdownElement = document.getElementById("countdown");
+            // カウントダウンを表示する要素
+            const countdownElement = document.getElementById("countdown");
 
-    // カウントダウンを更新する関数
-    function updateCountdown() {
-        // 現在時刻を取得
-        const currentTime = new Date().getTime();
-        // 残り時間を計算
-        let remainingTime = Math.ceil((endTime - currentTime) / 1000);
+            // カウントダウンを更新する関数
+            function updateCountdown() {
+                // 現在時刻を取得
+                const currentTime = new Date().getTime();
+                // 残り時間を計算
+                let remainingTime = Math.ceil((endTime - currentTime) / 1000);
 
-        // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
-        if (remainingTime <= 0) {
-            clearInterval(intervalId);
-            countdownElement.textContent = "";
-            fetchButton.disabled = false;
-        } else {
-            // カウントダウンを表示
-            countdownElement.textContent = `次にクリック可能になるまでの残り時間: ${remainingTime}秒`;
+                // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
+                if (remainingTime <= 0) {
+                    clearInterval(intervalId);
+                    countdownElement.textContent = "";
+                    fetchButton.disabled = false;
+                } else {
+                    // カウントダウンを表示
+                    countdownElement.textContent = `次にクリック可能になるまでの残り時間: ${remainingTime}秒`;
+                }
+            }
+
+            // カウントダウンを最初に更新
+            updateCountdown();
+
+            // 残り時間を1秒ごとに更新
+            const intervalId = setInterval(updateCountdown, countdownInterval);
+
+            // ローカルストレージにカウントダウン終了時刻を保存
+            localStorage.setItem(localStorageKey, endTime);
         }
-        }
 
-        // カウントダウンを最初に更新
-        updateCountdown();
+        // ページの読み込みが完了したら、カウントダウンを再開
+        window.onload = function() {
+            // ローカルストレージからカウントダウン終了時刻を取得
+            const endTime = localStorage.getItem(localStorageKey);
+            // 現在時刻を取得
+            const currentTime = new Date().getTime();
 
-        // 残り時間を1秒ごとに更新
-        const intervalId = setInterval(updateCountdown, countdownInterval);
+            // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
+            if (endTime && parseInt(endTime) > currentTime) {
+            startCountdown();
+            }
+        };
 
-        // ローカルストレージにカウントダウン終了時刻を保存
-        localStorage.setItem(localStorageKey, endTime);
-    }
-
-    // ページの読み込みが完了したら、カウントダウンを再開
-    window.onload = function() {
-        // ローカルストレージからカウントダウン終了時刻を取得
-        const endTime = localStorage.getItem(localStorageKey);
-        // 現在時刻を取得
-        const currentTime = new Date().getTime();
-
-        // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
-        if (endTime && parseInt(endTime) > currentTime) {
-        startCountdown();
-        }
-    };
-
-// ボタンをクリックしたときに fetchData() 関数を実行する
-document.getElementById('fetchButton').onclick = function() {
-    fetchData();
-};
+        // ボタンをクリックしたときに fetchData() 関数を実行する
+        document.getElementById('fetchButton').onclick = function() {
+            fetchData();
+        };
 
     </script>
 </body>

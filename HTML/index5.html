@@ -1352,7 +1352,7 @@
             let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
 
             const WeaponImgContainer = document.getElementById("WeaponImage");
-            const existingImage = imageContainer.querySelector("img");
+            const existingImage = WeaponImgContainer.querySelector("img");
             existingImage.src = Weapondata[weaponRank[1]-3][WeaponType[WeaponList[0]]][WeaponList[2]];
             existingImage.alt = "Clicked Image";
 }

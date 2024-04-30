@@ -1047,7 +1047,7 @@
             "シャルロット", "フリーナ", "シュヴルーズ", "ナヴィア", "嘉明", "閑雲", "千織"
         ];
 
-        let UserData = 0;
+        let UserData;
 
         function showTable(tableId, buttonId)
         {
@@ -1491,6 +1491,7 @@
             showTable("table1","tablebutton1");
             showOption("option1", "parameterbutton1");
             const DataResponse = await fetch("../data/JsonData/CharacterData.json");
+            let char_ids = [];
             CharDataJson = await DataResponse.json();
             console.log(CharDataJson);
             // ローカルストレージからカウントダウン終了時刻を取得

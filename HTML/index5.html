@@ -1022,6 +1022,7 @@
         let weapon_type_index = 4;
         let char_propaty = [5,0];
         let selectedImageIds = [0,0];
+        let char_names = [];
         let CharDataJson;
         const characters = [
             "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
@@ -1102,7 +1103,6 @@
                     throw new Error('Failed to fetch data');
                 }
                 let char_ids = [];
-                let char_names = [];
                 UserData = await response.json();
                 console.log(UserData);
                 // ニックネームをHTMLに出力する
@@ -1197,6 +1197,8 @@
                 CharConstellations = UserData.data.avatarInfoList[SortOrder].talentIdList ? UserData.data.avatarInfoList[SortOrder].talentIdList.length : 0;
                 const LevelDisplay = document.getElementById("CharLevel");
                 const ConsteDisplay = document.getElementById("CharConstellations");
+                const charIndexDisplay = document.getElementById('Charindex-display');
+                charIndexDisplay.innerHTML = char_names[SortOrder]
                 LevelDisplay.innerHTML = "Lv." + CharLevel;
                 ConsteDisplay.innerHTML = "命の星座" + CharConstellations + "重";
             }

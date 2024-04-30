@@ -1278,7 +1278,6 @@
                     SelectedAfId.push(result[i][0]);
                 }
             }
-            console.log(SelectedAfId);
 
             let set_eff1;
             let set_eff2;
@@ -1310,7 +1309,6 @@
             document.getElementById("AfImage2").src = selectedImageSrc2;
             selectedImageIds[0] = afdata["AfMap"][SelectedAfId[0].toString()]["id"] || 0;
             selectedImageIds[1] = afdata["AfMap"][SelectedAfId[1].toString()]["id"] || 0;
-            console.log(selectedImageIds);
 
             return result;
         }
@@ -1343,7 +1341,6 @@
                 const fourthDigit = numberAsString.charAt(3); // 4桁目の数値のインデックスは3
                 return parseInt(fourthDigit); // 文字列から数値に変換して返す
             });
-            console.log(fourthDigits);
 
             for (let i = 0; i <fourthDigits.length; i++) {
                 if (fourthDigits[i] == 5)
@@ -1380,7 +1377,6 @@
             let lastTwoDigits = parseInt(numberString.substring(3)); // 4桁目と5桁目
 
             let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
-            console.log(WeaponList);
 
             const WeaponImgContainer = document.getElementById("WeaponImage");
             const existingImage = WeaponImgContainer.querySelector("img");
@@ -1447,14 +1443,12 @@
                     ExecuteFlag = 1;
                 }
             }
-            console.log(ExecuteFlag);
             CharAdvanceRank = UserData.data.avatarInfoList[index].propMap["1002"].ival;
             WeaponAdvanceRank = UserData.data.avatarInfoList[index].equipList[WeapomListIndex-1].weapon.promoteLevel;
             if (!CharDataJson["CharMap"][charId.toString()]  || CharAdvanceRank < 4 || WeaponAdvanceRank < 4)
             {
                 ExecuteFlag = 1;
             }
-            console.log(ExecuteFlag);
             return ExecuteFlag;
         }
 
@@ -1542,8 +1536,8 @@
                 for (let i = 0; i < avatarIds.length; i++)
                 {
                     let charId = parseInt(avatarIds[i]) - 10000000;
-                    let CharAdvanceLevel = UserData.data.avatarInfoList[i].propMap["1002"].val;
-                    if(CharDataJson["CharMap"][charId.toString()] && CharAdvanceLevel > 3)
+                    let PossibleFlag = await CharExecution(i, charId);
+                    if(PossibleFlag == 0)
                     {
                         char_names.push(characters[charId]);
                         char_ids.push(charId);

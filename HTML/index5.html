@@ -1206,6 +1206,15 @@
             }
         }
 
+        async function DisplayWeaponStatus(index,SortOrder,id){
+            let WeaponLevel = UserData.data.avatarInfoList[SortOrder]["equiplist"][index-1]["weapon"]["level"];
+            let WeaponRank = UserData.data.avatarInfoList[SortOrder]["equiplist"][index-1]["weapon"]["affixMap"][100000 + id] + 1;
+            const LevelDisplay = document.getElementById("WeaponLevel");
+            const ConsteDisplay = document.getElementById("WeaponRank");
+            LevelDisplay.innerHTML = "Lv." + WeaponLevel;
+            ConsteDisplay.innerHTML = "精錬ランク" + WeaponRank;
+        }
+
         async function AfSetReffer(SortOrder){
             let AfJsonList = UserData.data.avatarInfoList[SortOrder].equipList;
             // "itemId" の値を格納するための配列を初期化
@@ -1305,7 +1314,9 @@
                     AfIdList.push(status["itemId"]);
                 }
             });
+            let WeaponIndex = AfIdList.length;
             let WeaponId = AfIdList.pop();
+            await DisplayWeaponStatus(WeaponIndex, SortOrder, WeaponId);
             await DisplayWeaponImg(WeaponId);
 
             const fourthDigits = AfIdList.map(number => {

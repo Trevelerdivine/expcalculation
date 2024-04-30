@@ -1119,7 +1119,7 @@
                 for (let i = 0; i < avatarIds.length; i++)
                 {
                     let charId = parseInt(avatarIds[i]) - 10000000;
-                    let PossibleFlag = CharExecution(i, charId);
+                    let PossibleFlag = await CharExecution(i, charId);
                     if(PossibleFlag == 0)
                     {
                         char_names.push(characters[charId]);

@@ -1207,8 +1207,8 @@
         }
 
         async function DisplayWeaponStatus(index,SortOrder,id){
-            let WeaponLevel = UserData.data.avatarInfoList[SortOrder]["equiplist"][index-1]["weapon"]["level"];
-            let WeaponRank = UserData.data.avatarInfoList[SortOrder]["equiplist"][index-1]["weapon"]["affixMap"][100000 + id] + 1;
+            let WeaponLevel = UserData.data.avatarInfoList[SortOrder].equipList[index-1].weapon.level;
+            let WeaponRank = UserData.data.avatarInfoList[SortOrder].equipList[index-1].weapon.affixMap[100000 + id] + 1;
             const LevelDisplay = document.getElementById("WeaponLevel");
             const ConsteDisplay = document.getElementById("WeaponRank");
             LevelDisplay.innerHTML = "Lv." + WeaponLevel;

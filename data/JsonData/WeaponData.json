@@ -372,6 +372,103 @@
                 "url": "../weapon_img/Catalyst/BalladOfTheBoundlessBlue.webp",
                 "id":"133"
             }
+        },
+        "弓":{
+            "1": {
+                "名前": "西風猟弓",
+                "url": "../weapon_img/Bow/FavoniusWarbow.webp",
+                "id":"118"
+            },
+            "2": {
+                "名前": "絶弦",
+                "url": "../weapon_img/Bow/TheStringless.webp",
+                "id":"117"
+            },
+            "3": {
+                "名前": "祭礼の弓",
+                "url": "../weapon_img/Bow/SacrificialBow.webp",
+                "id":"116"
+            },
+            "5": {
+                "名前": "弓蔵",
+                "url": "../weapon_img/Bow/Rust.webp",
+                "id":"114"
+            },
+            "6": {
+                "名前": "澹月·試作",
+                "url": "../weapon_img/Bow/PrototypeCrescent.webp",
+                "id":"113"
+            },
+            "7": {
+                "名前": "リングボウ",
+                "url": "../weapon_img/Bow/CompoundBow.webp",
+                "id":"112"
+            },
+            "8": {
+                "名前": "黒岩の戦弓",
+                "url": "../weapon_img/Bow/BlackcliffWarbow.webp",
+                "id":"111"
+            },
+            "9": {
+                "名前": "蒼翠の狩猟弓",
+                "url": "../weapon_img/Bow/TheViridescentHunt.webp",
+                "id":"110"
+            },
+            "10": {
+                "名前": "ダークアレイの狩人",
+                "url": "../weapon_img/Bow/AlleyHunter.webp",
+                "id":"109"
+            },
+            "11": {
+                "名前": "落霞",
+                "url": "../weapon_img/Bow/FadingTwilight.webp",
+                "id":"104"
+            },
+            "12": {
+                "名前": "幽夜のワルツ",
+                "url": "../weapon_img/Bow/MitternachtsWaltz.webp",
+                "id":"107"
+            },
+            "13": {
+                "名前": "風花の頌歌",
+                "url": "../weapon_img/Bow/WindblumeOde.webp",
+                "id":"108"
+            },
+            "14": {
+                "名前": "破魔の弓",
+                "url": "../weapon_img/Bow/Hamayumi.jpg",
+                "id":"106"
+            },
+            "16": {
+                "名前": "曚雲の月",
+                "url": "../weapon_img/Bow/MouunsMoon.webp",
+                "id":"105"
+            },
+            "17": {
+                "名前": "王の近侍",
+                "url": "../weapon_img/Bow/KingsSquire.webp",
+                "id":"102"
+            },
+            "18": {
+                "名前": "竭沢",
+                "url": "../weapon_img/Bow/EndoftheLine.webp",
+                "id":"103"
+            },
+            "19": {
+                "名前": "トキの嘴",
+                "url": "../weapon_img/Bow/IbisPiercer.webp",
+                "id":"101"
+            },
+            "24": {
+                "名前": "烈日の後嗣",
+                "url": "../weapon_img/Bow/ScionoftheBlazingSun.webp",
+                "id":"99"
+            },
+            "25": {
+                "名前": "静寂の唄",
+                "url": "../weapon_img/Bow/SongofStillness.webp",
+                "id":"100"
+            }
         }
     },
     "星5":{
@@ -551,6 +648,48 @@
                 "名前": "久遠流転の大典",
                 "url": "../weapon_img/Catalyst/TomeoftheEternalFlow.webp",
                 "id":"124"
+            }
+        },
+        "弓":{
+            "1": {
+                "名前": "天空の翼",
+                "url": "../weapon_img/Bow/SkywardHarp.webp",
+                "id":"98"
+            },
+            "2": {
+                "名前": "アモスの弓",
+                "url": "../weapon_img/Bow/AmosBow.webp",
+                "id":"97"
+            },
+            "3": {
+                "名前": "終焉を嘆く詩",
+                "url": "../weapon_img/Bow/ElegyfortheEnd.webp",
+                "id":"96"
+            },
+            "7": {
+                "名前": "冬極の白星",
+                "url": "../weapon_img/Bow/PolarStar.webp",
+                "id":"94"
+            },
+            "8": {
+                "名前": "若水",
+                "url": "../weapon_img/Bow/AquaSimulacra.webp",
+                "id":"93"
+            },
+            "9": {
+                "名前": "飛雷の鳴弦",
+                "url": "../weapon_img/Bow/ThunderingPulse.webp",
+                "id":"95"
+            },
+            "11": {
+                "名前": "狩人の道",
+                "url": "../weapon_img/Bow/Hunter'sPath.webp",
+                "id":"92"
+            },
+            "12": {
+                "名前": "始まりの大魔術",
+                "url": "../weapon_img/Bow/TheFirstGreatMagic.webp",
+                "id":"91"
             }
         }
     }

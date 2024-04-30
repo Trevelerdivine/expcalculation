@@ -1471,7 +1471,7 @@
                 fetchButton.disabled = false;
                 } else {
                 // カウントダウンを表示
-                countdownElement.textContent = `次にクリック可能になるまでの残り時間: ${remainingTime}秒`;
+                countdownElement.textContent = `更新可能まであと: ${remainingTime}秒`;
                 }
             }
 
@@ -1495,8 +1495,19 @@
 
         // ページの読み込みが完了したら、カウントダウンを再開
         window.onload = function() {
-            startCountdown();
-        };
+            // ローカルストレージからカウントダウン終了時刻を取得
+            const endTime = localStorage.getItem(localStorageKey);
+            // 現在時刻を取得
+            const currentTime = new Date().getTime();
+
+            // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
+            if (endTime && parseInt(endTime) > currentTime) {
+                // APIのttlを計算
+                const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
+                // 再度カウントダウンを開始
+                startCountdown();
+            };
+        }
 
         // ボタンをクリックしたときに fetchData() 関数を実行する
         document.getElementById('fetchButton').onclick = function() {

@@ -1491,7 +1491,10 @@
 
             // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
             if (endTime && parseInt(endTime) > currentTime) {
-            startCountdown();
+            // APIのttlを計算
+            const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
+            // 再度カウントダウンを開始
+            startCountdown(apiTTLFromNow);
             }
         };
 

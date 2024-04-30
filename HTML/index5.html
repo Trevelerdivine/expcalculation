@@ -1447,14 +1447,14 @@
                     ExecuteFlag = 1;
                 }
             }
-
+            console.log(ExecuteFlag);
             CharAdvanceRank = UserData.data.avatarInfoList[index].propMap["1002"].val;
             WeaponAdvanceRank = UserData.data.avatarInfoList[index].equipList[WeapomListIndex-1].weapon.promoteLevel;
             if (!CharDataJson["CharMap"][charId.toString()]  || CharAdvanceRank < 4 || WeaponAdvanceRank < 4)
             {
                 ExecuteFlag = 1;
             }
-
+            console.log(ExecuteFlag);
             return ExecuteFlag;
         }
 

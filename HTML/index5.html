@@ -1026,9 +1026,14 @@
         let char_names = [];
         let CharDataJson;
         // ローカルストレージに保存するキー
-        const localStorageKey = "lastClickedTime";
+        const localStorageKey = "countdownEndTime";
         // APIのttl（秒）
         const apiTTL = 60;
+        // カウントダウンのインターバル（ミリ秒）
+        const countdownInterval = 1000;
+        // ボタン要素
+        const fetchButton = document.getElementById("fetchButton");
+
         const characters = [
             "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
             "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
@@ -1086,38 +1091,7 @@
 
         // fetchData() 関数を定義
         async function fetchData() {
-
-            let lastClickedTime = localStorage.getItem(localStorageKey);
-            // 現在の時刻を取得
-            const currentTime = new Date().getTime() / 1000;
-
-            if (lastClickedTime !== null) {
-                // 前回のクリックからの経過時間を計算
-                const elapsedTime = currentTime - lastClickedTime;
-
-                // 前回のクリックからの経過時間がAPIのttl未満なら、クリックできないようにする
-                if (elapsedTime < apiTTL) {
-                    // カウントダウンを表示する要素
-                    const countdownElement = document.getElementById("countdown");
-
-                    // 次にクリック可能になるまでの残り時間を計算
-                    const remainingTime = apiTTL - elapsedTime;
-
-                    // カウントダウンを更新
-                    countdownElement.textContent = `次にクリック可能になるまでの残り時間: ${remainingTime}秒`;
-
-                    // 指定した時間後にカウントダウンを非表示にする
-                    setTimeout(() => {
-                    countdownElement.textContent = "";
-                    }, remainingTime * 1000);
-                    
-                    // クリック不可なので、この時点で関数を終了する
-                    return;
-                }
-            }
-
-            localStorage.setItem(localStorageKey, currentTime);
-
+            updateCountdown();
             let ErrorId;
             const img_grid = document.getElementById("imageGrid");
             img_grid.innerHTML = "";
@@ -1469,6 +1443,57 @@
             return ExecuteFlag;
         }
 
+        
+  function startCountdown() {
+    // ボタンを無効にする
+    fetchButton.disabled = true;
+
+    // 現在時刻にAPIのttlを加算して、カウントダウン終了時刻を計算
+    const endTime = new Date().getTime() + apiTTL * 1000;
+
+    // カウントダウンを表示する要素
+    const countdownElement = document.getElementById("countdown");
+
+    // カウントダウンを更新する関数
+    function updateCountdown() {
+        // 現在時刻を取得
+        const currentTime = new Date().getTime();
+        // 残り時間を計算
+        let remainingTime = Math.ceil((endTime - currentTime) / 1000);
+
+        // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
+        if (remainingTime <= 0) {
+            clearInterval(intervalId);
+            countdownElement.textContent = "";
+            fetchButton.disabled = false;
+        } else {
+            // カウントダウンを表示
+            countdownElement.textContent = `次にクリック可能になるまでの残り時間: ${remainingTime}秒`;
+        }
+        }
+
+        // カウントダウンを最初に更新
+        updateCountdown();
+
+        // 残り時間を1秒ごとに更新
+        const intervalId = setInterval(updateCountdown, countdownInterval);
+
+        // ローカルストレージにカウントダウン終了時刻を保存
+        localStorage.setItem(localStorageKey, endTime);
+    }
+
+    // ページの読み込みが完了したら、カウントダウンを再開
+    window.onload = function() {
+        // ローカルストレージからカウントダウン終了時刻を取得
+        const endTime = localStorage.getItem(localStorageKey);
+        // 現在時刻を取得
+        const currentTime = new Date().getTime();
+
+        // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
+        if (endTime && parseInt(endTime) > currentTime) {
+        startCountdown();
+        }
+    };
 
 // ボタンをクリックしたときに fetchData() 関数を実行する
 document.getElementById('fetchButton').onclick = function() {

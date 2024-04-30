@@ -94,6 +94,7 @@
         <br>
         <br>
         <button id="fetchButton">データを取得する</button>
+        <div id="countdown"></div>
         <br>
         <div id="nickname">
         </div>
@@ -1024,6 +1025,10 @@
         let selectedImageIds = [0,0];
         let char_names = [];
         let CharDataJson;
+        // ローカルストレージに保存するキー
+        const localStorageKey = "lastClickedTime";
+        // APIのttl（秒）
+        const apiTTL = 60;
         const characters = [
             "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
             "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
@@ -1081,6 +1086,38 @@
 
         // fetchData() 関数を定義
         async function fetchData() {
+
+            let lastClickedTime = localStorage.getItem(localStorageKey);
+            // 現在の時刻を取得
+            const currentTime = new Date().getTime() / 1000;
+
+            if (lastClickedTime !== null) {
+                // 前回のクリックからの経過時間を計算
+                const elapsedTime = currentTime - lastClickedTime;
+
+                // 前回のクリックからの経過時間がAPIのttl未満なら、クリックできないようにする
+                if (elapsedTime < apiTTL) {
+                    // カウントダウンを表示する要素
+                    const countdownElement = document.getElementById("countdown");
+
+                    // 次にクリック可能になるまでの残り時間を計算
+                    const remainingTime = apiTTL - elapsedTime;
+
+                    // カウントダウンを更新
+                    countdownElement.textContent = `次にクリック可能になるまでの残り時間: ${remainingTime}秒`;
+
+                    // 指定した時間後にカウントダウンを非表示にする
+                    setTimeout(() => {
+                    countdownElement.textContent = "";
+                    }, remainingTime * 1000);
+                    
+                    // クリック不可なので、この時点で関数を終了する
+                    return;
+                }
+            }
+
+            localStorage.setItem(localStorageKey, currentTime);
+
             let ErrorId;
             const img_grid = document.getElementById("imageGrid");
             img_grid.innerHTML = "";

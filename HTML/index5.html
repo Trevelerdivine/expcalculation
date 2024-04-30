@@ -1305,8 +1305,9 @@
                     AfIdList.push(status["itemId"]);
                 }
             });
+            let WeaponId = AfIdList.pop();
+            await DisplayWeaponImg(WeaponId);
 
-            AfIdList.pop();
             const fourthDigits = AfIdList.map(number => {
                 const numberAsString = number.toString();
                 const fourthDigit = numberAsString.charAt(3); // 4桁目の数値のインデックスは3
@@ -1335,6 +1336,26 @@
             document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
             document.getElementById("CircletMainStatus").innerHTML = CircletMainStatus;
         }
+
+        async function DisplayWeaponImg(Id){
+            let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
+            let weaponRank = ["星3", "星4", "星5"]
+            let numberString = Id.toString();
+            const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
+            const Weapondata = await Weaponresponse.json();
+
+            // 数値を分割して配列に格納
+            let secondDigit = parseInt(numberString.charAt(1)); // 上から2桁目
+            let thirdDigit = parseInt(numberString.charAt(2)); // 上から3桁目
+            let lastTwoDigits = parseInt(numberString.substring(3)); // 4桁目と5桁目
+
+            let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
+
+            const WeaponImgContainer = document.getElementById("WeaponImage");
+            const existingImage = imageContainer.querySelector("img");
+            existingImage.src = Weapondata[weaponRank[1]-3][WeaponType[WeaponList[0]]][WeaponList[2]];
+            existingImage.alt = "Clicked Image";
+}
 
 
         async function CharExecution(SortOrder){

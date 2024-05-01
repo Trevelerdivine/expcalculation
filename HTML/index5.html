@@ -1604,6 +1604,8 @@
             }
         }
 
+        document.getElementById('attack_method').addEventListener('change', show_attack_method);
+        
         // ボタンをクリックしたときに fetchData() 関数を実行する
         document.getElementById('fetchButton').onclick = function() {
             fetchData();

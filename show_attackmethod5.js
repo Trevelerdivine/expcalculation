@@ -2764,7 +2764,7 @@ async function show_attack_method()
   team_elm_charge_form.style.display = "none";
   team_cr_form.style.display = "none";
   team_cd_form.style.display = "none";
-  calculate_table_status();
+  //calculate_table_status();
   showFormElements();
 }
 

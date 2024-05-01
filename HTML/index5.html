@@ -1104,8 +1104,11 @@
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
+                else
+                {
+                    startCountdown();
+                }
                 let char_ids = [];
-                startCountdown();
                 UserData = await response.json();
                 console.log(UserData);
                 localStorage.setItem("UserData", JSON.stringify(UserData));

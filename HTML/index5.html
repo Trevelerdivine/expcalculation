@@ -1099,32 +1099,24 @@
 
             try {
                 const response = await fetch(url);
-                ErrorId = response.status;
-
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
-                else
-                {
-                    startCountdown();
-                }
+                startCountdown();
                 let char_ids = [];
-                UserData = await response.json();
+                const UserData = await response.json();
                 console.log(UserData);
                 localStorage.setItem("UserData", JSON.stringify(UserData));
                 // ニックネームをHTMLに出力する
                 const nicknameElement = document.getElementById('nickname');
                 const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
                 console.log(avatarIds);
-                nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
-                             "<br>";
-                
-                for (let i = 0; i < avatarIds.length; i++)
-                {
+                nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname + "<br>";
+
+                for (let i = 0; i < avatarIds.length; i++) {
                     let charId = parseInt(avatarIds[i]) - 10000000;
                     let PossibleFlag = await CharExecution(i, charId);
-                    if(PossibleFlag == 0)
-                    {
+                    if (PossibleFlag == 0) {
                         char_names.push(characters[charId]);
                         char_ids.push(charId);
                     }
@@ -1137,7 +1129,6 @@
                         src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
                         alt: `Image ${i}`,
                         id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
-                        
                     };
                     images.push(image);
                 }
@@ -1180,16 +1171,12 @@
                     imageGrid.appendChild(imgElement);
                 });
             } catch (error) {
-                if(ErrorId == 500)
-                {
-                    const nicknameElement = document.getElementById('nickname');
-                    nicknameElement.textContent = "EnkaNetWorkサーバーのエラー";
-                }
-                else
-                {
-                    console.error('Error fetching data:', error);
-                    const nicknameElement = document.getElementById('nickname');
-                    nicknameElement.textContent = "入力したUIDに問題があるようです。";
+                console.error('Error fetching data:', error);
+                const nicknameElement = document.getElementById('nickname');
+                if (error instanceof TypeError) {
+                    nicknameElement.textContent = "ネットワークエラーが発生しました";
+                } else {
+                    nicknameElement.textContent = "入力したUIDに問題があるようです";
                 }
                 return;
             }
@@ -1467,43 +1454,43 @@
 
             // カウントダウン終了時刻が現在時刻より未来の場合、再計算してカウントダウンを再開
             if (endTime && parseInt(endTime) > currentTime) {
-            // APIのttlを再計算
-            const remainingTime = Math.ceil((parseInt(endTime) - currentTime) / 1000);
+                // APIのttlを再計算
+                const remainingTime = Math.ceil((parseInt(endTime) - currentTime) / 1000);
 
-            // カウントダウンを表示する要素
-            const countdownElement = document.getElementById("countdown");
+                // カウントダウンを表示する要素
+                const countdownElement = document.getElementById("countdown");
 
-            // カウントダウンを更新する関数
-            function updateCountdown() {
-                // 残り時間を計算
-                let remainingTime = Math.ceil((parseInt(endTime) - new Date().getTime()) / 1000);
+                // カウントダウンを更新する関数
+                function updateCountdown() {
+                    // 残り時間を計算
+                    let remainingTime = Math.ceil((parseInt(endTime) - new Date().getTime()) / 1000);
 
-                // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
-                if (remainingTime <= 0) {
-                clearInterval(intervalId);
-                countdownElement.textContent = "";
-                fetchButton.disabled = false;
-                } else {
-                // カウントダウンを表示
-                countdownElement.textContent = `更新可能まであと: ${remainingTime}秒`;
+                    // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
+                    if (remainingTime <= 0) {
+                    clearInterval(intervalId);
+                    countdownElement.textContent = "";
+                    fetchButton.disabled = false;
+                    } else {
+                    // カウントダウンを表示
+                    countdownElement.textContent = `更新可能まであと: ${remainingTime}秒`;
+                    }
                 }
-            }
 
-            // カウントダウンを最初に更新
-            updateCountdown();
+                // カウントダウンを最初に更新
+                updateCountdown();
 
-            // 残り時間を1秒ごとに更新
-            const intervalId = setInterval(updateCountdown, countdownInterval);
+                // 残り時間を1秒ごとに更新
+                const intervalId = setInterval(updateCountdown, countdownInterval);
             } else {
-            // カウントダウン終了時刻が現在時刻より過去の場合は、通常のカウントダウンを開始
-            const apiTTL = 60; // APIのttl（秒）
-            const endTime = new Date().getTime() + apiTTL * 1000;
+                // カウントダウン終了時刻が現在時刻より過去の場合は、通常のカウントダウンを開始
+                const apiTTL = 60; // APIのttl（秒）
+                const endTime = new Date().getTime() + apiTTL * 1000;
 
-            // ローカルストレージにカウントダウン終了時刻を保存
-            localStorage.setItem(localStorageKey, endTime);
+                // ローカルストレージにカウントダウン終了時刻を保存
+                localStorage.setItem(localStorageKey, endTime);
 
-            // カウントダウンを再開
-            startCountdown();
+                // カウントダウンを再開
+                startCountdown();
             }
         }
 

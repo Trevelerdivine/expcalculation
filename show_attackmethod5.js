@@ -2743,13 +2743,6 @@ async function show_attack_method()
     }
   }
 
-  let hp_form = document.getElementById("hp_form");
-  let attck_form = document.getElementById("attck_form");
-  let deff_form = document.getElementById("deff_form");
-  let elm_form = document.getElementById("elm_form");
-  let elm_charge_form = document.getElementById("elm_charge_form");
-  let cr_form = document.getElementById("cr_form");
-  let cd_form = document.getElementById("cd_form");
   let team_hp_form = document.getElementById("team_hp_form");
   let team_hprate_form = document.getElementById("team_hprate_form");
   let team_attack_form = document.getElementById("team_attack_form");
@@ -2761,13 +2754,6 @@ async function show_attack_method()
   let team_cr_form = document.getElementById("team_cr_form");
   let team_cd_form = document.getElementById("team_cd_form")
 
-  hp_form.style.display = "none";  // HPフォームを非表示
-  attck_form.style.display = "none";  // 攻撃力フォームを非表示
-  deff_form.style.display = "none";  // 防御力フォームを非表示
-  elm_form.style.display = "none";  // 元素熟知を非表示
-  elm_charge_form.style.display = "none";  // 元素チャージ効率フォームを非表示
-  cr_form.style.display = "none";  // 会心率フォームを非表示
-  cd_form.style.display = "none";  // 会心ダメージフォームを非表示
   team_hp_form.style.display = "none";
   team_hprate_form.style.display = "none";
   team_attack_form.style.display = "none";

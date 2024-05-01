@@ -103,7 +103,7 @@
         <div class="image-grid" id="imageGrid">
         </div>
         <br>
-        <div class="centered-details">
+        <div id = "Attention" class="centered-details" style="display: none;">
             <details>
                 <summary>キャラクターが表示されない場合</summary>
                 <p>
@@ -115,812 +115,719 @@
         </div>
         <br>         
         <br>
-        <div class="wrapper">
-            <div>
+        <div id = "WholeDisplay" style="display: none;">
+            <div class="wrapper">
                 <div>
                     <div>
+                        <div>
+                            <table>
+                                <td id = choose_char_weapon >
+                                    <span id="CharLevel" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px; padding-right: 7px; font-weight: 600;">
+                                        Lv.
+                                    </span>
+                                    <br>
+                                    <span id="CharConstellations" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px;padding-right: 7px;  font-weight:600;">
+                                        C
+                                    </span>                                                                                                                        
+                                </td>
+                                <td>
+                                    <label class="open_char" for="pop-up_char">
+                                        <div id = "CharImage">
+                                            <img src="" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
+                                        </div>
+                                    </label>
+                                    <div id="Charindex-display" style=" display: flex; justify-content: center; align-items: center;">
+                                    </div>
+                                </td>
+                            </table>
+                        </div>
+                        <br>
                         <table>
-                            <td id = choose_char_weapon >
-                                <span id="CharLevel" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px; padding-right: 7px; font-weight: 600;">
-                                    Lv.
-                                </span>
-                                <br>
-                                <span id="CharConstellations" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px;padding-right: 7px;  font-weight:600;">
-                                    C
-                                </span>                                                                                                                        
-                            </td>
-                            <td>
-                                <label class="open_char" for="pop-up_char">
-                                    <div id = "CharImage">
+                            <div>
+                                <td>
+                                    <span id="WeaponLevel" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px; padding-right: 7px; font-weight: 600;">
+                                        Lv.90
+                                    </span>
+                                    <br>
+                                    <span id="WeaponRank" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px;padding-right: 7px;  font-weight:600;">
+                                        R10
+                                    </span>                                                                                                                        
+                                </td>
+                                <td>
+                                    <div id = "WeaponImage">
                                         <img src="" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
                                     </div>
-                                </label>
-                                <div id="Charindex-display" style=" display: flex; justify-content: center; align-items: center;">
-                                </div>
-                            </td>
+                                    <div id="Weaponindex-display" style = "display: flex; justify-content: center; align-items: center;"></div>
+                                </td>
+                            </div>
                         </table>
                     </div>
-                    <br>
-                    <table>
-                        <div>
+                    <fieldset id="attack-setting" style="margin-bottom: 20px; margin-top: 20px; max-width: 476px;">
+                        <legend>攻撃方法の設定</legend>
+                        <table>
                             <td>
-                                <span id="WeaponLevel" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px; padding-right: 7px; font-weight: 600;">
-                                    Lv.90
-                                </span>
-                                <br>
-                                <span id="WeaponRank" style="width: 120px; height: 25px; display: inline-block; padding-left: 7px;padding-right: 7px;  font-weight:600;">
-                                    R10
-                                </span>                                                                                                                        
-                            </td>
-                            <td>
-                                <div id = "WeaponImage">
-                                    <img src="" alt="画像の説明" style="width: 150px; height: 150px; border-radius: 5%;">
+                                <div id="attack_method">
                                 </div>
-                                <div id="Weaponindex-display" style = "display: flex; justify-content: center; align-items: center;"></div>
                             </td>
+                            <td>
+                                <select id="talent-level">
+                                    <option disabled selected>天賦レベル</option>
+                                    <option value="1">Lv.1</option>
+                                    <option value="2">Lv.2</option>
+                                    <option value="3">Lv.3</option>
+                                    <option value="4">Lv.4</option>
+                                    <option value="5">Lv.5</option>
+                                    <option value="6">Lv.6</option>
+                                    <option value="7">Lv.7</option>
+                                    <option value="8">Lv.8</option>
+                                    <option value="9">Lv.9</option>
+                                    <option value="10">Lv.10</option>
+                                    <option value="11">Lv.11</option>
+                                    <option value="12">Lv.12</option>
+                                    <option value="13">Lv.13</option>
+                                </select>
+                            </td>
+                        </table>
+                        <span class="property">スキルプロパティ</span>        
+                        <br>
+                        <span id = "attack_method_prop">
+                        </span>
+                        <br>
+                        <span class="property">元素反応</span>
+                        <div id = "element_action">
                         </div>
-                    </table>
+                        <br>
+                        <span class="property">蒸発、溶解反応箇所</span>
+                        <div id = "select_reaction_method">
+                        </div>
+                    </fieldset>
                 </div>
-                <fieldset id="attack-setting" style="margin-bottom: 20px; margin-top: 20px; max-width: 476px;">
-                    <legend>攻撃方法の設定</legend>
-                    <table>
-                        <td>
-                            <div id="attack_method">
-                            </div>
-                        </td>
-                        <td>
-                            <select id="talent-level">
-                                <option disabled selected>天賦レベル</option>
-                                <option value="1">Lv.1</option>
-                                <option value="2">Lv.2</option>
-                                <option value="3">Lv.3</option>
-                                <option value="4">Lv.4</option>
-                                <option value="5">Lv.5</option>
-                                <option value="6">Lv.6</option>
-                                <option value="7">Lv.7</option>
-                                <option value="8">Lv.8</option>
-                                <option value="9">Lv.9</option>
-                                <option value="10">Lv.10</option>
-                                <option value="11">Lv.11</option>
-                                <option value="12">Lv.12</option>
-                                <option value="13">Lv.13</option>
-                            </select>
-                        </td>
-                    </table>
-                    <span class="property">スキルプロパティ</span>        
-                    <br>
-                    <span id = "attack_method_prop">
-                    </span>
-                    <br>
-                    <span class="property">元素反応</span>
-                    <div id = "element_action">
-                    </div>
-                    <br>
-                    <span class="property">蒸発、溶解反応箇所</span>
-                    <div id = "select_reaction_method">
-                    </div>
-                </fieldset>
-            </div>
-            <div>
                 <div>
-                    <label class="open" for="pop-up" style="display: inline-block;">
-                        <img id ="AfImage1" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
-                        <img id ="AfImage2" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
-                    </label>
+                    <div>
+                        <label class="open" for="pop-up" style="display: inline-block;">
+                            <img id ="AfImage1" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
+                            <img id ="AfImage2" src="../artifact/迷宮の遊客_5.png" alt="画像の説明" style="width: 100px; height: 100px; border-radius: 5%;">
+                        </label>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 1em;">
+                        <span style="width: 30%;">
+                            <div>時の砂</div>
+                            <div id="ClockMainStatus"></div>
+                        </span>
+                        <span style="width: 35%;">
+                            <div>空の杯</div>
+                            <div id="GobletMainStatus"></div>
+                        </span>
+                        <span style="width: 30%;">
+                            <div>理の冠</div>
+                            <div id="CircletMainStatus"></div>
+                        </span>
+                    </div>                
+                    <div id="index-display"></div>
+                    <fieldset id="artifactInfo" style="max-width: 476px;">
+                        <legend>聖遺物情報</legend>
+                        <p id="set_eff1">セット効果1: </p>
+                        <p id="set_eff2">セット効果2: </p>
+                    </fieldset>
                 </div>
-                <br>
-                <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 1em;">
-                    <span style="width: 30%;">
-                        <div>時の砂</div>
-                        <div id="ClockMainStatus"></div>
-                    </span>
-                    <span style="width: 35%;">
-                        <div>空の杯</div>
-                        <div id="GobletMainStatus"></div>
-                    </span>
-                    <span style="width: 30%;">
-                        <div>理の冠</div>
-                        <div id="CircletMainStatus"></div>
-                    </span>
-                </div>                
-                <div id="index-display"></div>
-                <fieldset id="artifactInfo" style="max-width: 476px;">
-                    <legend>聖遺物情報</legend>
-                    <p id="set_eff1">セット効果1: </p>
-                    <p id="set_eff2">セット効果2: </p>
-                </fieldset>
             </div>
-        </div>
-        <br>
-        <br>
-        <div class="wrapper">
-            <div>
-                <div id="team_buff_info">
-                    <form class="team-buff-form">
-                        <table class="table-borderless" style="width: auto;">
+            <br>
+            <br>
+            <div class="wrapper">
+                <div>
+                    <div id="team_buff_info">
+                        <form class="team-buff-form">
+                            <table class="table-borderless" style="width: auto;">
+                            <thead>
+                                <tr>
+                                <th></th>
+                                <th>固定値バフ</th>
+                                <th></th>
+                                <th>変動バフ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="team_hp_form" style="display: none;">
+                                <td><label for="fix_hp_buff">HP実数値</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_hp_buff" required min="0" name="fix_hp_buff" placeholder="HP実数値">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_hp_buff" required min="0" name="dynamic_hp_buff" placeholder="HP実数値">
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_hprate_form" style="display: none;">
+                                <td><label for="fix_hp%_buff">HP%</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_hp%_buff" required min="0" name="fix_hp%_buff" placeholder="HP%">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_hp%_buff" required min="0" name="dynamic_hp%_buff" placeholder="HP%">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_attack_form" style="display: none;">
+                                <td><label for="fix_attack_buff">攻撃力実数値</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_attack_buff" required min="0" name="fix_attack_buff" placeholder="攻撃力実数値">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_attack_buff" required min="0" name="dynamic_attack_buff" placeholder="攻撃力実数値">
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_attackrate_form" style="display: none;">
+                                <td><label for="fix_attack%_buff">攻撃力％</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_attack%_buff" required min="0" name="fix_attack%_buff" placeholder="攻撃力％">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_attack%_buff" required min="0" name="dynamic_attack%_buff" placeholder="攻撃力％">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_deff_form" style="display: none;">
+                                <td><label for="fix_deff_buff">防御力実数値</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_deff_buff" required min="0" name="fix_deff_buff" placeholder="防御力実数値">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_deff_buff" required min="0" name="dynamic_deff_buff" placeholder="防御力実数値">
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_deffrate_form" style="display: none;">
+                                <td><label for="fix_deff%_buff">防御力％</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_deff%_buff" required min="0" name="fix_deff%_buff" placeholder="防御力％">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_deff%_buff" required min="0" name="dynamic_deff%_buff" placeholder="防御力％">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_elm_form" style="display: none;">
+                                <td><label for="fix_elm_buff">元素熟知</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_elm_buff" required min="0" name="fix_elm_buff" placeholder="元素熟知">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_elm_buff" required min="0" name="dynamic_elm_buff" placeholder="元素熟知">
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_elm_charge_form" style="display: none;">
+                                <td><label for="fix_elm_charge_buff">元素チャージ効率</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_elm_charge_buff" required min="0" name="fix_elm_charge_buff" placeholder="元素チャージ効率">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_elm_charge_buff" required min="0" name="dynamic_elm_charge_buff" placeholder="元素チャージ効率">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_cr_form" style="display: none;">
+                                <td><label for="fix_cr_buff">会心率</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_cr_buff" required min="0" name="fix_cr_buff" placeholder="会心率">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_cr_buff" required min="0" name="dynamic_cr_buff" placeholder="会心率">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_cd_form" style="display: none;">
+                                <td><label for="fix_cd_buff">会心ダメージ</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_cd_buff" required min="0" name="fix_cd_buff" placeholder="会心ダメージ">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_cd_buff" required min="0" name="dynamic_cd_buff" placeholder="会心ダメージ">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_dmg_buff_form">
+                                <td><label for="fix_dmg_buff">ダメージバフ</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_dmg_buff" required min="0" name="fix_dmg_buff" placeholder="ダメージバフ">(%)
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_dmg_buff" required min="0" name="dynamic_dmg_buff" placeholder="ダメージバフ">(%)
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr id="team_basedmg_buff_form">
+                                <td><label for="fix_basedmg_buff">基礎ダメージバフ/1hit</label></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="fix_basedmg_buff" required min="0" name="fix_basedmg_buff" placeholder="基礎ダメージバフ">
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                    <input type="number" id="dynamic_basedmg_buff" required min="0" name="dynamic_basedmg_buff" placeholder="基礎ダメージバフ">
+                                    </div>
+                                </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <div style = "text-align: center;">
+                    <button id = "parameterbutton1" class="button-1" onclick="showOption('option1', 'parameterbutton1')">キャラ＆装備</button>
+                    <button id = "parameterbutton2" class="button-1" onclick="showOption('option2', 'parameterbutton2')">元素共鳴</button>
+                    <button id = "parameterbutton3" class="button-1" onclick="showOption('option3', 'parameterbutton3')">敵ステータス</button>
+                    </div>
+                    <div class = "option-field" id = "option1">
+                    <fieldset style="width: auto;">
+                        <legend>キャラクターバフ</legend>
+                        <div id ="char_talent">
+                        </div>
+                        <div id ="temporary_char_talent">
+                        </div>
+                        <div id="characterInfo">
+                        </div>
+                    </fieldset>
+                    <fieldset style="width: auto;">
+                        <legend>装備バフ</legend>
+                        <div id="weaponInfo">
+                        </div>
+                        <div id="artifact_checkbox">
+                        </div>
+                    </fieldset>
+                    </div>
+                    <div class = "option-field" id = "option2">
+                    <fieldset>
+                        <legend>元素共鳴</legend>
+                        <label><input type="checkbox" class="custom-checkbox" id = "pyro_reso"> 炎共鳴：攻撃力+25％</label><br>
+                        <label><input type="checkbox" class="custom-checkbox" id = "hydro_reso"> 水共鳴：HP+25％</label><br>
+                        <label><input type="checkbox" class="custom-checkbox" id = "cyro_reso"> 氷共鳴：会心率+15％</label><br>
+                        <label><input type="checkbox" class="custom-checkbox" id = "dendro_reso"> 草共鳴：元素熟知</label>
+                        <select id="dendro_reso_select">
+                        <option value="50">+50</option>
+                        <option value="80">+80</option>
+                        <option value="100">+100</option>
+                        </select>
+                        <br>
+                        <label><input type="checkbox" class="custom-checkbox" id = "geo_reso"> 岩共鳴：ダメージバフ+15％<br>&nbsp;&nbsp;　　　　　岩元素耐性ダウン</label>
+                        <select id="geo_reso_select">
+                        <option value="0">0%</option>
+                        <option value="20">20%</option>
+                        </select>
+                    </fieldset>
+                    </div>
+                    <div class = "option-field" id = "option3" style = "text-align: center;">
+                    <div id= "enemy-status">
+                        <form class="enemy-form">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>敵ステータス</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr id="enemy_level-form">
+                                <td><label for="enemy-level-form">敵レベル</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-level" required min="0" name="enemy-level" placeholder="Lv" value="90">
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-pyroresist-form">
+                                <td><label for="enemy-pyroresist">炎元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-pyroresist" placeholder="炎元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="pyrodebuff-form">
+                                <td><label for="pyrodebuff">炎元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="pyrodebuff" placeholder="炎元素耐性" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-hydroresist-form">
+                                <td><label for="enemy-hydroresist">水元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-hydroresist" placeholder="水元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="hydrodebuff-form">
+                                <td><label for="hydrodebuff">水元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="hydrodebuff" placeholder="水元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-cyroresist-form">
+                                <td><label for="enemy-cyroresist">氷元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-cyroresist" placeholder="氷元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="cyrodebuff-form">
+                                <td><label for="cyrodebuff">氷元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="cyrodebuff" placeholder="氷元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-electroresist-form">
+                                <td><label for="enemy-electroresist">雷元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-electroresist" placeholder="雷元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="electrodebuff-form">
+                                <td><label for="electrodebuff">雷元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="electrodebuff" placeholder="雷元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-anemoresist-form">
+                                <td><label for="enemy-anemoresist">風元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-anemoresist" placeholder="風元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="anemodebuff-form">
+                                <td><label for="anemodebuff">風元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="anemodebuff" placeholder="風元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-dendroresist-form">
+                                <td><label for="enemy-dendroresist">草元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-dendroresist" placeholder="草元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="dendrodebuff-form">
+                                <td><label for="dendrodebuff">草元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="dendrodebuff" placeholder="草元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-georesist-form">
+                                <td><label for="enemy-georesist">岩元素耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-georesist" placeholder="岩元素耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="geodebuff-form">
+                                <td><label for="geodebuff">岩元素デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="geodebuff" placeholder="岩元素デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="enemy-phisicsresist-form">
+                                <td><label for="enemy-phisicsresist">物理耐性</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="enemy-phisicsresist" placeholder="物理耐性" value="10">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="phisicsdebuff-form">
+                                <td><label for="phisicsdebuff">物理デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="phisicsdebuff" placeholder="物理デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            <tr id="deff-debuff-form">
+                                <td><label for="deff-debuff-form">防御デバフ</label></td>
+                                <td>
+                                <div>
+                                    <input type="number" id="deff-debuff" required min="0" name="deff-debuff" placeholder="防御デバフ" value="0">(%)
+                                </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                    </div>
+                    <br>
+                    <div class = "tablestyle1">
+                    <table  class="status_table" style="table-layout: fixed">
+                        <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 22%;">
+                        <col style="width: 14%;">
+                        <col style="width: 17%;">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>基礎ステータス</th>
+                            <th>バフ</th>
+                            <th>聖遺物バフ</th>
+                            <th>最終ステータス</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>HP</span>
+                            </th>
+                            <td id = table_base_hp>-</td>
+                            <td id = table_buff_hp>-</td>
+                            <td id = table_af_hp>-</td>
+                            <td id = table_final_hp>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>攻撃力</span>
+                            </th>
+                            <td id = table_base_attck>-</td>
+                            <td id = table_buff_attck>-</td>
+                            <td id = table_af_attck>-</td>
+                            <td id = table_final_attck>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>防御力</span>
+                            </th>
+                            <td id = table_base_deff>-</td>
+                            <td id = table_buff_deff>-</td>
+                            <td id = table_af_deff>-</td>
+                            <td id = table_final_deff>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>元素熟知</span>
+                            </th>
+                            <td id = table_base_elm>-</td>
+                            <td id = table_buff_elm>-</td>
+                            <td id = table_af_elm>-</td>
+                            <td id = table_final_elm>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>元素チャージ効率</span>
+                            </th>
+                            <td id = table_base_elm_charge>-</td>
+                            <td id = table_buff_elm_charge>-</td>
+                            <td id = table_af_elm_charge>-</td>
+                            <td id = table_final_elm_charge>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>会心率</span>
+                            </th>
+                            <td id = table_base_cr>-</td>
+                            <td id = table_buff_cr>-</td>
+                            <td id = table_af_cr>-</td>
+                            <td id = table_final_cr>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>会心ダメージ</span>
+                            </th>
+                            <td id = table_base_cd>-</td>
+                            <td id = table_buff_cd>-</td>
+                            <td id = table_af_cd>-</td>
+                            <td id = table_final_cd>-</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;">
+                            <span>ダメージバフ</span>
+                            </th>
+                            <td id = table_base_dmg_buff>-</td>
+                            <td id = table_buff_dmg_buff>-</td>
+                            <td id = table_af_dmg_buff>-</td>
+                            <td id = table_final_dmg_buff>-</td>
+                        </tr>
+                        </tbody>
+                    </table> 
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
+                <div class="button_solid004" onclick="monte_carlo_calculate()">
+                    スコア計算開始
+                </div>
+            </div>
+            <p id="calculationMessage" style="visibility: hidden;">計算中...</p>
+            <div id="response"></div>
+            <div id="result"></div>
+            <br>
+            <div class="wrapper">
+                <div>
+                    <div class = "centered-container">
+                    <div class = "centered-div">
+                        <button id = "tablebutton1" class="button-2" onclick="showTable('table1', 'tablebutton1')">各ステータス</button>
+                        <button id = "tablebutton2" class="button-2" onclick="showTable('table2', 'tablebutton2')">スコア分布</button>
+                        <button id = "tablebutton3" class="button-2" onclick="showTable('table3', 'tablebutton3')">サブステータス分布</button>
+                    </div>
+                    <div id="table1" class="tablestyle">
+                        <!-- 表1の内容 -->
+                        <table  class="status_table" style="table-layout: fixed">
+                        <colgroup>
+                            <col style="width: 30%;">
+                            <col style="width: 35%;">
+                        </colgroup>
                         <thead>
                             <tr>
                             <th></th>
-                            <th>固定値バフ</th>
-                            <th></th>
-                            <th>変動バフ</th>
+                            <th>自己ステータス</th>
+                            <th>最適化ステータス</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id="team_hp_form" style="display: none;">
-                            <td><label for="fix_hp_buff">HP実数値</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_hp_buff" required min="0" name="fix_hp_buff" placeholder="HP実数値">
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_hp_buff" required min="0" name="dynamic_hp_buff" placeholder="HP実数値">
-                                </div>
-                            </td>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>HP</span>
+                            </th>
+                            <td id = my_result_hp>-</td>
+                            <td id = appro_result_hp>-</td>
                             </tr>
-                            <tr id="team_hprate_form" style="display: none;">
-                            <td><label for="fix_hp%_buff">HP%</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_hp%_buff" required min="0" name="fix_hp%_buff" placeholder="HP%">(%)
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_hp%_buff" required min="0" name="dynamic_hp%_buff" placeholder="HP%">(%)
-                                </div>
-                            </td>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>攻撃力</span>
+                            </th>
+                            <td id = my_result_attck>-</td>
+                            <td id = appro_result_attck>-</td>
                             </tr>
-                            <tr id="team_attack_form" style="display: none;">
-                            <td><label for="fix_attack_buff">攻撃力実数値</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_attack_buff" required min="0" name="fix_attack_buff" placeholder="攻撃力実数値">
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_attack_buff" required min="0" name="dynamic_attack_buff" placeholder="攻撃力実数値">
-                                </div>
-                            </td>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>防御力</span>
+                            </th>
+                            <td id = my_result_deff>-</td>
+                            <td id = appro_result_deff>-</td>
                             </tr>
-                            <tr id="team_attackrate_form" style="display: none;">
-                            <td><label for="fix_attack%_buff">攻撃力％</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_attack%_buff" required min="0" name="fix_attack%_buff" placeholder="攻撃力％">(%)
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_attack%_buff" required min="0" name="dynamic_attack%_buff" placeholder="攻撃力％">(%)
-                                </div>
-                            </td>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>元素熟知</span>
+                            </th>
+                            <td id = my_result_elm>-</td>
+                            <td id = appro_result_elm>-</td>
                             </tr>
-                            <tr id="team_deff_form" style="display: none;">
-                            <td><label for="fix_deff_buff">防御力実数値</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_deff_buff" required min="0" name="fix_deff_buff" placeholder="防御力実数値">
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_deff_buff" required min="0" name="dynamic_deff_buff" placeholder="防御力実数値">
-                                </div>
-                            </td>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>元素チャージ効率</span>
+                            </th>
+                            <td id = my_result_elm_charge>-</td>
+                            <td id = appro_result_elm_charge>-</td>
                             </tr>
-                            <tr id="team_deffrate_form" style="display: none;">
-                            <td><label for="fix_deff%_buff">防御力％</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_deff%_buff" required min="0" name="fix_deff%_buff" placeholder="防御力％">(%)
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_deff%_buff" required min="0" name="dynamic_deff%_buff" placeholder="防御力％">(%)
-                                </div>
-                            </td>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>会心率</span>
+                            </th>
+                            <td id = my_result_cr>-</td>
+                            <td id = appro_result_cr>-</td>
                             </tr>
-                            <tr id="team_elm_form" style="display: none;">
-                            <td><label for="fix_elm_buff">元素熟知</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_elm_buff" required min="0" name="fix_elm_buff" placeholder="元素熟知">
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_elm_buff" required min="0" name="dynamic_elm_buff" placeholder="元素熟知">
-                                </div>
-                            </td>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>会心ダメージ</span>
+                            </th>
+                            <td id = my_result_cd>-</td>
+                            <td id = appro_result_cd>-</td>
                             </tr>
-                            <tr id="team_elm_charge_form" style="display: none;">
-                            <td><label for="fix_elm_charge_buff">元素チャージ効率</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_elm_charge_buff" required min="0" name="fix_elm_charge_buff" placeholder="元素チャージ効率">(%)
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_elm_charge_buff" required min="0" name="dynamic_elm_charge_buff" placeholder="元素チャージ効率">(%)
-                                </div>
-                            </td>
-                            </tr>
-                            <tr id="team_cr_form" style="display: none;">
-                            <td><label for="fix_cr_buff">会心率</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_cr_buff" required min="0" name="fix_cr_buff" placeholder="会心率">(%)
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_cr_buff" required min="0" name="dynamic_cr_buff" placeholder="会心率">(%)
-                                </div>
-                            </td>
-                            </tr>
-                            <tr id="team_cd_form" style="display: none;">
-                            <td><label for="fix_cd_buff">会心ダメージ</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_cd_buff" required min="0" name="fix_cd_buff" placeholder="会心ダメージ">(%)
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_cd_buff" required min="0" name="dynamic_cd_buff" placeholder="会心ダメージ">(%)
-                                </div>
-                            </td>
-                            </tr>
-                            <tr id="team_dmg_buff_form">
-                            <td><label for="fix_dmg_buff">ダメージバフ</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_dmg_buff" required min="0" name="fix_dmg_buff" placeholder="ダメージバフ">(%)
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_dmg_buff" required min="0" name="dynamic_dmg_buff" placeholder="ダメージバフ">(%)
-                                </div>
-                            </td>
-                            </tr>
-                            <tr id="team_basedmg_buff_form">
-                            <td><label for="fix_basedmg_buff">基礎ダメージバフ/1hit</label></td>
-                            <td>
-                                <div>
-                                <input type="number" id="fix_basedmg_buff" required min="0" name="fix_basedmg_buff" placeholder="基礎ダメージバフ">
-                                </div>
-                            </td>
-                            <td></td>
-                            <td>
-                                <div>
-                                <input type="number" id="dynamic_basedmg_buff" required min="0" name="dynamic_basedmg_buff" placeholder="基礎ダメージバフ">
-                                </div>
-                            </td>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>ダメージバフ</span>
+                            </th>
+                            <td id = my_result_dmg_buff>-</td>
+                            <td id = appro_result_dmg_buff>-</td>
                             </tr>
                         </tbody>
                         </table>
-                    </form>
-                </div>
-            </div>
-            <div>
-                <div style = "text-align: center;">
-                <button id = "parameterbutton1" class="button-1" onclick="showOption('option1', 'parameterbutton1')">キャラ＆装備</button>
-                <button id = "parameterbutton2" class="button-1" onclick="showOption('option2', 'parameterbutton2')">元素共鳴</button>
-                <button id = "parameterbutton3" class="button-1" onclick="showOption('option3', 'parameterbutton3')">敵ステータス</button>
-                </div>
-                <div class = "option-field" id = "option1">
-                <fieldset style="width: auto;">
-                    <legend>キャラクターバフ</legend>
-                    <div id ="char_talent">
                     </div>
-                    <div id ="temporary_char_talent">
-                    </div>
-                    <div id="characterInfo">
-                    </div>
-                </fieldset>
-                <fieldset style="width: auto;">
-                    <legend>装備バフ</legend>
-                    <div id="weaponInfo">
-                    </div>
-                    <div id="artifact_checkbox">
-                    </div>
-                </fieldset>
-                </div>
-                <div class = "option-field" id = "option2">
-                <fieldset>
-                    <legend>元素共鳴</legend>
-                    <label><input type="checkbox" class="custom-checkbox" id = "pyro_reso"> 炎共鳴：攻撃力+25％</label><br>
-                    <label><input type="checkbox" class="custom-checkbox" id = "hydro_reso"> 水共鳴：HP+25％</label><br>
-                    <label><input type="checkbox" class="custom-checkbox" id = "cyro_reso"> 氷共鳴：会心率+15％</label><br>
-                    <label><input type="checkbox" class="custom-checkbox" id = "dendro_reso"> 草共鳴：元素熟知</label>
-                    <select id="dendro_reso_select">
-                    <option value="50">+50</option>
-                    <option value="80">+80</option>
-                    <option value="100">+100</option>
-                    </select>
-                    <br>
-                    <label><input type="checkbox" class="custom-checkbox" id = "geo_reso"> 岩共鳴：ダメージバフ+15％<br>&nbsp;&nbsp;　　　　　岩元素耐性ダウン</label>
-                    <select id="geo_reso_select">
-                    <option value="0">0%</option>
-                    <option value="20">20%</option>
-                    </select>
-                </fieldset>
-                </div>
-                <div class = "option-field" id = "option3" style = "text-align: center;">
-                <div id= "enemy-status">
-                    <form class="enemy-form">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>敵ステータス</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr id="enemy_level-form">
-                            <td><label for="enemy-level-form">敵レベル</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="enemy-level" required min="0" name="enemy-level" placeholder="Lv" value="90">
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="enemy-pyroresist-form">
-                            <td><label for="enemy-pyroresist">炎元素耐性</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="enemy-pyroresist" placeholder="炎元素耐性" value="10">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="pyrodebuff-form">
-                            <td><label for="pyrodebuff">炎元素デバフ</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="pyrodebuff" placeholder="炎元素耐性" value="0">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="enemy-hydroresist-form">
-                            <td><label for="enemy-hydroresist">水元素耐性</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="enemy-hydroresist" placeholder="水元素耐性" value="10">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="hydrodebuff-form">
-                            <td><label for="hydrodebuff">水元素デバフ</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="hydrodebuff" placeholder="水元素デバフ" value="0">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="enemy-cyroresist-form">
-                            <td><label for="enemy-cyroresist">氷元素耐性</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="enemy-cyroresist" placeholder="氷元素耐性" value="10">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="cyrodebuff-form">
-                            <td><label for="cyrodebuff">氷元素デバフ</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="cyrodebuff" placeholder="氷元素デバフ" value="0">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="enemy-electroresist-form">
-                            <td><label for="enemy-electroresist">雷元素耐性</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="enemy-electroresist" placeholder="雷元素耐性" value="10">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="electrodebuff-form">
-                            <td><label for="electrodebuff">雷元素デバフ</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="electrodebuff" placeholder="雷元素デバフ" value="0">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="enemy-anemoresist-form">
-                            <td><label for="enemy-anemoresist">風元素耐性</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="enemy-anemoresist" placeholder="風元素耐性" value="10">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="anemodebuff-form">
-                            <td><label for="anemodebuff">風元素デバフ</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="anemodebuff" placeholder="風元素デバフ" value="0">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="enemy-dendroresist-form">
-                            <td><label for="enemy-dendroresist">草元素耐性</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="enemy-dendroresist" placeholder="草元素耐性" value="10">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="dendrodebuff-form">
-                            <td><label for="dendrodebuff">草元素デバフ</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="dendrodebuff" placeholder="草元素デバフ" value="0">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="enemy-georesist-form">
-                            <td><label for="enemy-georesist">岩元素耐性</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="enemy-georesist" placeholder="岩元素耐性" value="10">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="geodebuff-form">
-                            <td><label for="geodebuff">岩元素デバフ</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="geodebuff" placeholder="岩元素デバフ" value="0">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="enemy-phisicsresist-form">
-                            <td><label for="enemy-phisicsresist">物理耐性</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="enemy-phisicsresist" placeholder="物理耐性" value="10">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="phisicsdebuff-form">
-                            <td><label for="phisicsdebuff">物理デバフ</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="phisicsdebuff" placeholder="物理デバフ" value="0">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        <tr id="deff-debuff-form">
-                            <td><label for="deff-debuff-form">防御デバフ</label></td>
-                            <td>
-                            <div>
-                                <input type="number" id="deff-debuff" required min="0" name="deff-debuff" placeholder="防御デバフ" value="0">(%)
-                            </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    </form>
-                </div>
-                </div>
-                <br>
-                <div class = "tablestyle1">
-                <table  class="status_table" style="table-layout: fixed">
-                    <colgroup>
-                    <col style="width: 25%;">
-                    <col style="width: 22%;">
-                    <col style="width: 14%;">
-                    <col style="width: 17%;">
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>基礎ステータス</th>
-                        <th>バフ</th>
-                        <th>聖遺物バフ</th>
-                        <th>最終ステータス</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th style="text-align: left;">
-                        <span>HP</span>
-                        </th>
-                        <td id = table_base_hp>-</td>
-                        <td id = table_buff_hp>-</td>
-                        <td id = table_af_hp>-</td>
-                        <td id = table_final_hp>-</td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">
-                        <span>攻撃力</span>
-                        </th>
-                        <td id = table_base_attck>-</td>
-                        <td id = table_buff_attck>-</td>
-                        <td id = table_af_attck>-</td>
-                        <td id = table_final_attck>-</td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">
-                        <span>防御力</span>
-                        </th>
-                        <td id = table_base_deff>-</td>
-                        <td id = table_buff_deff>-</td>
-                        <td id = table_af_deff>-</td>
-                        <td id = table_final_deff>-</td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">
-                        <span>元素熟知</span>
-                        </th>
-                        <td id = table_base_elm>-</td>
-                        <td id = table_buff_elm>-</td>
-                        <td id = table_af_elm>-</td>
-                        <td id = table_final_elm>-</td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">
-                        <span>元素チャージ効率</span>
-                        </th>
-                        <td id = table_base_elm_charge>-</td>
-                        <td id = table_buff_elm_charge>-</td>
-                        <td id = table_af_elm_charge>-</td>
-                        <td id = table_final_elm_charge>-</td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">
-                        <span>会心率</span>
-                        </th>
-                        <td id = table_base_cr>-</td>
-                        <td id = table_buff_cr>-</td>
-                        <td id = table_af_cr>-</td>
-                        <td id = table_final_cr>-</td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">
-                        <span>会心ダメージ</span>
-                        </th>
-                        <td id = table_base_cd>-</td>
-                        <td id = table_buff_cd>-</td>
-                        <td id = table_af_cd>-</td>
-                        <td id = table_final_cd>-</td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">
-                        <span>ダメージバフ</span>
-                        </th>
-                        <td id = table_base_dmg_buff>-</td>
-                        <td id = table_buff_dmg_buff>-</td>
-                        <td id = table_af_dmg_buff>-</td>
-                        <td id = table_final_dmg_buff>-</td>
-                    </tr>
-                    </tbody>
-                </table> 
-                </div>
-            </div>
-        </div>
-        <br>
-        <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
-            <div class="button_solid004" onclick="monte_carlo_calculate()">
-                スコア計算開始
-            </div>
-        </div>
-        <p id="calculationMessage" style="visibility: hidden;">計算中...</p>
-        <div id="response"></div>
-        <div id="result"></div>
-        <br>
-        <div class="wrapper">
-            <div>
-                <div class = "centered-container">
-                <div class = "centered-div">
-                    <button id = "tablebutton1" class="button-2" onclick="showTable('table1', 'tablebutton1')">各ステータス</button>
-                    <button id = "tablebutton2" class="button-2" onclick="showTable('table2', 'tablebutton2')">スコア分布</button>
-                    <button id = "tablebutton3" class="button-2" onclick="showTable('table3', 'tablebutton3')">サブステータス分布</button>
-                </div>
-                <div id="table1" class="tablestyle">
-                    <!-- 表1の内容 -->
+                    <div id="table2" class="tablestyle">
+                        <!-- 表2の内容 -->
                     <table  class="status_table" style="table-layout: fixed">
                     <colgroup>
-                        <col style="width: 30%;">
-                        <col style="width: 35%;">
+                        <col style="width: 21%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
                     </colgroup>
                     <thead>
                         <tr>
                         <th></th>
-                        <th>自己ステータス</th>
-                        <th>最適化ステータス</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>HP</span>
-                        </th>
-                        <td id = my_result_hp>-</td>
-                        <td id = appro_result_hp>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>攻撃力</span>
-                        </th>
-                        <td id = my_result_attck>-</td>
-                        <td id = appro_result_attck>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>防御力</span>
-                        </th>
-                        <td id = my_result_deff>-</td>
-                        <td id = appro_result_deff>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>元素熟知</span>
-                        </th>
-                        <td id = my_result_elm>-</td>
-                        <td id = appro_result_elm>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>元素チャージ効率</span>
-                        </th>
-                        <td id = my_result_elm_charge>-</td>
-                        <td id = appro_result_elm_charge>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>会心率</span>
-                        </th>
-                        <td id = my_result_cr>-</td>
-                        <td id = appro_result_cr>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>会心ダメージ</span>
-                        </th>
-                        <td id = my_result_cd>-</td>
-                        <td id = appro_result_cd>-</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="1" style="text-align: left;">
-                            <span>ダメージバフ</span>
-                        </th>
-                        <td id = my_result_dmg_buff>-</td>
-                        <td id = appro_result_dmg_buff>-</td>
-                        </tr>
-                    </tbody>
-                    </table>
-                </div>
-                <div id="table2" class="tablestyle">
-                    <!-- 表2の内容 -->
-                <table  class="status_table" style="table-layout: fixed">
-                <colgroup>
-                    <col style="width: 21%;">
-                    <col style="width: 19%;">
-                    <col style="width: 19%;">
-                    <col style="width: 19%;">
-                </colgroup>
-                <thead>
-                    <tr>
-                    <th></th>
-                    <th>自己スコア分布</th>
-                    <th>最適スコア分布</th>
-                    <th>聖遺物スコア差</th>
-                    <th>サブステ伸び回数</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th rowspan="1" style="text-align: left;">
-                        <span>聖遺物スコア</span>
-                    </th>
-                    <td id = my_af_score>-</td>
-                    <td id = appro_af_score>-</td>
-                    <td id = dlt_af_score>-</td>
-                    <td id = count_af_score>-</td>
-                    </tr>
-                    <tr>
-                    <th rowspan="1" style="text-align: left;">
-                        <span>HP</span>
-                    </th>
-                    <td id = my_hp_score>-</td>
-                    <td id = appro_hp_score>-</td>
-                    <td id = dlt_hp_score>-</td>
-                    <td id = count_hp_score>-</td>
-                    </tr>
-                    <tr>
-                    <th rowspan="1" style="text-align: left;">
-                        <span>攻撃力</span>
-                    </th>
-                    <td id = my_attck_score>-</td>
-                    <td id = appro_attck_score>-</td>
-                    <td id = dlt_attck_score>-</td>
-                    <td id = count_attck_score>-</td>
-                    </tr>
-                    <tr>
-                    <th rowspan="1" style="text-align: left;">
-                        <span>防御力</span>
-                    </th>
-                    <td id = my_deff_score>-</td>
-                    <td id = appro_deff_score>-</td>
-                    <td id = dlt_deff_score>-</td>
-                    <td id = count_deff_score>-</td>
-                    </tr>
-                    <tr>
-                    <th rowspan="1" style="text-align: left;">
-                        <span>元素熟知</span>
-                    </th>
-                    <td id = my_elm_score>-</td>
-                    <td id = appro_elm_score>-</td>
-                    <td id = dlt_elm_score>-</td>
-                    <td id = count_elm_score>-</td>
-                    </tr>
-                    <tr>
-                    <th rowspan="1" style="text-align: left;">
-                        <span>元素チャージ効率</span>
-                    </th>
-                    <td id = my_elm_charge_score>-</td>
-                    <td id = appro_elm_charge_score>-</td>
-                    <td id = dlt_elm_charge_score>-</td>
-                    <td id = count_elm_charge_score>-</td>
-                    </tr>
-                    <tr>
-                    <th rowspan="1" style="text-align: left;">
-                        <span>会心率</span>
-                    </th>
-                    <td id = my_cr_score>-</td>
-                    <td id = appro_cr_score>-</td>
-                    <td id = dlt_cr_score>-</td>
-                    <td id = count_cr_score>-</td>
-                    </tr>
-                    <tr>
-                    <th rowspan="1" style="text-align: left;">
-                        <span>会心ダメージ</span>
-                    </th>
-                    <td id = my_cd_score>-</td>
-                    <td id = appro_cd_score>-</td>
-                    <td id = dlt_cd_score>-</td>
-                    <td id = count_cd_score>-</td>
-                    </tr>
-                </tbody>
-                </table>
-                </div>
-                <div id="table3" class="tablestyle">
-                    <!-- 表3の内容 -->
-                    <table  class="status_table" style="table-layout: fixed">
-                    <colgroup>
-                        <col style="width: 18%;">
-                        <col style="width: 23%;">
-                        <col style="width: 23%;">
-                        <col style="width: 18%;">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                        <th></th>
-                        <th>自己サブステータス分布</th>
-                        <th>最適サブステータス分布</th>
-                        <th>サブステータス差</th>
+                        <th>自己スコア分布</th>
+                        <th>最適スコア分布</th>
+                        <th>聖遺物スコア差</th>
                         <th>サブステ伸び回数</th>
                         </tr>
                     </thead>
@@ -929,87 +836,182 @@
                         <th rowspan="1" style="text-align: left;">
                             <span>聖遺物スコア</span>
                         </th>
-                        <td id = my_af_score3>-</td>
-                        <td id = appro_af_score3>-</td>
-                        <td id = dlt_af_score3>-</td>
-                        <td id = count_af_score3>-</td>
+                        <td id = my_af_score>-</td>
+                        <td id = appro_af_score>-</td>
+                        <td id = dlt_af_score>-</td>
+                        <td id = count_af_score>-</td>
                         </tr>
                         <tr>
                         <th rowspan="1" style="text-align: left;">
                             <span>HP</span>
                         </th>
-                        <td id = my_af_hp>-</td>
-                        <td id = appro_af_hp>-</td>
-                        <td id = dlt_af_hp>-</td>
-                        <td id = count_hp_score3>-</td>
+                        <td id = my_hp_score>-</td>
+                        <td id = appro_hp_score>-</td>
+                        <td id = dlt_hp_score>-</td>
+                        <td id = count_hp_score>-</td>
                         </tr>
                         <tr>
                         <th rowspan="1" style="text-align: left;">
                             <span>攻撃力</span>
                         </th>
-                        <td id = my_af_attck>-</td>
-                        <td id = appro_af_attck>-</td>
-                        <td id = dlt_af_attck>-</td>
-                        <td id = count_attck_score3>-</td>
+                        <td id = my_attck_score>-</td>
+                        <td id = appro_attck_score>-</td>
+                        <td id = dlt_attck_score>-</td>
+                        <td id = count_attck_score>-</td>
                         </tr>
                         <tr>
                         <th rowspan="1" style="text-align: left;">
                             <span>防御力</span>
                         </th>
-                        <td id = my_af_deff>-</td>
-                        <td id = appro_af_deff>-</td>
-                        <td id = dlt_af_deff>-</td>
-                        <td id = count_deff_score3>-</td>
+                        <td id = my_deff_score>-</td>
+                        <td id = appro_deff_score>-</td>
+                        <td id = dlt_deff_score>-</td>
+                        <td id = count_deff_score>-</td>
                         </tr>
                         <tr>
                         <th rowspan="1" style="text-align: left;">
                             <span>元素熟知</span>
                         </th>
-                        <td id = my_af_elm>-</td>
-                        <td id = appro_af_elm>-</td>
-                        <td id = dlt_af_elm>-</td>
-                        <td id = count_elm_score3>-</td>
+                        <td id = my_elm_score>-</td>
+                        <td id = appro_elm_score>-</td>
+                        <td id = dlt_elm_score>-</td>
+                        <td id = count_elm_score>-</td>
                         </tr>
                         <tr>
                         <th rowspan="1" style="text-align: left;">
                             <span>元素チャージ効率</span>
                         </th>
-                        <td id = my_af_elm_charge>-</td>
-                        <td id = appro_af_elm_charge>-</td>
-                        <td id = dlt_af_elm_charge>-</td>
-                        <td id = count_elm_charge_score3>-</td>
+                        <td id = my_elm_charge_score>-</td>
+                        <td id = appro_elm_charge_score>-</td>
+                        <td id = dlt_elm_charge_score>-</td>
+                        <td id = count_elm_charge_score>-</td>
                         </tr>
                         <tr>
                         <th rowspan="1" style="text-align: left;">
                             <span>会心率</span>
                         </th>
-                        <td id = my_af_cr>-</td>
-                        <td id = appro_af_cr>-</td>
-                        <td id = dlt_af_cr>-</td>
-                        <td id = count_cr_score3>-</td>
+                        <td id = my_cr_score>-</td>
+                        <td id = appro_cr_score>-</td>
+                        <td id = dlt_cr_score>-</td>
+                        <td id = count_cr_score>-</td>
                         </tr>
                         <tr>
                         <th rowspan="1" style="text-align: left;">
                             <span>会心ダメージ</span>
                         </th>
-                        <td id = my_af_cd>-</td>
-                        <td id = appro_af_cd>-</td>
-                        <td id = dlt_af_cd>-</td>
-                        <td id = count_cd_score3>-</td>
+                        <td id = my_cd_score>-</td>
+                        <td id = appro_cd_score>-</td>
+                        <td id = dlt_cd_score>-</td>
+                        <td id = count_cd_score>-</td>
                         </tr>
                     </tbody>
                     </table>
+                    </div>
+                    <div id="table3" class="tablestyle">
+                        <!-- 表3の内容 -->
+                        <table  class="status_table" style="table-layout: fixed">
+                        <colgroup>
+                            <col style="width: 18%;">
+                            <col style="width: 23%;">
+                            <col style="width: 23%;">
+                            <col style="width: 18%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                            <th></th>
+                            <th>自己サブステータス分布</th>
+                            <th>最適サブステータス分布</th>
+                            <th>サブステータス差</th>
+                            <th>サブステ伸び回数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>聖遺物スコア</span>
+                            </th>
+                            <td id = my_af_score3>-</td>
+                            <td id = appro_af_score3>-</td>
+                            <td id = dlt_af_score3>-</td>
+                            <td id = count_af_score3>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>HP</span>
+                            </th>
+                            <td id = my_af_hp>-</td>
+                            <td id = appro_af_hp>-</td>
+                            <td id = dlt_af_hp>-</td>
+                            <td id = count_hp_score3>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>攻撃力</span>
+                            </th>
+                            <td id = my_af_attck>-</td>
+                            <td id = appro_af_attck>-</td>
+                            <td id = dlt_af_attck>-</td>
+                            <td id = count_attck_score3>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>防御力</span>
+                            </th>
+                            <td id = my_af_deff>-</td>
+                            <td id = appro_af_deff>-</td>
+                            <td id = dlt_af_deff>-</td>
+                            <td id = count_deff_score3>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>元素熟知</span>
+                            </th>
+                            <td id = my_af_elm>-</td>
+                            <td id = appro_af_elm>-</td>
+                            <td id = dlt_af_elm>-</td>
+                            <td id = count_elm_score3>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>元素チャージ効率</span>
+                            </th>
+                            <td id = my_af_elm_charge>-</td>
+                            <td id = appro_af_elm_charge>-</td>
+                            <td id = dlt_af_elm_charge>-</td>
+                            <td id = count_elm_charge_score3>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>会心率</span>
+                            </th>
+                            <td id = my_af_cr>-</td>
+                            <td id = appro_af_cr>-</td>
+                            <td id = dlt_af_cr>-</td>
+                            <td id = count_cr_score3>-</td>
+                            </tr>
+                            <tr>
+                            <th rowspan="1" style="text-align: left;">
+                                <span>会心ダメージ</span>
+                            </th>
+                            <td id = my_af_cd>-</td>
+                            <td id = appro_af_cd>-</td>
+                            <td id = dlt_af_cd>-</td>
+                            <td id = count_cd_score3>-</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    </div>
                 </div>
+                <div>
+                    <div class="chart-container">
+                    <canvas id="myChart"></canvas>
+                    </div>
                 </div>
             </div>
-            <div>
-                <div class="chart-container">
-                <canvas id="myChart"></canvas>
-                </div>
-            </div>
+            <br>
+            <br>
         </div>
-        <br>
-        <br>
     </div>
     <footer>
         <p>本サイト内の画像およびデータはHoYoverse/COGNOSPHEREの著作物です。</p>
@@ -1138,6 +1140,8 @@
                     };
                     images.push(image);
                 }
+                let divAttention = document.getElementById("Attention");
+                divAttention.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
                 // 画像要素を生成し、動的にHTMLに追加する
                 const imageGrid = document.getElementById("imageGrid");
                 images.forEach(image => {
@@ -1173,6 +1177,8 @@
                             imageElement.alt = "Clicked Image";
                             imageContainer.appendChild(imageElement);
                         }
+                        let div = document.getElementById("WholeDisplay");
+                        div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
                     });
                     imageGrid.appendChild(imgElement);
                 });

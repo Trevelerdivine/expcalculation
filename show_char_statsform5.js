@@ -24,7 +24,7 @@ async function show_char_statsform()
     let traitLabel;
     let elementsToAddToCharTalent = [];
 
-    if (SelectedCharId == "56")
+    if (selectedCharId == "56")
     {
       traits = [
         { id: "traitCheckbox", label: "第1重：心識蘊蔵の種" },
@@ -97,7 +97,7 @@ async function show_char_statsform()
         characterInfo.appendChild(four_conste_selectList);
       }
     }
-    else if (SelectedCharId == "71")
+    else if (selectedCharId == "71")
     {
       elementsToAddToCharTalent = [
         createCheckbox("Lyney_talent2_flag", true),
@@ -145,7 +145,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "0")
+    else if (selectedCharId == "0")
     {
       traits = [
         { id: "traitCheckbox6", label: "6重　黄金を裂く焔爪：会心ダメージ " },
@@ -169,7 +169,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "1")
+    else if (selectedCharId == "1")
       {
         elementsToAddToCharTalent = [
           createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
@@ -216,7 +216,7 @@ async function show_char_statsform()
           characterInfo.appendChild(document.createElement("br"));
         }
     }
-    else if (SelectedCharId == "2")
+    else if (selectedCharId == "2")
     {
       elementsToAddToCharTalent = [
         createLabel("hutao_E", "蝶導来世"),
@@ -256,7 +256,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "3")
+    else if (selectedCharId == "3")
     {
       traits = [
         { id: "traitCheckbox2", label: "第2重：弾丸の破片 敵の防御力-23%" },
@@ -293,7 +293,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "4")
+    else if (selectedCharId == "4")
     {
       elementsToAddToCharTalent = [
         createCheckbox("diluc_talent2", true),
@@ -360,7 +360,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "76")
+    else if (selectedCharId == "76")
     {
       traits = [
         { id: "traitCheckbox2", label: "第2重：攻撃力+20%" },
@@ -396,7 +396,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "6")
+    else if (selectedCharId == "6")
     {
       traits = [
         { id: "traitCheckbox2", label: "第2重：HP50%未満の敵に重撃会心率+20%" },
@@ -432,7 +432,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "7")
+    else if (selectedCharId == "7")
     {
       elementsToAddToCharTalent = [
         createCheckbox("xinyan_talent2", true),
@@ -477,7 +477,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "8")
+    else if (selectedCharId == "8")
     {
       elementsToAddToCharTalent = [
         createCheckbox("bennett_Q", true),
@@ -515,7 +515,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "9")
+    else if (selectedCharId == "9")
     {
       traits = [
         { id: "traitCheckbox2", label: "第1重：敵の炎元素耐性-15%" },
@@ -553,7 +553,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "10")
+    else if (selectedCharId == "10")
     {
       traits = [
         { id: "talent2checkbox2", label: "固有天賦2：令制圧射撃 攻撃力+15% " },
@@ -584,7 +584,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "74")
+    else if (selectedCharId == "74")
     {
       elementsToAddToCharTalent = [
         createCheckbox("furina_Qcheck", true),
@@ -608,7 +608,7 @@ async function show_char_statsform()
       createchar_attackmethod(options);
 
     }
-    else if (SelectedCharId == "72")
+    else if (selectedCharId == "72")
     {
       elementsToAddToCharTalent = [
         createLabel("Neuvillette_talent2", "固有天賦2：HP割合："),
@@ -628,7 +628,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
     }
-    else if (SelectedCharId == "11")
+    else if (selectedCharId == "11")
     {
       elementsToAddToCharTalent = [
         createCheckbox("nirou_talent1", false),
@@ -661,7 +661,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "12")
+    else if (selectedCharId == "12")
     {
       elementsToAddToCharTalent = [
         createCheckbox("yelan_Q", false),
@@ -705,7 +705,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "13")
+    else if (selectedCharId == "13")
     {
       elementsToAddToCharTalent = [
         createCheckbox("kamisatoayato_Q", true),
@@ -740,7 +740,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "15")
+    else if (selectedCharId == "15")
     {
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
@@ -753,7 +753,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
     }
-    else if (SelectedCharId == "19")
+    else if (selectedCharId == "19")
     {
       traits = [
         { id: "traitCheckbox2", label: "第2重：古華剣・画雨籠山  水元素耐性-15％" },
@@ -777,7 +777,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "73")
+    else if (selectedCharId == "73")
     {
       elementsToAddToCharTalent = [
         createCheckbox("skill_flag", true),
@@ -805,7 +805,7 @@ async function show_char_statsform()
     
       createchar_attackmethod(options);
     }
-    else if (SelectedCharId == "21")
+    else if (selectedCharId == "21")
     {
       traits = [
         { id: "traitCheckbox4", label: "第4重：栄枯盛衰  敵の防御力-30%" },
@@ -831,7 +831,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "22")
+    else if (selectedCharId == "22")
     {
       elementsToAddToCharTalent = [
         createCheckbox("eula_E", true),
@@ -876,7 +876,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "23")
+    else if (selectedCharId == "23")
     {
       elementsToAddToCharTalent = [
         createCheckbox("ganyu_talent1", true),
@@ -943,7 +943,7 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "28")
+    else if (selectedCharId == "28")
     {
       traits = [
         { id: "rosaria_talent1", label: "固有天賦1：懺悔に耳を傾ける幻影 会心率+12%" },
@@ -964,7 +964,7 @@ async function show_char_statsform()
       characterInfo.appendChild(traitLabel);
       characterInfo.appendChild(document.createElement("br"));
     }
-    else if (SelectedCharId == "30")
+    else if (selectedCharId == "30")
     {
       elementsToAddToCharTalent = [
         createCheckbox("chongyun_talent2", true),
@@ -984,7 +984,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
     }
-    else if (SelectedCharId == "31")
+    else if (selectedCharId == "31")
     {
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
@@ -993,7 +993,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
     }
-    else if (SelectedCharId == "32")
+    else if (selectedCharId == "32")
     {
       traits = [
         { id: "traitCheckbox2", label: "第2重：令儀・拝謁返霊 雷元素ダメージ " },
@@ -1020,7 +1020,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "33")
+    else if (selectedCharId == "33")
     {
       traits = [
         { id: "traitCheckbox2", label: "第2重：最大階位を肆にアップ" },
@@ -1058,7 +1058,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "34")
+    else if (selectedCharId == "34")
     {
       elementsToAddToCharTalent = [
         createCheckbox("raiden_E", true),
@@ -1096,7 +1096,7 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "35")
+    else if (selectedCharId == "35")
     {
       traits = [
         {
@@ -1134,7 +1134,7 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "38")
+    else if (selectedCharId == "38")
     {
       elementsToAddToCharTalent = [
         createCheckbox("kujousara", true),
@@ -1171,7 +1171,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "39")
+    else if (selectedCharId == "39")
     {
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
@@ -1180,7 +1180,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "40")
+    else if (selectedCharId == "40")
     {
       
       const options = [
@@ -1206,7 +1206,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "41")
+    else if (selectedCharId == "41")
     {
       elementsToAddToCharTalent = [
         createCheckbox("beidou_talent2", true),
@@ -1267,7 +1267,7 @@ async function show_char_statsform()
         }
       }
     }
-    else if (SelectedCharId == "42")
+    else if (selectedCharId == "42")
     {
       elementsToAddToCharTalent = [
         createCheckbox("lisa_talent2", true),
@@ -1288,7 +1288,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
     }
-    else if (SelectedCharId == "44")
+    else if (selectedCharId == "44")
     {
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
@@ -1298,7 +1298,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
     }
-    else if (SelectedCharId == "46")
+    else if (selectedCharId == "46")
     {
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
@@ -1323,7 +1323,7 @@ async function show_char_statsform()
         char_talent.appendChild(element);
       });
     }
-    else if (SelectedCharId == "49")
+    else if (selectedCharId == "49")
     {
       elementsToAddToCharTalent = [
         createTextNode("元素爆発天賦レベル："),
@@ -1354,7 +1354,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options);
     }
-    else if (SelectedCharId == "50")
+    else if (selectedCharId == "50")
     {
       const options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
@@ -1363,7 +1363,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "55")
+    else if (selectedCharId == "55")
     {   
       traits = [
         {
@@ -1420,7 +1420,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "57")
+    else if (selectedCharId == "57")
     {
       elementsToAddToCharTalent = [
         createCheckbox("tighnari_talent1", true),
@@ -1483,7 +1483,7 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "58")
+    else if (selectedCharId == "58")
     {     
       traits = [
         {
@@ -1509,7 +1509,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "62")
+    else if (selectedCharId == "62")
     {     
       elementsToAddToCharTalent = [
         createLabel("travelardendro_talent1", "固有天賦1：元素熟知 "),
@@ -1554,7 +1554,7 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
-    else if (SelectedCharId == "75")
+    else if (selectedCharId == "75")
     {
       elementsToAddToCharTalent = [
         createLabel("navia_talent2", "固有天賦2：炎/雷/氷/水元素のキャラクター数"),
@@ -1591,7 +1591,7 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "63")
+    else if (selectedCharId == "63")
     {
       elementsToAddToCharTalent = [
         createCheckbox("arataki_burst_effect", true),
@@ -1645,7 +1645,7 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "64")
+    else if (selectedCharId == "64")
     {
       elementsToAddToCharTalent = [
         createCheckbox("albedo_talent1", true),
@@ -1700,7 +1700,7 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "65")
+    else if (selectedCharId == "65")
     {
       elementsToAddToCharTalent = [
         createCheckbox("zhongli_skill", true),
@@ -1718,7 +1718,7 @@ async function show_char_statsform()
       ];
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "68")
+    else if (selectedCharId == "68")
     {
       elementsToAddToCharTalent = [
         createTextNode("元素爆発天賦レベル："),
@@ -1751,7 +1751,7 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId == "69")
+    else if (selectedCharId == "69")
     {
       traits = [
         {
@@ -1775,7 +1775,7 @@ async function show_char_statsform()
       characterInfo.appendChild(traitLabel);
       createchar_attackmethod(options)  
     }
-    else if (SelectedCharId  == "70")
+    else if (selectedCharId  == "70")
     {
       traits = [
         {

@@ -1157,8 +1157,8 @@
                         // 画像を表示するdiv要素を取得
                         const digits = String(CharId); // 数値を文字列に変換
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
-                        SelectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
-                        console.log(SelectedCharId);
+                        selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
+                        console.log(selectedCharId);
                         const imageContainer = document.getElementById("CharImage");
                         await DisplayCharStatus(CharSortOrder);
                         AfSetReffer(CharSortOrder);
@@ -1577,7 +1577,7 @@
                         // 画像を表示するdiv要素を取得
                         const digits = String(CharId); // 数値を文字列に変換
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
-                        SelectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
+                        selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
                         const imageContainer = document.getElementById("CharImage");
                         await DisplayCharStatus(CharSortOrder);
                         AfSetReffer(CharSortOrder);

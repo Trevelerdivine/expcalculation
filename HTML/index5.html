@@ -1083,7 +1083,6 @@
 
         // fetchData() 関数を定義
         async function fetchData() {
-            startCountdown();
             let ErrorId;
             const img_grid = document.getElementById("imageGrid");
             img_grid.innerHTML = "";
@@ -1106,6 +1105,7 @@
                     throw new Error('Failed to fetch data');
                 }
                 let char_ids = [];
+                startCountdown();
                 UserData = await response.json();
                 console.log(UserData);
                 localStorage.setItem("UserData", JSON.stringify(UserData));

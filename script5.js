@@ -249,52 +249,54 @@ async function calculate_depend_status()
     if (attack_method >= 1 && attack_method <= 5) {
         attack_method_index = 0;
     } else if (attack_method >= 6 && attack_method <= 10) {
-      attack_method_index = 1;
+    attack_method_index = 1;
     } else if (attack_method >= 11 && attack_method <= 15) {
-      attack_method_index = 2;
+    attack_method_index = 2;
     } else if (attack_method >= 16 && attack_method <= 20) {
-      attack_method_index = 3;
+    attack_method_index = 3;
     } else if (attack_method >= 21 && attack_method <= 25) {
-      attack_method_index = 4;
+    attack_method_index = 4;
     } else {
         attack_method_index = -1;
     }
-  }
-  depend_status = [0,0,0,0,0,0,0];
-  const char_response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
-  const char_data = await char_response.json();
-  if (attack_method != 0)
- {
-  char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
-  const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;;
-  const weapon_response = await fetch("../data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
-  const weapon_data = await weapon_response.json();
-  const weapon_depend_status = weapon_data.ステータス.依存ステータス;
-  const button = document.getElementById("reactionoff_flag");
-  for (let i = 0; i < 7; i++)
-  {
-    depend_status[i] = char_depend_status[i] + weapon_depend_status[i];
-    if (depend_status[i] > 1)
-    {
-      depend_status[i] = 1
     }
-  }
-
-  if (button !== null && !button.checked && char_propaty[0] != 7)
-  {
-    depend_status[2] = 1;
-  }
-
-  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
-  {
-    const zetsuen_checkbox = document.getElementById("af17_4");
-    if(zetsuen_checkbox.checked && attack_method_index == 4)
+    depend_status = [0,0,0,0,0,0,0];
+    const char_response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
+    const char_data = await char_response.json();
+    if (attack_method != 0)
     {
-      depend_status[3] = 1;
+        char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
+        const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;;
+        const weapon_response = await fetch("../data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
+        const weapon_data = await weapon_response.json();
+        const weapon_depend_status = weapon_data.ステータス.依存ステータス;
+        const button = document.getElementById("reactionoff_flag");
+        console.log(char_depend_status);
+        console.log(weapon_depend_status);
+        for (let i = 0; i < 7; i++)
+        {
+            depend_status[i] = char_depend_status[i] + weapon_depend_status[i];
+            if (depend_status[i] > 1)
+            {
+            depend_status[i] = 1
+            }
+        }
+
+        if (button !== null && !button.checked && char_propaty[0] != 7)
+        {
+            depend_status[2] = 1;
+        }
+
+        if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17)
+        {
+            const zetsuen_checkbox = document.getElementById("af17_4");
+            if(zetsuen_checkbox.checked && attack_method_index == 4)
+            {
+            depend_status[3] = 1;
+            }
+        }
     }
-  }
-}
-  return depend_status;
+    return depend_status;
 }
 
 function calc_zetsuen_buff(elm_charge)

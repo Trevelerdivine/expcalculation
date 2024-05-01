@@ -1084,6 +1084,7 @@
         // fetchData() 関数を定義
         async function fetchData() {
             let ErrorId;
+            let ErrorFlag = 0;
             const img_grid = document.getElementById("imageGrid");
             img_grid.innerHTML = "";
             const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
@@ -1176,6 +1177,7 @@
                     imageGrid.appendChild(imgElement);
                 });
             } catch (error) {
+                ErrorFlag = 1;
                 if(ErrorId == 500)
                 {
                     const nicknameElement = document.getElementById('nickname');
@@ -1187,10 +1189,8 @@
                     const nicknameElement = document.getElementById('nickname');
                     nicknameElement.textContent = "入力したUIDに問題があるようです。";
                 }
-                return;
-            }finally{
-                startCountdown();
             }
+            startCountdown(ErrorFlag);
         }
 
         async function DisplayCharStatus(SortOrder){
@@ -1454,54 +1454,57 @@
         }
 
         
-        function startCountdown() {
-            // ボタンを無効にする
-            fetchButton.disabled = true;
+        function startCountdown(flag) {
+            if(flag ==0)
+            {
+                // ボタンを無効にする
+                fetchButton.disabled = true;
 
-            // ローカルストレージからカウントダウン終了時刻を取得
-            const endTime = localStorage.getItem(localStorageKey);
-            // 現在時刻を取得
-            const currentTime = new Date().getTime();
+                // ローカルストレージからカウントダウン終了時刻を取得
+                const endTime = localStorage.getItem(localStorageKey);
+                // 現在時刻を取得
+                const currentTime = new Date().getTime();
 
-            // カウントダウン終了時刻が現在時刻より未来の場合、再計算してカウントダウンを再開
-            if (endTime && parseInt(endTime) > currentTime) {
-                // APIのttlを再計算
-                const remainingTime = Math.ceil((parseInt(endTime) - currentTime) / 1000);
+                // カウントダウン終了時刻が現在時刻より未来の場合、再計算してカウントダウンを再開
+                if (endTime && parseInt(endTime) > currentTime) {
+                    // APIのttlを再計算
+                    const remainingTime = Math.ceil((parseInt(endTime) - currentTime) / 1000);
 
-                // カウントダウンを表示する要素
-                const countdownElement = document.getElementById("countdown");
+                    // カウントダウンを表示する要素
+                    const countdownElement = document.getElementById("countdown");
 
-                // カウントダウンを更新する関数
-                function updateCountdown() {
-                    // 残り時間を計算
-                    let remainingTime = Math.ceil((parseInt(endTime) - new Date().getTime()) / 1000);
+                    // カウントダウンを更新する関数
+                    function updateCountdown() {
+                        // 残り時間を計算
+                        let remainingTime = Math.ceil((parseInt(endTime) - new Date().getTime()) / 1000);
 
-                    // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
-                    if (remainingTime <= 0) {
-                    clearInterval(intervalId);
-                    countdownElement.textContent = "";
-                    fetchButton.disabled = false;
-                    } else {
-                    // カウントダウンを表示
-                    countdownElement.textContent = `更新可能まであと: ${remainingTime}秒`;
+                        // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
+                        if (remainingTime <= 0) {
+                        clearInterval(intervalId);
+                        countdownElement.textContent = "";
+                        fetchButton.disabled = false;
+                        } else {
+                        // カウントダウンを表示
+                        countdownElement.textContent = `更新可能まであと: ${remainingTime}秒`;
+                        }
                     }
+
+                    // カウントダウンを最初に更新
+                    updateCountdown();
+
+                    // 残り時間を1秒ごとに更新
+                    const intervalId = setInterval(updateCountdown, countdownInterval);
+                } else {
+                    // カウントダウン終了時刻が現在時刻より過去の場合は、通常のカウントダウンを開始
+                    const apiTTL = 60; // APIのttl（秒）
+                    const endTime = new Date().getTime() + apiTTL * 1000;
+
+                    // ローカルストレージにカウントダウン終了時刻を保存
+                    localStorage.setItem(localStorageKey, endTime);
+
+                    // カウントダウンを再開
+                    startCountdown();
                 }
-
-                // カウントダウンを最初に更新
-                updateCountdown();
-
-                // 残り時間を1秒ごとに更新
-                const intervalId = setInterval(updateCountdown, countdownInterval);
-            } else {
-                // カウントダウン終了時刻が現在時刻より過去の場合は、通常のカウントダウンを開始
-                const apiTTL = 60; // APIのttl（秒）
-                const endTime = new Date().getTime() + apiTTL * 1000;
-
-                // ローカルストレージにカウントダウン終了時刻を保存
-                localStorage.setItem(localStorageKey, endTime);
-
-                // カウントダウンを再開
-                startCountdown();
             }
         }
 

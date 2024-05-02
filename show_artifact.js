@@ -7,7 +7,7 @@ async function show_artifact()
     artifact_checkbox.innerHTML = "";
     for (let i = 0; i < 2; i++)
     {
-        if (selectedImageIds[i] == "0") 
+        if (SelectedAfId[i] == "0") 
         {
             traits = [
                 {
@@ -29,7 +29,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -43,7 +43,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
         
-        else if (selectedImageIds[i] == "1") 
+        else if (SelectedAfId[i] == "1") 
         {
             traits = [
                 {
@@ -65,7 +65,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -79,7 +79,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "2") 
+        else if (SelectedAfId[i] == "2") 
         {
             traits = [
                 {
@@ -101,7 +101,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -114,7 +114,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
         }
-        else if (selectedImageIds[i] == "3") 
+        else if (SelectedAfId[i] == "3") 
         {
             traits = [
                 {
@@ -136,7 +136,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -150,7 +150,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "4") 
+        else if (SelectedAfId[i] == "4") 
         {
             traits = [
                 {
@@ -172,7 +172,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -186,7 +186,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "5") 
+        else if (SelectedAfId[i] == "5") 
         {
             traits = [
                 {
@@ -208,7 +208,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -222,7 +222,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "6") 
+        else if (SelectedAfId[i] == "6") 
         {
             traits = [
                 {
@@ -247,7 +247,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -275,7 +275,7 @@ async function show_artifact()
             }
         }
 
-        else if (selectedImageIds[i] == "7") 
+        else if (SelectedAfId[i] == "7") 
         {
             traits = [
                 {
@@ -297,7 +297,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -311,7 +311,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "8") 
+        else if (SelectedAfId[i] == "8") 
         {
             traits = [
                 {
@@ -333,7 +333,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -347,7 +347,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "9") 
+        else if (SelectedAfId[i] == "9") 
         {
             traits = [
                 {
@@ -369,7 +369,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -383,7 +383,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "10") 
+        else if (SelectedAfId[i] == "10") 
         {
             traits = [
                 {
@@ -405,7 +405,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -419,7 +419,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "11") 
+        else if (SelectedAfId[i] == "11") 
         {
             traits = [
                 {
@@ -444,7 +444,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -475,7 +475,7 @@ async function show_artifact()
 
         }
 
-        else if (selectedImageIds[i] == "12") 
+        else if (SelectedAfId[i] == "12") 
         {
             traits = [
                 {
@@ -500,7 +500,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -530,7 +530,7 @@ async function show_artifact()
             }
 
         }
-        else if (selectedImageIds[i] == "13") 
+        else if (SelectedAfId[i] == "13") 
         {
             traits = [
                 {
@@ -552,7 +552,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -565,7 +565,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
         }
-        else if (selectedImageIds[i] == "14") 
+        else if (SelectedAfId[i] == "14") 
         {
             traits = [
                 {
@@ -587,7 +587,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -601,7 +601,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "15") 
+        else if (SelectedAfId[i] == "15") 
         {
             traits = [
                 {
@@ -626,7 +626,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -656,7 +656,7 @@ async function show_artifact()
 
         }
 
-        else if (selectedImageIds[i] == "16") 
+        else if (SelectedAfId[i] == "16") 
         {
             traits = [
                 {
@@ -678,7 +678,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -692,7 +692,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "17") 
+        else if (SelectedAfId[i] == "17") 
         {
             traits = [
                 {
@@ -714,7 +714,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -728,7 +728,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "18") 
+        else if (SelectedAfId[i] == "18") 
         {
             traits = [
                 {
@@ -753,7 +753,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -785,13 +785,13 @@ async function show_artifact()
             }
         }
 
-        else if (selectedImageIds[i] == "19") 
+        else if (SelectedAfId[i] == "19") 
         {
             buff_group = [
                 createAfCheckbox("af19_2", true),
                 createAfLabel("af19_2", "辰砂往生録2"),
               ];
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 buff_group = [
                     createAfCheckbox("af19_4", true),
@@ -805,7 +805,7 @@ async function show_artifact()
               });
         }
 
-        else if (selectedImageIds[i] == "20") 
+        else if (SelectedAfId[i] == "20") 
         {
             traits = [
                 {
@@ -827,7 +827,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -841,7 +841,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "21") 
+        else if (SelectedAfId[i] == "21") 
         {
             traits = [
                 {
@@ -866,7 +866,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -910,7 +910,7 @@ async function show_artifact()
             }
         }
 
-        else if (selectedImageIds[i] == "22") 
+        else if (SelectedAfId[i] == "22") 
         {
             traits = [
                 {
@@ -932,7 +932,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -946,7 +946,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "23") 
+        else if (SelectedAfId[i] == "23") 
         {
             traits = [
                 {
@@ -968,7 +968,7 @@ async function show_artifact()
             traitLabel.htmlFor = traits[0].id;
             traitLabel.textContent = traits[0].label;
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -982,13 +982,13 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitLabel);
         }
 
-        else if (selectedImageIds[i] == "24") 
+        else if (SelectedAfId[i] == "24") 
         {
             buff_group = [
                 createAfCheckbox("af24_2", true),
                 createAfLabel("af24_2", "楽園の絶花2"),
               ];
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 buff_group = [
                     createAfCheckbox("af24_4", true),
@@ -1002,7 +1002,7 @@ async function show_artifact()
               });
         }
 
-        else if (selectedImageIds[i] == "25") 
+        else if (SelectedAfId[i] == "25") 
         {
             traits = [
                 {
@@ -1027,7 +1027,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -1056,7 +1056,7 @@ async function show_artifact()
             }
         }
 
-        else if (selectedImageIds[i] == "26") 
+        else if (SelectedAfId[i] == "26") 
         {
             traits = [
                 {
@@ -1081,7 +1081,7 @@ async function show_artifact()
             artifact_checkbox.appendChild(traitCheckbox);
             artifact_checkbox.appendChild(traitLabel);
 
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 traitCheckbox.id = traits[1].id;
                 traitCheckbox.value = traits[1].id;
@@ -1111,13 +1111,13 @@ async function show_artifact()
             }
         }
 
-        else if (selectedImageIds[i] == "27") 
+        else if (SelectedAfId[i] == "27") 
         {
             buff_group = [
                 createAfCheckbox("af27_2", true),
                 createAfLabel("af27_2", "黄金の劇団2"),
               ];
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 buff_group = [
                     createAfCheckbox("af27_4", true),
@@ -1132,13 +1132,13 @@ async function show_artifact()
                 artifact_checkbox.appendChild(element);
               });
         }
-        else if (selectedImageIds[i] == "28") 
+        else if (SelectedAfId[i] == "28") 
         {
             buff_group = [
                 createAfCheckbox("af28_2", true),
                 createAfLabel("af28_2", "ファントムハンター2"),
               ];
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 buff_group = [
                     createAfCheckbox("af28_4", true),
@@ -1151,13 +1151,13 @@ async function show_artifact()
               });
         }
 
-        else if (selectedImageIds[i] == "29") 
+        else if (SelectedAfId[i] == "29") 
         {
             buff_group = [
                 createAfCheckbox("af29_2", true),
                 createAfLabel("af29_2", "残響の森でささやかれる夜話2"),
               ];
-            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            if (i == 1 && SelectedAfId[0] == SelectedAfId[1])
             {
                 buff_group = [
                     createAfCheckbox("af29_4", true),

@@ -96,6 +96,7 @@ const elm_reaction_obj = [
 
 async function calculate_char_base_status() 
 {
+    //UserData.data.playerInfo.showAvatarInfoList.
   const char_level = document.getElementById("char_level").value;
   const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const data = await response.json();

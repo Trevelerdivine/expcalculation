@@ -1029,6 +1029,8 @@
         let selectedImageIds = [0,0];
         let char_names = [];
         let CharDataJson;
+        let UserData;
+        let SelectId
         // ローカルストレージに保存するキー
         const localStorageKey = "countdownEndTime";
         // カウントダウンのインターバル（ミリ秒）
@@ -1050,8 +1052,6 @@
             "ミカ", "カーヴェ", "白朮", "リネット", "リネ", "フレミネ", "リオセスリ", "ヌヴィレット",
             "シャルロット", "フリーナ", "シュヴルーズ", "ナヴィア", "嘉明", "閑雲", "千織"
         ];
-
-        let UserData;
 
         function showTable(tableId, buttonId)
         {
@@ -1153,17 +1153,17 @@
                         // クリックされた画像のsrc属性を取得
                         const imageUrl = this.src;
                         const CharId = this.id;
-                        const CharSortOrder = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                        SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
                         // 画像を表示するdiv要素を取得
                         const digits = String(CharId); // 数値を文字列に変換
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
                         selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
                         console.log(selectedCharId);
                         const imageContainer = document.getElementById("CharImage");
-                        await DisplayCharStatus(CharSortOrder);
-                        AfSetReffer(CharSortOrder);
-                        await SetMainStatus(CharSortOrder);
-                        await SetMainStatus(CharSortOrder);
+                        await DisplayCharStatus(SelectId);
+                        AfSetReffer(SelectId);
+                        await SetMainStatus(SelectId);
+                        await SetMainStatus(SelectId);
                         await show_char_statsform();
                         await show_weapon_statsform();
                         show_artifact()
@@ -1581,16 +1581,16 @@
                         // クリックされた画像のsrc属性を取得
                         const imageUrl = this.src;
                         const CharId = this.id;
-                        const CharSortOrder = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                        const SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
                         // 画像を表示するdiv要素を取得
                         const digits = String(CharId); // 数値を文字列に変換
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
                         selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
                         const imageContainer = document.getElementById("CharImage");
-                        await DisplayCharStatus(CharSortOrder);
-                        AfSetReffer(CharSortOrder);
-                        await SetMainStatus(CharSortOrder);
-                        await SetMainStatus(CharSortOrder);
+                        await DisplayCharStatus(SelectId);
+                        AfSetReffer(SelectId);
+                        await SetMainStatus(SelectId);
+                        await SetMainStatus(SelectId);
                         await show_char_statsform();
                         await show_weapon_statsform();
                         show_artifact()

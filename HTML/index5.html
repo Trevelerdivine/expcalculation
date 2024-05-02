@@ -1387,12 +1387,12 @@
 
             const WeaponImgContainer = document.getElementById("WeaponImage");
             const existingImage = WeaponImgContainer.querySelector("img");
+            selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"];
             existingImage.src = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["url"];
             existingImage.alt = "Clicked Image";
             const charIndexDisplay = document.getElementById('Weaponindex-display');
             charIndexDisplay.innerHTML = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
 }
-
 
         async function CharExecution(index, charId){
             let AfJsonList = UserData.data.avatarInfoList[index].equipList;
@@ -1458,7 +1458,6 @@
             }
             return ExecuteFlag;
         }
-
         
         function startCountdown() {
             // ボタンを無効にする

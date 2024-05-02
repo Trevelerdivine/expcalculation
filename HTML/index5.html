@@ -1031,6 +1031,7 @@
         let CharDataJson;
         let UserData;
         let SelectId
+        let WeaponPopId;
         // ローカルストレージに保存するキー
         const localStorageKey = "countdownEndTime";
         // カウントダウンのインターバル（ミリ秒）
@@ -1348,9 +1349,9 @@
                 }
             });
             let WeaponIndex = AfIdList.length;
-            let WeaponId = AfIdList.pop();
-            await DisplayWeaponStatus(WeaponIndex, SortOrder, WeaponId);
-            await DisplayWeaponImg(WeaponId);
+            WeaponPopId = AfIdList.pop();
+            await DisplayWeaponStatus(WeaponIndex, SortOrder, WeaponPopId);
+            await DisplayWeaponImg(WeaponPopId);
 
             const fourthDigits = AfIdList.map(number => {
                 const numberAsString = number.toString();
@@ -1416,7 +1417,7 @@
                 }
             });
             let WeapomListIndex = AfIdList.length;
-            let WeaponId = AfIdList.pop();
+            let WeaponPopId = AfIdList.pop();
 
             // 各リスト内の文字列の上2文字を取り出して数字に変換する
             let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));

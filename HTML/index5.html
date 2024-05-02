@@ -1275,7 +1275,7 @@
 
             // ソートされたキーの配列を使って、数値とその個数のペアを作成
             const result = sortedKeys.map(key => [parseInt(key), countMap[key]]);
-            SelectedAfId = [0,0];
+            SelectedAfId = [];
             for (let i = 0; i < result.length; i++) {
                 if (result[i][1] > 1 && result[i][1] < 4)
                 {

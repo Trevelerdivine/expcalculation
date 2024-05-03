@@ -2,8 +2,6 @@ let base_status = [0,0,0,0,0,0,0,0];
 let char_base_status = [0,0,0,0,0,0,0,0];
 let weapon_base_status = [0,0,0,0,0,0,0,0];
 let depend_status = [0,0,1,0,1,1,1];
-let char_depend_status = [0,0,0,0,0,0,0];
-let weapon_depend_status = [0,0,0,0,0,0,0];
 let af_score = 0;
 let attack_method = 0;
 let attack_method_index = 0;
@@ -94,75 +92,33 @@ const elm_reaction_obj = [
   }
 ];
 
-async function calculate_char_base_status() 
-{
-  const response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
-  const data = await response.json();
-  const char_base_hp = UserData.data.avatarInfoList[SelectId].fightPropMap["1"];
-  let char_base_attck = UserData.data.avatarInfoList[SelectId].fightPropMap["4"];
-  const char_base_deff = UserData.data.avatarInfoList[SelectId].fightPropMap["7"];
-  const char_base_elm = data.ステータス.基礎元素熟知[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
-  const char_base_elm_charge = 1 + data.ステータス.基礎元素チャージ効率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
-  const char_base_cr = data.ステータス.基礎会心率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
-  const char_base_cd = data.ステータス.基礎会心ダメージ[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
-  const dmg_buff_type = parseInt(data.ステータス.基礎ダメージバフ.元素);
-  let char_base_dmg_buff = 0;
-  if (dmg_buff_type == char_propaty[0])
-  {
-    char_base_dmg_buff = parseFloat(data.ステータス.基礎ダメージバフ.数値[(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
-  }
-
-  if (selectedCharId == 62 || selectedCharId == 70)
-  {
-    const special_buff_check = document.getElementById("special_buff");
-    if(special_buff_check.checked)
-    {
-      char_base_attck += 3;
-    }
-  }
-
-  char_depend_status = data.ステータス.依存ステータス;
-  char_base_status = [char_base_hp, char_base_deff, char_base_elm, char_base_elm_charge, char_base_attck, char_base_cr, char_base_cd, char_base_dmg_buff];
-  console.log(char_base_status);
-  return char_base_status;
-}
-
-async function calculate_weapon_base_status() 
-{
-  const weapon_level = document.getElementById("weapon_level").value;
-  const response = await fetch("./data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
-  const data = await response.json();
-  const weapon_base_hp = data.ステータス.基礎HP[weapon_level];
-  const weapon_base_attck = data.ステータス.基礎攻撃力[weapon_level];
-  const weapon_base_deff = data.ステータス.基礎防御力[weapon_level];
-  const weapon_base_elm = data.ステータス.基礎元素熟知[weapon_level];
-  const weapon_base_elm_charge = data.ステータス.基礎元素チャージ効率[weapon_level];
-  const weapon_base_cr = data.ステータス.基礎会心率[weapon_level];
-  const weapon_base_cd = data.ステータス.基礎会心ダメージ[weapon_level];
-  const dmg_buff_type = parseInt(data.ステータス.基礎ダメージバフ.元素);
-  let weapon_base_dmg_buff = 0;
-  if (dmg_buff_type == char_propaty[0])
-  {
-    weapon_base_dmg_buff = parseFloat(data.ステータス.基礎ダメージバフ.数値[weapon_level]);
-  }
-  weapon_depend_status = data.ステータス.依存ステータス;
-  weapon_base_status = [weapon_base_hp, weapon_base_deff, weapon_base_elm, weapon_base_elm_charge, weapon_base_attck, weapon_base_cr, weapon_base_cd, weapon_base_dmg_buff];
-  return weapon_base_status;
-}
-
 async function calculate_base_status() 
 {
-  char_base_status = await calculate_char_base_status();
-  weapon_base_status = await calculate_weapon_base_status();
-  let base_hp = char_base_status[0] + weapon_base_status[0];
-  let base_attck = char_base_status[4] + weapon_base_status[4];
-  let base_deff = char_base_status[1] + weapon_base_status[1];
-  let base_elm = char_base_status[2] + weapon_base_status[2];
-  let base_elm_charge = char_base_status[3] + weapon_base_status[3];
-  let base_dmg_buff = char_base_status[7] + weapon_base_status[7];
-  let base_cr = char_base_status[5] + weapon_base_status[5];
-  let base_cd = char_base_status[6] + weapon_base_status[6];
+  const CharResponse = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
+  const CharData = await CharResponse.json();
+  const WeaponResponse = await fetch("../data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
+  const WeaponData = await WeaponResponse.json();
+  const base_hp = UserData.data.avatarInfoList[SelectId].fightPropMap["1"];
+  let base_attck = UserData.data.avatarInfoList[SelectId].fightPropMap["4"];
+  const base_deff = UserData.data.avatarInfoList[SelectId].fightPropMap["7"];
+  const base_elm = CharData.ステータス.基礎元素熟知[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎元素熟知[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
+  const base_elm_charge = 1 + CharData.ステータス.基礎元素チャージ効率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎元素チャージ効率[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
+  const base_cr = CharData.ステータス.基礎会心率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎会心率[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
+  const base_cd = CharData.ステータス.基礎会心ダメージ[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎会心ダメージ[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
+  const CharDmgBuffType = parseInt(CharData.ステータス.基礎ダメージバフ.元素);
+  const WeaponDmgBuffType = parseInt(WeaponData.ステータス.基礎ダメージバフ.元素);
+  let base_dmg_buff = 0;
+  if (CharDmgBuffType == char_propaty[0])
+  {
+    base_dmg_buff += parseFloat(CharData.ステータス.基礎ダメージバフ.数値[(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
+  }
+  if (WeaponDmgBuffType == char_propaty[0])
+  {
+    base_dmg_buff += parseFloat(data.ステータス.基礎ダメージバフ.数値[weapon_level]);
+  }
+  
   let base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
+  console.log(base_status);
   return base_status;
 }
 

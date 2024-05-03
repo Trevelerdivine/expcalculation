@@ -98,9 +98,9 @@ async function calculate_char_base_status()
 {
   const response = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
   const data = await response.json();
-  const char_base_hp = UserData.data.avatarInfoList[toString(SelectId)].fightPropMap["1"].val;
-  let char_base_attck = UserData.data.avatarInfoList[toString(SelectId)].fightPropMap["4"].val;
-  const char_base_deff = UserData.data.avatarInfoList[toString(SelectId)].fightPropMap["7"].val;
+  const char_base_hp = UserData.data.avatarInfoList[SelectId].fightPropMap["1"];
+  let char_base_attck = UserData.data.avatarInfoList[SelectId].fightPropMap["4"];
+  const char_base_deff = UserData.data.avatarInfoList[SelectId].fightPropMap["7"];
   const char_base_elm = data.ステータス.基礎元素熟知[toString((parseInt(CharAdvanceRank) + 2) * 10) + "+"];
   const char_base_elm_charge = 1 + data.ステータス.基礎元素チャージ効率[toString((parseInt(CharAdvanceRank) + 2) * 10) + "+"]
   const char_base_cr = data.ステータス.基礎会心率[toString((parseInt(CharAdvanceRank) + 2) * 10) + "+"];

@@ -1021,10 +1021,12 @@
     <script>
         let selectedCharId = "56";
         let selectedWeaponId = "127";
+        let CharLevel;
         let CharAdvanceRank;
-        let WeaponAsvanceRank;
         let CharConstellations;
-        let weapon_type_index = 4;
+        let WeaponLevel;
+        let WeaponAsvanceRank;
+        let WeaponConstellations;
         let char_propaty = [5,0];
         let selectedImageIds = [0,0];
         let char_names = [];
@@ -1205,7 +1207,7 @@
             // SortOrder の値が有効なインデックスであることを確認
             if (SortOrder >= 0 && SortOrder < UserData.data.avatarInfoList.length)
             {
-                let CharLevel = UserData.data.avatarInfoList[SortOrder].propMap["4001"].val;
+                CharLevel = UserData.data.avatarInfoList[SortOrder].propMap["4001"].val;
                 CharAdvanceRank = UserData.data.avatarInfoList[SortOrder].propMap["1002"].val;
                 // talentIdList が存在するかどうかを確認し、その長さを取得
                 CharConstellations = UserData.data.avatarInfoList[SortOrder].talentIdList ? UserData.data.avatarInfoList[SortOrder].talentIdList.length : 0;
@@ -1223,7 +1225,7 @@
         }
 
         async function DisplayWeaponStatus(index,SortOrder,id){
-            let WeaponLevel = UserData.data.avatarInfoList[SortOrder].equipList[index-1].weapon.level;
+            WeaponLevel = UserData.data.avatarInfoList[SortOrder].equipList[index-1].weapon.level;
             let WeaponRank = UserData.data.avatarInfoList[SortOrder].equipList[index-1].weapon.affixMap[100000 + id] + 1;
             let AfJsonList = UserData.data.avatarInfoList[SortOrder].equipList;
             // "itemId" の値を格納するための配列を初期化

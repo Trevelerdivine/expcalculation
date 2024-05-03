@@ -96,7 +96,6 @@ const elm_reaction_obj = [
 
 async function calculate_char_base_status() 
 {
-  const char_level = document.getElementById("char_level").value;
   const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const data = await response.json();
   const char_base_hp = UserData.data.avatarInfoList[SelectId].fightPropMap["1"].val;

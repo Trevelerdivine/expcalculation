@@ -99,18 +99,18 @@ async function calculate_char_base_status()
   const char_level = document.getElementById("char_level").value;
   const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
   const data = await response.json();
-  const char_base_hp = UserData.data.avatarInfoList[SortOrder].fightPropMap["1"].val;
-  let char_base_attck = data.ステータス.基礎攻撃力[char_level];
-  const char_base_deff = data.ステータス.基礎防御力[char_level];
-  const char_base_elm = data.ステータス.基礎元素熟知[char_level];
-  const char_base_elm_charge = 1 + data.ステータス.基礎元素チャージ効率[char_level];
-  const char_base_cr = data.ステータス.基礎会心率[char_level];
-  const char_base_cd = data.ステータス.基礎会心ダメージ[char_level];
+  const char_base_hp = UserData.data.avatarInfoList[SelectId].fightPropMap["1"].val;
+  let char_base_attck = UserData.data.avatarInfoList[SelectId].fightPropMap["4"].val;
+  const char_base_deff = UserData.data.avatarInfoList[SelectId].fightPropMap["7"].val;
+  const char_base_elm = data.ステータス.基礎元素熟知[toString(CharAdvanceRank + 2) + "+"];
+  const char_base_elm_charge = 1 + data.ステータス.基礎元素チャージ効率[toString(CharAdvanceRank + 2) + "+"]
+  const char_base_cr = data.ステータス.基礎会心率[toString(CharAdvanceRank + 2) + "+"];
+  const char_base_cd = data.ステータス.基礎会心ダメージ[toString(CharAdvanceRank + 2) + "+"];
   const dmg_buff_type = parseInt(data.ステータス.基礎ダメージバフ.元素);
   let char_base_dmg_buff = 0;
   if (dmg_buff_type == char_propaty[0])
   {
-    char_base_dmg_buff = parseFloat(data.ステータス.基礎ダメージバフ.数値[char_level]);
+    char_base_dmg_buff = parseFloat(data.ステータス.基礎ダメージバフ.数値[toString(CharAdvanceRank + 2) + "+"]);
   }
 
   if (selectedCharId == 62 || selectedCharId == 70)
@@ -124,6 +124,7 @@ async function calculate_char_base_status()
 
   char_depend_status = data.ステータス.依存ステータス;
   char_base_status = [char_base_hp, char_base_deff, char_base_elm, char_base_elm_charge, char_base_attck, char_base_cr, char_base_cd, char_base_dmg_buff];
+  console.log(char_base_status);
   return char_base_status;
 }
 

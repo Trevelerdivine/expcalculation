@@ -141,11 +141,11 @@ async function calculate_af_main_status_buff()
     }
   if(char_propaty[0] !=7)
   {
-    af_main_status_buff[7] = af_main_status[7] *  set_main_status[7];
+    AfMainStatusBuff[7] = af_main_status[7] *  set_main_status[7];
   }
   else
   {
-    af_main_status_buff[7] = af_main_status[8] *  set_main_status[8];
+    AfMainStatusBuff[7] = af_main_status[8] *  set_main_status[8];
   }
   console.log(AfMainStatusBuff);
   return AfMainStatusBuff

@@ -1599,9 +1599,9 @@
                         await SetMainStatus(SelectId);
                         await show_char_statsform();
                         await show_weapon_statsform();
+                        calculate_base_status();
+                        await calculate_af_main_status_buff();
                         show_artifact()
-
-                        // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
                         if (existingImage) {
                             existingImage.src = imageUrl;
@@ -1623,6 +1623,7 @@
 
         document.getElementById('attack_method').addEventListener('change', show_attack_method);
         document.getElementById('temporary_char_talent').addEventListener('change', calculate_table_status);
+        document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
         document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
         document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
         // ボタンをクリックしたときに fetchData() 関数を実行する

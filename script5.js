@@ -1580,7 +1580,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   let zetsuen_dmgbuff = 0;
   for (let i = 0; i < 7; i++)
   {
-    fixed_status[i] = base_status[i] + af_buff[i] + team_fix_buff[i];
+    fixed_status[i] = base_status[i] + AfStatusBuff[i] + team_fix_buff[i];
   }
   fixed_status[7] = base_status[7] + af_main_status_buff[7] + team_fix_buff[7];
   result_status = fixed_status.slice();

@@ -1663,19 +1663,16 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 
 async function import_char_parameter()
 {
-  const levelSelect = document.getElementById("char_level");
-  const level_index = levelSelect.value;
-  const talent_level = document.getElementById("talent-level");
-  const talent_level_index = talent_level.value;
-  const response = await fetch("./data/element.json");
-  const levelData = await response.json();
-  const levelObject = levelData["レベル"];
-  const aggobject = levelData["反応固有値"]; 
-  const selectedLevel = levelObject[level_index];
-  const agg_fixed_value = aggobject[selectedLevel];
-  const char_constellations = document.getElementById("char_constellations");
-  const constellations = char_constellations.value;
-  const parameter = [selectedLevel, agg_fixed_value, constellations, talent_level_index];
+  let ReactionFixValue
+  if(CharLevel == 90)
+  {
+    ReactionFixValue = 1446.85
+  }
+  else
+  {
+    ReactionFixValue =  0.000000000755856 * CharLevel**7 - 0.000000227931736 * CharLevel**6 + 0.000025874407743 * CharLevel**5 - 0.001355874350326 * CharLevel**4 + 0.033618145604131 * CharLevel**3 - 0.264196827606430 * CharLevel**2 + 2.413548140527692 * CharLevel + 14.837426209163127;
+  }
+  const parameter = [CharLevel, ReactionFixValue, CharConstellations, 10];
   return parameter;
 }
 

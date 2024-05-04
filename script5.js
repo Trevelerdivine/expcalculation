@@ -149,6 +149,7 @@ async function calculate_af_main_status_buff()
         });
         AfMainStatusBuff[i] = EachBuff;
     }
+  AfMainStatusBuff[7] = (AfMainStatusBuff[7] + AfMainStatusBuff[8]) / 100;
   console.log(AfMainStatusBuff);
   return AfMainStatusBuff
 }
@@ -1148,7 +1149,7 @@ async function calculate_table_status()
   AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 4) / 100;
   AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[5] / 2) / 100;
   AfStatusBuff[6] = (af_main_status_buff[6] + AfSubBuff[6]) / 100;
-  AfStatusBuff[7] = (af_main_status_buff[7] + af_main_status_buff[8]) / 100;
+  AfStatusBuff[7] = af_main_status_buff[7];
   console.log(AfSubBuff);
   console.log(AfStatusBuff);
 
@@ -1247,8 +1248,8 @@ async function calculate_table_status()
   }
   buff_status[7] = result_status[7] - af_main_status_buff[7] - base_status[7];
   document.getElementById("table_buff_dmg_buff").innerHTML = (buff_status[7]*100).toFixed(1) + "％";
-  document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]).toFixed(1) + "％";
-  document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]).toFixed(1) + "％";
+  document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]*100).toFixed(1) + "％";
+  document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
 }
 
 function identify_condition() {

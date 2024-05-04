@@ -116,7 +116,7 @@ async function calculate_base_status()
   {
     base_dmg_buff += parseFloat(data.ステータス.基礎ダメージバフ.数値[weapon_level]);
   }
-  
+
   let base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
   console.log(base_status);
   return base_status;
@@ -124,19 +124,23 @@ async function calculate_base_status()
 
 async function calculate_af_main_status_buff() 
 {
-  const clock_mainstatus = parseInt(document.getElementById("clock_mainstatus").value);
-  const goblet_mainstatus = parseInt(document.getElementById("goblet_mainstatus").value);
-  const circlet_mainstatus = parseInt(document.getElementById("circlet_mainstatus").value);
-  const af_main_status = [0.466, 0.583, 187, 51.8, 0.466, 31.1, 62.2, 0.466, 0.583];
-  let set_main_status = [0,0,0,0,0,0,0,0,0];
-  let af_main_status_buff = [0,0,0,0,0,0,0,0,0];
-  set_main_status[clock_mainstatus] = set_main_status[clock_mainstatus] + 1;
-  set_main_status[goblet_mainstatus] = set_main_status[goblet_mainstatus] + 1;
-  set_main_status[circlet_mainstatus] = set_main_status[circlet_mainstatus] + 1;
-  for (let i = 0; i < 7; i++)
-  {
-    af_main_status_buff[i] = af_main_status[i] *  set_main_status[i];
-  }
+    const af_main_status = [0.466, 0.583, 187, 51.8, 0.466, 31.1, 62.2, 0.466, 0.583];
+    const EachBuffName = ["FIGHT_PROP_HP_PERCENT", "FIGHT_PROP_DEFENSE_PERCENT", FIGHT_PROP_ELEMENT_MASTERY, "FIGHT_PROP_CHARGE_EFFICIENCY", "FIGHT_PROP_ATTACK_PERCENT", "FIGHT_PROP_CRITICAL", "FIGHT_PROP_CRITICAL_HURT"];
+    let AfMainStatusBuff = [0,0,0,0,0,0,0,0,0];
+
+    for (let i = 0; i < 7; i++)
+    {
+        let  EachBuff = 0;
+        elements.forEach(function(item) {
+            // itemがreliquaryを持っているかどうかを確認
+            if (item.reliquary) {
+                if (item.reliquary.reliquaryMainstat.mainPropId === EachBuffName[i]) {
+                    EachBuff += item.reliquary.reliquaryMainstat.statValue || 0;
+                }
+            }
+        });
+        AfMainStatusBuff[i] = EachBuff;
+    }
   if(char_propaty[0] !=7)
   {
     af_main_status_buff[7] = af_main_status[7] *  set_main_status[7];
@@ -145,8 +149,8 @@ async function calculate_af_main_status_buff()
   {
     af_main_status_buff[7] = af_main_status[8] *  set_main_status[8];
   }
-
-  return af_main_status_buff;
+  console.log(AfMainStatusBuff);
+  return AfMainStatusBuff
 }
 
 async function calculate_af_score(af_main_status_buff,depend_status,base_status) 

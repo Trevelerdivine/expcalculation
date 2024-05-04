@@ -1549,17 +1549,18 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
 
 async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_status)
 {
-  const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
-  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
-  const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
-  const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
-  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
-  const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
-  const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
-  const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
+  const AfStatusBuff = [0, 0, 0, 0, 0, 0, 0];
   const char_parameter = await import_char_parameter();
   const reaction_count_list = create_reactioncount_list();
   const reaction_bonus_list = create_reactionbonus_list();
+  AfStatusBuff[0] = base_status[0] * (af_main_status_buff[0] + AfSubBuff[0] * 3 / 400);
+  AfStatusBuff[1] = base_status[1] * (af_main_status_buff[1] + AfSubBuff[1] * 15 / 1600);
+  AfStatusBuff[2] = af_main_status_buff[2]  + AfSubBuff[2] * 3;
+  AfStatusBuff[3] = (af_main_status_buff[3] + AfSubBuff[2] / 1.2) / 100;
+  AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 400);
+  AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[5] / 2) / 100;
+  AfStatusBuff[6] = (af_main_status_buff[6] + AfSubBuff[6]) / 100;
+  AfStatusBuff[7] = af_main_status_buff[7];
   let zetsuen_check = 0;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {

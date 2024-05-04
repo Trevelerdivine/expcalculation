@@ -164,7 +164,7 @@ async function calculate_af_score(depend_status,base_status)
   {
     if (depend_status[i] == 0)
     {
-        AfScoreDistribution[i] = 0
+      AfScoreDistribution[i] = 0
       continue;
     }
     switch (i)
@@ -173,8 +173,8 @@ async function calculate_af_score(depend_status,base_status)
         RateStatusBuff = 0;
         FixStatusBuff = 0;
         CharEquipData.forEach(equip => {
-            if (CharEquipData.reliquary && CharEquipData.flat.reliquarySubstats) {
-                CharEquipData.flat.reliquarySubstats.forEach(substat => {
+            if (equip.reliquary && equip.flat.reliquarySubstats) {
+              equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_HP_PERCENT") {
                         RateStatusBuff += substat.statValue;
                     }
@@ -190,8 +190,8 @@ async function calculate_af_score(depend_status,base_status)
         RateStatusBuff = 0;
         FixStatusBuff = 0;
         CharEquipData.forEach(equip => {
-            if (CharEquipData.reliquary && CharEquipData.flat.reliquarySubstats) {
-                CharEquipData.flat.reliquarySubstats.forEach(substat => {
+            if (equip.reliquary && equip.flat.reliquarySubstats) {
+              equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_DEFENSE_PERCENT") {
                         RateStatusBuff += substat.statValue;
                     }
@@ -206,8 +206,8 @@ async function calculate_af_score(depend_status,base_status)
       case 2:
         FixStatusBuff = 0;
         CharEquipData.forEach(equip => {
-            if (CharEquipData.reliquary && CharEquipData.flat.reliquarySubstats) {
-                CharEquipData.flat.reliquarySubstats.forEach(substat => {
+            if (equip.reliquary && equip.flat.reliquarySubstats) {
+              equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_ELEMENT_MASTERY") {
                         FixStatusBuff += substat.statValue;
                     }
@@ -219,8 +219,8 @@ async function calculate_af_score(depend_status,base_status)
       case 3:
         RateStatusBuff = 0;
         CharEquipData.forEach(equip => {
-            if (CharEquipData.reliquary && CharEquipData.flat.reliquarySubstats) {
-                CharEquipData.flat.reliquarySubstats.forEach(substat => {
+            if (equip.reliquary && equip.flat.reliquarySubstats) {
+                equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_CHARGE_EFFICIENCY") {
                         RateStatusBuff += substat.statValue;
                     }
@@ -233,8 +233,8 @@ async function calculate_af_score(depend_status,base_status)
         RateStatusBuff = 0;
         FixStatusBuff = 0;
         CharEquipData.forEach(equip => {
-            if (CharEquipData.reliquary && CharEquipData.flat.reliquarySubstats) {
-                CharEquipData.flat.reliquarySubstats.forEach(substat => {
+            if (equip.reliquary && equip.flat.reliquarySubstats) {
+                equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_ATTACK_PERCENT") {
                         RateStatusBuff += substat.statValue;
                     }
@@ -250,8 +250,8 @@ async function calculate_af_score(depend_status,base_status)
       case 5:
         RateStatusBuff = 0;
         CharEquipData.forEach(equip => {
-            if (CharEquipData.reliquary && CharEquipData.flat.reliquarySubstats) {
-                CharEquipData.flat.reliquarySubstats.forEach(substat => {
+            if (equip.reliquary && equip.flat.reliquarySubstats) {
+                equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_CRITICAL") {
                         RateStatusBuff += substat.statValue;
                     }
@@ -263,8 +263,8 @@ async function calculate_af_score(depend_status,base_status)
       case 6:
         RateStatusBuff = 0;
         CharEquipData.forEach(equip => {
-            if (CharEquipData.reliquary && CharEquipData.flat.reliquarySubstats) {
-                CharEquipData.flat.reliquarySubstats.forEach(substat => {
+            if (equip.reliquary && CharequipEquipData.flat.reliquarySubstats) {
+                equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_CRITICAL") {
                         RateStatusBuff += substat.statValue;
                     }

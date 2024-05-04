@@ -1676,7 +1676,7 @@ async function import_char_parameter()
   return parameter;
 }
 
-async function DefineMainStatus(DependStatusList) {
+async function DefineMainStatus(DependStatusList, AfMainStatus) {
   let MainStatusList = [];
   let ClockMainStatus = [];
   let GobletMainStatus = [];
@@ -1708,8 +1708,8 @@ async function DefineMainStatus(DependStatusList) {
   if (DependStatusList[6] == 1) {
     CircletMainStatus.push(6); 
   }
-  const ClockMainStatusIndex = parseInt(document.getElementById("clock_mainstatus").value);
-  if (ClockMainStatusIndex == 3)
+
+  if (AfMainStatus[4] > 0)
   {
     ClockMainStatus = [3]
   }

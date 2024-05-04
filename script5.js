@@ -1514,21 +1514,13 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   let enemy_resist = [pyro_resist, hydro_resist, cyro_resist, electro_resist, anemo_resist, dendro_resist, geo_resist, phisics_resist];
   enemy_resist[char_propaty[0]] -= charDebuff[0] - weaponDebuff[0];
   
-  const levelSelect = document.getElementById("char_level");
-  const levelIndex = levelSelect.value;
-
-  // レベルデータの取得
-  const levelDataResponse = await fetch("./data/element.json");
-  const levelData = await levelDataResponse.json();
-  const levelObject = levelData["レベル"];
-  const charLevel = levelObject[levelIndex];
 
   // 敵の情報取得
   const enemyLevel = parseInt(document.getElementById("enemy-level").value);
   const enemyDeffDebuff = parseFloat(document.getElementById("deff-debuff").value) / 100;
 
   // 防御補正計算
-  const deffCorrection = (charLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + charLevel + 100);
+  const deffCorrection = (CharLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + CharLevel + 100);
 
   // 補正係数の計算
   let element_resistCorrection = [0, 0, 0, 0, 0, 0, 0, 0, 0];// [炎補正, 水補正, 氷補正, 雷補正, 風補正, 草補正, 岩補正, 物理補正, 攻撃元素補正]

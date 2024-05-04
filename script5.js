@@ -263,7 +263,7 @@ async function calculate_af_score(depend_status,base_status)
       case 6:
         RateStatusBuff = 0;
         CharEquipData.forEach(equip => {
-            if (equip.reliquary && CharequipEquipData.flat.reliquarySubstats) {
+            if (equip.reliquary && equip.flat.reliquarySubstats) {
                 equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_CRITICAL") {
                         RateStatusBuff += substat.statValue;

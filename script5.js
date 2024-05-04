@@ -1160,7 +1160,7 @@ async function calculate_team_dynamic_buff(base_status)
 
 async function calculate_table_status()
 {
-  const AfStatusBuff = [0, 0, 0, 0, 0, 0, 0];
+  let AfStatusBuff = [0, 0, 0, 0, 0, 0, 0];
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
@@ -1553,6 +1553,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const char_parameter = await import_char_parameter();
   const reaction_count_list = create_reactioncount_list();
   const reaction_bonus_list = create_reactionbonus_list();
+  let AfSubBuff = await calculate_af_score(depend_status,base_status);
   AfStatusBuff[0] = base_status[0] * (af_main_status_buff[0] + AfSubBuff[0] * 3 / 400);
   AfStatusBuff[1] = base_status[1] * (af_main_status_buff[1] + AfSubBuff[1] * 15 / 1600);
   AfStatusBuff[2] = af_main_status_buff[2]  + AfSubBuff[2] * 3;

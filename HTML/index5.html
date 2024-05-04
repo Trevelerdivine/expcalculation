@@ -1035,7 +1035,7 @@
         let SelectId
         let WeaponPopId;
         // ローカルストレージに保存するキー
-        const localStorageKey = "countdownEndTime";
+        const SessionStorageKey = "countdownEndTime";
         // カウントダウンのインターバル（ミリ秒）
         const countdownInterval = 1000;
         // ボタン要素
@@ -1113,7 +1113,7 @@
                 let char_ids = [];
                 UserData = await response.json();
                 console.log(UserData);
-                localStorage.setItem("UserData", JSON.stringify(UserData));
+                sessionStorage.setItem("UserData", JSON.stringify(UserData));
                 // ニックネームをHTMLに出力する
                 const nicknameElement = document.getElementById('nickname');
                 const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
@@ -1478,7 +1478,7 @@
             fetchButton.disabled = true;
 
             // ローカルストレージからカウントダウン終了時刻を取得
-            const endTime = localStorage.getItem(localStorageKey);
+            const endTime = sessionStorage.getItem(SessionStorageKey);
             // 現在時刻を取得
             const currentTime = new Date().getTime();
 
@@ -1517,7 +1517,7 @@
                 const endTime = new Date().getTime() + apiTTL * 1000;
 
                 // ローカルストレージにカウントダウン終了時刻を保存
-                localStorage.setItem(localStorageKey, endTime);
+                sessionStorage.setItem(SessionStorageKey, endTime);
 
                 // カウントダウンを再開
                 startCountdown();
@@ -1533,7 +1533,7 @@
             CharDataJson = await DataResponse.json();
             console.log(CharDataJson);
             // ローカルストレージからカウントダウン終了時刻を取得
-            const endTime = localStorage.getItem(localStorageKey);
+            const endTime = sessionStorage.getItem(SessionStorageKey);
             // 現在時刻を取得
             const currentTime = new Date().getTime();
 
@@ -1544,7 +1544,7 @@
                 // 再度カウントダウンを開始
                 startCountdown();
             };
-            UserData = JSON.parse(localStorage.getItem("UserData"));
+            UserData = JSON.parse(sessionStorage.getItem("UserData"));
             if (UserData !== null)
             {
                 const nicknameElement = document.getElementById('nickname');

@@ -1,6 +1,3 @@
-let base_status = [0,0,0,0,0,0,0,0];
-let char_base_status = [0,0,0,0,0,0,0,0];
-let weapon_base_status = [0,0,0,0,0,0,0,0];
 let depend_status = [0,0,1,0,1,1,1];
 let af_score = 0;
 let attack_method = 0;
@@ -124,18 +121,31 @@ async function calculate_base_status()
 
 async function calculate_af_main_status_buff() 
 {
+    const BaseStatus = await calculate_base_status();
     const af_main_status = [0.466, 0.583, 187, 51.8, 0.466, 31.1, 62.2, 0.466, 0.583];
     const DmgBuffName = ["FIGHT_PROP_FIRE_ADD_HURT", "FIGHT_PROP_WATER_ADD_HURT", "FIGHT_PROP_ICE_ADD_HURT", "FIGHT_PROP_ELEC_ADD_HURT", "FIGHT_PROP_WIND_ADD_HURT", "FIGHT_PROP_GRASS_ADD_HURT", "FIGHT_PROP_ROCK_ADD_HURT", "FIGHT_PROP_PHYSICAL_ADD_HURT"];
     const EachBuffName = ["FIGHT_PROP_HP_PERCENT", "FIGHT_PROP_DEFENSE_PERCENT", "FIGHT_PROP_ELEMENT_MASTERY", "FIGHT_PROP_CHARGE_EFFICIENCY", "FIGHT_PROP_ATTACK_PERCENT", "FIGHT_PROP_CRITICAL", "FIGHT_PROP_CRITICAL_HURT", DmgBuffName[char_propaty[0]], DmgBuffName[7],];
     let AfMainStatusBuff = [0,0,0,0,0,0,0,0,0];
     let CharEquipData = UserData.data.avatarInfoList[SelectId].equipList;
-    let  EachBuff;
+    let EachBuff;
     for (let i = 0; i < 9; i++)
     {
         EachBuff = 0;
         CharEquipData.forEach(item => {
             if (item.flat && item.flat.reliquaryMainstat && item.flat.reliquaryMainstat.mainPropId === EachBuffName[i]) {
                 EachBuff += item.flat.reliquaryMainstat.statValue;
+            }
+            if (i == 0)
+            {
+                if (item.flat && item.flat.reliquaryMainstat && item.flat.reliquaryMainstat.mainPropId === "FIGHT_PROP_HP") {
+                    EachBuff += item.flat.reliquaryMainstat.statValue * 100 / BaseStatus[0];
+                }
+            }
+            if (i == 4)
+            {
+                if (item.flat && item.flat.reliquaryMainstat && item.flat.reliquaryMainstat.mainPropId === "FIGHT_PROP_ATTACK") {
+                    EachBuff += item.flat.reliquaryMainstat.statValue * 100 / BaseStatus[4];
+                }
             }
         });
         AfMainStatusBuff[i] = EachBuff;
@@ -1122,13 +1132,6 @@ async function calculate_team_dynamic_buff(base_status)
 
 async function calculate_table_status()
 {
-  const af_hp = parseInt(document.getElementById("af_hp").value);//聖遺物HP上昇量
-  const af_attck = parseInt(document.getElementById("af_attck").value);//聖遺物攻撃力上昇量
-  const af_deff = parseInt(document.getElementById("af_deff").value);//聖遺物防御力上昇量
-  const af_elm = parseInt(document.getElementById("af_elm").value);//聖遺物元素熟知上昇量
-  const af_elm_charge= parseFloat(document.getElementById("af_elm_charge").value)/100;//聖遺物元素チャージ効率上昇量
-  const af_cr= parseFloat(document.getElementById("af_cr").value)/100;//聖遺物会心率上昇量
-  const af_cd = parseFloat(document.getElementById("af_cd").value)/100;//聖遺物会心ダメージ上昇量
   const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
@@ -1137,6 +1140,7 @@ async function calculate_table_status()
   let buff_status = [0,0,0,0,0,0,0,0];
   let team_fix_buff = await calculate_team_fix_buff(base_status);
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
+  let AfScore = await calculate_af_score(depend_status,base_status);
   let fixed_status = base_status.slice();
   let result_status;
   let zetsuen_dmgbuff = 0;
@@ -1862,7 +1866,7 @@ async function monte_carlo_calculate()
   const depend_status_index = await calculate_depend_status_index(depend_status);
   let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   let my_exp_dmg = my_result_status[8];
-  let my_af_score_distribution = await  calculate_af_score(af_main_status_buff,depend_status,base_status);
+  let my_af_score_distribution = await  calculate_af_score(depend_status,base_status);
   let af_score = my_af_score_distribution[7];
   const my_af_score = my_af_score_distribution[7];
   let dlt_score;

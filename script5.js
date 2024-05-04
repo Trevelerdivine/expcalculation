@@ -1921,7 +1921,6 @@ async function monte_carlo_calculate()
   let new_score_distribution = [0,0,0,0,0,0,0];
   let basic_dmg;
   let n_count = 0;
-  let MyAfMainList = [clock_mainstatus, goblet_mainstatus, circlet_mainstatus];
 
   const char_instance = await create_char_instance(base_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status);

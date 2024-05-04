@@ -4,7 +4,7 @@ class Lyney {
       this.parameter = parameter;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.skill_buff = 0;
@@ -18,7 +18,6 @@ class Lyney {
     }
   
     async dmg_rate_data(){
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked)
@@ -35,12 +34,12 @@ class Lyney {
       const response = await fetch("./data/character/char_data/Lyney.json");
       const data = await response.json();
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         this.second_conste_buff = parseInt(document.getElementById("Lyney_second_conste_buff").value) / 100
       }
   
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         this.fourth_conste_buff = 0.2
       }
@@ -87,7 +86,7 @@ class Lyney {
                                    + attack_count4 - reaction_count4
                                    + attack_count5;
   
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           const attack_count6 = parseInt(document.getElementById("Lyney_attack_count6").value);
           const attack_count7 = parseInt(document.getElementById("Lyney_attack_count7").value);
@@ -250,7 +249,7 @@ class Lyney {
       this.talent1effect = 0;
       this.first_conste_buff = 0;
       this.sixth_conste_buff = [0,0];
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.skill_buff = 0;
@@ -264,7 +263,6 @@ class Lyney {
     }
   
     async dmg_rate_data(){
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked)
@@ -281,12 +279,12 @@ class Lyney {
       const response = await fetch("./data/character/char_data/dehya.json");
       const data = await response.json();
   
-      if (this.char_constellations > 0)
+      if (CharConstellations > 0)
       {
         this.first_conste_buff = 0.2;
       }
   
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         this.sixth_conste_buff[0] = 0.1;
         this.sixth_conste_buff[1] = parseFloat(document.getElementById("dehya_sixth_conste_buff").value);
@@ -307,7 +305,7 @@ class Lyney {
         let hp_rate1 = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         let hp_rate2 = parseFloat(data["元素爆発"]["詳細"][3]["数値"][this.parameter[3]]);
   
-        if (this.char_constellations > 0)
+        if (CharConstellations > 0)
         {
           hp_rate1 += 0.06;
           hp_rate2 += 0.06;
@@ -422,7 +420,7 @@ class Lyney {
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.skill_buff = 0;
@@ -435,7 +433,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked) {
@@ -456,7 +453,7 @@ class Lyney {
       this.talent1_buff = parseFloat(document.getElementById("yoimiya_talent1").value) / 100;
   
   
-      if (this.char_constellations > 0)
+      if (CharConstellations > 0)
       {
         const first_conste_check = document.getElementById("traitCheckbox1");
         if (first_conste_check.checked)
@@ -465,7 +462,7 @@ class Lyney {
         }
       }
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
@@ -480,7 +477,7 @@ class Lyney {
       let elm_react_dmgrate = 0;
       let elm_nonreact_dmgrate = 0;
       if (attack_method == 1) {
-        if (this.char_constellations < 4)
+        if (CharConstellations < 4)
         {
         const checkboxContainer = document.getElementById("select_reaction_method");
         const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
@@ -623,7 +620,7 @@ class Lyney {
       this.parameter = parameter;
       this.talent1effect = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.skill_buff = 0;
@@ -637,7 +634,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked) {
@@ -661,7 +657,7 @@ class Lyney {
         this.talent2_buff = 0.33;
       }
   
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         const sixth_conste_check = document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -843,7 +839,7 @@ class Lyney {
       this.talent1effect = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.react_attack_count = 0;
@@ -856,7 +852,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked) {
@@ -871,7 +866,7 @@ class Lyney {
       const response = await fetch("./data/character/char_data/klee.json");
       const data = await response.json();
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
@@ -880,7 +875,7 @@ class Lyney {
         }
       }
   
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         const sixth_conste_check = document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -1080,7 +1075,7 @@ class Lyney {
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.react_attack_count = 0;
@@ -1095,7 +1090,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked) {
@@ -1116,7 +1110,7 @@ class Lyney {
         this.talent2_buff = 0.2;
       }
   
-      if (this.char_constellations > 0)
+      if (CharConstellations > 0)
       {
         const first_conste_check = document.getElementById("traitCheckbox1");
         if (first_conste_check.checked)
@@ -1125,7 +1119,7 @@ class Lyney {
         }
       }
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
@@ -1134,7 +1128,7 @@ class Lyney {
         }
       }
   
-      if (this.char_constellations > 2 && attack_method == 16)
+      if (CharConstellations > 2 && attack_method == 16)
       {
         const fourth_conste_check = document.getElementById("traitCheckbox4");
         if (fourth_conste_check.checked)
@@ -1142,7 +1136,7 @@ class Lyney {
           this.fourth_conste_buff = 0.4;
         }
       }
-      if (this.char_constellations > 3 && attack_method == 1)
+      if (CharConstellations > 3 && attack_method == 1)
       {
         const sixth_conste_check = document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -1200,7 +1194,7 @@ class Lyney {
         });
           let elm_react_dmgrate = 0;
           let elm_nonreact_dmgrate = 0;
-          if (this.char_constellations < 3)
+          if (CharConstellations < 3)
           {
             for (let i = 0; i < 3; i++) {
               elm_react_dmgrate += elm_react[i] * parseFloat(data["元素スキル"]["詳細"][i]["数値"][this.parameter[3]]);
@@ -1386,7 +1380,7 @@ class Lyney {
       this.parameter = parameter;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.react_attack_count = 0;
@@ -1400,12 +1394,11 @@ class Lyney {
     
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       // JSON データを取得
       const response = await fetch("./data/character/char_data/gaming.json");
       const data = await response.json();
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
@@ -1433,7 +1426,7 @@ class Lyney {
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       }
       else if (attack_method == 11) {
-        if (this.char_constellations > 3)
+        if (CharConstellations > 3)
         {
           const sixth_conste_check = document.getElementById("traitCheckbox6");
           if (sixth_conste_check.checked)
@@ -1591,7 +1584,7 @@ class Lyney {
       this.parameter = parameter;
       this.talent1effect = 0;
       this.second_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.burst_buff = 0;
@@ -1607,7 +1600,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked) {
@@ -1622,7 +1614,7 @@ class Lyney {
       const response = await fetch("./data/character/char_data/yanfei.json");
       const data = await response.json();
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
         if (second_conste_check.checked && attack_method == 6)
@@ -1848,7 +1840,7 @@ class Lyney {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
       this.talent1effect = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
@@ -1862,7 +1854,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
     
       // JSON データを取得
       const response = await fetch("./data/character/char_data/xinyan.json");
@@ -1874,12 +1865,12 @@ class Lyney {
         this.talent2_buff = 0.15;
       }
   
-      if (this.char_constellations > 1 && attack_method == 21)
+      if (CharConstellations > 1 && attack_method == 21)
       {
         this.second_conste_buff = 1;
       }
   
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         const fourth_conste_check = document.getElementById("traitCheckbox4");
         if (fourth_conste_check.checked)
@@ -1888,7 +1879,7 @@ class Lyney {
         }
       }
   
-      if (this.char_constellations > 3 && attack_method == 6)
+      if (CharConstellations > 3 && attack_method == 6)
       {
         const sixth_conste_check = document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -1937,7 +1928,7 @@ class Lyney {
   
     calculate_char_result_attck(fixstatus,status) {
       let attack_buff = 0;
-      if (this.char_constellations == 4)
+      if (CharConstellations == 4)
       {
         attack_buff = status[1] * this.sixth_conste_buff
       }
@@ -2013,7 +2004,7 @@ class Lyney {
       this.talent1effect = 0;
       this.first_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.bennett_Q_buff = 0
       this.react_attack_count = 0;
@@ -2026,7 +2017,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked) {
@@ -2048,12 +2038,12 @@ class Lyney {
         this.bennett_Q_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][bennett_Q_level]);
       }
   
-      if (this.char_constellations > 0)
+      if (CharConstellations > 0)
       {
         this.first_conste_buff = 0.2;
       }
   
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         const sixth_conste_check = document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -2075,7 +2065,7 @@ class Lyney {
       else if (attack_method == 17) {
         initial_index = 1;
         final_index = 2;
-        if (this.char_constellations > 2)
+        if (CharConstellations > 2)
         {
           initial_index = 1;
           final_index = 3;
@@ -2211,7 +2201,7 @@ class Lyney {
       this.talent1effect = 0;
       this.first_conste_buff = 0;
       this.six_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.reaction_count = 0;
       this.attack_count = 0;
@@ -2224,7 +2214,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked) {
@@ -2239,7 +2228,7 @@ class Lyney {
       const response = await fetch("./data/character/char_data/xiangling.json");
       const data = await response.json();
   
-      if (this.char_constellations > 0)
+      if (CharConstellations > 0)
       {
         const first_conste_check = document.getElementById("traitCheckbox2");
         if (first_conste_check.checked)
@@ -2248,7 +2237,7 @@ class Lyney {
         }
       } 
   
-      if (this.char_constellations > 3 && attack_method == 16)
+      if (CharConstellations > 3 && attack_method == 16)
       {
         const six_conste_check = document.getElementById("traitCheckbox3");
         if (six_conste_check.checked)
@@ -2373,7 +2362,7 @@ class Lyney {
       this.parameter = parameter;
       this.talent2_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -2384,7 +2373,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_pyro = document.getElementById("Vaporize_pyro");
       if (Vaporize_pyro.checked && reaction_flag.checked) {
@@ -2399,7 +2387,7 @@ class Lyney {
       const response = await fetch("./data/character/char_data/amber.json");
       const data = await response.json();
   
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         const sixth_conste_buff_conste_check = document.getElementById("traitCheckbox6");
         if (sixth_conste_buff_conste_check.checked)
@@ -2439,7 +2427,7 @@ class Lyney {
           let elm_react_dmgrate = 0;
           let elm_nonreact_dmgrate = 0;
           let attack_count = 1;
-          if(this.char_constellations > 0)
+          if(CharConstellations > 0)
           {
             attack_count = 2
           }
@@ -2543,7 +2531,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.sixth_conste_buff = 0;
       this.reaction_coeff = 0;
       this.burst_buff1 = 0;
@@ -2562,7 +2550,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_hydro = document.getElementById("Vaporize-hydro");
       if (Vaporize_hydro.checked && reaction_flag.checked)
@@ -2584,7 +2571,7 @@ class Lyney {
       const burst_level = parseInt(document.getElementById("furina_Q_level").value);
       const buff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burst_level]);
       this.burst_buff1 = buff_rate * buff_count1 * burst_flag;
-      if(this.char_constellations > 1)
+      if(CharConstellations > 1)
       {
         const buff_count2 = parseInt(document.getElementById("furina_tention2").value);
         this.burst_buff2 = 0.0035 * buff_count2 * burst_flag;
@@ -2863,7 +2850,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.talent1_buff = 0;
       this.second_conste_buff = 0;
       this.reaction_coeff = 0;
@@ -2879,7 +2866,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_hydro = document.getElementById("Vaporize-hydro");
       if (Vaporize_hydro.checked && reaction_flag.checked)
@@ -2909,7 +2895,7 @@ class Lyney {
         this.react_attack_count = reaction_count1;
         this.nonreact_attack_count = reaction_count1 - attack_count1;
   
-        if (this.char_constellations > 1)
+        if (CharConstellations > 1)
         {
           this.second_conste_buff = buff_count * 0.14;
         }
@@ -2917,7 +2903,7 @@ class Lyney {
         elm_react_dmgrate = talent1_buff * reaction_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate = talent1_buff * (attack_count1 - reaction_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
   
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           const attack_count2 = parseInt(document.getElementById("Neuvillette_attack_count2").value);
           const reaction_count2 = parseInt(document.getElementById("Neuvillette_react_count2").value);
@@ -3088,7 +3074,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.talent1_buff = 0;
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
@@ -3107,7 +3093,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_hydro = document.getElementById("Vaporize-hydro");
       if (Vaporize_hydro.checked && reaction_flag.checked)
@@ -3120,12 +3105,12 @@ class Lyney {
         this.talent1_buff = 100;
       }
   
-      if (this.char_constellations > 0 && attack_method == 16)
+      if (CharConstellations > 0 && attack_method == 16)
       {
         this.first_conste_buff = 0.5;
       }
     
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
@@ -3134,12 +3119,12 @@ class Lyney {
         }
       }
   
-      if (this.char_constellations > 2 && attack_method == 21)
+      if (CharConstellations > 2 && attack_method == 21)
       {
         this.fourth_conste_buff = 0.5;
       }
   
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         this.sixth_conste_buff = 1;
       }
@@ -3326,7 +3311,7 @@ class Lyney {
       this.talent1effect = 0;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.talent2_buff = 0;
@@ -3341,7 +3326,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_hydro = document.getElementById("Vaporize-hydro");
       if (Vaporize_hydro.checked && reaction_flag.checked)
@@ -3359,7 +3343,7 @@ class Lyney {
         this.talent1_buff = 0.3;
       }
   
-      if (this.char_constellations > 0) {
+      if (CharConstellations > 0) {
         const fourth_conste_buff_count = parseInt(document.getElementById("yelan_forth_buff").value);
         this.fourth_conste_buff = 0.1 * fourth_conste_buff_count;
       }
@@ -3390,7 +3374,7 @@ class Lyney {
         elm_react_dmgrate += react_count * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         elm_nonreact_dmgrate += (attack_count - react_count) * parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
   
-        if (this.char_constellations > 1)
+        if (CharConstellations > 1)
         {
           const attack_count2 = parseInt(document.getElementById("yelan_add_count").value);
           const react_count2 = parseInt(document.getElementById("yelan_add_react_count").value);
@@ -3530,7 +3514,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
       this.reaction_coeff = 0;
@@ -3548,7 +3532,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_hydro = document.getElementById("Vaporize-hydro");
       if (Vaporize_hydro.checked && reaction_flag.checked)
@@ -3556,13 +3539,13 @@ class Lyney {
         this.reaction_coeff = 2;
       }
     
-      if (this.char_constellations > 0) {
+      if (CharConstellations > 0) {
         const first_conste_check = document.getElementById("traitCheckbox1");
         this.first_conste_buff = first_conste_check.checked ? 0.4 : 0;
       }
     
       const rousen_count = parseInt(document.getElementById("rousen_count").value);
-      this.second_conste_buff = rousen_count > 2 && this.char_constellations > 1 ? 0.5 : 0;
+      this.second_conste_buff = rousen_count > 2 && CharConstellations > 1 ? 0.5 : 0;
     
       const response = await fetch("./data/character/char_data/kamisatoayato.json");
       const data = await response.json();
@@ -3609,7 +3592,7 @@ class Lyney {
                              +  (attack_count2 - react_count2) * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
                              +  (attack_count3 - react_count3) * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
   
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           let attack_count4 = parseInt(document.getElementById("ayato_attack4_count").value);
           let react_count4 = parseInt(document.getElementById("ayato_react4_count").value);
@@ -3719,7 +3702,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
@@ -3731,7 +3714,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_hydro = document.getElementById("Vaporize-hydro");
       if (Vaporize_hydro.checked && reaction_flag.checked)
@@ -3947,7 +3929,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.second_conste_buff = 0;
       this.forth_conste_buff = 1;
       this.reaction_coeff = 0;
@@ -3962,7 +3944,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_hydro = document.getElementById("Vaporize-hydro");
       if (Vaporize_hydro.checked && reaction_flag.checked)
@@ -3979,7 +3960,7 @@ class Lyney {
       let elm_react_dmgrate = 0;
       let elm_nonreact_dmgrate = 0;
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
@@ -3989,7 +3970,7 @@ class Lyney {
       }
       
       if (attack_method == 16) {
-        if (this.char_constellations > 2)
+        if (CharConstellations > 2)
         {
           this.forth_conste_buff = 1.5;
         }
@@ -4125,7 +4106,7 @@ class Lyney {
       this.talent1effect = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.talent2_buff = 0;
@@ -4139,7 +4120,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const Melt_cyro = document.getElementById("Melt-cyro");
       const reaction_flag = document.getElementById("reactionon_flag");
@@ -4219,7 +4199,7 @@ class Lyney {
         const talent2_check = document.getElementById("Wriothesley_talent1");
         if (talent2_check.checked)
         {
-          if (this.char_constellations > 0)
+          if (CharConstellations > 0)
           {
             this.talent1_buff = 2
           }
@@ -4227,7 +4207,7 @@ class Lyney {
           {
             this.talent1_buff = 0.5
           }
-          if (this.char_constellations == 4)
+          if (CharConstellations == 4)
           {
             this.sixth_conste_buff = 0.1
           }
@@ -4236,7 +4216,7 @@ class Lyney {
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
       }
        else if (attack_method == 21) {
-        if (this.char_constellations > 1)
+        if (CharConstellations > 1)
         {
           this.second_conste_buff = talent2_count * 0.4;
         }
@@ -4350,7 +4330,7 @@ class Lyney {
       this.parameter = parameter;
       this.talent1effect = 0;
       this.fourth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.talent2_buff = 0;
@@ -4364,7 +4344,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const Melt_cyro = document.getElementById("Melt-cyro");
       const reaction_flag = document.getElementById("reactionon_flag");
@@ -4391,7 +4370,7 @@ class Lyney {
         this.talent2_buff = 0.18;
       }
   
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         const fourth_conste_check = document.getElementById("traitCheckbox4");
         if (fourth_conste_check.checked)
@@ -4438,7 +4417,7 @@ class Lyney {
         elm_react_dmgrate += parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * react_count
         elm_nonreact_dmgrate += parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count)
         
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           const sixth_attack_count = parseInt(document.getElementById("kamisatoayaka_sixth_count").value);
           const sixth_react_count = parseInt(document.getElementById("kamisatoayaka_sixth_melt_count").value);
@@ -4484,7 +4463,7 @@ class Lyney {
                            + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * react_count3;
         elm_nonreact_dmgrate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count1 - react_count1)
                               + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count3 - react_count3);
-        if(this.char_constellations > 1)
+        if(CharConstellations > 1)
         {
           const attack_count2 = parseInt(document.getElementById("kamisatoayaka_attack_count2").value);
           const attack_count4 = parseInt(document.getElementById("kamisatoayaka_attack_count4").value);
@@ -4596,7 +4575,7 @@ class Lyney {
       this.parameter = parameter;
       this.first_conste_buff = 0;
       this.forth_conste_buff = 1;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.trueCount = 0;
       this.debuff = 0;
       this.attack_count = 0;
@@ -4608,7 +4587,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       // JSON データを取得
       const response = await fetch("./data/character/char_data/eula.json");
       const data = await response.json();
@@ -4621,7 +4599,7 @@ class Lyney {
       }
   
   
-      if (this.char_constellations > 0)
+      if (CharConstellations > 0)
       {
         const first_conste_check = document.getElementById("traitCheckbox1");
         if (first_conste_check.checked)
@@ -4629,7 +4607,7 @@ class Lyney {
           this.first_conste_buff = 0.3;
         }
       } 
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         const forth_conste_check = document.getElementById("traitCheckbox4");
         if (forth_conste_check.checked)
@@ -4744,7 +4722,7 @@ class Lyney {
       this.talent2_buff = 0;
       this.reaction_coeff = 0;
       this.fourth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.react_first_count = 0;
       this.nonreact_first_count = 0;
       this.react_second_count = 0;
@@ -4786,7 +4764,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
       const Melt_cyro = document.getElementById("Melt-cyro");
       const reaction_flag = document.getElementById("reactionon_flag");
@@ -4806,7 +4783,7 @@ class Lyney {
         this.talent2_buff = 0.2;
       }
   
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         const fourth_conste_check =  document.getElementById("traitCheckbox4");
         if (fourth_conste_check.checked)
@@ -4951,7 +4928,7 @@ class Lyney {
   
     calculate_char_debuff() {
       let char_debuff = [0,0,0];
-      if (this.char_constellations > 0)
+      if (CharConstellations > 0)
       {
         const first_conste_check =  document.getElementById("traitCheckbox1");
         if (first_conste_check.checked)
@@ -4972,7 +4949,7 @@ class Lyney {
       this.reaction_coeff = 0;
       this.first_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -4983,7 +4960,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       if (char_propaty[0] != 7)
       {
@@ -5011,7 +4987,7 @@ class Lyney {
       let elm_nonreact_dmgrate = 0;
   
       if (attack_method == 1) {
-        if (this.char_constellations > 0)
+        if (CharConstellations > 0)
         {
           const first_conste_check =  document.getElementById("rosaria_first_buff");
           if (first_conste_check.checked)
@@ -5020,7 +4996,7 @@ class Lyney {
           }
         }
   
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           const sixth_conste_check =  document.getElementById("rosaria_sixth_buff");
           if (sixth_conste_check.checked)
@@ -5191,7 +5167,7 @@ class Lyney {
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -5202,7 +5178,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const Melt_cyro = document.getElementById("Melt-cyro");
       const reaction_flag = document.getElementById("reactionon_flag");
@@ -5252,7 +5227,7 @@ class Lyney {
         elm_nonreact_dmgrate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * (attack_count - react_count);
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
       } else if (attack_method == 21) {
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           const sixth_conste_check =  document.getElementById("chongyun_sixth_buff");
           if (sixth_conste_check.checked)
@@ -5365,7 +5340,7 @@ class Lyney {
       this.parameter = parameter;
       this.reaction_coeff = 0;
       this.first_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -5376,7 +5351,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       if (char_propaty[0] != 7)
       {
@@ -5398,7 +5372,7 @@ class Lyney {
       let elm_nonreact_dmgrate = 0;
   
       if (attack_method == 1) {
-        if (this.char_constellations > 0)
+        if (CharConstellations > 0)
         {
           const first_conste_check =  document.getElementById("kaeya_first_buff");
           if (first_conste_check.checked)
@@ -5548,7 +5522,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.second_conste_buff = 0;
       this.reaction_coeff = 0;
       this.aggcount1 = 0;
@@ -5565,7 +5539,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       // チェックボックスとチェックされた数を取得
       const reaction_check = document.getElementById("reactionon_flag");
@@ -5588,7 +5561,7 @@ class Lyney {
         this.base_dmg_buff = parseInt(document.getElementById("cyno_talent1_count").value) *2.5;
       }
     
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
@@ -5750,7 +5723,7 @@ class Lyney {
       this.skill_buff = 0;
       this.talent2effect = 0;
       this.four_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -5760,7 +5733,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
@@ -5773,7 +5745,7 @@ class Lyney {
       const response = await fetch("./data/character/char_data/yaemiko.json");
       const data = await response.json();
   
-      if (this.char_constellations > 2 )
+      if (CharConstellations > 2 )
       {
         const four_conste_check = document.getElementById("traitCheckbox3");
         if (four_conste_check.checked)
@@ -5902,7 +5874,7 @@ class Lyney {
   
     calculate_char_debuff() {
       let char_debuff = [0,0,0];
-      if (this.char_constellations >3)
+      if (CharConstellations >3)
       {
         const six_conste_check = document.getElementById("traitCheckbox4");
         if(six_conste_check.checked && attack_method == 16)
@@ -5919,7 +5891,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.aggcount = 0;
       this.reaction_coeff = 0;
       this.skill_buff = 0;
@@ -5932,7 +5904,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
@@ -6074,7 +6045,7 @@ class Lyney {
   
     calculate_char_debuff() {
       let char_debuff = [0,0,0];
-      if (this.char_constellations >1)
+      if (CharConstellations >1)
       {
         const two_conste_check = document.getElementById("traitCheckbox2");
         if(two_conste_check.checked)
@@ -6091,7 +6062,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.forth_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.aggcount = 0;
@@ -6107,7 +6078,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
@@ -6116,7 +6086,7 @@ class Lyney {
         this.reaction_coeff = 1.15
       }
   
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         const forth_conste_check = document.getElementById("traitCheckbox4");
         if (forth_conste_check.checked)
@@ -6124,7 +6094,7 @@ class Lyney {
           this.forth_conste_buff = 0.25;
         }
       } 
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         this.sixth_conste_buff = parseInt(document.getElementById("keqing_conste6").value) / 100;
       } 
@@ -6253,7 +6223,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.sixth_conste_buff = 0;
       this.aggcount = 0;
       this.reaction_coeff = 0;
@@ -6267,7 +6237,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       // JSON データを取得
       const response = await fetch("./data/character/char_data/kujousara.json");
@@ -6281,7 +6250,7 @@ class Lyney {
         this.skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][kujou_skill_level]) * this.base_status_array[4];
       }
   
-      if (this.char_constellations == 4)
+      if (CharConstellations == 4)
       {
         const sixth_conste_check = document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -6402,7 +6371,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.forth_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.aggcount = 0;
@@ -6418,7 +6387,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       // JSON データを取得
       const response = await fetch("./data/character/char_data/fischl.json");
@@ -6446,11 +6414,11 @@ class Lyney {
     
         dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count
                          + 0.8 * fischl_talent2_count;
-        if (this.char_constellations > 1)
+        if (CharConstellations > 1)
         {
           dmg_attack_rate += 2;
         }
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           const fischl_sixth_effect_count = parseInt(document.getElementById("fischl_conste6_count").value);
           this.attack_hit_count += fischl_sixth_effect_count;
@@ -6553,7 +6521,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.sixth_conste_buff = 0;
       this.aggcount = 0;
       this.reaction_coeff = 0;
@@ -6566,7 +6534,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
@@ -6574,7 +6541,7 @@ class Lyney {
         this.aggcount = parseInt(document.getElementById("beidou_agg_count").value);
         this.reaction_coeff = 1.15
       }
-      if (this.char_constellations == 4)
+      if (CharConstellations == 4)
       {
         const sixth_conste_check = document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -6697,7 +6664,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
@@ -6714,7 +6681,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const talent2_check = document.getElementById("beidou_talent2");
       if (talent2_check.checked)
@@ -6722,21 +6688,21 @@ class Lyney {
         this.talent2_buff = 0.3;
       }
   
-      if (this.char_constellations > 0)
+      if (CharConstellations > 0)
       {
         const first_conste_check = document.getElementById("traitCheckbox1");
         if (first_conste_check.checked)
         {
           this.first_conste_buff = 0.10;
         }
-        if (this.char_constellations > 1)
+        if (CharConstellations > 1)
         {
           const second_conste_check = document.getElementById("traitCheckbox2");
           if (second_conste_check.checked)
           {
             this.second_conste_buff = 0.10;
           }
-          if (this.char_constellations > 2)
+          if (CharConstellations > 2)
           {
             const fourth_conste_check = document.getElementById("traitCheckbox4");
             if (fourth_conste_check.checked)
@@ -6895,7 +6861,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.aggcount = 0;
       this.talent2_buff = 0;
       this.reaction_coeff = 0;
@@ -6909,7 +6875,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
@@ -7046,7 +7011,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 1;
       this.talent1_pyro = 0;
@@ -7061,7 +7026,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       // JSON データを取得
       const response = await fetch("./data/character/char_data/wanderer.json");
@@ -7090,7 +7054,7 @@ class Lyney {
         const xiao_burst_level = parseInt(document.getElementById("wandererE_level").value);
         const xiao_burst_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][xiao_burst_level]);
   
-        if (this.char_constellations > 3)
+        if (CharConstellations > 3)
         {
           this.attack_hit_count = 6;
           this.sixth_conste_buff = 1.4;
@@ -7108,7 +7072,7 @@ class Lyney {
       } else if (attack_method == 21) {
         this.attack_hit_count = 5;
         dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * 5;
-        if (this.char_constellations > 1)
+        if (CharConstellations > 1)
         {
           this.second_conste_buff = parseFloat(document.getElementById("wanderer_dmgbuff").value)/ 100;
           if (this.second_conste_buff > 2)
@@ -7206,7 +7170,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.talent1_buff = 0;
       this.talent2_buff = 0;
       this.burst_buff = 0;
@@ -7218,7 +7182,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       // JSON データを取得
       const response = await fetch("./data/character/char_data/xiao.json");
@@ -7342,7 +7305,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.sixth_conste_buff = 0;
       this.burst1_buff = 0;
       this.burst2_buff = 0;
@@ -7356,13 +7319,12 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       // JSON データを取得
       const response = await fetch("./data/character/char_data/faruzan.json");
       const data = await response.json();
   
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         this.sixth_conste_buff = 0.4;
       } 
@@ -7489,7 +7451,7 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.sixth_conste_crbuff = 0;
       this.sixth_conste_cdbuff = 0;
       this.attack_hit_count = 0;
@@ -7500,7 +7462,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       // JSON データを取得
       const response = await fetch("./data/character/char_data/shikanoinheizou.json");
@@ -7519,7 +7480,7 @@ class Lyney {
           dmg_attack_rate += parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
         }
   
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           this.sixth_conste_crbuff = 0.04 * attack_effect;
           if (attack_effect == 4) 
@@ -7624,7 +7585,7 @@ class Lyney {
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_count = 0;
       this.unique_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -7634,7 +7595,6 @@ class Lyney {
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const reaction_check = document.getElementById("reactionon_flag");
       if (reaction_check.checked)
@@ -7655,15 +7615,15 @@ class Lyney {
       let dmg_rate;
       let dmg_attck_rate = 0;
     
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         this.second_conste_buff = parseInt(document.getElementById("alhaitham_second_buff").value);
       }
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         this.fourth_conste_buff = parseInt(document.getElementById("alhaitham_fourth1").value) * 0.1;
       }
-      if (this.char_constellations == 4)
+      if (CharConstellations == 4)
       {
         const sixth_conste_check = document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -7841,7 +7801,7 @@ class Lyney {
       this.mytalent1 = 0;
       this.q_pyrobuff = 0;
       this.four_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -7854,7 +7814,6 @@ class Lyney {
       const checkboxContainer = document.getElementById("select_reaction_method");
       const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
       const trueCount = Array.from(checkboxes).filter((checkbox) => checkbox.checked).length;
-      this.char_constellations = document.getElementById("char_constellations").value;
       // Nahida Q および Talent1 チェック
       const nahida_Q = document.getElementById("nahida_Q");
       const talent1 = document.getElementById("talent1");
@@ -7885,7 +7844,7 @@ class Lyney {
       let dmg_rate;
       let dmg_attck_rate = 0;
     
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         const four_conste_index = document.getElementById("four_conste").value;
         const four_conste_check = document.getElementById("traitCheckbox3");
@@ -7909,7 +7868,7 @@ class Lyney {
         this.attack_hit_count = 1;
         if (nahida_Q.checked) {
           let q_pyro = document.getElementById("nahida_Qpyro").value - 1;
-          if (this.char_constellations > 0) {
+          if (CharConstellations > 0) {
             q_pyro = Math.min((q_pyro + 1), 1);
           }
     
@@ -8058,7 +8017,7 @@ class Lyney {
   
     calculate_char_debuff() {
       let char_debuff = [0,0,0];
-      if (this.char_constellations >1)
+      if (CharConstellations >1)
       {
         const two_conste_check = document.getElementById("traitCheckbox2");
         if(two_conste_check.checked)
@@ -8083,7 +8042,7 @@ class Lyney {
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_hit_count1 = 0;
       this.attack_hit_count2 = 0;
       this.weapon_rank = WeaponConstellations;
@@ -8122,7 +8081,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
       // チェックボックスとチェックされた数を取得
       const reaction_check = document.getElementById("reactionon_flag");
@@ -8137,12 +8095,12 @@ class Lyney {
         this.talent1_buff = 50;
       }
     
-      if (this.char_constellations > 0 && attack_method == 6)
+      if (CharConstellations > 0 && attack_method == 6)
       {
         this.first_conste_buff = 0.15;
       }
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check =  document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
@@ -8151,7 +8109,7 @@ class Lyney {
         }
       }
   
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         const fourth_conste_check =  document.getElementById("traitCheckbox4");
         if (fourth_conste_check.checked)
@@ -8178,7 +8136,7 @@ class Lyney {
   
         let first_dmg_rate = attack_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
         let second_dmg_rate = attack_count2 * parseFloat(data["重撃"]["詳細"][1]["数値"][this.parameter[3]]);
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           const attack_count3 = parseInt(document.getElementById("tighnari_attack3_count").value);
           this.attack_hit_count2 += attack_count3;
@@ -8314,7 +8272,7 @@ class Lyney {
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.nyan_dmgrate = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -8324,7 +8282,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
       // チェックボックスとチェックされた数を取得
       const reaction_check = document.getElementById("reactionon_flag");
@@ -8334,12 +8291,12 @@ class Lyney {
         this.reaction_coeff = 1.25
       }
   
-      if (this.char_constellations > 0 && attack_method == 21)
+      if (CharConstellations > 0 && attack_method == 21)
       {
         this.first_conste_buff = 1;
       }
   
-      if (this.char_constellations ==4)
+      if (CharConstellations ==4)
       {
         const sixth_conste_check =  document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -8377,7 +8334,7 @@ class Lyney {
         dmg_attck_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
                        + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
         this.nyan_dmgrate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
-        if (this.char_constellations > 2)
+        if (CharConstellations > 2)
         {
           const attack_count3 = parseInt(document.getElementById("kirara_mininyan_count").value);
           dmg_attck_rate += 2 * attack_count3;
@@ -8502,7 +8459,7 @@ class Lyney {
       this.aggcount = 0;
       this.reaction_coeff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -8511,7 +8468,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
       // チェックボックスとチェックされた数を取得
       const reaction_check = document.getElementById("reactionon_flag");
@@ -8523,7 +8479,7 @@ class Lyney {
   
       this.talent1_buff = parseInt(document.getElementById("travelardendro_talent1").value);
   
-      if (this.char_constellations ==4)
+      if (CharConstellations ==4)
       {
         const sixth_conste_check =  document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -8652,7 +8608,7 @@ class Lyney {
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.skill_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -8661,12 +8617,11 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
       const talent2_count =  parseInt(document.getElementById("navia_talent2").value);
       this.talent2_buff = 0.2 * talent2_count;
   
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         const fourth_conste_check =  document.getElementById("traitCheckbox4");
         if (fourth_conste_check.checked)
@@ -8697,11 +8652,11 @@ class Lyney {
         let buff_count = parseInt(document.getElementById("navia_buff_count").value);
         let skill_buff_count = Math.max(0,buff_count - 3);
         this.skill_buff = 0.15 * skill_buff_count;
-        if (this.char_constellations > 1)
+        if (CharConstellations > 1)
         {
           this.second_conste_buff = Math.min(3,buff_count) * 0.12;
         }
-        if (this.char_constellations == 4)
+        if (CharConstellations == 4)
         {
           this.sixth_conste_buff = Math.max(0,buff_count - 3) * 0.45;
         }
@@ -8803,7 +8758,7 @@ class Lyney {
       this.talent2_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_count;
       this.burst_buff_rate = 0;
       this.weapon_rank = WeaponConstellations;
@@ -8813,7 +8768,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
   
       const talent2_check = document.getElementById("arataki_talent2");
@@ -8822,7 +8776,7 @@ class Lyney {
         this.talent2_buff = 0.35;
       }
   
-      if (this.char_constellations > 2)
+      if (CharConstellations > 2)
       {
         const fourth_conste_check =  document.getElementById("traitCheckbox4");
         if (fourth_conste_check.checked)
@@ -8831,7 +8785,7 @@ class Lyney {
         }
       }
   
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         const sixth_conste_check =  document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -8965,7 +8919,7 @@ class Lyney {
       this.talent2_buff = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_count;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -8974,7 +8928,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
   
       const talent2_check = document.getElementById("albedo_talent2");
       if (talent2_check.checked)
@@ -8982,7 +8935,7 @@ class Lyney {
         this.talent2_buff = 125;
       }
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check =  document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)
@@ -8992,7 +8945,7 @@ class Lyney {
         }
       }
   
-      if (this.char_constellations > 3)
+      if (CharConstellations > 3)
       {
         const sixth_conste_check =  document.getElementById("traitCheckbox6");
         if (sixth_conste_check.checked)
@@ -9120,7 +9073,7 @@ class Lyney {
       this.dmg_rateCache = null;
       this.parameter = parameter;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.weapon_rank = WeaponConstellations;
       this.attack_hit_count = 0;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -9129,7 +9082,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
       // JSON データを取得
       const response = await fetch("./data/character/char_data/noelle.json");
@@ -9141,7 +9093,7 @@ class Lyney {
       const burst_level = parseInt(document.getElementById("noelle_Q_level").value);
       if (attack_method == 1) {
         this.sixth_conste_buff = parseFloat(data["元素爆発"]["詳細"][2]["数値"][burst_level]);
-        if (this.char_constellations > 3)
+        if (CharConstellations > 3)
         {
           const sixth_conste_check =  document.getElementById("traitCheckbox6");
           if (sixth_conste_check.checked)
@@ -9243,7 +9195,7 @@ class Lyney {
       this.dmg_rateCache = null;
       this.parameter = parameter;
       this.sixth_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -9252,7 +9204,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
       // JSON データを取得
       const response = await fetch("./data/character/char_data/zhongli.json");
@@ -9359,7 +9310,7 @@ class Lyney {
       this.dmg_rateCache = null;
       this.parameter = parameter;
       this.talent2_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -9368,7 +9319,6 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
         const talent2_check =  document.getElementById("talent2_buff");
         if (talent2_check.checked)
@@ -9492,7 +9442,7 @@ class Lyney {
       this.dmg_rateCache = null;
       this.parameter = parameter;
       this.first_conste_buff = 0;
-      this.char_constellations = 0;
+      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -9501,9 +9451,8 @@ class Lyney {
     }
     
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
       
-      if (this.char_constellations > 0)
+      if (CharConstellations > 0)
       {
         const first_conste_check =  document.getElementById("traitCheckbox1");
         if (first_conste_check.checked)

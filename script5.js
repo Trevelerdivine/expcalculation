@@ -122,7 +122,6 @@ async function calculate_base_status()
 async function calculate_af_main_status_buff() 
 {
     const BaseStatus = await calculate_base_status();
-    const af_main_status = [0.466, 0.583, 187, 51.8, 0.466, 31.1, 62.2, 0.466, 0.583];
     const DmgBuffName = ["FIGHT_PROP_FIRE_ADD_HURT", "FIGHT_PROP_WATER_ADD_HURT", "FIGHT_PROP_ICE_ADD_HURT", "FIGHT_PROP_ELEC_ADD_HURT", "FIGHT_PROP_WIND_ADD_HURT", "FIGHT_PROP_GRASS_ADD_HURT", "FIGHT_PROP_ROCK_ADD_HURT", "FIGHT_PROP_PHYSICAL_ADD_HURT"];
     const EachBuffName = ["FIGHT_PROP_HP_PERCENT", "FIGHT_PROP_DEFENSE_PERCENT", "FIGHT_PROP_ELEMENT_MASTERY", "FIGHT_PROP_CHARGE_EFFICIENCY", "FIGHT_PROP_ATTACK_PERCENT", "FIGHT_PROP_CRITICAL", "FIGHT_PROP_CRITICAL_HURT", DmgBuffName[char_propaty[0]], DmgBuffName[7],];
     let AfMainStatusBuff = [0,0,0,0,0,0,0,0,0];
@@ -241,7 +240,6 @@ async function calculate_af_score(depend_status,base_status)
                     if (substat.appendPropId === "FIGHT_PROP_ATTACK") {
                         FixStatusBuff += substat.statValue;
                     }
-                    console.log(RateStatusBuff);
                 });
             }
         });
@@ -265,7 +263,7 @@ async function calculate_af_score(depend_status,base_status)
         CharEquipData.forEach(equip => {
             if (equip.reliquary && equip.flat.reliquarySubstats) {
                 equip.flat.reliquarySubstats.forEach(substat => {
-                    if (substat.appendPropId === "FIGHT_PROP_CRITICAL") {
+                    if (substat.appendPropId === "FIGHT_PROP_CRITICAL_HURT") {
                         RateStatusBuff += substat.statValue;
                     }
                 });
@@ -1148,9 +1146,9 @@ async function calculate_table_status()
   AfStatusBuff[2] = af_main_status_buff[2]  + AfSubBuff[2] / 3;
   AfStatusBuff[3] = (af_main_status_buff[3] + AfSubBuff[2] / 1.2) / 100;
   AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 4) / 100;
-  AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[4] / 2) / 100;
+  AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[5] / 2) / 100;
   AfStatusBuff[6] = (af_main_status_buff[6] + AfSubBuff[6]) / 100;
-  AfStatusBuff[7] = af_main_status_buff[7] / 100;
+  AfStatusBuff[7] = (af_main_status_buff[7] + af_main_status_buff[8]) / 100;
   console.log(AfSubBuff);
   console.log(AfStatusBuff);
 

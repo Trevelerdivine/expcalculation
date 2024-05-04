@@ -1254,35 +1254,11 @@ async function calculate_table_status()
 
 function identify_condition() {
   const attack_method_type = document.getElementById("attack_method_id").value;
-  const talentlevel = document.getElementById("talent-level").value;
-  const clock_type = document.getElementById("clock_mainstatus").value;
-  const goblet_type = document.getElementById("goblet_mainstatus").value;
-  const circlet_type = document.getElementById("circlet_mainstatus").value;
   let response = document.getElementById("response");
   let error_message;
   response.innerHTML = "";
   if (attack_method_type == 0) {
     error_message = "攻撃方法を設定してください";
-    response.innerHTML = error_message;
-    return 1;
-  }
-  if (isNaN(talentlevel)) {
-    error_message = "天賦レベルを設定してください";
-    response.innerHTML = error_message;
-    return 1;
-  }
-  if (isNaN(clock_type)) {
-    error_message = "聖遺物-時計のメインステータスを設定してください。";
-    response.innerHTML = error_message;
-    return 1;
-  }
-  if (isNaN(goblet_type)) {
-    error_message = "聖遺物-杯のメインステータスを設定してください。";
-    response.innerHTML = error_message;
-    return 1;
-  }
-  if (isNaN(circlet_type)) {
-    error_message = "聖遺物-冠のメインステータスを設定してください。";
     response.innerHTML = error_message;
     return 1;
   }

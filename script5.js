@@ -1147,7 +1147,7 @@ async function calculate_table_status()
 
   AfStatusBuff[0] = base_status[0] * (af_main_status_buff[0] + AfSubBuff[0] * 3 / 400);
   AfStatusBuff[1] = base_status[1] * (af_main_status_buff[1] + AfSubBuff[1] * 15 / 1600);
-  AfStatusBuff[2] = af_main_status_buff[2]  + AfSubBuff[2] / 3;
+  AfStatusBuff[2] = af_main_status_buff[2]  + AfSubBuff[2] * 3;
   AfStatusBuff[3] = (af_main_status_buff[3] + AfSubBuff[2] / 1.2) / 100;
   AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 400);
   AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[5] / 2) / 100;

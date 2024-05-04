@@ -1034,6 +1034,7 @@
         let UserData;
         let SelectId
         let WeaponPopId;
+        let EquipNumber;
         // ローカルストレージに保存するキー
         const SessionStorageKey = "countdownEndTime";
         // カウントダウンのインターバル（ミリ秒）
@@ -1352,9 +1353,9 @@
                     AfIdList.push(status["itemId"]);
                 }
             });
-            let WeaponIndex = AfIdList.length;
+            EquipNumber = AfIdList.length;
             WeaponPopId = AfIdList.pop();
-            await DisplayWeaponStatus(WeaponIndex, SortOrder, WeaponPopId);
+            await DisplayWeaponStatus(EquipNumber, SortOrder, WeaponPopId);
             await DisplayWeaponImg(WeaponPopId);
 
             const fourthDigits = AfIdList.map(number => {

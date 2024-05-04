@@ -89,35 +89,64 @@ const elm_reaction_obj = [
   }
 ];
 
-async function calculate_base_status() 
-{
-  const CharResponse = await fetch("../data/character/char_data/" + char_name[selectedCharId] + ".json");
+async function calculate_base_status() {
+  // 武器の装備データを取得
+  let WeaponEquipData = UserData.data.avatarInfoList[SelectId].equipList[EquipNumber - 1].weapon.flat.weaponStats[1];
+
+  // キャラクターと武器のデータを取得
+  const CharResponse = await fetch(`../data/character/char_data/${char_name[selectedCharId]}.json`);
   const CharData = await CharResponse.json();
-  const WeaponResponse = await fetch("../data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
+  const WeaponResponse = await fetch(`../data/weapon/weapon_data/${weapon_name[selectedWeaponId]}.json`);
   const WeaponData = await WeaponResponse.json();
+
+  // 基礎ステータスを取得し、小数点以下を四捨五入
   const base_hp = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["1"]);
-  let base_attck = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["4"]);
-  const base_deff = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["7"]);  
-  const base_elm = CharData.ステータス.基礎元素熟知[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎元素熟知[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
-  const base_elm_charge = 1 + CharData.ステータス.基礎元素チャージ効率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎元素チャージ効率[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
-  const base_cr = CharData.ステータス.基礎会心率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎会心率[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
-  const base_cd = CharData.ステータス.基礎会心ダメージ[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎会心ダメージ[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
+  const base_attck = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["4"]);
+  const base_deff = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["7"]);
+
+  // 基礎元素熟知を計算
+  let base_elm = CharData.ステータス.基礎元素熟知[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
+  if (WeaponEquipData.appendPropId === "FIGHT_PROP_ELEMENT_MASTERY") {
+      base_elm += WeaponEquipData.statValue;
+  }
+
+  // 基礎元素チャージ効率を計算
+  let base_elm_charge = 1 + CharData.ステータス.基礎元素チャージ効率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
+  if (WeaponEquipData.appendPropId === "FIGHT_PROP_CHARGE_EFFICIENCY") {
+      base_elm_charge += WeaponEquipData.statValue;
+  }
+
+  // 基礎会心率を計算
+  let base_cr = CharData.ステータス.基礎会心率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
+  if (WeaponEquipData.appendPropId === "FIGHT_PROP_CRITICAL") {
+      base_cr += WeaponEquipData.statValue;
+  }
+
+  // 基礎会心ダメージを計算
+  let base_cd = CharData.ステータス.基礎会心ダメージ[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
+  if (WeaponEquipData.appendPropId === "FIGHT_PROP_CRITICAL_HURT") {
+      base_cd += WeaponEquipData.statValue;
+  }
+
+  // 基礎ダメージバフを計算
   const CharDmgBuffType = parseInt(CharData.ステータス.基礎ダメージバフ.元素);
   const WeaponDmgBuffType = parseInt(WeaponData.ステータス.基礎ダメージバフ.元素);
   let base_dmg_buff = 0;
-  if (CharDmgBuffType == char_propaty[0])
-  {
-    base_dmg_buff += parseFloat(CharData.ステータス.基礎ダメージバフ.数値[(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
+  if (CharDmgBuffType === char_propaty[0]) {
+      base_dmg_buff += parseFloat(CharData.ステータス.基礎ダメージバフ.数値[(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
   }
-  if (WeaponDmgBuffType == char_propaty[0])
-  {
-    base_dmg_buff += parseFloat(data.ステータス.基礎ダメージバフ.数値[weapon_level]);
+  if (WeaponDmgBuffType === char_propaty[0]) {
+      base_dmg_buff += parseFloat(data.ステータス.基礎ダメージバフ.数値[weapon_level]);
   }
 
-  let base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
+  // 基礎ステータス配列を作成
+  const base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
+  
+  // デバッグ用ログ出力
   console.log(base_status);
   return base_status;
 }
+
 
 async function calculate_af_main_status_buff() 
 {

@@ -1247,8 +1247,8 @@ async function calculate_table_status()
   }
   buff_status[7] = result_status[7] - af_main_status_buff[7] - base_status[7];
   document.getElementById("table_buff_dmg_buff").innerHTML = (buff_status[7]*100).toFixed(1) + "％";
-  document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]*100).toFixed(1) + "％";
-  document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]*100).toFixed(1) + "％";
+  document.getElementById("table_af_dmg_buff").innerHTML = (af_main_status_buff[7]).toFixed(1) + "％";
+  document.getElementById("table_final_dmg_buff").innerHTML = (result_status[7]).toFixed(1) + "％";
 }
 
 function identify_condition() {

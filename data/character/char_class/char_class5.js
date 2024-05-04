@@ -31,7 +31,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/Lyney.json");
+      const response = await fetch("../data/character/char_data/Lyney.json");
       const data = await response.json();
   
       if (CharConstellations > 1)
@@ -276,7 +276,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/dehya.json");
+      const response = await fetch("../data/character/char_data/dehya.json");
       const data = await response.json();
   
       if (CharConstellations > 0)
@@ -444,7 +444,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/yoimiya.json");
+      const response = await fetch("../data/character/char_data/yoimiya.json");
       const data = await response.json();
   
       const yoimiyaE_level = parseInt(document.getElementById("yoimiyaE_level").value);
@@ -645,7 +645,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/hutao.json");
+      const response = await fetch("../data/character/char_data/hutao.json");
       const data = await response.json();
   
       const hutaoE_level = parseInt(document.getElementById("hutaoE_level").value);
@@ -863,7 +863,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/klee.json");
+      const response = await fetch("../data/character/char_data/klee.json");
       const data = await response.json();
   
       if (CharConstellations > 1)
@@ -1101,7 +1101,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/diluc.json");
+      const response = await fetch("../data/character/char_data/diluc.json");
       const data = await response.json();
   
       const diluc_talent2_check = document.getElementById("diluc_talent2");
@@ -1395,7 +1395,7 @@ class Lyney {
   
     async dmg_rate_data() {
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/gaming.json");
+      const response = await fetch("../data/character/char_data/gaming.json");
       const data = await response.json();
   
       if (CharConstellations > 1)
@@ -1611,7 +1611,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/yanfei.json");
+      const response = await fetch("../data/character/char_data/yanfei.json");
       const data = await response.json();
   
       if (CharConstellations > 1)
@@ -1856,7 +1856,7 @@ class Lyney {
     async dmg_rate_data() {
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/xinyan.json");
+      const response = await fetch("../data/character/char_data/xinyan.json");
       const data = await response.json();
   
       const talent2_check = document.getElementById("xinyan_talent2");
@@ -2028,7 +2028,7 @@ class Lyney {
       }
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/bennett.json");
+      const response = await fetch("../data/character/char_data/bennett.json");
       const data = await response.json();
   
       const bennett_Q_check = document.getElementById("bennett_Q");
@@ -2225,7 +2225,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/xiangling.json");
+      const response = await fetch("../data/character/char_data/xiangling.json");
       const data = await response.json();
   
       if (CharConstellations > 0)
@@ -2384,7 +2384,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/amber.json");
+      const response = await fetch("../data/character/char_data/amber.json");
       const data = await response.json();
   
       if (CharConstellations > 3)
@@ -2564,7 +2564,7 @@ class Lyney {
         burst_flag = 1; 
       }
   
-      const response = await fetch("./data/character/char_data/Furina.json");
+      const response = await fetch("../data/character/char_data/Furina.json");
       const data = await response.json();
   
       const buff_count1 = parseInt(document.getElementById("furina_tention1").value);
@@ -2875,7 +2875,7 @@ class Lyney {
   
       this.talent2_buff = Math.min(0.3,Math.max((parseInt(document.getElementById("Neuvillette_talent2").value)) - 30, 0) * 0.006);
   
-      const response = await fetch("./data/character/char_data/Neuvillette.json");
+      const response = await fetch("../data/character/char_data/Neuvillette.json");
       const data = await response.json();
     
       let dmg_attack_rate = 0;
@@ -3129,7 +3129,7 @@ class Lyney {
         this.sixth_conste_buff = 1;
       }
   
-      const response = await fetch("./data/character/char_data/nirou.json");
+      const response = await fetch("../data/character/char_data/nirou.json");
       const data = await response.json();
     
       let dmg_attack_rate = 0;
@@ -3356,7 +3356,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/yelan.json");
+      const response = await fetch("../data/character/char_data/yelan.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -3547,7 +3547,7 @@ class Lyney {
       const rousen_count = parseInt(document.getElementById("rousen_count").value);
       this.second_conste_buff = rousen_count > 2 && CharConstellations > 1 ? 0.5 : 0;
     
-      const response = await fetch("./data/character/char_data/kamisatoayato.json");
+      const response = await fetch("../data/character/char_data/kamisatoayato.json");
       const data = await response.json();
     
       let dmg_attack_rate = 0;
@@ -3721,7 +3721,7 @@ class Lyney {
         this.reaction_coeff = 2;
       }
     
-      const response = await fetch("./data/character/char_data/tartaglia.json");
+      const response = await fetch("../data/character/char_data/tartaglia.json");
       const data = await response.json();
     
       let dmg_attack_rate = 0;
@@ -3952,7 +3952,7 @@ class Lyney {
       }
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/xingqiu.json");
+      const response = await fetch("../data/character/char_data/xingqiu.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       let dmg_attack_rate = 0;
@@ -4128,7 +4128,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/Wriothesley.json");
+      const response = await fetch("../data/character/char_data/Wriothesley.json");
       const data = await response.json();
   
       const talent2_count = parseInt(document.getElementById("Wriothesley_talent2").value);
@@ -4352,7 +4352,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/kamisatoayaka.json");
+      const response = await fetch("../data/character/char_data/kamisatoayaka.json");
       const data = await response.json();
   
       if (attack_method == 1 || attack_method == 6)
@@ -4588,7 +4588,7 @@ class Lyney {
   
     async dmg_rate_data() {
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/eula.json");
+      const response = await fetch("../data/character/char_data/eula.json");
       const data = await response.json();
   
       const eula_E_level = parseInt(document.getElementById("eula_E_level").value);
@@ -4793,7 +4793,7 @@ class Lyney {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/ganyu.json");
+      const response = await fetch("../data/character/char_data/ganyu.json");
       const data = await response.json();
       let dmg_rate;
     
@@ -4977,7 +4977,7 @@ class Lyney {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/rosaria.json");
+      const response = await fetch("../data/character/char_data/rosaria.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -5193,7 +5193,7 @@ class Lyney {
   
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/chongyun.json");
+      const response = await fetch("../data/character/char_data/chongyun.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -5362,7 +5362,7 @@ class Lyney {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/kaeya.json");
+      const response = await fetch("../data/character/char_data/kaeya.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -5571,7 +5571,7 @@ class Lyney {
       }
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/cyno.json");
+      const response = await fetch("../data/character/char_data/cyno.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
   
@@ -5742,7 +5742,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/yaemiko.json");
+      const response = await fetch("../data/character/char_data/yaemiko.json");
       const data = await response.json();
   
       if (CharConstellations > 2 )
@@ -5913,7 +5913,7 @@ class Lyney {
       }
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/raidenshougun.json");
+      const response = await fetch("../data/character/char_data/raidenshougun.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       const resolve = parseInt(document.getElementById("raiden_resolve").value);
@@ -6106,7 +6106,7 @@ class Lyney {
       }
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/keqing.json");
+      const response = await fetch("../data/character/char_data/keqing.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       let dmg_attack_rate = 0;
@@ -6239,7 +6239,7 @@ class Lyney {
     async dmg_rate_data() {
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/kujousara.json");
+      const response = await fetch("../data/character/char_data/kujousara.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
   
@@ -6389,7 +6389,7 @@ class Lyney {
     async dmg_rate_data() {
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/fischl.json");
+      const response = await fetch("../data/character/char_data/fischl.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       let dmg_attack_rate = 0;
@@ -6551,7 +6551,7 @@ class Lyney {
       } 
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/beidou.json");
+      const response = await fetch("../data/character/char_data/beidou.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       let dmg_attack_rate = 0;
@@ -6714,7 +6714,7 @@ class Lyney {
       } 
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/razor.json");
+      const response = await fetch("../data/character/char_data/razor.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       let dmg_attack_rate = 0;
@@ -6890,7 +6890,7 @@ class Lyney {
       }
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/lisa.json");
+      const response = await fetch("../data/character/char_data/lisa.json");
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       let dmg_attack_rate = 0;
@@ -7028,7 +7028,7 @@ class Lyney {
     async dmg_rate_data() {
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/wanderer.json");
+      const response = await fetch("../data/character/char_data/wanderer.json");
       const data = await response.json();
   
       const talent1_pyro_check =  document.getElementById("talent1_pyro")
@@ -7184,7 +7184,7 @@ class Lyney {
     async dmg_rate_data() {
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/xiao.json");
+      const response = await fetch("../data/character/char_data/xiao.json");
       const data = await response.json();
   
       this.talent1_buff = parseInt(document.getElementById("xiao_talent1").value) / 100;
@@ -7321,7 +7321,7 @@ class Lyney {
     async dmg_rate_data() {
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/faruzan.json");
+      const response = await fetch("../data/character/char_data/faruzan.json");
       const data = await response.json();
   
       if (CharConstellations > 3)
@@ -7464,7 +7464,7 @@ class Lyney {
     async dmg_rate_data() {
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/shikanoinheizou.json");
+      const response = await fetch("../data/character/char_data/shikanoinheizou.json");
       const data = await response.json();
       
       // 攻撃方法に応じてダメージ率を計算
@@ -7608,7 +7608,7 @@ class Lyney {
       }    
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/alhaitham.json");
+      const response = await fetch("../data/character/char_data/alhaitham.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -7837,7 +7837,7 @@ class Lyney {
       }    
     
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/nahida.json");
+      const response = await fetch("../data/character/char_data/nahida.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -8119,7 +8119,7 @@ class Lyney {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/tighnari.json");
+      const response = await fetch("../data/character/char_data/tighnari.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -8306,7 +8306,7 @@ class Lyney {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/kirara.json");
+      const response = await fetch("../data/character/char_data/kirara.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -8489,7 +8489,7 @@ class Lyney {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/travelardendro.json");
+      const response = await fetch("../data/character/char_data/travelardendro.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -8631,7 +8631,7 @@ class Lyney {
       }
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/Navia.json");
+      const response = await fetch("../data/character/char_data/Navia.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -8795,7 +8795,7 @@ class Lyney {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/aratakiitto.json");
+      const response = await fetch("../data/character/char_data/aratakiitto.json");
       const data = await response.json();
     
       const burst_check = document.getElementById("arataki_burst_effect");
@@ -8955,7 +8955,7 @@ class Lyney {
       }
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/albedo.json");
+      const response = await fetch("../data/character/char_data/albedo.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -9084,7 +9084,7 @@ class Lyney {
     async dmg_rate_data() {
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/noelle.json");
+      const response = await fetch("../data/character/char_data/noelle.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -9206,7 +9206,7 @@ class Lyney {
     async dmg_rate_data() {
       
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/zhongli.json");
+      const response = await fetch("../data/character/char_data/zhongli.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -9327,7 +9327,7 @@ class Lyney {
         }
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/ningguang.json");
+      const response = await fetch("../data/character/char_data/ningguang.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算
@@ -9462,7 +9462,7 @@ class Lyney {
       }
   
       // JSON データを取得
-      const response = await fetch("./data/character/char_data/travelergeo.json");
+      const response = await fetch("../data/character/char_data/travelergeo.json");
       const data = await response.json();
     
       // 攻撃方法に応じてダメージ率を計算

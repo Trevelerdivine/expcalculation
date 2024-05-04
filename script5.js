@@ -1149,7 +1149,8 @@ async function calculate_table_status()
   AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 4) / 100;
   AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[4] / 2) / 100;
   AfStatusBuff[6] = (af_main_status_buff[6] + AfSubBuff[6]) / 100;
-  AfStatusBuff[7] = af_main_status_buff[7];
+  AfStatusBuff[7] = af_main_status_buff[7] / 100;
+  console.log(AfSubBuff);
   console.log(AfStatusBuff);
 
   if (selectedImageIds[0] == 17 && selectedImageIds[1] == 17 && attack_method_index == 4)
@@ -1174,7 +1175,7 @@ async function calculate_table_status()
   {
     fixed_status[i] += AfStatusBuff[i] + team_fix_buff[i];
   }
-  fixed_status[7] += af_main_status_buff[7] / 100 + team_fix_buff[7];
+  fixed_status[7] += af_main_status_buff[7] + team_fix_buff[7];
   
   const char_instance = await create_char_instance(base_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status);

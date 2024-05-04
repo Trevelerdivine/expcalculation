@@ -1132,7 +1132,7 @@ async function calculate_team_dynamic_buff(base_status)
 
 async function calculate_table_status()
 {
-  const af_buff = [af_hp, af_deff, af_elm, af_elm_charge, af_attck, af_cr, af_cd];
+  const AfStatusBuff = [0, 0, 0, 0, 0, 0, 0];
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
@@ -1140,11 +1140,20 @@ async function calculate_table_status()
   let buff_status = [0,0,0,0,0,0,0,0];
   let team_fix_buff = await calculate_team_fix_buff(base_status);
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-  let AfScore = await calculate_af_score(depend_status,base_status);
+  let AfSubBuff = await calculate_af_score(depend_status,base_status);
   let fixed_status = base_status.slice();
   let result_status;
   let zetsuen_dmgbuff = 0;
   identify_condition();
+
+  AfStatusBuff[0] = base_status[0] * (af_main_status_buff[0] + AfSubBuff[0] * 3 / 4) / 100;
+  AfStatusBuff[1] = base_status[1] * (af_main_status_buff[1] + AfSubBuff[1] * 15 / 16) / 100;
+  AfStatusBuff[2] = af_main_status_buff[2]  + AfSubBuff[2] / 3;
+  AfStatusBuff[3] = (af_main_status_buff[3] + AfSubBuff[2] / 1.2) / 100;
+  AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 4) / 100;
+  AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[4] / 2) / 100;
+  AfStatusBuff[6] = (af_main_status_buff[6] + AfSubBuff[6]) / 100;
+  AfStatusBuff[7] = af_main_status_buff[7];
 
   if (selectedImageIds[0] == 17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
@@ -1166,7 +1175,7 @@ async function calculate_table_status()
 
   for (let i = 0; i < 7; i++)
   {
-    fixed_status[i] += af_buff[i] + team_fix_buff[i];
+    fixed_status[i] += AfStatusBuff[i] + team_fix_buff[i];
   }
   fixed_status[7] += af_main_status_buff[7] + team_fix_buff[7];
   
@@ -1221,13 +1230,13 @@ async function calculate_table_status()
   }
   
   // ステータスの更新
-  await updateStatus(0, result_status, buff_status, af_buff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status), "hp");
-  await updateStatus(1, result_status, buff_status, af_buff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status), "deff");
-  await updateStatus(2, result_status, buff_status, af_buff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status), "elm");
-  await updateStatus(3, result_status, buff_status, af_buff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status), "elm_charge");
-  await updateStatus(4, result_status, buff_status, af_buff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status), "attck");
-  await updateStatus(5, result_status, buff_status, af_buff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status), "cr");
-  await updateStatus(6, result_status, buff_status, af_buff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status), "cd");
+  await updateStatus(0, result_status, buff_status, AfStatusBuff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_hp(fixed_status, result_status) + weapon_instance.calculate_weapon_result_hp(fixed_status, result_status), "hp");
+  await updateStatus(1, result_status, buff_status, AfStatusBuff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_deff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_deff(fixed_status, result_status), "deff");
+  await updateStatus(2, result_status, buff_status, AfStatusBuff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_elm(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm(fixed_status, result_status), "elm");
+  await updateStatus(3, result_status, buff_status, AfStatusBuff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status), "elm_charge");
+  await updateStatus(4, result_status, buff_status, AfStatusBuff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_attck(fixed_status, result_status) + weapon_instance.calculate_weapon_result_attck(fixed_status, result_status), "attck");
+  await updateStatus(5, result_status, buff_status, AfStatusBuff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status), "cr");
+  await updateStatus(6, result_status, buff_status, AfStatusBuff, base_status, team_dynamic_buff, (fixed_status, result_status) => char_instance.calculate_char_result_cd(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cd(fixed_status, result_status), "cd");
   
   if(zetsuen_check == 1)
   {

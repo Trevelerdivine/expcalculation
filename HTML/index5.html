@@ -1621,7 +1621,9 @@
         }
 
         document.getElementById('attack_method').addEventListener('change', show_attack_method);
-
+        document.getElementById('temporary_char_talent').addEventListener('change', calculate_table_status);
+        document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
+        document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
         // ボタンをクリックしたときに fetchData() 関数を実行する
         document.getElementById('fetchButton').onclick = function() {
             fetchData();

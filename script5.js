@@ -91,7 +91,7 @@ const elm_reaction_obj = [
 
 async function calculate_base_status() {
   // 武器の装備データを取得
-  let WeaponEquipData = UserData.data.avatarInfoList[SelectId].equipList[EquipNumber - 1].weapon.flat.weaponStats[1];
+  let WeaponEquipData = UserData.data.avatarInfoList[SelectId].equipList[EquipNumber - 1].flat.weaponStats[1];
 
   // キャラクターと武器のデータを取得
   const CharResponse = await fetch(`../data/character/char_data/${char_name[selectedCharId]}.json`);

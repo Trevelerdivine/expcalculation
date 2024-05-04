@@ -1170,7 +1170,6 @@
                         await SetMainStatus(SelectId);
                         await show_char_statsform();
                         await show_weapon_statsform();
-                        calculate_base_status();
                         await calculate_af_main_status_buff();
                         show_artifact()
                         // 画像を置き換える
@@ -1587,11 +1586,12 @@
                         // クリックされた画像のsrc属性を取得
                         const imageUrl = this.src;
                         const CharId = this.id;
-                        const SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                        SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
                         // 画像を表示するdiv要素を取得
                         const digits = String(CharId); // 数値を文字列に変換
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
                         selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
+                        console.log(selectedCharId);
                         const imageContainer = document.getElementById("CharImage");
                         await DisplayCharStatus(SelectId);
                         AfSetReffer(SelectId);
@@ -1599,9 +1599,9 @@
                         await SetMainStatus(SelectId);
                         await show_char_statsform();
                         await show_weapon_statsform();
-                        calculate_base_status();
                         await calculate_af_main_status_buff();
                         show_artifact()
+                        // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
                         if (existingImage) {
                             existingImage.src = imageUrl;

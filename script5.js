@@ -95,9 +95,9 @@ async function calculate_base_status()
   const CharData = await CharResponse.json();
   const WeaponResponse = await fetch("../data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
   const WeaponData = await WeaponResponse.json();
-  const base_hp = UserData.data.avatarInfoList[SelectId].fightPropMap["1"];
-  let base_attck = UserData.data.avatarInfoList[SelectId].fightPropMap["4"];
-  const base_deff = UserData.data.avatarInfoList[SelectId].fightPropMap["7"];
+  const base_hp = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["1"]);
+  let base_attck = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["4"]);
+  const base_deff = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["7"]);  
   const base_elm = CharData.ステータス.基礎元素熟知[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎元素熟知[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
   const base_elm_charge = 1 + CharData.ステータス.基礎元素チャージ効率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎元素チャージ効率[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];
   const base_cr = CharData.ステータス.基礎会心率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"] + WeaponData.ステータス.基礎会心率[(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"];

@@ -162,7 +162,7 @@ async function calculate_af_score(depend_status,base_status)
   let FixStatusBuff = 0;
   for (let i = 0; i < 7; i++)
   {
-    if (depend_status[i]==0)
+    if (depend_status[i] == 0)
     {
         AfScoreDistribution[i] = 0
       continue;
@@ -241,6 +241,7 @@ async function calculate_af_score(depend_status,base_status)
                     if (substat.appendPropId === "FIGHT_PROP_ATTACK") {
                         FixStatusBuff += substat.statValue;
                     }
+                    console.log(RateStatusBuff);
                 });
             }
         });

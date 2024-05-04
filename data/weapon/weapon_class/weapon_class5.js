@@ -73,10 +73,8 @@ class AThousandFloatingDreams {
   updateSelectValues() {
     const selectList1 = document.getElementById("traitSelect1");
     const selectList2 = document.getElementById("traitSelect2");
-    const weapon_rank = document.getElementById("weapon_rank");
     this.select1 = selectList1.value;
     this.select2 = selectList2.value;
-    WeaponConstellations = weapon_rank.value;
   }
   calculate_weapon_debuff() {
     const weapon_debuff = [0,0];

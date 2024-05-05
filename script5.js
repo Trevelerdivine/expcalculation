@@ -1514,8 +1514,8 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
 
   // 防御補正計算
   const deffCorrection = (CharLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + CharLevel + 100);
-
-  console.log(CharLevel);
+  console.log(CharLevel + 100);
+  console.log((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + CharLevel + 100);
   console.log(deffCorrection);
 
   // 補正係数の計算

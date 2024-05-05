@@ -2103,6 +2103,7 @@ async function monte_carlo_calculate()
       }
     }
     output_exp_dmg = temp_exp_dmg;
+    console.log(output_exp_dmg);
     dmg_error = my_exp_dmg - output_exp_dmg;
     abs_dmg_error = Math.abs(dmg_error);
     if (abs_dmg_error < 1 ) break;

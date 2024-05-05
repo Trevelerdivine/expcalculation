@@ -1190,7 +1190,6 @@
                 console.log(UserData);
                 sessionStorage.setItem("UserData", JSON.stringify(UserData));
                 // ニックネームをHTMLに出力する
-                const images = [];
                 const nicknameElement = document.getElementById('nickname');
                 const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
                 console.log(avatarIds);
@@ -1207,6 +1206,7 @@
                         char_ids.push(charId);
                     }
                 }
+                const images = [];
 
                 // 画像を生成して配列に追加
                 for (let i = 0; i < char_ids.length; i++) {

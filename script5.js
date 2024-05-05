@@ -1744,8 +1744,8 @@ async function CalculateIdealAfMainStatusBuff(status_array)
   {
     af_main_status_buff[7] = af_main_status[8] *  set_main_status[8];
   }
-  af_main_status_buff[0] += AfMainFixStatus[0];
-  af_main_status_buff[4] += AfMainFixStatus[1];
+  af_main_status_buff[0] += AfMainFixStatus[0] / 100;
+  af_main_status_buff[4] += AfMainFixStatus[1] / 100;
   return af_main_status_buff;
 }
 

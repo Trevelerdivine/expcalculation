@@ -4,7 +4,6 @@ class Lyney {
       this.parameter = parameter;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.skill_buff = 0;
@@ -249,7 +248,6 @@ class Lyney {
       this.talent1effect = 0;
       this.first_conste_buff = 0;
       this.sixth_conste_buff = [0,0];
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.skill_buff = 0;
@@ -420,7 +418,6 @@ class Lyney {
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.skill_buff = 0;
@@ -620,7 +617,6 @@ class Lyney {
       this.parameter = parameter;
       this.talent1effect = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.skill_buff = 0;
@@ -839,7 +835,6 @@ class Lyney {
       this.talent1effect = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.react_attack_count = 0;
@@ -1075,7 +1070,6 @@ class Lyney {
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.react_attack_count = 0;
@@ -1380,7 +1374,6 @@ class Lyney {
       this.parameter = parameter;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.react_attack_count = 0;
@@ -1584,7 +1577,6 @@ class Lyney {
       this.parameter = parameter;
       this.talent1effect = 0;
       this.second_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.burst_buff = 0;
@@ -1840,7 +1832,6 @@ class Lyney {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
       this.talent1effect = 0;
-      CharConstellations = 0;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
@@ -2004,7 +1995,6 @@ class Lyney {
       this.talent1effect = 0;
       this.first_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.bennett_Q_buff = 0
       this.react_attack_count = 0;
@@ -2201,7 +2191,6 @@ class Lyney {
       this.talent1effect = 0;
       this.first_conste_buff = 0;
       this.six_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.reaction_count = 0;
       this.attack_count = 0;
@@ -2362,7 +2351,6 @@ class Lyney {
       this.parameter = parameter;
       this.talent2_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -2531,7 +2519,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.sixth_conste_buff = 0;
       this.reaction_coeff = 0;
       this.burst_buff1 = 0;
@@ -2850,7 +2837,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.talent1_buff = 0;
       this.second_conste_buff = 0;
       this.reaction_coeff = 0;
@@ -3074,7 +3060,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.talent1_buff = 0;
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
@@ -3311,7 +3296,6 @@ class Lyney {
       this.talent1effect = 0;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.talent2_buff = 0;
@@ -3514,7 +3498,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
       this.reaction_coeff = 0;
@@ -3702,7 +3685,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
@@ -3929,7 +3911,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.second_conste_buff = 0;
       this.forth_conste_buff = 1;
       this.reaction_coeff = 0;
@@ -4106,7 +4087,6 @@ class Lyney {
       this.talent1effect = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.talent2_buff = 0;
@@ -4330,7 +4310,6 @@ class Lyney {
       this.parameter = parameter;
       this.talent1effect = 0;
       this.fourth_conste_buff = 0;
-      CharConstellations = 0;
       this.reaction_coeff = 0;
       this.talent1_buff = 0;
       this.talent2_buff = 0;
@@ -4575,7 +4554,6 @@ class Lyney {
       this.parameter = parameter;
       this.first_conste_buff = 0;
       this.forth_conste_buff = 1;
-      CharConstellations = 0;
       this.trueCount = 0;
       this.debuff = 0;
       this.attack_count = 0;
@@ -4722,7 +4700,6 @@ class Lyney {
       this.talent2_buff = 0;
       this.reaction_coeff = 0;
       this.fourth_conste_buff = 0;
-      CharConstellations = 0;
       this.react_first_count = 0;
       this.nonreact_first_count = 0;
       this.react_second_count = 0;
@@ -4949,7 +4926,6 @@ class Lyney {
       this.reaction_coeff = 0;
       this.first_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -5167,7 +5143,6 @@ class Lyney {
       this.reaction_coeff = 0;
       this.talent2_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -5340,7 +5315,6 @@ class Lyney {
       this.parameter = parameter;
       this.reaction_coeff = 0;
       this.first_conste_buff = 0;
-      CharConstellations = 0;
       this.react_attack_count = 0;
       this.nonreact_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -5522,7 +5496,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.second_conste_buff = 0;
       this.reaction_coeff = 0;
       this.aggcount1 = 0;
@@ -5723,7 +5696,6 @@ class Lyney {
       this.skill_buff = 0;
       this.talent2effect = 0;
       this.four_conste_buff = 0;
-      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -5891,7 +5863,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.aggcount = 0;
       this.reaction_coeff = 0;
       this.skill_buff = 0;
@@ -6062,7 +6033,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.forth_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.aggcount = 0;
@@ -6223,7 +6193,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.sixth_conste_buff = 0;
       this.aggcount = 0;
       this.reaction_coeff = 0;
@@ -6371,7 +6340,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.forth_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.aggcount = 0;
@@ -6521,7 +6489,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.sixth_conste_buff = 0;
       this.aggcount = 0;
       this.reaction_coeff = 0;
@@ -6664,7 +6631,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.first_conste_buff = 0;
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
@@ -6861,7 +6827,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.aggcount = 0;
       this.talent2_buff = 0;
       this.reaction_coeff = 0;
@@ -7011,7 +6976,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 1;
       this.talent1_pyro = 0;
@@ -7170,7 +7134,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.talent1_buff = 0;
       this.talent2_buff = 0;
       this.burst_buff = 0;
@@ -7305,7 +7268,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.sixth_conste_buff = 0;
       this.burst1_buff = 0;
       this.burst2_buff = 0;
@@ -7451,7 +7413,6 @@ class Lyney {
     {
       this.base_status_array = base_status_array;
       this.parameter = parameter;
-      CharConstellations = 0;
       this.sixth_conste_crbuff = 0;
       this.sixth_conste_cdbuff = 0;
       this.attack_hit_count = 0;
@@ -7585,7 +7546,6 @@ class Lyney {
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.attack_count = 0;
       this.unique_attack_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -7801,7 +7761,6 @@ class Lyney {
       this.mytalent1 = 0;
       this.q_pyrobuff = 0;
       this.four_conste_buff = 0;
-      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -8042,7 +8001,6 @@ class Lyney {
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.attack_hit_count1 = 0;
       this.attack_hit_count2 = 0;
       this.weapon_rank = WeaponConstellations;
@@ -8272,7 +8230,6 @@ class Lyney {
       this.second_conste_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.nyan_dmgrate = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
@@ -8459,7 +8416,6 @@ class Lyney {
       this.aggcount = 0;
       this.reaction_coeff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -8608,7 +8564,6 @@ class Lyney {
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
       this.skill_buff = 0;
-      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -8758,7 +8713,6 @@ class Lyney {
       this.talent2_buff = 0;
       this.fourth_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.attack_count;
       this.burst_buff_rate = 0;
       this.weapon_rank = WeaponConstellations;
@@ -8919,7 +8873,6 @@ class Lyney {
       this.talent2_buff = 0;
       this.second_conste_buff = 0;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.attack_count;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -9073,7 +9026,6 @@ class Lyney {
       this.dmg_rateCache = null;
       this.parameter = parameter;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.weapon_rank = WeaponConstellations;
       this.attack_hit_count = 0;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -9195,7 +9147,6 @@ class Lyney {
       this.dmg_rateCache = null;
       this.parameter = parameter;
       this.sixth_conste_buff = 0;
-      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -9310,7 +9261,6 @@ class Lyney {
       this.dmg_rateCache = null;
       this.parameter = parameter;
       this.talent2_buff = 0;
-      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
@@ -9442,7 +9392,6 @@ class Lyney {
       this.dmg_rateCache = null;
       this.parameter = parameter;
       this.first_conste_buff = 0;
-      CharConstellations = 0;
       this.attack_hit_count = 0;
       this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;

@@ -1709,7 +1709,7 @@ async function DefineMainStatus(DependStatusList, AfMainStatus) {
     CircletMainStatus.push(6); 
   }
 
-  if (AfMainStatus[4] > 0)
+  if (AfMainStatus[3] > 0)
   {
     ClockMainStatus = [3]
   }

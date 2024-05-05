@@ -1205,15 +1205,19 @@
                     {
                         char_names.push(characters[charId]);
                         char_ids.push(charId);
-                        const image = {
-                            src: CharDataJson["CharMap"][charId.toString()]["url"],
-                            alt: `Image ${i}`,
-                            id: charId * 10 + i // 画像に割り当てるID属性を生成
-                        };
-                        images.push(image);
                     }
                 }
 
+                // 画像を生成して配列に追加
+                for (let i = 0; i < char_ids.length; i++) {
+                    const image = {
+                        src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
+                        alt: `Image ${i}`,
+                        id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
+                        
+                    };
+                    images.push(image);
+                }
                 let divAttention = document.getElementById("Attention");
                 divAttention.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
                 // 画像要素を生成し、動的にHTMLに追加する

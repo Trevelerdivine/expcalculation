@@ -1218,6 +1218,7 @@
                         
                     };
                     images.push(image);
+                    consoe.log(char_ids);
                 }
                 let divAttention = document.getElementById("Attention");
                 divAttention.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
@@ -1257,6 +1258,7 @@
                         // 画像を表示するdiv要素を取得
                         const digits = String(CharId); // 数値を文字列に変換
                         const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
+                        console.log(upperDigits);
                         selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
                         console.log(selectedCharId);
                         const imageContainer = document.getElementById("CharImage");

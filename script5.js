@@ -1528,7 +1528,8 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
     }
   }
   element_resistCorrection[8] =  element_resistCorrection[char_propaty[0]] * deffCorrection;
-
+  console.log(element_resistCorrection[char_propaty[0]]);
+  console.log(deffCorrection);
   return element_resistCorrection;
 }
 

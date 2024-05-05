@@ -2,6 +2,7 @@ let depend_status = [0,0,1,0,1,1,1];
 let af_score = 0;
 let attack_method = 0;
 let attack_method_index = 0;
+let AfMainFixStatus = [0,0];//[HP実数値,攻撃力実数値]
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
 const DisplayCharName = ["ディシア","宵宮","胡桃","クレー","ディルック","トーマ","煙緋","辛炎","ベネット","香菱",
@@ -163,13 +164,13 @@ async function calculate_af_main_status_buff()
             if (i == 0)
             {
                 if (item.flat && item.flat.reliquaryMainstat && item.flat.reliquaryMainstat.mainPropId === "FIGHT_PROP_HP") {
-                    EachBuff += item.flat.reliquaryMainstat.statValue * 100 / BaseStatus[0];
+                  AfMainFixStatus[0] = item.flat.reliquaryMainstat.statValue;
                 }
             }
             if (i == 4)
             {
                 if (item.flat && item.flat.reliquaryMainstat && item.flat.reliquaryMainstat.mainPropId === "FIGHT_PROP_ATTACK") {
-                    EachBuff += item.flat.reliquaryMainstat.statValue * 100 / BaseStatus[4];
+                  AfMainFixStatus[1] = item.flat.reliquaryMainstat.statValue;
                 }
             }
         });
@@ -418,11 +419,11 @@ async function calculate_fixed_status(sd,bs,amsb)
 //変数は左から（score_distribution,base_status,af_main_status_buff）
 {
   let fixed_status = [0,0,0,0,0,0,0,0];
-  fixed_status[0] = bs[0] * (1 + sd[0] * 3 / 400 + amsb[0]);
+  fixed_status[0] = bs[0] * (1 + sd[0] * 3 / 400 + amsb[0] + AfMainFixStatus[0]);
   fixed_status[1] = bs[1] * (1 + sd[1] * 3 / 320 + amsb[1]);
   fixed_status[2] = bs[2] + sd[2] * 3 + amsb[2];
   fixed_status[3] = bs[3] + sd[3] / 120 + amsb[3]/100;
-  fixed_status[4] = bs[4] * (1 + sd[4] * 3 / 400 + amsb[4]);
+  fixed_status[4] = bs[4] * (1 + sd[4] * 3 / 400 + amsb[4] + AfMainFixStatus[1]);
   fixed_status[5] = bs[5] + sd[5] / 200 + amsb[5] / 100;
   fixed_status[6] = bs[6] + sd[6] / 100 + amsb[6] / 100;
   fixed_status[7] = bs[7] + amsb[7];
@@ -2308,7 +2309,6 @@ async function monte_carlo_calculate()
     {
       score_distribute = await calculate_score_distribute(af_score,depend_status);
       base_parameter = await calculate_fixed_status(score_distribute,base_status,MainStatusBuff);
-      base_parameter[4] += 311
       exp_dmg = await CalculateExpDmg(
                                         score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
                                         result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,

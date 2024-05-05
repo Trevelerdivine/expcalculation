@@ -1514,11 +1514,7 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
 
   // 防御補正計算
   const deffCorrection = (CharLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + CharLevel + 100);
-
-  console.log(CharLevel);
-  console.log(charDebuff);
-  console.log(weaponDebuff);
-  console.log(enemyDeffDebuff);
+  console.log(deffCorrection);
 
   // 補正係数の計算
   let element_resistCorrection = [0, 0, 0, 0, 0, 0, 0, 0, 0];// [炎補正, 水補正, 氷補正, 雷補正, 風補正, 草補正, 岩補正, 物理補正, 攻撃元素補正]

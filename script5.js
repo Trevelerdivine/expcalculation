@@ -1656,7 +1656,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
   }
-  console.log(exp_dmg);
+  console.log(result_status);
   result_status.push(exp_dmg);
   return result_status;
 }

@@ -2,6 +2,7 @@ let depend_status = [0,0,1,0,1,1,1];
 let af_score = 0;
 let attack_method = 0;
 let attack_method_index = 0;
+let AfMainFixStatus = [0,0]
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
 const DisplayCharName = ["ディシア","宵宮","胡桃","クレー","ディルック","トーマ","煙緋","辛炎","ベネット","香菱",
@@ -163,13 +164,15 @@ async function calculate_af_main_status_buff()
             if (i == 0)
             {
                 if (item.flat && item.flat.reliquaryMainstat && item.flat.reliquaryMainstat.mainPropId === "FIGHT_PROP_HP") {
-                    EachBuff += item.flat.reliquaryMainstat.statValue * 100 / BaseStatus[0];
+                    AfMainFixStatus[0]= item.flat.reliquaryMainstat.statValue * 100 / BaseStatus[0];
+                    EachBuff += AfMainFixStatus[0];
                 }
             }
             if (i == 4)
             {
                 if (item.flat && item.flat.reliquaryMainstat && item.flat.reliquaryMainstat.mainPropId === "FIGHT_PROP_ATTACK") {
-                    EachBuff += item.flat.reliquaryMainstat.statValue * 100 / BaseStatus[4];
+                    AfMainFixStatus[1] += item.flat.reliquaryMainstat.statValue * 100 / BaseStatus[4];
+                    EachBuff += AfMainFixStatus[1];
                 }
             }
         });
@@ -1741,6 +1744,8 @@ async function CalculateIdealAfMainStatusBuff(status_array)
   {
     af_main_status_buff[7] = af_main_status[8] *  set_main_status[8];
   }
+  af_main_status_buff[0] += AfMainFixStatus[0];
+  af_main_status_buff[4] += AfMainFixStatus[1];
   return af_main_status_buff;
 }
 
@@ -2468,7 +2473,6 @@ async function monte_carlo_calculate()
       af_score = (af_score_upper_limit + af_score_lower_limit)/2;
     }
   }
-  console.log(n_count);
   console.log(ExpDmgList);
   output_exp_dmg = output_exp_dmg.toFixed(0);
   optimaize_af_score = af_score;

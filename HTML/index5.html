@@ -1206,9 +1206,9 @@
                         char_names.push(characters[charId]);
                         char_ids.push(charId);
                         const image = {
-                            src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
+                            src: CharDataJson["CharMap"][charId.toString()]["url"],
                             alt: `Image ${i}`,
-                            id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
+                            id: charId * 10 + i // 画像に割り当てるID属性を生成
                         };
                         images.push(image);
                     }

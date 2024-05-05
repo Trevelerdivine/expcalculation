@@ -141,9 +141,6 @@ async function calculate_base_status() {
 
   // 基礎ステータス配列を作成
   const base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
-  
-  // デバッグ用ログ出力
-  console.log(base_status);
   return base_status;
 }
 
@@ -182,7 +179,6 @@ async function calculate_af_main_status_buff()
   AfMainStatusBuff[1] *= 0.01;
   AfMainStatusBuff[4] *= 0.01;
   AfMainStatusBuff[7] = (AfMainStatusBuff[7] + AfMainStatusBuff[8]) / 100;
-  console.log(AfMainStatusBuff);
   return AfMainStatusBuff
 }
 
@@ -1182,8 +1178,6 @@ async function calculate_table_status()
   AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[5] / 2) / 100;
   AfStatusBuff[6] = (af_main_status_buff[6] + AfSubBuff[6]) / 100;
   AfStatusBuff[7] = af_main_status_buff[7];
-  console.log(AfSubBuff);
-  console.log(AfStatusBuff);
 
   if (selectedImageIds[0] == 17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
@@ -1271,7 +1265,6 @@ async function calculate_table_status()
   if(zetsuen_check == 1)
   {
     zetsuen_dmgbuff = calc_zetsuen_buff(fixed_status[3]);
-    console.log(zetsuen_dmgbuff);
     result_status[7] = team_dynamic_buff[7] + fixed_status[7] + await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status) + zetsuen_dmgbuff);
   }
   else
@@ -1584,7 +1577,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
   const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
   const reaction_check = document.getElementById("reactionoff_flag");
-  console.log(correct_coeff);
 
   if (depend_status[0] == 1)
   {
@@ -1656,7 +1648,9 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
   }
+  console.log(basic_dmg);
   console.log(result_status);
+  console.log(correct_coeff);
   result_status.push(exp_dmg);
   return result_status;
 }

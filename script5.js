@@ -1511,11 +1511,10 @@ async function calculateEnemyProps(charDebuff, weaponDebuff) {
   // 敵の情報取得
   const enemyLevel = parseInt(document.getElementById("enemy-level").value);
   const enemyDeffDebuff = parseFloat(document.getElementById("deff-debuff").value) / 100;
+  const CharcterLevel = parseInt(CharLevel);
 
   // 防御補正計算
-  const deffCorrection = (CharLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + CharLevel + 100);
-  console.log(CharLevel + 100);
-  console.log((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + CharLevel + 100);
+  const deffCorrection = (CharcterLevel + 100) / ((1 - charDebuff[2]) * (1 - charDebuff[1] - weaponDebuff[1] - enemyDeffDebuff) * (enemyLevel + 100) + CharcterLevel + 100);
   console.log(deffCorrection);
 
   // 補正係数の計算
@@ -1660,15 +1659,16 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
 async function import_char_parameter()
 {
   let ReactionFixValue
+  let CharacterLevel = parseInt(CharLevel);
   if(CharLevel == 90)
   {
     ReactionFixValue = 1446.85
   }
   else
   {
-    ReactionFixValue =  0.000000000755856 * CharLevel**7 - 0.000000227931736 * CharLevel**6 + 0.000025874407743 * CharLevel**5 - 0.001355874350326 * CharLevel**4 + 0.033618145604131 * CharLevel**3 - 0.264196827606430 * CharLevel**2 + 2.413548140527692 * CharLevel + 14.837426209163127;
+    ReactionFixValue =  0.000000000755856 * CharacterLevel**7 - 0.000000227931736 * CharacterLevel**6 + 0.000025874407743 * CharacterLevel**5 - 0.001355874350326 * CharacterLevel**4 + 0.033618145604131 * CharacterLevel**3 - 0.264196827606430 * CharacterLevel**2 + 2.413548140527692 * CharacterLevel + 14.837426209163127;
   }
-  const parameter = [CharLevel, ReactionFixValue, CharConstellations, 10];
+  const parameter = [CharacterLevel, ReactionFixValue, CharConstellations, 10];
   return parameter;
 }
 

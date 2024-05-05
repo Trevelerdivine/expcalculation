@@ -1649,7 +1649,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   }
 
   basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
-  console.log(basic_dmg);
   if (depend_status[2] == 1) {
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
@@ -1657,6 +1656,7 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
   }
+  console.log(exp_dmg);
   result_status.push(exp_dmg);
   return result_status;
 }

@@ -113,19 +113,19 @@ async function calculate_base_status() {
   // 基礎元素チャージ効率を計算
   let base_elm_charge = 1 + CharData.ステータス.基礎元素チャージ効率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
   if (WeaponEquipData.appendPropId === "FIGHT_PROP_CHARGE_EFFICIENCY") {
-      base_elm_charge += WeaponEquipData.statValue;
+      base_elm_charge += WeaponEquipData.statValue / 100;
   }
 
   // 基礎会心率を計算
   let base_cr = CharData.ステータス.基礎会心率[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
   if (WeaponEquipData.appendPropId === "FIGHT_PROP_CRITICAL") {
-      base_cr += WeaponEquipData.statValue;
+      base_cr += WeaponEquipData.statValue / 100;
   }
 
   // 基礎会心ダメージを計算
   let base_cd = CharData.ステータス.基礎会心ダメージ[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
   if (WeaponEquipData.appendPropId === "FIGHT_PROP_CRITICAL_HURT") {
-      base_cd += WeaponEquipData.statValue;
+      base_cd += WeaponEquipData.statValue / 100;
   }
 
   // 基礎ダメージバフを計算

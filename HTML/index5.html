@@ -1435,7 +1435,7 @@
         }
 
         async function SetMainStatus(SortOrder){
-            let AfJsonList = UserData.data.avatarInfoList[SortOrder].equipList;
+            let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
             let ClockMainStatus = "装備無し";
             let GobletMainStatus = "装備無し";
             let CircletMainStatus = "装備無し";

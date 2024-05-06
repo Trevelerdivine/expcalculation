@@ -1307,7 +1307,7 @@
                 CharLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["4001"].val;
                 CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
                 // talentIdList が存在するかどうかを確認し、その長さを取得
-                CharConstellations = Object.value(UserData.data.avatarInfoList[CharIndexList[SortOrder]].skillLevelMap);
+                CharConstellations = Object.values(UserData.data.avatarInfoList[CharIndexList[SortOrder]].skillLevelMap);
                 const CharTalentLevelList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
                 const LevelDisplay = document.getElementById("CharLevel");
                 const ConsteDisplay = document.getElementById("CharConstellations");

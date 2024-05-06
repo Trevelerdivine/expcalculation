@@ -167,9 +167,9 @@
                         <div id="attack_method">
                         </div>
                         <span class="property">天賦レベル</span>   
-                        <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 1em;">
+                        <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 2em;">
                             <span style="width: 30%;">
-                                <div>通常攻撃1</div>
+                                <div>通常攻撃</div>
                                 <div id="NormalTalentLevel"></div>
                             </span>
                             <span style="width: 30%;">
@@ -181,6 +181,7 @@
                                 <div id="BurstTalentLevel"></div>
                             </span>
                         </div>   
+                        <br>
                         <span class="property">スキルプロパティ</span>        
                         <br>
                         <span id = "attack_method_prop">
@@ -1091,6 +1092,7 @@
         let CharLevel;
         let CharAdvanceRank;
         let CharConstellations;
+        let CharTalentLevel = [0,0,0,0,0];
         let WeaponLevel;
         let WeaponAdvanceRank;
         let WeaponConstellations  = 1;
@@ -1305,13 +1307,15 @@
                 CharLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["4001"].val;
                 CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
                 // talentIdList が存在するかどうかを確認し、その長さを取得
-                CharConstellations = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList.length : 0;
+                CharConstellations = Object.value(data.avatarInfoList[CharIndexList[SortOrder]].skillLevelMap);
+                const CharTalentLevelList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
                 const LevelDisplay = document.getElementById("CharLevel");
                 const ConsteDisplay = document.getElementById("CharConstellations");
                 const charIndexDisplay = document.getElementById('Charindex-display');
                 charIndexDisplay.innerHTML = char_names[SortOrder]
                 LevelDisplay.innerHTML = "Lv." + CharLevel;
                 ConsteDisplay.innerHTML = "命の星座" + CharConstellations + "重";
+                console.log(CharTalentLevelList);
             }
             else
             {

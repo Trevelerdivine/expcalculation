@@ -1309,10 +1309,10 @@
             // SortOrder の値が有効なインデックスであることを確認
             if (SortOrder >= 0 && SortOrder < UserData.data.avatarInfoList.length)
             {
-                CharLevel = UserData.data.avatarInfoList[SortOrder].propMap["4001"].val;
-                CharAdvanceRank = UserData.data.avatarInfoList[SortOrder].propMap["1002"].val;
+                CharLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["4001"].val;
+                CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
                 // talentIdList が存在するかどうかを確認し、その長さを取得
-                CharConstellations = UserData.data.avatarInfoList[SortOrder].talentIdList ? UserData.data.avatarInfoList[SortOrder].talentIdList.length : 0;
+                CharConstellations = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[SortOrder].talentIdList.length : 0;
                 const LevelDisplay = document.getElementById("CharLevel");
                 const ConsteDisplay = document.getElementById("CharConstellations");
                 const charIndexDisplay = document.getElementById('Charindex-display');

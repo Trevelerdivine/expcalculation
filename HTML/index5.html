@@ -164,30 +164,23 @@
                     </div>
                     <fieldset id="attack-setting" style="margin-bottom: 20px; margin-top: 20px; max-width: 476px;">
                         <legend>攻撃方法の設定</legend>
-                        <table>
-                            <td>
-                                <div id="attack_method">
-                                </div>
-                            </td>
-                            <td>
-                                <select id="talent-level">
-                                    <option disabled selected>天賦レベル</option>
-                                    <option value="1">Lv.1</option>
-                                    <option value="2">Lv.2</option>
-                                    <option value="3">Lv.3</option>
-                                    <option value="4">Lv.4</option>
-                                    <option value="5">Lv.5</option>
-                                    <option value="6">Lv.6</option>
-                                    <option value="7">Lv.7</option>
-                                    <option value="8">Lv.8</option>
-                                    <option value="9">Lv.9</option>
-                                    <option value="10">Lv.10</option>
-                                    <option value="11">Lv.11</option>
-                                    <option value="12">Lv.12</option>
-                                    <option value="13">Lv.13</option>
-                                </select>
-                            </td>
-                        </table>
+                        <div id="attack_method">
+                        </div>
+                        <span class="property">天賦レベル</span>   
+                        <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 1em;">
+                            <span style="width: 30%;">
+                                <div>通常攻撃</div>
+                                <div id="NormalTalentLevel"></div>
+                            </span>
+                            <span style="width: 30%;">
+                                <div>元素スキル</div>
+                                <div id="SkillTalentLevel"></div>
+                            </span>
+                            <span style="width: 30%;">
+                                <div>元素爆発</div>
+                                <div id="BurstTalentLevel"></div>
+                            </span>
+                        </div>   
                         <span class="property">スキルプロパティ</span>        
                         <br>
                         <span id = "attack_method_prop">

@@ -1,4 +1,111 @@
 {
+    "星3":{
+        "片手剣": {
+            "1": {
+                "名前": "冷刃",
+                "url": "../weapon_img/Sword/CoolSteel.webp",
+                "id":"34"
+            },
+            "2": {
+                "名前": "黎明の神剣",
+                "url": "../weapon_img/Sword/HarbingerofDawn.webp",
+                "id":""
+            },
+            "3": {
+                "名前": "旅道の剣",
+                "url": "../weapon_img/Sword/TravelersHandySword.webp",
+                "id":"32"
+            },
+            "5": {
+                "名前": "チ虎魚の刀",
+                "url": "../weapon_img/Sword/FilletBlade.webp",
+                "id":"31"
+            },
+            "6": {
+                "名前": "飛天御剣",
+                "url": "../weapon_img/Sword/SkyriderSword.webp",
+                "id":"30"
+            }
+        },
+        "両手剣": {
+            "1": {
+                "名前": "鉄影段平",
+                "url": "../weapon_img/Claymore/FerrousShadow.webp",
+                "id":"65"
+            },
+            "2": {
+                "名前": "龍血を浴びた剣",
+                "url": "../weapon_img/Claymore/BloodtaintedGreatsword.webp",
+                "id":"64"
+            },
+            "3": {
+                "名前": "白鉄の大剣",
+                "url": "../weapon_img/Claymore/WhiteIronGreatsword.webp",
+                "id":"63"
+            },
+            "5": {
+                "名前": "理屈責め",
+                "url": "../weapon_img/Claymore/DebateClub.webp",
+                "id":"62"
+            },
+            "6": {
+                "名前": "飛天大御剣",
+                "url": "../weapon_img/Claymore/SkyriderGreatsword.webp",
+                "id":"61"
+            }
+        },
+        "長柄": {
+            "1": {
+                "名前": "白纓槍",
+                "url": "../weapon_img/Polearm/WhiteTassel.webp",
+                "id":"90"
+            },
+            "3": {
+                "名前": "黒纓槍",
+                "url": "../weapon_img/Polearm/BlackTassel.webp",
+                "id":"89"
+            }
+        },
+        "法器": {
+            "1": {
+                "名前": "魔導緒論",
+                "url": "../weapon_img/Catalyst/MagicGuide.webp",
+                "id":"153"
+            },
+            "3": {
+                "名前": "龍殺しの英傑譚",
+                "url": "../weapon_img/Catalyst/ThrillingTalesofDragonSlayers.webp",
+                "id":"152"
+            }
+        },
+        "弓": {
+            "1": {
+                "名前": "鴉羽の弓",
+                "url": "../weapon_img/Bow/RavenBow.webp",
+                "id":"123"
+            },
+            "2": {
+                "名前": "シャープシューターの誓い",
+                "url": "../weapon_img/Bow/SharpshootersOath.webp",
+                "id":"122"
+            },
+            "3": {
+                "名前": "リカーブボウ",
+                "url": "../weapon_img/Bow/RecurveBow.webp",
+                "id":"121"
+            },
+            "4": {
+                "名前": "弾弓",
+                "url": "../weapon_img/Bow/Slingshot.webp",
+                "id":"120"
+            },
+            "5": {
+                "名前": "文使い",
+                "url": "../weapon_img/Bow/Messenger.webp",
+                "id":"119"
+            }
+        }
+    },
     "星4":{
         "片手剣": {
             "1": {

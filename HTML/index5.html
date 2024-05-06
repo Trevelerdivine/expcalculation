@@ -1312,16 +1312,23 @@
                 const LevelDisplay = document.getElementById("CharLevel");
                 const ConsteDisplay = document.getElementById("CharConstellations");
                 const charIndexDisplay = document.getElementById('Charindex-display');
+                const NormalTalent = document.getElementById('NormalTalentLevel');
+                const SkillTalent = document.getElementById('SkillTalentLevel');
+                const BurstTalent = document.getElementById('BurstTalentLevel');
                 charIndexDisplay.innerHTML = char_names[SortOrder]
                 LevelDisplay.innerHTML = "Lv." + CharLevel;
                 ConsteDisplay.innerHTML = "命の星座" + CharConstellations + "重";
+                NormalTalent.innerHTML = "Lv." + CharTalentLevelList[0];
+                SkillTalent.innerHTML = "Lv." + CharTalentLevelList[1];
+                BurstTalent.innerHTML = "Lv." + CharTalentLevelList[2];
                 console.log(CharTalentLevelList);
+
                 CharTalentLevel[0] = CharTalentLevelList[0];
                 CharTalentLevel[1] = CharTalentLevelList[0];
                 CharTalentLevel[2] = CharTalentLevelList[0];
                 CharTalentLevel[3] = CharTalentLevelList[1];
                 CharTalentLevel[4] = CharTalentLevelList[2];
-                console.log(CharTalentLevelList);
+                console.log(CharTalentLevel);
 
 
             }

@@ -1328,8 +1328,8 @@
 
         async function DisplayWeaponStatus(index,SortOrder,id){
             WeaponLevel = UserData.data.avatarInfoList[SortOrder].equipList[index-1].weapon.level;
-            let WeaponRank = UserData.data.avatarInfoList[SortOrder].equipList[index-1].weapon.affixMap[100000 + id] + 1;
-            let AfJsonList = UserData.data.avatarInfoList[SortOrder].equipList;
+            let WeaponRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.affixMap[100000 + id] + 1;
+            let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
             // "itemId" の値を格納するための配列を初期化
             let AfIdList = [];
             let ExecuteFlag;
@@ -1349,7 +1349,7 @@
         }
 
         async function AfSetReffer(SortOrder){
-            let AfJsonList = UserData.data.avatarInfoList[SortOrder].equipList;
+            let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
             // "itemId" の値を格納するための配列を初期化
             let AfIdList = [];
 

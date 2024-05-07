@@ -1102,6 +1102,8 @@
         let selectedImageIds = [0,0];
         let char_names = [];
         let CharDataJson;
+        let AfNameList;
+        let afdata;
         let UserData;
         let SelectId;
         let CharIndexList = [];
@@ -1187,6 +1189,10 @@
                 char_names = [];
                 CharIndexList = [];
                 UserData = await response.json();
+                let afresponse = await fetch("../data/JsonData/MainStatusName.json");
+                AfNameList = await afresponse.json();
+                const AfUrlResponse = await fetch("../data/JsonData/url.json");
+                 afdata = await AfUrlResponse.json();
                 console.log(UserData);
                 sessionStorage.setItem("UserData", JSON.stringify(UserData));
                 // ニックネームをHTMLに出力する
@@ -1417,9 +1423,7 @@
             let set_eff1;
             let set_eff2;
             let AfName1;
-            let AfName2
-            const afresponse = await fetch("../data/JsonData/url.json");
-            const afdata = await afresponse.json();
+            let AfName2;
             
             if (SelectedAfId[0] === SelectedAfId[1]) {
                 set_eff1 = afdata["AfMap"][SelectedAfId[0].toString()]["2セット効果"];
@@ -1454,8 +1458,6 @@
             let GobletMainStatus = "装備無し";
             let CircletMainStatus = "装備無し";
             let PropName;
-            const afresponse = await fetch("../data/JsonData/MainStatusName.json");
-            const AfNameList = await afresponse.json();
             // "itemId" の値を格納するための配列を初期化
             let AfIdList = [];
 
@@ -1568,8 +1570,6 @@
                 }
             }
 
-            const afresponse = await fetch("../data/JsonData/url.json");
-            const afdata = await afresponse.json();
             let AfSerch;
             for (let i = 0; i < SelectedAfId.length; i++) {
                 AfSerch = afdata["AfMap"][SelectedAfId[i].toString()] || 0;
@@ -1642,10 +1642,14 @@
         window.onload = async function() {
             showTable("table1","tablebutton1");
             showOption("option1", "parameterbutton1");
-            const DataResponse = await fetch("../data/JsonData/CharacterData.json");
             let char_ids = [];
+            const DataResponse = await fetch("../data/JsonData/CharacterData.json");
             CharDataJson = await DataResponse.json();
             console.log(CharDataJson);
+            let afresponse = await fetch("../data/JsonData/MainStatusName.json");
+            AfNameList = await afresponse.json();
+            const AfUrlResponse = await fetch("../data/JsonData/url.json");
+                afdata = await AfUrlResponse.json();
             // ローカルストレージからカウントダウン終了時刻を取得
             const endTime = sessionStorage.getItem(SessionStorageKey);
             // 現在時刻を取得

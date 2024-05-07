@@ -1601,7 +1601,7 @@
 
             const WeaponImgContainer = document.getElementById("WeaponImage");
             const existingImage = WeaponImgContainer.querySelector("img");
-            selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"] || -1;
+            selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()] ? Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"] : -1;
 
             if(selectedWeaponId == -1)
             {

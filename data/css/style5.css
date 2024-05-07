@@ -613,6 +613,8 @@ details summary {
     color: #242323;
     font-weight: bold;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 

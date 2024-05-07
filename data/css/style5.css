@@ -595,26 +595,26 @@
     text-align: center; /* 中央揃え */
   }
 
-  .centered-details {
+  .centered-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-  details {
-    width: 100%; /* 追加 */
-    max-width: 500px; /* 追加 */
+.centered-details {
+    max-width: 500px;
     margin-bottom: 20px;
-  }
+}
 
-  details summary {
+details summary {
     list-style: none;
     cursor: pointer;
     padding: 20px;
     color: #242323;
     font-weight: bold;
     position: relative;
-  }
+}
+
 
   details summary::before {
     content: '\25B6'; /* 右向きの矢印 */

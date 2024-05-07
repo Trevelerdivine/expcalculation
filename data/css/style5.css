@@ -595,7 +595,7 @@
     text-align: center; /* 中央揃え */
   }
 
-  .centered-container {
+  .AttentionDetails {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -617,19 +617,19 @@ details summary {
 
 
   details summary::before {
-    content: '\25B6'; /* 右向きの矢印 */
+    content: '\25B6';
     margin-right: 20px;
-    transition: transform 0.3s ease; /* アニメーション追加 */
-    color: #666; /* 矢印の色をグレーに設定 */
+    transition: transform 0.3s ease;
+    color: #666;
   }
 
   details[open] summary::before {
-    transform: rotate(90deg); /* 開いているときは下向きの矢印に回転 */
+    transform: rotate(90deg);
   }
 
   details[open] summary::before {
-    content: '\25BC'; /* 下向きの矢印 */
-    transform: none; /* 回転をリセット */
+    content: '\25BC';
+    transform: none;
   }
 
   details p {

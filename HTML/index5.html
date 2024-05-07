@@ -1194,7 +1194,7 @@
                 const afresponse = await fetch("../data/JsonData/url.json");
                 afdata = await afresponse.json();
                 const AfNameresponse = await fetch("../data/JsonData/MainStatusName.json");
-                AfNameList = await afresponse.json();
+                AfNameList = await AfNameresponse.json();
                 console.log(UserData);
                 sessionStorage.setItem("UserData", JSON.stringify(UserData));
                 // ニックネームをHTMLに出力する
@@ -1687,7 +1687,7 @@
             const afresponse = await fetch("../data/JsonData/url.json");
             afdata = await afresponse.json();
             const AfNameresponse = await fetch("../data/JsonData/MainStatusName.json");
-            AfNameList = await afresponse.json();
+            AfNameList = await AfNameresponse.json();
             if (UserData !== null)
             {
                 const nicknameElement = document.getElementById('nickname');

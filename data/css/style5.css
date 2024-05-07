@@ -601,18 +601,6 @@
     align-items: center;
 }
 
-  .centered-details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .centered-details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   details {
     width: 100%; /* 追加 */
     max-width: 500px; /* 追加 */

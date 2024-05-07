@@ -53,7 +53,7 @@
         "27": {
             "名前": "凝光",
             "url": "../character/ningguang.webp",
-            "id":"68"
+            "id":"69"
         },
         "29": {
             "名前": "クレー",
@@ -63,7 +63,7 @@
         "30": {
             "名前": "鍾離",
             "url": "../character/zhongli.webp",
-            "id":"64"
+            "id":"65"
         },
         "31": {
             "名前": "フィッシュル",
@@ -213,37 +213,37 @@
         "79": {
             "名前": "ディシア",
             "url": "../character/dehya.webp",
-            "id":""
+            "id":"0"
         },
         "84": {
             "名前": "リネ",
             "url": "../character/Lyney.webp",
-            "id":"70"
+            "id":"71"
         },
         "86": {
             "名前": "リオセスリ",
             "url": "../character/Wriothesley.webp",
-            "id":"72"
+            "id":"73"
         },
         "87": {
             "名前": "ヌヴィレット",
             "url": "../character/Neuvillette.webp",
-            "id":"71"
+            "id":"72"
         },
         "89": {
             "名前": "フリーナ",
             "url": "../character/Furina.webp",
-            "id":"73"
+            "id":"74"
         },
         "91": {
             "名前": "ナヴィア",
             "url": "../character/Navia.webp",
-            "id":"74"
+            "id":"75"
         },
         "92": {
             "名前": "嘉明",
             "url": "../character/gaming.webp",
-            "id":"75"
+            "id":"76"
         }
     }
 }

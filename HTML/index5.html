@@ -1095,19 +1095,20 @@
         let CharAdvanceRank;
         let CharConstellations;
         let CharTalentLevel = [0,0,0,0,0];
+        let char_names = [];
+        let CharIndexList = [];
+        let CharDataJson;
         let WeaponLevel;
         let WeaponAdvanceRank;
         let WeaponConstellations  = 1;
+        let Weapondata;
+        let WeaponPopId;
         let char_propaty = [5,0];
         let selectedImageIds = [0,0];
-        let char_names = [];
-        let CharDataJson;
         let AfNameList;
         let afdata;
         let UserData;
         let SelectId;
-        let CharIndexList = [];
-        let WeaponPopId;
         let EquipNumber;
         // ローカルストレージに保存するキー
         const SessionStorageKey = "countdownEndTime";
@@ -1192,7 +1193,9 @@
                 let afresponse = await fetch("../data/JsonData/MainStatusName.json");
                 AfNameList = await afresponse.json();
                 const AfUrlResponse = await fetch("../data/JsonData/url.json");
-                 afdata = await AfUrlResponse.json();
+                afdata = await AfUrlResponse.json();
+                const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
+                Weapondata = await Weaponresponse.json();
                 console.log(UserData);
                 sessionStorage.setItem("UserData", JSON.stringify(UserData));
                 // ニックネームをHTMLに出力する
@@ -1505,8 +1508,6 @@
             let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
             let weaponRank = ["星3", "星4", "星5"]
             let numberString = Id.toString();
-            const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
-            const Weapondata = await Weaponresponse.json();
 
             // 数値を分割して配列に格納
             let secondDigit = parseInt(numberString.charAt(1)); // 上から2桁目
@@ -1578,6 +1579,26 @@
                     ExecuteFlag = 1;
                 }
             }
+
+            let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
+            let weaponRank = ["星3", "星4", "星5"]
+            let numberString = Id.toString();
+
+            // 数値を分割して配列に格納
+            let secondDigit = parseInt(numberString.charAt(1)); // 上から2桁目
+            let thirdDigit = parseInt(numberString.charAt(2)); // 上から3桁目
+            let lastTwoDigits = parseInt(numberString.substring(3)); // 4桁目と5桁目
+
+            let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
+
+            const WeaponImgContainer = document.getElementById("WeaponImage");
+            const existingImage = WeaponImgContainer.querySelector("img");
+            selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"] || 0;
+            if (AfSerch == 0)
+            {
+                ExecuteFlag = 1;
+            }
+
             CharAdvanceRank = UserData.data.avatarInfoList[index].propMap["1002"].ival;
             WeaponAdvanceRank = UserData.data.avatarInfoList[index].equipList[WeapomListIndex-1].weapon.promoteLevel;
             if (!CharDataJson["CharMap"][charId.toString()]  || CharAdvanceRank < 4 || WeaponAdvanceRank < 4)
@@ -1649,7 +1670,9 @@
             let afresponse = await fetch("../data/JsonData/MainStatusName.json");
             AfNameList = await afresponse.json();
             const AfUrlResponse = await fetch("../data/JsonData/url.json");
-                afdata = await AfUrlResponse.json();
+            afdata = await AfUrlResponse.json();
+            const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
+            Weapondata = await Weaponresponse.json();
             // ローカルストレージからカウントダウン終了時刻を取得
             const endTime = sessionStorage.getItem(SessionStorageKey);
             // 現在時刻を取得

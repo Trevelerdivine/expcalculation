@@ -1163,6 +1163,8 @@
 
         // fetchData() 関数を定義
         async function fetchData() {
+            fetchButton.disabled = true;
+            
             let ErrorId;
             const img_grid = document.getElementById("imageGrid");
             img_grid.innerHTML = "";
@@ -1295,6 +1297,7 @@
                     imageGrid.appendChild(imgElement);
                 });
             } catch (error) {
+                fetchButton.disabled = false;
                 if(ErrorId == 500)
                 {
                     const nicknameElement = document.getElementById('nickname');
@@ -1611,8 +1614,6 @@
         }
         
         function startCountdown() {
-            // ボタンを無効にする
-            fetchButton.disabled = true;
 
             // ローカルストレージからカウントダウン終了時刻を取得
             const endTime = sessionStorage.getItem(SessionStorageKey);

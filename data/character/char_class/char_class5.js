@@ -444,7 +444,8 @@ class Lyney {
       const response = await fetch("../data/character/char_data/yoimiya.json");
       const data = await response.json();
   
-      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][CharTalentLevel[3]]);
+      const yoimiyaE_level = parseInt(document.getElementById("yoimiyaE_level").value);
+      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][yoimiyaE_level]);
   
       this.talent1_buff = parseFloat(document.getElementById("yoimiya_talent1").value) / 100;
   
@@ -643,7 +644,8 @@ class Lyney {
       const response = await fetch("../data/character/char_data/hutao.json");
       const data = await response.json();
   
-      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][CharTalentLevel[3]]);
+      const hutaoE_level = parseInt(document.getElementById("hutaoE_level").value);
+      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][hutaoE_level]);
   
       const talent2_check = document.getElementById("hutao_talent2");
       if (talent2_check.checked)
@@ -1649,7 +1651,8 @@ class Lyney {
         const burst_check = document.getElementById("yanfei_Q");
         if (burst_check.checked)
         {
-          this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][CharTalentLevel[4]]);
+          const burstlevel = parseInt(document.getElementById("yanfeiQ_level").value);
+          this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burstlevel]);
         }
         const checkboxContainer = document.getElementById("select_reaction_method");
         const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
@@ -2021,7 +2024,8 @@ class Lyney {
       const bennett_Q_check = document.getElementById("bennett_Q");
       if (bennett_Q_check.checked)
       {
-        this.bennett_Q_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][CharTalentLevel[4]]);
+        const bennett_Q_level = parseInt(document.getElementById("bennett_Q_level").value);
+        this.bennett_Q_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][bennett_Q_level]);
       }
   
       if (CharConstellations > 0)
@@ -2551,7 +2555,8 @@ class Lyney {
       const data = await response.json();
   
       const buff_count1 = parseInt(document.getElementById("furina_tention1").value);
-      const buff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][CharTalentLevel[4]]);
+      const burst_level = parseInt(document.getElementById("furina_Q_level").value);
+      const buff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burst_level]);
       this.burst_buff1 = buff_rate * buff_count1 * burst_flag;
       if(CharConstellations > 1)
       {
@@ -3538,6 +3543,7 @@ class Lyney {
       const buff_check = document.getElementById("kamisatoayato_Q");
       if (buff_check.checked)
       {
+        const ayato_burst_level = parseInt(document.getElementById("kamisatoayato_Q_level").value);
         this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][ayato_burst_level]);
       }
     
@@ -4136,8 +4142,9 @@ class Lyney {
             elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
             elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           }
-
-          const skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][CharTalentLevel[3]]);
+  
+          const skill_level = parseInt(document.getElementById("Wriothesley_skill_level").value);
+          const skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][skill_level]);
           const skill_effect_check = document.getElementById("skill_flag");
           if (skill_effect_check.checked)
           {
@@ -4562,10 +4569,11 @@ class Lyney {
       const response = await fetch("../data/character/char_data/eula.json");
       const data = await response.json();
   
+      const eula_E_level = parseInt(document.getElementById("eula_E_level").value);
       const eulaE_check = document.getElementById("eula_E");
       if (eulaE_check.checked)
       {
-        this.debuff = parseFloat(data["元素スキル"]["詳細"][3]["数値"][CharTalentLevel[3]]);
+        this.debuff = parseFloat(data["元素スキル"]["詳細"][3]["数値"][eula_E_level]);
       }
   
   
@@ -5880,12 +5888,13 @@ class Lyney {
       const data = await response.json();
       // 攻撃方法に応じてダメージ率を計算
       const resolve = parseInt(document.getElementById("raiden_resolve").value);
+      const raidenn_E_level = document.getElementById("raiden_E_level").value;
       const raiden_E_check = document.getElementById("raiden_E");
       let skill_effect = 0;
       if (raiden_E_check.checked)
       {
         skill_effect = 1;
-        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][CharTalentLevel[3]]) * 0.9;
+        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][raidenn_E_level]) * 0.9;
       }
       let dmg_rate;
       let dmg_attack_rate = 0;
@@ -6206,7 +6215,8 @@ class Lyney {
       const kujou_skill_check = document.getElementById("kujousara");
       if (kujou_skill_check.checked)
       {
-        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][CharTalentLevel[3]]) * this.base_status_array[4];
+        const kujou_skill_level = parseInt(document.getElementById("kujousara_E_level").value);
+        this.skill_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][kujou_skill_level]) * this.base_status_array[4];
       }
   
       if (CharConstellations == 4)
@@ -6707,6 +6717,7 @@ class Lyney {
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 21) {
         this.skill_buff = parseInt(document.getElementById("razor_skill_count").value) * 0.2;
+        const normal_talent_level = parseInt(document.getElementById("razor_normal_level").value);
         const reaction_check = document.getElementById("reactionon_flag");
         if (reaction_check.checked)
         {
@@ -6717,7 +6728,7 @@ class Lyney {
         const attack_burst_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         console.log(attack_burst_rate);
         for (let i = 0; i < 4; i++) {
-          dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][CharTalentLevel[0]]) * attack_burst_rate;
+          dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][normal_talent_level]) * attack_burst_rate;
         }
         console.log(dmg_attack_rate);
         dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
@@ -7004,7 +7015,8 @@ class Lyney {
         for (let i = 0; i < 3; i++) {
           dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
-        const wanderer_burst_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][CharTalentLevel[3]]);
+        const xiao_burst_level = parseInt(document.getElementById("wandererE_level").value);
+        const xiao_burst_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][xiao_burst_level]);
   
         if (CharConstellations > 3)
         {
@@ -7012,12 +7024,13 @@ class Lyney {
           this.sixth_conste_buff = 1.4;
         } 
   
-        dmg_attack_rate *= wanderer_burst_buff * this.sixth_conste_buff;
+        dmg_attack_rate *= xiao_burst_buff * this.sixth_conste_buff;
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 6) {
         this.attack_hit_count = 1;
         dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-        const wanderer_burst_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][CharTalentLevel[3]]);
+        const wanderer_skill_level = parseInt(document.getElementById("wandererE_level").value);
+        const wanderer_burst_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][wanderer_skill_level]);
         dmg_attack_rate *= wanderer_burst_buff
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 21) {
@@ -7141,7 +7154,8 @@ class Lyney {
   
       if (attack_method_index ==0 || this.attack_method_index == 1 || attack_method_index == 2)
       {
-        this.burst_buff = parseFloat(data["元素爆発"]["詳細"][0]["数値"][CharTalentLevel[4]]);
+        const xiao_burst_level = parseInt(document.getElementById("xiao_Q_level").value);
+        this.burst_buff = parseFloat(data["元素爆発"]["詳細"][0]["数値"][xiao_burst_level]);
       }
       
       // 攻撃方法に応じてダメージ率を計算
@@ -7286,7 +7300,8 @@ class Lyney {
       const burst2_check = document.getElementById("faruzan_burst2");
       if (burst1_check.checked) 
       {
-        this.burst2_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][CharTalentLevel[4]]);
+        const burst_level = parseInt(document.getElementById("faruzan_Q_level").value);
+        this.burst2_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burst_level]);
   
         const talent2_check = document.getElementById("faruzan_talent2");
         if (talent2_check.checked)
@@ -7817,7 +7832,8 @@ class Lyney {
           }
     
           if (q_pyro > -1) {
-            this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][CharTalentLevel]) / 100;
+            const nahida_Q_level = document.getElementById("nahida_Q_level").value;
+            this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][nahida_Q_level]) / 100;
           }
         }
         const dmg_attck_rate = parseFloat(data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]]);
@@ -8740,7 +8756,8 @@ class Lyney {
       if (burst_check.checked)
       {
         this.burst_flag = 1;
-        this.burst_buff_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][CharTalentLevel[4]]);
+        let burst_talent_level  = parseInt(document.getElementById("arataki_burst_level").value);
+        this.burst_buff_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][burst_talent_level]);
       }
       // 攻撃方法に応じてダメージ率を計算
       let dmg_rate;
@@ -9025,8 +9042,9 @@ class Lyney {
       // 攻撃方法に応じてダメージ率を計算
       let dmg_rate;
       let dmg_attck_rate = 0;
+      const burst_level = parseInt(document.getElementById("noelle_Q_level").value);
       if (attack_method == 1) {
-        this.sixth_conste_buff = parseFloat(data["元素爆発"]["詳細"][2]["数値"][CharTalentLevel[4]]);
+        this.sixth_conste_buff = parseFloat(data["元素爆発"]["詳細"][2]["数値"][burst_level]);
         if (CharConstellations > 3)
         {
           const sixth_conste_check =  document.getElementById("traitCheckbox6");

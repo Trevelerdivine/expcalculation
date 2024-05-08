@@ -49,6 +49,9 @@ async function show_char_statsform()
         createCheckbox("talent1", true),
         createLabel("talent1", "出場中"),
         document.createElement("br"),
+        createTextNode("　元素爆発天賦レベル："),
+        createSelectList("nahida_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
         createTextNode("　炎元素キャラ数："),
         createSelectList("nahida_Qpyro",0, 2, "", "人", 0),
         document.createElement("br"),
@@ -169,6 +172,11 @@ async function show_char_statsform()
     else if (selectedCharId == "1")
       {
         elementsToAddToCharTalent = [
+          createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
+          document.createElement("br"),
+          createLabel("yoimiyaE_level", "　元素スキル天賦レベル："),
+          createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
+          document.createElement("br"),
           createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ "),
           createanySelectList("yoimiya_talent1", 0, 10, "+", "%", 10, 2),
           document.createElement("br"),
@@ -211,6 +219,11 @@ async function show_char_statsform()
     else if (selectedCharId == "2")
     {
       elementsToAddToCharTalent = [
+        createLabel("hutao_E", "蝶導来世"),
+        document.createElement("br"),
+        createTextNode("　元素スキル天賦レベル："),
+        createSelectList("hutaoE_level", 1, 13, "Lv.", "", 10),
+        document.createElement("br"),
         createCheckbox("hutao_talent2", true),
         createLabel("hutao_talent2", "血のかまど：胡桃のHPが50%以下の時、炎元素ダメージ+33%"),
         document.createElement("br"),
@@ -470,6 +483,9 @@ async function show_char_statsform()
         createCheckbox("bennett_Q", true),
         createLabel("bennett_Q", "素晴らしい旅"),
         document.createElement("br"),
+        createTextNode("　元素爆発天賦レベル："),
+        createSelectList("bennett_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
       ];
     
       elementsToAddToCharTalent.forEach(element => {
@@ -574,6 +590,8 @@ async function show_char_statsform()
         createCheckbox("furina_Qcheck", true),
         createLabel("furina_Qcheck", "もろびとこぞりて"),
         document.createElement("br"),
+        createTextNode("元素爆発天賦レベル："),
+        createSelectList("furina_Q_level", 1, 13, "Lv.", "", 8),
       ];
     
       elementsToAddToCharTalent.forEach(element => {
@@ -692,6 +710,9 @@ async function show_char_statsform()
       elementsToAddToCharTalent = [
         createCheckbox("kamisatoayato_Q", true),
         createLabel("kamisatoayato_Q", "神里流・水囿"),
+        document.createElement("br"),
+        createTextNode("　元素爆発天賦レベル："),
+        createSelectList("kamisatoayato_Q_level", 1, 13, "Lv.", "", 10),
         document.createElement("br")
       ];
     
@@ -816,6 +837,9 @@ async function show_char_statsform()
         createCheckbox("eula_E", true),
         createLabel("eula_E", "氷潮の渦 "),
         document.createElement("br"),
+        createTextNode("　元素スキル天賦レベル："),
+        createSelectList("eula_E_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br")
       ];
     
       elementsToAddToCharTalent.forEach(element => {
@@ -1040,6 +1064,9 @@ async function show_char_statsform()
         createCheckbox("raiden_E", true),
         createLabel("raiden_E", "元素スキル：雷罰悪曜の眼"),
         document.createElement("br"),
+        createTextNode("　元素スキル天賦レベル："),
+        createSelectList("raiden_E_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
       ];
     
       elementsToAddToCharTalent.forEach(element => {
@@ -1112,6 +1139,9 @@ async function show_char_statsform()
       elementsToAddToCharTalent = [
         createCheckbox("kujousara", true),
         createLabel("kujousara", "元素スキル：烏天狗雷霆召呪"),
+        document.createElement("br"),
+        createTextNode("　元素スキル天賦レベル："),
+        createSelectList("kujousara_E_level", 1, 13, "Lv.", "", 10),
         document.createElement("br"),
       ];
     
@@ -1281,6 +1311,9 @@ async function show_char_statsform()
       createchar_attackmethod(options);
 
       elementsToAddToCharTalent = [
+        createTextNode("元素爆発天賦レベル："),
+        createSelectList("xiao_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
         createLabel("xiao_talent1", "固有天賦1 降魔・平妖大聖：与えるダメージ"),
         createanySelectList("xiao_talent1", 0, 5, "+", "%", 5, 5),
         document.createElement("br"),
@@ -1293,6 +1326,9 @@ async function show_char_statsform()
     else if (selectedCharId == "49")
     {
       elementsToAddToCharTalent = [
+        createTextNode("元素爆発天賦レベル："),
+        createSelectList("faruzan_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
         createCheckbox("faruzan_burst1", true),
         createLabel("faruzan_burst1", "詭風の禍つ：敵の風元素耐性-30%"),
         document.createElement("br"),
@@ -1561,6 +1597,9 @@ async function show_char_statsform()
         createCheckbox("arataki_burst_effect", true),
         createLabel("arataki_burst_effect", "元素爆発：防御力を基準に攻撃力がアップ",),
         document.createElement("br"),
+        createLabel("arataki_burst_level", "　元素爆発天賦レベル：",),
+        createSelectList("arataki_burst_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
         createCheckbox("arataki_talent2", true),
         createLabel("arataki_talent2", "固有天賦2：「荒瀧逆袈裟」のダメージが荒瀧一斗の防御力35%分アップ"),
         document.createElement("br"),
@@ -1680,7 +1719,13 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
     else if (selectedCharId == "68")
-    {    
+    {
+      elementsToAddToCharTalent = [
+        createTextNode("元素爆発天賦レベル："),
+        createSelectList("noelle_Q_level", 1, 13, "Lv.", "", 8),
+        document.createElement("br"),
+      ];
+    
       elementsToAddToCharTalent.forEach(element => {
         char_talent.appendChild(element);
       });

@@ -1648,9 +1648,6 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
     exp_dmg = basic_dmg*(1 + result_status[5]*result_status[6])
     *(1 + result_status[7]) * correct_coeff[8];
   }
-  console.log(basic_dmg);
-  console.log(result_status);
-  console.log(correct_coeff);
   result_status.push(exp_dmg);
   return result_status;
 }
@@ -2289,8 +2286,8 @@ async function monte_carlo_calculate()
       }
     }
   }
+  console.log(ExpDmgList);
   ExpDmgList = await calculateAndStoreResult(ExpDmgList);
-
   n_count = 0;
   af_score_upper_limit = af_score;
   af_score_lower_limit = 0;

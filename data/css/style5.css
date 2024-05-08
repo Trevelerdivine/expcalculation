@@ -612,7 +612,8 @@ details summary {
     padding: 20px;
     color: #242323;
     font-weight: bold;
-    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -621,8 +622,6 @@ details summary {
     margin-right: 20px;
     transition: transform 0.3s ease;
     color: #666;
-    display: flex;
-    justify-content: center;
   }
 
   details[open] summary::before {

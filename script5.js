@@ -203,15 +203,15 @@ async function calculate_af_score(depend_status,base_status)
             if (equip.reliquary && equip.flat.reliquarySubstats) {
               equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_HP_PERCENT") {
-                        RateStatusBuff += substat.statValue;
+                        RateStatusBuff += Math.round(substat.statValue / 0.583);
                     }
                     if (substat.appendPropId === "FIGHT_PROP_HP") {
-                        FixStatusBuff += substat.statValue;
+                        FixStatusBuff += Math.round(substat.statValue / 29.875);
                     }
                 });
             }
         });
-        AfScoreDistribution[0] = (FixStatusBuff * 100 / base_status[0] + RateStatusBuff) * 4/3;
+        AfScoreDistribution[0] = (FixStatusBuff * 2987.5 / base_status[0] + RateStatusBuff * 0.583) * 4/3;
         break;
       case 1:
         RateStatusBuff = 0;
@@ -220,15 +220,15 @@ async function calculate_af_score(depend_status,base_status)
             if (equip.reliquary && equip.flat.reliquarySubstats) {
               equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_DEFENSE_PERCENT") {
-                        RateStatusBuff += substat.statValue;
+                        RateStatusBuff += Math.round(substat.statValue / 0.729);
                     }
                     if (substat.appendPropId === "FIGHT_PROP_DEFENSE") {
-                        FixStatusBuff += substat.statValue;
+                        FixStatusBuff += Math.round(substat.statValue / 2.315);
                     }
                 });
             }
         });
-        AfScoreDistribution[1] = (FixStatusBuff * 100 / base_status[1] + RateStatusBuff) * 16/15;
+        AfScoreDistribution[1] = (FixStatusBuff * 231.5 / base_status[1] + RateStatusBuff * 0.729) * 16/15;
         break;
       case 2:
         FixStatusBuff = 0;
@@ -236,12 +236,12 @@ async function calculate_af_score(depend_status,base_status)
             if (equip.reliquary && equip.flat.reliquarySubstats) {
               equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_ELEMENT_MASTERY") {
-                        FixStatusBuff += substat.statValue;
+                        FixStatusBuff += Math.round(substat.statValue / 2.331);
                     }
                 });
             }
         });
-        AfScoreDistribution[2] = FixStatusBuff / 3;
+        AfScoreDistribution[2] = FixStatusBuff * 2.331 / 3;
         break;
       case 3:
         RateStatusBuff = 0;
@@ -249,12 +249,12 @@ async function calculate_af_score(depend_status,base_status)
             if (equip.reliquary && equip.flat.reliquarySubstats) {
                 equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_CHARGE_EFFICIENCY") {
-                        RateStatusBuff += substat.statValue;
+                        RateStatusBuff += Math.round(substat.statValue / 0.648);
                     }
                 });
             }
         });
-        AfScoreDistribution[3] =  RateStatusBuff * 1.2;
+        AfScoreDistribution[3] =  RateStatusBuff * 0.648 * 1.2;
         break;
       case 4:
         RateStatusBuff = 0;
@@ -263,15 +263,15 @@ async function calculate_af_score(depend_status,base_status)
             if (equip.reliquary && equip.flat.reliquarySubstats) {
                 equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_ATTACK_PERCENT") {
-                        RateStatusBuff += substat.statValue;
+                        RateStatusBuff += Math.round(substat.statValue / 0.583);
                     }
                     if (substat.appendPropId === "FIGHT_PROP_ATTACK") {
-                        FixStatusBuff += substat.statValue;
+                        FixStatusBuff += substat.statValue / 1.945;
                     }
                 });
             }
         });
-        AfScoreDistribution[4] = (FixStatusBuff * 100 / base_status[4] + RateStatusBuff) * 4/3;
+        AfScoreDistribution[4] = (FixStatusBuff * 194.5 / base_status[4] + RateStatusBuff * 0.583) * 4/3;
         break;
       case 5:
         RateStatusBuff = 0;
@@ -279,12 +279,12 @@ async function calculate_af_score(depend_status,base_status)
             if (equip.reliquary && equip.flat.reliquarySubstats) {
                 equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_CRITICAL") {
-                        RateStatusBuff += substat.statValue;
+                        RateStatusBuff += Math.round(substat.statValue / 0.389);
                     }
                 });
             }
         });
-        AfScoreDistribution[5] =  RateStatusBuff * 2;
+        AfScoreDistribution[5] =  RateStatusBuff * 0.389 * 2;
         break;
       case 6:
         RateStatusBuff = 0;
@@ -292,12 +292,12 @@ async function calculate_af_score(depend_status,base_status)
             if (equip.reliquary && equip.flat.reliquarySubstats) {
                 equip.flat.reliquarySubstats.forEach(substat => {
                     if (substat.appendPropId === "FIGHT_PROP_CRITICAL_HURT") {
-                        RateStatusBuff += substat.statValue;
+                        RateStatusBuff += Math.round(substat.statValue / 0.777);
                     }
                 });
             }
         });
-        AfScoreDistribution[6] =  RateStatusBuff
+        AfScoreDistribution[6] =  RateStatusBuff * 0.777
     }
   }
   for (let n = 0; n < 7; n++)

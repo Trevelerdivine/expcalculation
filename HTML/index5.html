@@ -1186,7 +1186,6 @@
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
-                startCountdown();
                 let char_ids = [];
                 char_names = [];
                 CharIndexList = [];
@@ -1311,6 +1310,7 @@
                 }
                 return;
             }
+            startCountdown();
         }
 
         async function DisplayCharStatus(SortOrder){

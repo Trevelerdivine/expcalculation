@@ -1825,9 +1825,6 @@ async function calculateAndStoreResult(resultList) {
               break;
           }
       }
-      if (list.length < 5) { // listが5未満の場合、末尾に追加
-          list.push(pair);
-      }
   });
   return list;
 }

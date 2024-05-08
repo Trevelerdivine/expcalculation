@@ -687,9 +687,6 @@ async function show_attack_method()
         createCheckbox("yanfei_Q", true),
         createLabel("yanfei_Q", "元素爆発：契約成立"),
         document.createElement("br"),
-        createTextNode("　元素爆発天賦レベル："),
-        createSelectList("yanfeiQ_level", 1, 13, "Lv.", "", 10),
-        document.createElement("br"),
       ];
     
       elementsToAddToCharTalent.forEach(element => {
@@ -1421,15 +1418,6 @@ async function show_attack_method()
     let elementsToAddToCharTalent;
     if (attack_method == 1)
     {
-      elementsToAddToCharTalent = [
-        createLabel("Wriothesley_skill_level", "　元素スキル天賦レベル"),
-        createSelectList("Wriothesley_skill_level", 1, 13, "Lv.", "", 8),
-        document.createElement("br"),
-      ];
-
-      elementsToAddToCharTalent.forEach(element => {
-        temporary_char_talent.appendChild(element);
-      });
       options = [
         { text: "１段目", value: "0", checked: true },
         { text: "２段目", value: "1" },
@@ -2200,9 +2188,6 @@ async function show_attack_method()
     else if (attack_method == 21)
     {
       traits = [
-        createTextNode("通常攻撃天賦レベル："),
-        createSelectList("razor_normal_level", 1, 11, "Lv.", "", 8),
-        document.createElement("br"),
         createLabel("razor_skill_count", "雷の印："),
         createSelectList("razor_skill_count", 0, 3, "", "層", 0),
         document.createElement("br"),
@@ -2262,11 +2247,6 @@ async function show_attack_method()
     if (attack_method == 1)
     {
       wanderer_talent = [
-        createLabel("wandererE_level", "焔硝の庭火舞い"),
-        document.createElement("br"),
-        createLabel("wandererE_level", "　元素スキル天賦レベル："),
-        createSelectList("wandererE_level", 1, 13, "Lv.", "", 10),
-        document.createElement("br"),
         createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
         document.createElement("br"),
         createCheckbox("talent1_pyro", false),
@@ -2280,11 +2260,6 @@ async function show_attack_method()
     else if (attack_method == 6)
     {
       wanderer_talent = [
-        createLabel("wandererE_level", "焔硝の庭火舞い"),
-        document.createElement("br"),
-        createLabel("wandererE_level", "　元素スキル天賦レベル："),
-        createSelectList("wandererE_level", 1, 13, "Lv.", "", 10),
-        document.createElement("br"),
         createLabel("wanderer_talent1", "固有天賦1 拾玉得花"),
         document.createElement("br"),
         createCheckbox("talent1_pyro", false),

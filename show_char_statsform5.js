@@ -49,9 +49,6 @@ async function show_char_statsform()
         createCheckbox("talent1", true),
         createLabel("talent1", "出場中"),
         document.createElement("br"),
-        createTextNode("　元素爆発天賦レベル："),
-        createSelectList("nahida_Q_level", 1, 13, "Lv.", "", 8),
-        document.createElement("br"),
         createTextNode("　炎元素キャラ数："),
         createSelectList("nahida_Qpyro",0, 2, "", "人", 0),
         document.createElement("br"),
@@ -172,11 +169,6 @@ async function show_char_statsform()
     else if (selectedCharId == "1")
       {
         elementsToAddToCharTalent = [
-          createLabel("yoimiyaE_level", "焔硝の庭火舞い"),
-          document.createElement("br"),
-          createLabel("yoimiyaE_level", "　元素スキル天賦レベル："),
-          createSelectList("yoimiyaE_level", 1, 13, "Lv.", "", 10),
-          document.createElement("br"),
           createLabel("yoimiya_talent1", "袖火百景図：炎元素ダメージ "),
           createanySelectList("yoimiya_talent1", 0, 10, "+", "%", 10, 2),
           document.createElement("br"),
@@ -219,11 +211,6 @@ async function show_char_statsform()
     else if (selectedCharId == "2")
     {
       elementsToAddToCharTalent = [
-        createLabel("hutao_E", "蝶導来世"),
-        document.createElement("br"),
-        createTextNode("　元素スキル天賦レベル："),
-        createSelectList("hutaoE_level", 1, 13, "Lv.", "", 10),
-        document.createElement("br"),
         createCheckbox("hutao_talent2", true),
         createLabel("hutao_talent2", "血のかまど：胡桃のHPが50%以下の時、炎元素ダメージ+33%"),
         document.createElement("br"),
@@ -483,9 +470,6 @@ async function show_char_statsform()
         createCheckbox("bennett_Q", true),
         createLabel("bennett_Q", "素晴らしい旅"),
         document.createElement("br"),
-        createTextNode("　元素爆発天賦レベル："),
-        createSelectList("bennett_Q_level", 1, 13, "Lv.", "", 8),
-        document.createElement("br"),
       ];
     
       elementsToAddToCharTalent.forEach(element => {
@@ -590,8 +574,6 @@ async function show_char_statsform()
         createCheckbox("furina_Qcheck", true),
         createLabel("furina_Qcheck", "もろびとこぞりて"),
         document.createElement("br"),
-        createTextNode("元素爆発天賦レベル："),
-        createSelectList("furina_Q_level", 1, 13, "Lv.", "", 8),
       ];
     
       elementsToAddToCharTalent.forEach(element => {
@@ -710,9 +692,6 @@ async function show_char_statsform()
       elementsToAddToCharTalent = [
         createCheckbox("kamisatoayato_Q", true),
         createLabel("kamisatoayato_Q", "神里流・水囿"),
-        document.createElement("br"),
-        createTextNode("　元素爆発天賦レベル："),
-        createSelectList("kamisatoayato_Q_level", 1, 13, "Lv.", "", 10),
         document.createElement("br")
       ];
     

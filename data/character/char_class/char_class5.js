@@ -444,8 +444,7 @@ class Lyney {
       const response = await fetch("../data/character/char_data/yoimiya.json");
       const data = await response.json();
   
-      const yoimiyaE_level = parseInt(document.getElementById("yoimiyaE_level").value);
-      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][yoimiyaE_level]);
+      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][CharTalentLevel[3]]);
   
       this.talent1_buff = parseFloat(document.getElementById("yoimiya_talent1").value) / 100;
   
@@ -644,8 +643,7 @@ class Lyney {
       const response = await fetch("../data/character/char_data/hutao.json");
       const data = await response.json();
   
-      const hutaoE_level = parseInt(document.getElementById("hutaoE_level").value);
-      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][hutaoE_level]);
+      this.skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][CharTalentLevel[3]]);
   
       const talent2_check = document.getElementById("hutao_talent2");
       if (talent2_check.checked)
@@ -2023,8 +2021,7 @@ class Lyney {
       const bennett_Q_check = document.getElementById("bennett_Q");
       if (bennett_Q_check.checked)
       {
-        const bennett_Q_level = parseInt(document.getElementById("bennett_Q_level").value);
-        this.bennett_Q_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][bennett_Q_level]);
+        this.bennett_Q_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][CharTalentLevel[4]]);
       }
   
       if (CharConstellations > 0)
@@ -2554,8 +2551,7 @@ class Lyney {
       const data = await response.json();
   
       const buff_count1 = parseInt(document.getElementById("furina_tention1").value);
-      const burst_level = parseInt(document.getElementById("furina_Q_level").value);
-      const buff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burst_level]);
+      const buff_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][CharTalentLevel[4]]);
       this.burst_buff1 = buff_rate * buff_count1 * burst_flag;
       if(CharConstellations > 1)
       {
@@ -3542,7 +3538,6 @@ class Lyney {
       const buff_check = document.getElementById("kamisatoayato_Q");
       if (buff_check.checked)
       {
-        const ayato_burst_level = parseInt(document.getElementById("kamisatoayato_Q_level").value);
         this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][ayato_burst_level]);
       }
     
@@ -7827,8 +7822,7 @@ class Lyney {
           }
     
           if (q_pyro > -1) {
-            const nahida_Q_level = document.getElementById("nahida_Q_level").value;
-            this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][nahida_Q_level]) / 100;
+            this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][CharTalentLevel]) / 100;
           }
         }
         const dmg_attck_rate = parseFloat(data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]]);

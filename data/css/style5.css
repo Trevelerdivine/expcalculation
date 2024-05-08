@@ -613,8 +613,6 @@ details summary {
     color: #242323;
     font-weight: bold;
     position: relative;
-    display: flex;
-    justify-content: center;
 }
 
 
@@ -626,6 +624,8 @@ details summary {
   }
 
   details[open] summary::before {
+    display: flex;
+    justify-content: center;
     transform: rotate(90deg);
   }
 

@@ -1105,7 +1105,7 @@ async function calculate_team_fix_buff(base_status)
     geo_reso: geoCheckbox.checked ? 1 : 0
   };
 
-  team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates.hydro_reso + char_base_hpper + weapon_base_hpper) * base_status[0] + AfMainFixStatus[0];
+  team_buff[0] = fix_hp_buff + (fix_hprate_buff + af_setbuff[0] + 0.25 * checkboxStates.hydro_reso + char_base_hpper + weapon_base_hpper) * base_status[0];
   team_buff[1] = fix_deff_buff + (fix_deffrate_buff + af_setbuff[1] + char_base_deffper + weapon_base_deffper) * base_status[1];
   if (checkboxStates.dendro_reso == 1)
   {
@@ -1118,7 +1118,7 @@ async function calculate_team_fix_buff(base_status)
     team_buff[2] = fix_elm_buff + af_setbuff[2];
   }
   team_buff[3] = fix_elm_charge_buff + af_setbuff[3];
-  team_buff[4] = fix_attack_buff + (fix_attackrate_buff + af_setbuff[4] + 0.25 * checkboxStates.pyro_reso + char_base_attackper + weapon_base_attackper) * base_status[4] + AfMainFixStatus[1];
+  team_buff[4] = fix_attack_buff + (fix_attackrate_buff + af_setbuff[4] + 0.25 * checkboxStates.pyro_reso + char_base_attackper + weapon_base_attackper) * base_status[4];
   team_buff[5] = fix_cr_buff + af_setbuff[5] + 0.15 * checkboxStates.cyro_reso;
   team_buff[6] = fix_cd_buff + af_setbuff[6];
   team_buff[7] = fix_dmg_buff + af_setbuff[7] + 0.15 * checkboxStates.geo_reso;
@@ -1169,11 +1169,11 @@ async function calculate_table_status()
   let zetsuen_dmgbuff = 0;
   identify_condition();
 
-  AfStatusBuff[0] = base_status[0] * (af_main_status_buff[0] + AfSubBuff[0] * 3 / 400);
+  AfStatusBuff[0] = base_status[0] * (af_main_status_buff[0] + AfSubBuff[0] * 3 / 400) + AfMainFixStatus[0];;
   AfStatusBuff[1] = base_status[1] * (af_main_status_buff[1] + AfSubBuff[1] * 15 / 1600);
   AfStatusBuff[2] = af_main_status_buff[2]  + AfSubBuff[2] * 3;
   AfStatusBuff[3] = (af_main_status_buff[3] + AfSubBuff[3] / 1.2) / 100;
-  AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 400);
+  AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 400) + AfMainFixStatus[1];
   AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[5] / 2) / 100;
   AfStatusBuff[6] = (af_main_status_buff[6] + AfSubBuff[6]) / 100;
   AfStatusBuff[7] = af_main_status_buff[7];
@@ -1539,11 +1539,11 @@ async function calculate_my_exp_dmg (base_status,af_main_status_buff,depend_stat
   const reaction_count_list = create_reactioncount_list();
   const reaction_bonus_list = create_reactionbonus_list();
   let AfSubBuff = await calculate_af_score(depend_status,base_status);
-  AfStatusBuff[0] = base_status[0] * (af_main_status_buff[0] + AfSubBuff[0] * 3 / 400);
+  AfStatusBuff[0] = base_status[0] * (af_main_status_buff[0] + AfSubBuff[0] * 3 / 400) + AfMainFixStatus[0];
   AfStatusBuff[1] = base_status[1] * (af_main_status_buff[1] + AfSubBuff[1] * 15 / 1600);
   AfStatusBuff[2] = af_main_status_buff[2]  + AfSubBuff[2] * 3;
   AfStatusBuff[3] = (af_main_status_buff[3] + AfSubBuff[3] / 1.2) / 100;
-  AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 400);
+  AfStatusBuff[4] = base_status[4] * (af_main_status_buff[4] + AfSubBuff[4] * 3 / 400) + AfMainFixStatus[1];
   AfStatusBuff[5] = (af_main_status_buff[5] + AfSubBuff[5] / 2) / 100;
   AfStatusBuff[6] = (af_main_status_buff[6] + AfSubBuff[6]) / 100;
   AfStatusBuff[7] = af_main_status_buff[7];
@@ -1817,10 +1817,8 @@ async function CalculateExpDmg(
 async function calculateAndStoreResult(resultList) {
   // 降順にソート
   resultList.sort((a, b) => b[0] - a[0]);
-
   // 上位5つのみを取得
   const topFive = resultList.slice(0, 5);
-
   return topFive;
 }
 
@@ -1927,11 +1925,11 @@ async function monte_carlo_calculate()
   }
 
   let fixed_buff =[0,0,0,0,0,0,0,0];
-  fixed_buff[0] = await (char_instance.calculate_char_fixed_hp(fixed_status) + weapon_instance.calculate_weapon_fixed_hp(fixed_status) + team_fix_buff[0]);
+  fixed_buff[0] = await (char_instance.calculate_char_fixed_hp(fixed_status) + weapon_instance.calculate_weapon_fixed_hp(fixed_status) + team_fix_buff[0]) + AfMainFixStatus[0];
   fixed_buff[1] = await (char_instance.calculate_char_fixed_deff(fixed_status) + weapon_instance.calculate_weapon_fixed_deff(fixed_status)+ team_fix_buff[1]);
   fixed_buff[2] = await (char_instance.calculate_char_fixed_elm(fixed_status) + weapon_instance.calculate_weapon_fixed_elm(fixed_status) + team_fix_buff[2]);
   fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge(fixed_status) + weapon_instance.calculate_weapon_fixed_elm_charge(fixed_status) + team_fix_buff[3]);
-  fixed_buff[4] = await (char_instance.calculate_char_fixed_attck(fixed_status) + weapon_instance.calculate_weapon_fixed_attck(fixed_status) + team_fix_buff[4]);
+  fixed_buff[4] = await (char_instance.calculate_char_fixed_attck(fixed_status) + weapon_instance.calculate_weapon_fixed_attck(fixed_status) + team_fix_buff[4]) + AfMainFixStatus[1];
   fixed_buff[5] = await (char_instance.calculate_char_fixed_cr(fixed_status) + weapon_instance.calculate_weapon_fixed_cr(fixed_status) + team_fix_buff[5]);
   fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
@@ -2276,9 +2274,7 @@ async function monte_carlo_calculate()
       }
     }
   }
-  console.log(ExpDmgList);
   ExpDmgList = await calculateAndStoreResult(ExpDmgList);
-  console.log(ExpDmgList);
   n_count = 0;
   af_score_upper_limit = af_score;
   af_score_lower_limit = 0;

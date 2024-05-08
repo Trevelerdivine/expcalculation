@@ -1815,20 +1815,14 @@ async function CalculateExpDmg(
 }
 
 async function calculateAndStoreResult(resultList) {
-  let list = []; // 初期化
-  resultList.forEach(pair => {
-      const num = pair[0]; // 数値を取得
-      for (let i = 0; i < list.length; i++) {
-          if (num > list[i][0]) {
-              list.splice(i, 0, pair);
-              list = list.slice(0, 5); // 上位5つのみを残す
-              break;
-          }
-      }
-  });
-  return list;
-}
+  // 降順にソート
+  resultList.sort((a, b) => b[0] - a[0]);
 
+  // 上位5つのみを取得
+  const topFive = resultList.slice(0, 5);
+
+  return topFive;
+}
 
 async function monte_carlo_calculate()
 {

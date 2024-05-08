@@ -1097,7 +1097,7 @@
         let CharTalentLevel = [0,0,0,0,0];
         let WeaponLevel;
         let WeaponAdvanceRank;
-        let WeaponConstellations  = 1;
+        let WeaponConstellations;
         let Weapondata;
         let char_propaty = [5,0];
         let selectedImageIds = [0,0];
@@ -1360,7 +1360,7 @@
 
         async function DisplayWeaponStatus(index,SortOrder,id){
             WeaponLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.level;
-            let WeaponRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.affixMap[100000 + id] + 1;
+            WeaponConstellations = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.affixMap[100000 + id] + 1;
             let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
             // "itemId" の値を格納するための配列を初期化
             let AfIdList = [];
@@ -1377,7 +1377,7 @@
             const LevelDisplay = document.getElementById("WeaponLevel");
             const ConsteDisplay = document.getElementById("WeaponRank");
             LevelDisplay.innerHTML = "Lv." + WeaponLevel;
-            ConsteDisplay.innerHTML = "精錬ランク" + WeaponRank;
+            ConsteDisplay.innerHTML = "精錬ランク" + WeaponConstellations;
         }
 
         async function AfSetReffer(SortOrder){

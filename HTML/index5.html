@@ -1215,7 +1215,6 @@
                         char_ids.push(charId);
                         CharIndexList.push(i);
                     }
-                    console.log(CharIndexList);
                 }
                 const images = [];
 
@@ -1360,7 +1359,7 @@
         }
 
         async function DisplayWeaponStatus(index,SortOrder,id){
-            WeaponLevel = UserData.data.avatarInfoList[SortOrder].equipList[index-1].weapon.level;
+            WeaponLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.level;
             let WeaponRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.affixMap[100000 + id] + 1;
             let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
             // "itemId" の値を格納するための配列を初期化
@@ -1374,7 +1373,7 @@
                 }
             });
             let WeapomListIndex = AfIdList.length;
-            WeaponAdvanceRank = UserData.data.avatarInfoList[SortOrder].equipList[WeapomListIndex-1].weapon.promoteLevel;
+            WeaponAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[WeapomListIndex-1].weapon.promoteLevel;
             const LevelDisplay = document.getElementById("WeaponLevel");
             const ConsteDisplay = document.getElementById("WeaponRank");
             LevelDisplay.innerHTML = "Lv." + WeaponLevel;
@@ -1495,17 +1494,17 @@
             for (let i = 0; i <fourthDigits.length; i++) {
                 if (fourthDigits[i] == 5)
                 {
-                    PropName = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
+                    PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                     ClockMainStatus = AfNameList[PropName]["名前"];
                 }
                 else if (fourthDigits[i] == 1)
                 {
-                    PropName = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
+                    PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                     GobletMainStatus = AfNameList[PropName]["名前"];
                 }
                 else if (fourthDigits[i] == 3)
                 {
-                    PropName = UserData.data.avatarInfoList[SortOrder].equipList[i].flat.reliquaryMainstat.mainPropId;
+                    PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                     CircletMainStatus = AfNameList[PropName]["名前"];
                 }
             }

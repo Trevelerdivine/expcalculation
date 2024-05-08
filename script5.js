@@ -92,7 +92,7 @@ const elm_reaction_obj = [
 
 async function calculate_base_status() {
   // 武器の装備データを取得
-  let WeaponEquipData = UserData.data.avatarInfoList[SelectId].equipList[EquipNumber - 1].flat.weaponStats[1];
+  let WeaponEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1];
 
   // キャラクターと武器のデータを取得
   const CharResponse = await fetch(`../data/character/char_data/${char_name[selectedCharId]}.json`);
@@ -101,9 +101,9 @@ async function calculate_base_status() {
   const WeaponData = await WeaponResponse.json();
 
   // 基礎ステータスを取得し、小数点以下を四捨五入
-  const base_hp = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["1"]);
-  const base_attck = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["4"]);
-  const base_deff = Math.round(UserData.data.avatarInfoList[SelectId].fightPropMap["7"]);
+  const base_hp = Math.round(UserData.data.avatarInfoList[CharIndexList[SelectId]].fightPropMap["1"]);
+  const base_attck = Math.round(UserData.data.avatarInfoList[CharIndexList[SelectId]].fightPropMap["4"]);
+  const base_deff = Math.round(UserData.data.avatarInfoList[CharIndexList[SelectId]].fightPropMap["7"]);
 
   // 基礎元素熟知を計算
   let base_elm = CharData.ステータス.基礎元素熟知[(parseInt(CharAdvanceRank) + 2) * 10 + "+"];
@@ -148,11 +148,10 @@ async function calculate_base_status() {
 
 async function calculate_af_main_status_buff() 
 {
-    const BaseStatus = await calculate_base_status();
     const DmgBuffName = ["FIGHT_PROP_FIRE_ADD_HURT", "FIGHT_PROP_WATER_ADD_HURT", "FIGHT_PROP_ICE_ADD_HURT", "FIGHT_PROP_ELEC_ADD_HURT", "FIGHT_PROP_WIND_ADD_HURT", "FIGHT_PROP_GRASS_ADD_HURT", "FIGHT_PROP_ROCK_ADD_HURT", "FIGHT_PROP_PHYSICAL_ADD_HURT"];
     const EachBuffName = ["FIGHT_PROP_HP_PERCENT", "FIGHT_PROP_DEFENSE_PERCENT", "FIGHT_PROP_ELEMENT_MASTERY", "FIGHT_PROP_CHARGE_EFFICIENCY", "FIGHT_PROP_ATTACK_PERCENT", "FIGHT_PROP_CRITICAL", "FIGHT_PROP_CRITICAL_HURT", DmgBuffName[char_propaty[0]], DmgBuffName[7],];
     let AfMainStatusBuff = [0,0,0,0,0,0,0,0,0];
-    let CharEquipData = UserData.data.avatarInfoList[SelectId].equipList;
+    let CharEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList;
     let EachBuff;
     for (let i = 0; i < 9; i++)
     {
@@ -185,7 +184,7 @@ async function calculate_af_main_status_buff()
 
 async function calculate_af_score(depend_status,base_status) 
 {
-  let CharEquipData = UserData.data.avatarInfoList[SelectId].equipList;
+  let CharEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList;
   let AfScoreDistribution = [0,0,0,0,0,0,0,0];
   let RateStatusBuff = 0;
   let FixStatusBuff = 0;

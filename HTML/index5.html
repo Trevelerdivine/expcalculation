@@ -1297,15 +1297,18 @@
                 });
             } catch (error) {
                 fetchButton.disabled = false;
+                const nicknameElement = document.getElementById('nickname');
                 if(ErrorId == 500)
                 {
-                    const nicknameElement = document.getElementById('nickname');
                     nicknameElement.textContent = "EnkaNetWorkサーバーのエラー";
+                }
+                else if(ErrorId == 404)
+                {
+                    nicknameElement.textContent = "正しいUIDを入力してください。";
                 }
                 else
                 {
                     console.error('Error fetching data:', error);
-                    const nicknameElement = document.getElementById('nickname');
                     nicknameElement.textContent = "入力したUIDに問題があるようです。";
                 }
                 return;

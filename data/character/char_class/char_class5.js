@@ -1651,8 +1651,7 @@ class Lyney {
         const burst_check = document.getElementById("yanfei_Q");
         if (burst_check.checked)
         {
-          const burstlevel = parseInt(document.getElementById("yanfeiQ_level").value);
-          this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][burstlevel]);
+          this.burst_buff = parseFloat(data["元素爆発"]["詳細"][1]["数値"][CharTalentLevel[4]]);
         }
         const checkboxContainer = document.getElementById("select_reaction_method");
         const checkboxes = checkboxContainer.querySelectorAll('input[type="checkbox"]');
@@ -4142,9 +4141,8 @@ class Lyney {
             elm_react_dmgrate += elm_react[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
             elm_nonreact_dmgrate += elm_nonreact[i] * parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
           }
-  
-          const skill_level = parseInt(document.getElementById("Wriothesley_skill_level").value);
-          const skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][skill_level]);
+
+          const skill_buff = parseFloat(data["元素スキル"]["詳細"][0]["数値"][CharTalentLevel[3]]);
           const skill_effect_check = document.getElementById("skill_flag");
           if (skill_effect_check.checked)
           {
@@ -6717,7 +6715,6 @@ class Lyney {
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 21) {
         this.skill_buff = parseInt(document.getElementById("razor_skill_count").value) * 0.2;
-        const normal_talent_level = parseInt(document.getElementById("razor_normal_level").value);
         const reaction_check = document.getElementById("reactionon_flag");
         if (reaction_check.checked)
         {
@@ -6728,7 +6725,7 @@ class Lyney {
         const attack_burst_rate = parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]);
         console.log(attack_burst_rate);
         for (let i = 0; i < 4; i++) {
-          dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][normal_talent_level]) * attack_burst_rate;
+          dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][CharTalentLevel[0]]) * attack_burst_rate;
         }
         console.log(dmg_attack_rate);
         dmg_attack_rate += parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
@@ -7015,8 +7012,7 @@ class Lyney {
         for (let i = 0; i < 3; i++) {
           dmg_attack_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
         }
-        const xiao_burst_level = parseInt(document.getElementById("wandererE_level").value);
-        const xiao_burst_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][xiao_burst_level]);
+        const wanderer_burst_buff = parseFloat(data["元素スキル"]["詳細"][1]["数値"][CharTalentLevel[3]]);
   
         if (CharConstellations > 3)
         {
@@ -7024,13 +7020,12 @@ class Lyney {
           this.sixth_conste_buff = 1.4;
         } 
   
-        dmg_attack_rate *= xiao_burst_buff * this.sixth_conste_buff;
+        dmg_attack_rate *= wanderer_burst_buff * this.sixth_conste_buff;
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 6) {
         this.attack_hit_count = 1;
         dmg_attack_rate = parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
-        const wanderer_skill_level = parseInt(document.getElementById("wandererE_level").value);
-        const wanderer_burst_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][wanderer_skill_level]);
+        const wanderer_burst_buff = parseFloat(data["元素スキル"]["詳細"][2]["数値"][CharTalentLevel[3]]);
         dmg_attack_rate *= wanderer_burst_buff
         dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
       } else if (attack_method == 21) {

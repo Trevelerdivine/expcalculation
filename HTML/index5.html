@@ -1629,6 +1629,12 @@
                 document.getElementById(id).innerHTML = "-";
             });
 
+            ["hp", "deff", "elm", "elm_charge", "attck", "cr", "cd"].forEach(id => {
+                document.getElementById(`table_buff_${id}`).innerHTML = "-";
+                document.getElementById(`table_af_${id}`).innerHTML = "-";
+                document.getElementById(`table_final_${id}`).innerHTML = "-";
+            });
+
             [
                 "dlt_hp_score", "dlt_af_hp",
                 "dlt_deff_score", "dlt_af_deff",

@@ -1010,7 +1010,7 @@
                 <div>
                     <div class = "centered-container">
                         <div id="table4" class="tablestyle1">
-                            <table  id = "MainAfCombinationTable" class="main_combination_table" style="table-layout: fixed">
+                            <table  class="main_combination_table" style="table-layout: fixed">
                             <colgroup>
                                 <col style="width: 5%;">
                                 <col style="width: 25%;">
@@ -1290,16 +1290,6 @@
                             imageElement.alt = "Clicked Image";
                             imageContainer.appendChild(imageElement);
                         }
-
-                        let table = document.getElementById('MainAfCombinationTable');
-                        // 表内のすべてのテキストをハイフンに置き換える
-                        for (let i = 0; i < table.rows.length; i++) {
-                            let cells = table.rows[i].cells;
-                            for (let j = 0; j < cells.length; j++) {
-                                cells[j].textContent = '-'.repeat(cells[j].textContent.length);
-                            }
-                        }
-
                         let div = document.getElementById("WholeDisplay");
                         div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
                     });

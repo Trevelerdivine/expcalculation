@@ -1238,35 +1238,28 @@
                     imgElement.alt = image.alt;
                     imgElement.id = image.id; // 画像にID属性を設定
                     imgElement.addEventListener("click", async function() {
+                        // ループ内の要素のHTMLを"-"に設定する
                         for (let i = 1; i <= 5; i++) {
                             ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
                                 document.getElementById(`${type}${i}`).innerHTML = "-";
                             });
                         }
-                        ["my_result_hp", "appro_result_hp", "my_hp_score", "appro_hp_score", "dlt_hp_score", "count_hp_score", "my_af_hp", "appro_af_hp", "dlt_af_hp", "count_hp_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
+
+                        // 各種類の要素のHTMLを"-"に設定する
+                        ["hp", "deff", "elm", "elm_charge", "attck", "cr", "cd"].forEach(type => {
+                            ["my_result", "appro_result", "my_${type}_score", "appro_${type}_score", "dlt_${type}_score", "count_${type}_score", "my_af_${type}", "appro_af_${type}", "dlt_af_${type}", "count_${type}_score3"].forEach(id => {
+                                document.getElementById(id).innerHTML = "-";
+                            });
                         });
-                        ["my_result_deff", "appro_result_deff", "my_deff_score", "appro_deff_score", "dlt_deff_score", "count_deff_score", "my_af_deff", "appro_af_deff", "dlt_af_deff", "count_deff_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_elm", "appro_result_elm", "my_elm_score", "appro_elm_score", "dlt_elm_score", "count_elm_score", "my_af_elm", "appro_af_elm", "dlt_af_elm", "count_elm_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_elm_charge", "appro_result_elm_charge", "my_elm_charge_score", "appro_elm_charge_score", "dlt_elm_charge_score", "count_elm_charge_score", "my_af_elm_charge", "appro_af_elm_charge", "dlt_af_elm_charge", "count_elm_charge_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_attck", "appro_result_attck", "my_attck_score", "appro_attck_score", "dlt_attck_score", "count_attck_score", "my_af_attck", "appro_af_attck", "dlt_af_attck", "count_attck_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_cr", "appro_result_cr", "my_cr_score", "appro_cr_score", "dlt_cr_score", "count_cr_score", "my_af_cr", "appro_af_cr", "dlt_af_cr", "count_cr_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_cd", "appro_result_cd", "my_cd_score", "appro_cd_score", "dlt_cd_score", "count_cd_score", "my_af_cd", "appro_af_cd", "dlt_af_cd", "count_cd_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
+
+                        // dmg_buffの要素のHTMLを"-"に設定する
                         ["my_result_dmg_buff", "appro_result_dmg_buff", "my_af_score", "appro_af_score", "dlt_af_score", "my_af_score3", "appro_af_score3", "dlt_af_score3"].forEach(id => {
                             document.getElementById(id).innerHTML = "-";
                         });
+
+                        document.getElementById(`table_buff_${tablePrefix}`).innerHTML = "-";
+                        document.getElementById(`table_af_${tablePrefix}`).innerHTML = "-";
+                        document.getElementById(`table_final_${tablePrefix}`).innerHTML = "-";
                         [
                             "dlt_hp_score", "dlt_af_hp",
                             "dlt_deff_score", "dlt_af_deff",
@@ -1298,6 +1291,11 @@
                         await show_char_statsform();
                         await show_weapon_statsform();
                         await show_artifact()
+                        const initial_index = [0,0,0,0,1,1,1];
+                        const myStatus = [0,0,0,0,0,0,0];
+                        const TheoreticalStatus = [0,0,0,0,100,100,100];
+                        create_radarchart(initial_index, myStatus, TheoreticalStatus);
+
                         // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
                         if (existingImage) {
@@ -1749,35 +1747,25 @@
                     imgElement.alt = image.alt;
                     imgElement.id = image.id; // 画像にID属性を設定
                     imgElement.addEventListener("click", async function() {
+                        // ループ内の要素のHTMLを"-"に設定する
                         for (let i = 1; i <= 5; i++) {
                             ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
                                 document.getElementById(`${type}${i}`).innerHTML = "-";
                             });
                         }
-                        ["my_result_hp", "appro_result_hp", "my_hp_score", "appro_hp_score", "dlt_hp_score", "count_hp_score", "my_af_hp", "appro_af_hp", "dlt_af_hp", "count_hp_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
+
+                        // 各種類の要素のHTMLを"-"に設定する
+                        ["hp", "deff", "elm", "elm_charge", "attck", "cr", "cd"].forEach(type => {
+                            ["my_result", "appro_result", "my_${type}_score", "appro_${type}_score", "dlt_${type}_score", "count_${type}_score", "my_af_${type}", "appro_af_${type}", "dlt_af_${type}", "count_${type}_score3"].forEach(id => {
+                                document.getElementById(id).innerHTML = "-";
+                            });
                         });
-                        ["my_result_deff", "appro_result_deff", "my_deff_score", "appro_deff_score", "dlt_deff_score", "count_deff_score", "my_af_deff", "appro_af_deff", "dlt_af_deff", "count_deff_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_elm", "appro_result_elm", "my_elm_score", "appro_elm_score", "dlt_elm_score", "count_elm_score", "my_af_elm", "appro_af_elm", "dlt_af_elm", "count_elm_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_elm_charge", "appro_result_elm_charge", "my_elm_charge_score", "appro_elm_charge_score", "dlt_elm_charge_score", "count_elm_charge_score", "my_af_elm_charge", "appro_af_elm_charge", "dlt_af_elm_charge", "count_elm_charge_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_attck", "appro_result_attck", "my_attck_score", "appro_attck_score", "dlt_attck_score", "count_attck_score", "my_af_attck", "appro_af_attck", "dlt_af_attck", "count_attck_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_cr", "appro_result_cr", "my_cr_score", "appro_cr_score", "dlt_cr_score", "count_cr_score", "my_af_cr", "appro_af_cr", "dlt_af_cr", "count_cr_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
-                        ["my_result_cd", "appro_result_cd", "my_cd_score", "appro_cd_score", "dlt_cd_score", "count_cd_score", "my_af_cd", "appro_af_cd", "dlt_af_cd", "count_cd_score3"].forEach(id => {
-                            document.getElementById(id).innerHTML = "-";
-                        });
+
+                        // dmg_buffの要素のHTMLを"-"に設定する
                         ["my_result_dmg_buff", "appro_result_dmg_buff", "my_af_score", "appro_af_score", "dlt_af_score", "my_af_score3", "appro_af_score3", "dlt_af_score3"].forEach(id => {
                             document.getElementById(id).innerHTML = "-";
                         });
+
                         [
                             "dlt_hp_score", "dlt_af_hp",
                             "dlt_deff_score", "dlt_af_deff",
@@ -1806,6 +1794,12 @@
                         await show_char_statsform();
                         await show_weapon_statsform();
                         await show_artifact();
+
+                        const initial_index = [0,0,0,0,1,1,1];
+                        const myStatus = [0,0,0,0,0,0,0];
+                        const TheoreticalStatus = [0,0,0,0,100,100,100];
+                        create_radarchart(initial_index, myStatus, TheoreticalStatus);
+
                         // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
                         if (existingImage) {

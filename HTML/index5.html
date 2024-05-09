@@ -1238,9 +1238,6 @@
                     imgElement.alt = image.alt;
                     imgElement.id = image.id; // 画像にID属性を設定
                     imgElement.addEventListener("click", async function() {
-                        ["team_hp_form", "team_hprate_form", "team_attack_form", "team_attackrate_form", "team_deff_form", "team_deffrate_form", "team_elm_form", "team_elm_charge_form", "team_cr_form", "team_cd_form"].forEach(id => {
-                            document.getElementById(id).style.display = "none";
-                        });
                         for (let i = 1; i <= 5; i++) {
                             ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
                                 document.getElementById(`${type}${i}`).innerHTML = "-";
@@ -1300,7 +1297,6 @@
                         await SetMainStatus(SelectId);
                         await show_char_statsform();
                         await show_weapon_statsform();
-                        await calculate_af_main_status_buff();
                         await show_artifact()
                         // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
@@ -1318,9 +1314,6 @@
                         div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
                     });
                     imageGrid.appendChild(imgElement);
-                    ["team_hp_form", "team_hprate_form", "team_attack_form", "team_attackrate_form", "team_deff_form", "team_deffrate_form", "team_elm_form", "team_elm_charge_form", "team_cr_form", "team_cd_form"].forEach(id => {
-                        document.getElementById(id).style.display = "none";
-                    });
                 });
             } catch (error) {
                 fetchButton.disabled = false;
@@ -1832,9 +1825,6 @@
                         div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
                     });
                     imageGrid.appendChild(imgElement);
-                    ["team_hp_form", "team_hprate_form", "team_attack_form", "team_attackrate_form", "team_deff_form", "team_deffrate_form", "team_elm_form", "team_elm_charge_form", "team_cr_form", "team_cd_form"].forEach(id => {
-                        document.getElementById(id).style.display = "none";
-                    });
                 });
             }
         }

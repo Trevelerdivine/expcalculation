@@ -1765,7 +1765,6 @@ async function show_char_statsform()
       }
       createchar_attackmethod(options)  
     }
-    showFormElements();
   }
 
 function createchar_attackmethod(options)

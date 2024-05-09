@@ -2463,34 +2463,19 @@ async function monte_carlo_calculate()
   let result = "最適化聖遺物スコア (メインステータス考慮)： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
-  let dlthpScore = document.getElementById("dlt_hp_score");
-  let dltAfhp = document.getElementById("dlt_af_hp");
-  let dltdeffScore = document.getElementById("dlt_deff_score");
-  let dltAfdeff = document.getElementById("dlt_af_deff");
-  let dltElmScore = document.getElementById("dlt_elm_score");
-  let dltAfElm = document.getElementById("dlt_af_elm");
-  let dltelmchargeScore = document.getElementById("dlt_elm_charge_score");
-  let dltAfelmcharge = document.getElementById("dlt_af_elm_charge");
-  let dltattckScore = document.getElementById("dlt_attck_score");
-  let dltAfattck = document.getElementById("dlt_af_attck");
-  let dltcrScore = document.getElementById("dlt_cr_score");
-  let dltAfcr = document.getElementById("dlt_af_cr");
-  let dltcdScore = document.getElementById("dlt_cd_score");
-  let dltAfcd = document.getElementById("dlt_af_cd");
-  dlthpScore.style.color = "black";
-  dltAfhp.style.color = "black";
-  dltdeffScore.style.color = "black";
-  dltAfdeff.style.color = "black";
-  dltElmScore.style.color = "black";
-  dltAfElm.style.color = "black";
-  dltelmchargeScore.style.color = "black";
-  dltAfelmcharge.style.color = "black";
-  dltattckScore.style.color = "black";
-  dltAfattck.style.color = "black";
-  dltcrScore.style.color = "black";
-  dltAfcr.style.color = "black";
-  dltcdScore.style.color = "black";
-  dltAfcd.style.color = "black";
+  [
+    "dlt_hp_score", "dlt_af_hp",
+    "dlt_deff_score", "dlt_af_deff",
+    "dlt_elm_score", "dlt_af_elm",
+    "dlt_elm_charge_score", "dlt_af_elm_charge",
+    "dlt_attck_score", "dlt_af_attck",
+    "dlt_cr_score", "dlt_af_cr",
+    "dlt_cd_score", "dlt_af_cd"
+  ].forEach(id => {
+    let element = document.getElementById(id);
+    element.style.color = "black";
+  });
+  
 
   if (depend_status[0] == 1)
   {
@@ -2519,16 +2504,9 @@ async function monte_carlo_calculate()
   }
   else
   {
-    document.getElementById("my_result_hp").innerHTML = "-";
-    document.getElementById("appro_result_hp").innerHTML = "-";
-    document.getElementById("my_hp_score").innerHTML = "-";
-    document.getElementById("appro_hp_score").innerHTML = "-";
-    document.getElementById("dlt_hp_score").innerHTML = "-";
-    document.getElementById("count_hp_score").innerHTML = "-";
-    document.getElementById("my_af_hp").innerHTML = "-";
-    document.getElementById("appro_af_hp").innerHTML = "-";
-    document.getElementById("dlt_af_hp").innerHTML = "-";
-    document.getElementById("count_hp_score3").innerHTML = "-";
+      ["my_result_hp", "appro_result_hp", "my_hp_score", "appro_hp_score", "dlt_hp_score", "count_hp_score", "my_af_hp", "appro_af_hp", "dlt_af_hp", "count_hp_score3"].forEach(id => {
+        document.getElementById(id).innerHTML = "-";
+    });
   }
 
   if (depend_status[1] == 1)
@@ -2558,16 +2536,10 @@ async function monte_carlo_calculate()
   }
   else
   {
-    document.getElementById("my_result_deff").innerHTML = "-";
-    document.getElementById("appro_result_deff").innerHTML = "-";
-    document.getElementById("my_deff_score").innerHTML = "-";
-    document.getElementById("appro_deff_score").innerHTML = "-";
-    document.getElementById("dlt_deff_score").innerHTML = "-";
-    document.getElementById("count_deff_score").innerHTML = "-";
-    document.getElementById("my_af_deff").innerHTML = "-";
-    document.getElementById("appro_af_deff").innerHTML = "-";
-    document.getElementById("dlt_af_deff").innerHTML = "-";
-    document.getElementById("count_deff_score3").innerHTML = "-";
+    ["my_result_deff", "appro_result_deff", "my_deff_score", "appro_deff_score", "dlt_deff_score", "count_deff_score", "my_af_deff", "appro_af_deff", "dlt_af_deff", "count_deff_score3"].forEach(id => {
+      document.getElementById(id).innerHTML = "-";
+  });
+  
   }
 
   if (depend_status[2] == 1)
@@ -2598,16 +2570,9 @@ async function monte_carlo_calculate()
   }
   else
   {
-    document.getElementById("my_result_elm").innerHTML = "-";
-    document.getElementById("appro_result_elm").innerHTML = "-";
-    document.getElementById("my_elm_score").innerHTML = "-";
-    document.getElementById("appro_elm_score").innerHTML = "-";
-    document.getElementById("dlt_elm_score").innerHTML = "-";
-    document.getElementById("count_elm_score").innerHTML = "-";
-    document.getElementById("my_af_elm").innerHTML = "-";
-    document.getElementById("appro_af_elm").innerHTML = "-";
-    document.getElementById("dlt_af_elm").innerHTML = "-";
-    document.getElementById("count_elm_score3").innerHTML = "-";
+      ["my_result_elm", "appro_result_elm", "my_elm_score", "appro_elm_score", "dlt_elm_score", "count_elm_score", "my_af_elm", "appro_af_elm", "dlt_af_elm", "count_elm_score3"].forEach(id => {
+        document.getElementById(id).innerHTML = "-";
+    });  
   }
 
   if (depend_status[3] == 1)
@@ -2637,16 +2602,9 @@ async function monte_carlo_calculate()
   }
   else
   {
-    document.getElementById("my_result_elm_charge").innerHTML = "-";
-    document.getElementById("appro_result_elm_charge").innerHTML = "-";
-    document.getElementById("my_elm_charge_score").innerHTML = "-";
-    document.getElementById("appro_elm_charge_score").innerHTML = "-";
-    document.getElementById("dlt_elm_charge_score").innerHTML = "-";
-    document.getElementById("count_elm_charge_score").innerHTML = "-";
-    document.getElementById("my_af_elm_charge").innerHTML = "-";
-    document.getElementById("appro_af_elm_charge").innerHTML = "-";
-    document.getElementById("dlt_af_elm_charge").innerHTML = "-";
-    document.getElementById("count_elm_charge_score3").innerHTML = "-";
+      ["my_result_elm_charge", "appro_result_elm_charge", "my_elm_charge_score", "appro_elm_charge_score", "dlt_elm_charge_score", "count_elm_charge_score", "my_af_elm_charge", "appro_af_elm_charge", "dlt_af_elm_charge", "count_elm_charge_score3"].forEach(id => {
+        document.getElementById(id).innerHTML = "-";
+    });  
   }
 
   if (depend_status[4] == 1)
@@ -2676,16 +2634,9 @@ async function monte_carlo_calculate()
     }
   else
   {
-    document.getElementById("my_result_attck").innerHTML = "-";
-    document.getElementById("appro_result_attck").innerHTML = "-";
-    document.getElementById("my_attck_score").innerHTML = "-";
-    document.getElementById("appro_attck_score").innerHTML = "-";
-    document.getElementById("dlt_attck_score").innerHTML = "-";
-    document.getElementById("count_attck_score").innerHTML = "-";
-    document.getElementById("my_af_attck").innerHTML = "-";
-    document.getElementById("appro_af_attck").innerHTML = "-";
-    document.getElementById("dlt_af_attck").innerHTML = "-";
-    document.getElementById("count_attck_score3").innerHTML = "-";
+      ["my_result_attck", "appro_result_attck", "my_attck_score", "appro_attck_score", "dlt_attck_score", "count_attck_score", "my_af_attck", "appro_af_attck", "dlt_af_attck", "count_attck_score3"].forEach(id => {
+        document.getElementById(id).innerHTML = "-";
+    });  
   }
 
   if (depend_status[5] == 1)
@@ -2715,16 +2666,9 @@ async function monte_carlo_calculate()
   }
   else
   {
-    document.getElementById("my_result_cr").innerHTML = "-";
-    document.getElementById("appro_result_cr").innerHTML = "-";
-    document.getElementById("my_cr_score").innerHTML = "-";
-    document.getElementById("appro_cr_score").innerHTML = "-";
-    document.getElementById("dlt_cr_score").innerHTML = "-";
-    document.getElementById("count_cr_score").innerHTML = "-";
-    document.getElementById("my_af_cr").innerHTML = "-";
-    document.getElementById("appro_af_cr").innerHTML = "-";
-    document.getElementById("dlt_af_cr").innerHTML = "-";
-    document.getElementById("count_cr_score3").innerHTML = "-";
+      ["my_result_cr", "appro_result_cr", "my_cr_score", "appro_cr_score", "dlt_cr_score", "count_cr_score", "my_af_cr", "appro_af_cr", "dlt_af_cr", "count_cr_score3"].forEach(id => {
+        document.getElementById(id).innerHTML = "-";
+    });
   }
 
   if (depend_status[6] == 1)
@@ -2756,16 +2700,9 @@ async function monte_carlo_calculate()
   }
   else
   {
-    document.getElementById("my_result_cd").innerHTML = "-";
-    document.getElementById("appro_result_cd").innerHTML = "-";
-    document.getElementById("my_cd_score").innerHTML = "-";
-    document.getElementById("appro_cd_score").innerHTML = "-";
-    document.getElementById("dlt_cd_score").innerHTML = "-";
-    document.getElementById("count_cd_score").innerHTML = "-";
-    document.getElementById("my_af_cd").innerHTML = "-";
-    document.getElementById("appro_af_cd").innerHTML = "-";
-    document.getElementById("dlt_af_cd").innerHTML = "-";
-    document.getElementById("count_cd_score3").innerHTML = "-";
+      ["my_result_cd", "appro_result_cd", "my_cd_score", "appro_cd_score", "dlt_cd_score", "count_cd_score", "my_af_cd", "appro_af_cd", "dlt_af_cd", "count_cd_score3"].forEach(id => {
+        document.getElementById(id).innerHTML = "-";
+    });
   }
   document.getElementById("my_result_dmg_buff").innerHTML = (my_result_status[7]*100).toFixed(1) + "％";
   document.getElementById("appro_result_dmg_buff").innerHTML = (temp_status[7]*100).toFixed(1) + "％";

@@ -137,7 +137,7 @@ async function calculate_base_status() {
       base_dmg_buff += parseFloat(CharData.ステータス.基礎ダメージバフ.数値[(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
   }
   if (WeaponDmgBuffType === char_propaty[0]) {
-      base_dmg_buff += parseFloat(data.ステータス.基礎ダメージバフ.数値[weapon_level]);
+      base_dmg_buff += parseFloat(WeaponData.ステータス.基礎ダメージバフ.数値[weapon_level]);
   }
 
   // 基礎ステータス配列を作成

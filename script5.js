@@ -1090,12 +1090,21 @@ async function calculate_team_fix_buff(base_status)
   const char_base_attackper = parseFloat(char_data["ステータス"]["基礎攻撃力％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
   const char_base_deffper = parseFloat(char_data["ステータス"]["基礎防御力％"][(parseInt(CharAdvanceRank) + 2) * 10 + "+"]);
 
-  const weapon_response = await fetch("../data/weapon/weapon_data/" + weapon_name[selectedWeaponId] + ".json");
-  const weapon_data = await weapon_response.json();
-  const weapon_base_hpper = parseFloat(weapon_data["ステータス"]["基礎HP％"][(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"]);
-  const weapon_base_attackper = parseFloat(weapon_data["ステータス"]["基礎攻撃力％"][(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"]);
-  const weapon_base_deffper = parseFloat(weapon_data["ステータス"]["基礎防御力％"][(parseInt(WeaponAdvanceRank) + 2) * 10 + "+"]);
-  
+  const WeaponEquipData = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[EquipNumber - 1].flat.weaponStats[1];
+  let weapon_base_hpper = 0;
+  let weapon_base_attackper = 0;
+  let weapon_base_deffper = 0;
+
+  if (WeaponEquipData.appendPropId === "FIGHT_PROP_HP_PERCENT") {
+    weapon_base_hpper = WeaponEquipData.statValue / 100;
+  }
+  else if (WeaponEquipData.appendPropId === "FIGHT_PROP_ATTACK_PERCENT") {
+    weapon_base_attackper = WeaponEquipData.statValue / 100;
+  }
+  else if (WeaponEquipData.appendPropId === "FIGHT_PROP_DEFENSE_PERCENT") {
+    weapon_base_deffper = WeaponEquipData.statValue / 100;
+  }
+
   // チェックボックスの情報をまとめた配列を作成
   const checkboxStates = {
     pyro_reso: pyroCheckbox.checked ? 1 : 0,

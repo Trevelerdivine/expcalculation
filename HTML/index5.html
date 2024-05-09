@@ -1102,7 +1102,6 @@
     let WeaponAdvanceRank;
     let WeaponConstellations;
     let Weapondata;
-    let WeaponPopId;
     let char_propaty = [5,0];
     let selectedImageIds = [0,0];
     let char_names = [];
@@ -1467,7 +1466,7 @@
             }
         });
         EquipNumber = AfIdList.length;
-        WeaponPopId = AfIdList.pop();
+        let WeaponPopId = AfIdList.pop();
         await DisplayWeaponStatus(EquipNumber, SortOrder, WeaponPopId);
         await DisplayWeaponImg(WeaponPopId);
 

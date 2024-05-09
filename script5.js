@@ -99,7 +99,6 @@ async function calculate_base_status() {
   const CharData = await CharResponse.json();
   const WeaponResponse = await fetch(`../data/weapon/weapon_data/${weapon_name[selectedWeaponId]}.json`);
   const WeaponData = await WeaponResponse.json();
-  char_propaty[1] = parseInt(CharData["武器タイプ"])
 
   // 基礎ステータスを取得し、小数点以下を四捨五入
   const base_hp = Math.round(UserData.data.avatarInfoList[CharIndexList[SelectId]].fightPropMap["1"]);

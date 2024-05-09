@@ -1500,6 +1500,7 @@
 
     async function DisplayWeaponImg(Id){
         let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
+        let ChangeWeaponIdList = [0, 1, 2, 4, 3];
         let weaponRank = ["星3", "星4", "星5"]
         let numberString = Id.toString();
 
@@ -1512,6 +1513,7 @@
 
         const WeaponImgContainer = document.getElementById("WeaponImage");
         const existingImage = WeaponImgContainer.querySelector("img");
+        char_propaty[1] = ChangeWeaponIdList[WeaponList[0]-1];
         selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"];
         existingImage.src = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["url"];
         existingImage.alt = "Clicked Image";

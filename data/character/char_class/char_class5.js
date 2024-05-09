@@ -7817,7 +7817,7 @@ class Lyney {
           }
     
           if (q_pyro > -1) {
-            this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][CharTalentLevel]) / 100;
+            this.q_pyrobuff = parseFloat(data["元素爆発"]["詳細"][q_pyro]["数値"][CharTalentLevel[4]]) / 100;
           }
         }
         const dmg_attck_rate = parseFloat(data["元素スキル"]["数値"]["攻撃力"][this.parameter[3]]);

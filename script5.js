@@ -2463,19 +2463,34 @@ async function monte_carlo_calculate()
   let result = "最適化聖遺物スコア (メインステータス考慮)： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
   document.getElementById("result").innerHTML = result;
 
-  [
-    "dlt_hp_score", "dlt_af_hp",
-    "dlt_deff_score", "dlt_af_deff",
-    "dlt_elm_score", "dlt_af_elm",
-    "dlt_elm_charge_score", "dlt_af_elm_charge",
-    "dlt_attck_score", "dlt_af_attck",
-    "dlt_cr_score", "dlt_af_cr",
-    "dlt_cd_score", "dlt_af_cd"
-  ].forEach(id => {
-    let element = document.getElementById(id);
-    element.style.color = "black";
-  });
-  
+  let dlthpScore = document.getElementById("dlt_hp_score");
+  let dltAfhp = document.getElementById("dlt_af_hp");
+  let dltdeffScore = document.getElementById("dlt_deff_score");
+  let dltAfdeff = document.getElementById("dlt_af_deff");
+  let dltElmScore = document.getElementById("dlt_elm_score");
+  let dltAfElm = document.getElementById("dlt_af_elm");
+  let dltelmchargeScore = document.getElementById("dlt_elm_charge_score");
+  let dltAfelmcharge = document.getElementById("dlt_af_elm_charge");
+  let dltattckScore = document.getElementById("dlt_attck_score");
+  let dltAfattck = document.getElementById("dlt_af_attck");
+  let dltcrScore = document.getElementById("dlt_cr_score");
+  let dltAfcr = document.getElementById("dlt_af_cr");
+  let dltcdScore = document.getElementById("dlt_cd_score");
+  let dltAfcd = document.getElementById("dlt_af_cd");
+  dlthpScore.style.color = "black";
+  dltAfhp.style.color = "black";
+  dltdeffScore.style.color = "black";
+  dltAfdeff.style.color = "black";
+  dltElmScore.style.color = "black";
+  dltAfElm.style.color = "black";
+  dltelmchargeScore.style.color = "black";
+  dltAfelmcharge.style.color = "black";
+  dltattckScore.style.color = "black";
+  dltAfattck.style.color = "black";
+  dltcrScore.style.color = "black";
+  dltAfcr.style.color = "black";
+  dltcdScore.style.color = "black";
+  dltAfcd.style.color = "black";
 
   if (depend_status[0] == 1)
   {

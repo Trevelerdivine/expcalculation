@@ -1277,7 +1277,8 @@
                         await show_char_statsform();
                         await show_weapon_statsform();
                         await calculate_af_main_status_buff();
-                        show_artifact()
+                        await show_artifact()
+                        await calculate_table_status();
                         // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
                         if (existingImage) {
@@ -1769,7 +1770,8 @@
                         await show_char_statsform();
                         await show_weapon_statsform();
                         await calculate_af_main_status_buff();
-                        show_artifact()
+                        await show_artifact();
+                        await calculate_table_status();
                         // 画像を置き換える
                         const existingImage = imageContainer.querySelector("img");
                         if (existingImage) {
@@ -1791,10 +1793,12 @@
         }
 
         document.getElementById('attack_method').addEventListener('change', show_attack_method);
+        document.getElementById('char_talent').addEventListener('change', calculate_table_status);
         document.getElementById('temporary_char_talent').addEventListener('change', calculate_table_status);
         document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
         document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
         document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
+        document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
         // ボタンをクリックしたときに fetchData() 関数を実行する
         document.getElementById('fetchButton').onclick = function() {
             fetchData();

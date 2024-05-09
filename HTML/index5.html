@@ -1080,749 +1080,750 @@
                 </div>
                 <div>
                 </div>
-                </div>
+            </div>
         </div>
+        <br>
+        <footer>
+            <p>本サイト内の画像およびデータはHoYoverse/COGNOSPHEREの著作物です。</p>
+            <p> Copyright © COGNOSPHERE. All Rights Reserved.</p>
+        </footer>
     </div>
-    <footer>
-        <p>本サイト内の画像およびデータはHoYoverse/COGNOSPHEREの著作物です。</p>
-        <p> Copyright © COGNOSPHERE. All Rights Reserved.</p>
-    </footer>
+</body>
 
-    <script>
-        let selectedCharId = "56";
-        let selectedWeaponId = "127";
-        let CharLevel;
-        let CharAdvanceRank;
-        let CharConstellations;
-        let CharTalentLevel = [0,0,0,0,0];
-        let WeaponLevel;
-        let WeaponAdvanceRank;
-        let WeaponConstellations;
-        let Weapondata;
-        let char_propaty = [5,0];
-        let selectedImageIds = [0,0];
-        let char_names = [];
-        let CharDataJson;
-        let UserData;
-        let afdata;
-        let AfNameList
-        let SelectId;
-        let CharIndexList = [];
-        let EquipNumber;
-        // ローカルストレージに保存するキー
-        const SessionStorageKey = "countdownEndTime";
-        // カウントダウンのインターバル（ミリ秒）
-        const countdownInterval = 1000;
-        // ボタン要素
-        const fetchButton = document.getElementById("fetchButton");
+<script>
+    let selectedCharId = "56";
+    let selectedWeaponId = "127";
+    let CharLevel;
+    let CharAdvanceRank;
+    let CharConstellations;
+    let CharTalentLevel = [0,0,0,0,0];
+    let WeaponLevel;
+    let WeaponAdvanceRank;
+    let WeaponConstellations;
+    let Weapondata;
+    let char_propaty = [5,0];
+    let selectedImageIds = [0,0];
+    let char_names = [];
+    let CharDataJson;
+    let UserData;
+    let afdata;
+    let AfNameList
+    let SelectId;
+    let CharIndexList = [];
+    let EquipNumber;
+    // ローカルストレージに保存するキー
+    const SessionStorageKey = "countdownEndTime";
+    // カウントダウンのインターバル（ミリ秒）
+    const countdownInterval = 1000;
+    // ボタン要素
+    const fetchButton = document.getElementById("fetchButton");
 
-        const characters = [
-            "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
-            "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
-            "ディルック", "該当なし", "該当なし", "該当なし", "レザー", "アンバー", "ウェンティ", "香菱",
-            "北斗", "行秋", "魈", "凝光", "該当なし", "クレー", "鍾離", "フィッシュル",
-            "ベネット", "タルタリヤ", "ノエル", "七七", "重雲", "甘雨", "アルベド", "ディオナ",
-            "該当なし", "モナ", "刻晴", "スクロース", "辛炎", "ロサリア", "胡桃", "楓原万葉",
-            "煙緋",  "宵宮", "トーマ", "エウルア", "雷電将軍", "早袖", "珊瑚宮心海", "ゴロー",
-            "九条裟羅", "荒瀧一斗", "八重神子", "鹿野院平蔵", "夜蘭", "モモカ", "アーロイ", "申鶴",
-            "雲菫", "忍", "神里綾人", "コレイ", "ドリー", "ティナリ", "ニィロウ", "セノ",
-            "キャンディス", "ナヒーダ", "レイラ", "放浪者", "ファルザン", "ヨォーヨ", "アルハイゼン", "ディシア",
-            "ミカ", "カーヴェ", "白朮", "リネット", "リネ", "フレミネ", "リオセスリ", "ヌヴィレット",
-            "シャルロット", "フリーナ", "シュヴルーズ", "ナヴィア", "嘉明", "閑雲", "千織"
-        ];
+    const characters = [
+        "該当なし", "該当なし", "神里綾華", "ジン", "該当なし", "風男主人公", "リサ", "風女主人公",
+        "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "該当なし", "バーバラ", "ガイア",
+        "ディルック", "該当なし", "該当なし", "該当なし", "レザー", "アンバー", "ウェンティ", "香菱",
+        "北斗", "行秋", "魈", "凝光", "該当なし", "クレー", "鍾離", "フィッシュル",
+        "ベネット", "タルタリヤ", "ノエル", "七七", "重雲", "甘雨", "アルベド", "ディオナ",
+        "該当なし", "モナ", "刻晴", "スクロース", "辛炎", "ロサリア", "胡桃", "楓原万葉",
+        "煙緋",  "宵宮", "トーマ", "エウルア", "雷電将軍", "早袖", "珊瑚宮心海", "ゴロー",
+        "九条裟羅", "荒瀧一斗", "八重神子", "鹿野院平蔵", "夜蘭", "モモカ", "アーロイ", "申鶴",
+        "雲菫", "忍", "神里綾人", "コレイ", "ドリー", "ティナリ", "ニィロウ", "セノ",
+        "キャンディス", "ナヒーダ", "レイラ", "放浪者", "ファルザン", "ヨォーヨ", "アルハイゼン", "ディシア",
+        "ミカ", "カーヴェ", "白朮", "リネット", "リネ", "フレミネ", "リオセスリ", "ヌヴィレット",
+        "シャルロット", "フリーナ", "シュヴルーズ", "ナヴィア", "嘉明", "閑雲", "千織"
+    ];
 
-        function showTable(tableId, buttonId)
+    function showTable(tableId, buttonId)
+    {
+        // すべての表コンテナを非表示にする
+        let tableContainers = document.getElementsByClassName("tablestyle");
+        let buttonstyle = document.getElementsByClassName("button-2");
+        for (var i = 0; i < tableContainers.length; i++) 
         {
-            // すべての表コンテナを非表示にする
-            let tableContainers = document.getElementsByClassName("tablestyle");
-            let buttonstyle = document.getElementsByClassName("button-2");
-            for (var i = 0; i < tableContainers.length; i++) 
-            {
-            tableContainers[i].classList.remove("active");
+        tableContainers[i].classList.remove("active");
+        buttonstyle[i].classList.remove("button-active");
+        }
+        // 選択された表コンテナを表示する
+        document.getElementById(tableId).classList.add("active");
+        document.getElementById(buttonId).classList.add("button-active");
+    }
+
+    function showOption(tableId, buttonId)
+    {
+        // すべての表コンテナを非表示にする
+        let optionContainers = document.getElementsByClassName("option-field");
+        let buttonstyle = document.getElementsByClassName("button-1");
+        for (let i = 0; i < optionContainers.length; i++) 
+        {
+            optionContainers[i].classList.remove("active");
             buttonstyle[i].classList.remove("button-active");
-            }
-            // 選択された表コンテナを表示する
-            document.getElementById(tableId).classList.add("active");
-            document.getElementById(buttonId).classList.add("button-active");
         }
+        // 選択された表コンテナを表示する
+        document.getElementById(tableId).classList.add("active");
+        document.getElementById(buttonId).classList.add("button-active");
+    }
 
-        function showOption(tableId, buttonId)
-        {
-            // すべての表コンテナを非表示にする
-            let optionContainers = document.getElementsByClassName("option-field");
-            let buttonstyle = document.getElementsByClassName("button-1");
-            for (let i = 0; i < optionContainers.length; i++) 
-            {
-                optionContainers[i].classList.remove("active");
-                buttonstyle[i].classList.remove("button-active");
-            }
-            // 選択された表コンテナを表示する
-            document.getElementById(tableId).classList.add("active");
-            document.getElementById(buttonId).classList.add("button-active");
-        }
-
-        // fetchData() 関数を定義
-        async function fetchData() {
-            fetchButton.disabled = true;
-            
-            let ErrorId;
-            const img_grid = document.getElementById("imageGrid");
-            img_grid.innerHTML = "";
-            const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
-
-            // uidが空白の場合はメッセージを表示して処理を中断
-            if (uid === '') {
-                const nicknameElement = document.getElementById('nickname');
-                nicknameElement.textContent = "UIDを入力してください";
-                return;
-            }
-
-            const url = `https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/ImportEnkaApi?uid=${uid}`;
-
-            try {
-                const response = await fetch(url);
-                ErrorId = response.status;
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
-                let char_ids = [];
-                char_names = [];
-                CharIndexList = [];
-                UserData = await response.json();
-                const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
-                Weapondata = await Weaponresponse.json();
-                const afresponse = await fetch("../data/JsonData/url.json");
-                afdata = await afresponse.json();
-                const AfNameresponse = await fetch("../data/JsonData/MainStatusName.json");
-                AfNameList = await AfNameresponse.json();
-                console.log(UserData);
-                sessionStorage.setItem("UserData", JSON.stringify(UserData));
-                // ニックネームをHTMLに出力する
-                const nicknameElement = document.getElementById('nickname');
-                const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
-                console.log(avatarIds);
-                nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
-                             "<br>";
-                
-                for (let i = 0; i < avatarIds.length; i++)
-                {
-                    let charId = parseInt(avatarIds[i]) - 10000000;
-                    let PossibleFlag = await CharExecution(i, charId);
-                    if(PossibleFlag == 0)
-                    {
-                        char_names.push(characters[charId]);
-                        char_ids.push(charId);
-                        CharIndexList.push(i);
-                    }
-                }
-                const images = [];
-
-                // 画像を生成して配列に追加
-                for (let i = 0; i < char_ids.length; i++) {
-                    const image = {
-                        src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
-                        alt: `Image ${i}`,
-                        id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
-                        
-                    };
-                    images.push(image);
-                }
-                let divAttention = document.getElementById("Attention");
-                divAttention.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
-                // 画像要素を生成し、動的にHTMLに追加する
-                const imageGrid = document.getElementById("imageGrid");
-                images.forEach(image => {
-                    const imgElement = document.createElement("img");
-                    imgElement.src = image.src;
-                    imgElement.alt = image.alt;
-                    imgElement.id = image.id; // 画像にID属性を設定
-                    imgElement.addEventListener("click", async function() {
-                        ResetParameter();
-                        // クリックされた画像のsrc属性を取得
-                        const imageUrl = this.src;
-                        const CharId = this.id;
-                        SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
-                        // 画像を表示するdiv要素を取得
-                        const digits = String(CharId); // 数値を文字列に変換
-                        const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
-                        console.log(upperDigits);
-                        selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
-                        console.log(selectedCharId);
-                        console.log(SelectId);
-                        const imageContainer = document.getElementById("CharImage");
-                        await DisplayCharStatus(SelectId);
-                        AfSetReffer(SelectId);
-                        await SetMainStatus(SelectId);
-                        await show_char_statsform();
-                        await show_weapon_statsform();
-                        await show_artifact()
-                        const initial_index = [0,0,0,0,1,1,1];
-                        const myStatus = [0,0,0,0,0,0,0];
-                        const TheoreticalStatus = [0,0,0,0,100,100,100];
-                        create_radarchart(initial_index, myStatus, TheoreticalStatus);
-
-                        // 画像を置き換える
-                        const existingImage = imageContainer.querySelector("img");
-                        if (existingImage) {
-                            existingImage.src = imageUrl;
-                            existingImage.alt = "Clicked Image";
-                        } else {
-                            // 既存の画像が存在しない場合は新しい画像を追加
-                            const imageElement = document.createElement("img");
-                            imageElement.src = imageUrl;
-                            imageElement.alt = "Clicked Image";
-                            imageContainer.appendChild(imageElement);
-                        }
-                        let div = document.getElementById("WholeDisplay");
-                        div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
-                    });
-                    imageGrid.appendChild(imgElement);
-                });
-            } catch (error) {
-                fetchButton.disabled = false;
-                const nicknameElement = document.getElementById('nickname');
-                if(ErrorId == 500)
-                {
-                    nicknameElement.textContent = "EnkaNetWorkサーバーのエラー";
-                }
-                else if(ErrorId == 404)
-                {
-                    nicknameElement.textContent = "正しいUIDを入力してください。";
-                }
-                else
-                {
-                    console.error('Error fetching data:', error);
-                    nicknameElement.textContent = "入力したUIDに問題があるようです。";
-                }
-                return;
-            }
-            startCountdown();
-        }
-
-        async function DisplayCharStatus(SortOrder){
-            // SortOrder の値が有効なインデックスであることを確認
-            if (SortOrder >= 0 && SortOrder < UserData.data.avatarInfoList.length)
-            {
-                CharLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["4001"].val;
-                CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
-                // talentIdList が存在するかどうかを確認し、その長さを取得
-                CharConstellations = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList.length : 0;
-                const CharTalentLevelList = Object.values(UserData.data.avatarInfoList[CharIndexList[SortOrder]].skillLevelMap);
-                const LevelDisplay = document.getElementById("CharLevel");
-                const ConsteDisplay = document.getElementById("CharConstellations");
-                const charIndexDisplay = document.getElementById('Charindex-display');
-                const NormalTalent = document.getElementById('NormalTalentLevel');
-                const SkillTalent = document.getElementById('SkillTalentLevel');
-                const BurstTalent = document.getElementById('BurstTalentLevel');
-                charIndexDisplay.innerHTML = char_names[SortOrder]
-                LevelDisplay.innerHTML = "Lv." + CharLevel;
-                ConsteDisplay.innerHTML = "命の星座" + CharConstellations + "重";
-                NormalTalent.innerHTML = "Lv." + CharTalentLevelList[0];
-                SkillTalent.innerHTML = "Lv." + CharTalentLevelList[1];
-                BurstTalent.innerHTML = "Lv." + CharTalentLevelList[2];
-                console.log(CharTalentLevelList);
-
-                CharTalentLevel[0] = CharTalentLevelList[0];
-                CharTalentLevel[1] = CharTalentLevelList[0];
-                CharTalentLevel[2] = CharTalentLevelList[0];
-                CharTalentLevel[3] = CharTalentLevelList[1];
-                CharTalentLevel[4] = CharTalentLevelList[2];
-                console.log(CharTalentLevel);
-            }
-            else
-            {
-                console.error("Invalid SortOrder value");
-            }
-        }
-        async function EquipWeaponList()
-        {
-            
-        }
-
-        async function DisplayWeaponStatus(index,SortOrder,id){
-            WeaponLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.level;
-            WeaponConstellations = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.affixMap[100000 + id] + 1;
-            let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
-            // "itemId" の値を格納するための配列を初期化
-            let AfIdList = [];
-            let ExecuteFlag;
-            // JSON配列の各要素を走査して、"itemId" の要素を取り出す
-            AfJsonList.forEach(status => {
-                // オブジェクトから "itemId" の要素を取り出して配列に追加
-                if (status.hasOwnProperty("itemId")) {
-                    AfIdList.push(status["itemId"]);
-                }
-            });
-            let WeapomListIndex = AfIdList.length;
-            WeaponAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[WeapomListIndex-1].weapon.promoteLevel;
-            const LevelDisplay = document.getElementById("WeaponLevel");
-            const ConsteDisplay = document.getElementById("WeaponRank");
-            LevelDisplay.innerHTML = "Lv." + WeaponLevel;
-            ConsteDisplay.innerHTML = "精錬ランク" + WeaponConstellations;
-        }
-
-        async function AfSetReffer(SortOrder){
-            let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
-            // "itemId" の値を格納するための配列を初期化
-            let AfIdList = [];
-
-            // JSON配列の各要素を走査して、"itemId" の要素を取り出す
-            AfJsonList.forEach(status => {
-                // オブジェクトから "itemId" の要素を取り出して配列に追加
-                if (status.hasOwnProperty("itemId")) {
-                    AfIdList.push(status["itemId"]);
-                }
-            });
-
-            // 各リスト内の文字列の上2文字を取り出して数字に変換する
-            let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));
-
-            // 数値の出現回数を記録するオブジェクトを作成
-            const countMap = {};
-            AfNumList.forEach(num => {
-                if (countMap[num]) {
-                    countMap[num]++;
-                } else {
-                    countMap[num] = 1;
-                }
-            });
-
-            // キーを数値の小さい順にソート
-            const sortedKeys = Object.keys(countMap).sort((a, b) => a - b);
-
-            // ソートされたキーの配列を使って、数値とその個数のペアを作成
-            const result = sortedKeys.map(key => [parseInt(key), countMap[key]]);
-            SelectedAfId = [];
-            for (let i = 0; i < result.length; i++) {
-                if (result[i][1] > 1 && result[i][1] < 4)
-                {
-                    SelectedAfId.push(result[i][0]);
-                }
-                else if (result[i][1] > 3 && result[i][1] < 6)
-                {
-                    SelectedAfId.push(result[i][0]);
-                    SelectedAfId.push(result[i][0]);
-                }
-            }
-            if(SelectedAfId.length == 0)
-            {
-                SelectedAfId = [-1,-1];
-            }
-            else if(SelectedAfId.length == 1)
-            {
-                SelectedAfId.push(-1);
-            }
-
-            let set_eff1;
-            let set_eff2;
-            let AfName1;
-            let AfName2
-            
-            if (SelectedAfId[0] === SelectedAfId[1]) {
-                set_eff1 = afdata["AfMap"][SelectedAfId[0].toString()]["2セット効果"];
-                set_eff2 = afdata["AfMap"][SelectedAfId[1].toString()]["4セット効果"];
-                AfName1 = afdata["AfMap"][SelectedAfId[0].toString()]["名前"];
-                AfName2 = afdata["AfMap"][SelectedAfId[1].toString()]["名前"];
-                document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
-                document.getElementById("set_eff2").innerHTML = `${AfName2}：4セット効果<br>${set_eff2}`;
-            } else {
-                set_eff1 = afdata["AfMap"][SelectedAfId[0].toString()]["2セット効果"];
-                set_eff2 = afdata["AfMap"][SelectedAfId[1].toString()]["2セット効果"];
-                AfName1 = afdata["AfMap"][SelectedAfId[0].toString()]["名前"];
-                AfName2 = afdata["AfMap"][SelectedAfId[1].toString()]["名前"];
-                document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
-                document.getElementById("set_eff2").innerHTML = `${AfName1}：2セット効果<br>${set_eff2}`;
-            }
-
-            // 選択された聖遺物の画像設定
-            const selectedImageSrc1 = afdata["AfMap"][SelectedAfId[0].toString()]["url"] || '';
-            const selectedImageSrc2 = afdata["AfMap"][SelectedAfId[1].toString()]["url"] || '';
-            document.getElementById("AfImage1").src = selectedImageSrc1;
-            document.getElementById("AfImage2").src = selectedImageSrc2;
-            selectedImageIds[0] = afdata["AfMap"][SelectedAfId[0].toString()]["id"] || -1;
-            selectedImageIds[1] = afdata["AfMap"][SelectedAfId[1].toString()]["id"] || -1;
-
-            return result;
-        }
-
-        async function SetMainStatus(SortOrder){
-            let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
-            let ClockMainStatus = "装備無し";
-            let GobletMainStatus = "装備無し";
-            let CircletMainStatus = "装備無し";
-            let PropName;
-            // "itemId" の値を格納するための配列を初期化
-            let AfIdList = [];
-
-            // JSON配列の各要素を走査して、"itemId" の要素を取り出す
-            AfJsonList.forEach(status => {
-                // オブジェクトから "itemId" の要素を取り出して配列に追加
-                if (status.hasOwnProperty("itemId")) {
-                    AfIdList.push(status["itemId"]);
-                }
-            });
-            EquipNumber = AfIdList.length;
-            let WeaponPopId = AfIdList.pop();
-            await DisplayWeaponStatus(EquipNumber, SortOrder, WeaponPopId);
-            await DisplayWeaponImg(WeaponPopId);
-
-            const fourthDigits = AfIdList.map(number => {
-                const numberAsString = number.toString();
-                const fourthDigit = numberAsString.charAt(3); // 4桁目の数値のインデックスは3
-                return parseInt(fourthDigit); // 文字列から数値に変換して返す
-            });
-
-            for (let i = 0; i <fourthDigits.length; i++) {
-                if (fourthDigits[i] == 5)
-                {
-                    PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
-                    ClockMainStatus = AfNameList[PropName]["名前"];
-                }
-                else if (fourthDigits[i] == 1)
-                {
-                    PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
-                    GobletMainStatus = AfNameList[PropName]["名前"];
-                }
-                else if (fourthDigits[i] == 3)
-                {
-                    PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
-                    CircletMainStatus = AfNameList[PropName]["名前"];
-                }
-            }
-            document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
-            document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
-            document.getElementById("CircletMainStatus").innerHTML = CircletMainStatus;
-        }
-
-        async function DisplayWeaponImg(Id){
-            let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
-            let weaponRank = ["星3", "星4", "星5"]
-            let numberString = Id.toString();
-
-            // 数値を分割して配列に格納
-            let secondDigit = parseInt(numberString.charAt(1)); // 上から2桁目
-            let thirdDigit = parseInt(numberString.charAt(2)); // 上から3桁目
-            let lastTwoDigits = parseInt(numberString.substring(3)); // 4桁目と5桁目
-
-            let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
-
-            const WeaponImgContainer = document.getElementById("WeaponImage");
-            const existingImage = WeaponImgContainer.querySelector("img");
-            selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"];
-            existingImage.src = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["url"];
-            existingImage.alt = "Clicked Image";
-            const charIndexDisplay = document.getElementById('Weaponindex-display');
-            charIndexDisplay.innerHTML = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
-}
-
-        async function CharExecution(index, charId){
-            let AfJsonList = UserData.data.avatarInfoList[index].equipList;
-            // "itemId" の値を格納するための配列を初期化
-            let AfIdList = [];
-            let ExecuteFlag = 0;
-            // JSON配列の各要素を走査して、"itemId" の要素を取り出す
-            AfJsonList.forEach(status => {
-                // オブジェクトから "itemId" の要素を取り出して配列に追加
-                if (status.hasOwnProperty("itemId")) {
-                    AfIdList.push(status["itemId"]);
-                }
-            });
-            let WeapomListIndex = AfIdList.length;
-            let WeaponPopId = AfIdList.pop();
-
-            // 各リスト内の文字列の上2文字を取り出して数字に変換する
-            let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));
-
-            // 数値の出現回数を記録するオブジェクトを作成
-            const countMap = {};
-            AfNumList.forEach(num => {
-                if (countMap[num]) {
-                    countMap[num]++;
-                } else {
-                    countMap[num] = 1;
-                }
-            });
-
-            // キーを数値の小さい順にソート
-            const sortedKeys = Object.keys(countMap).sort((a, b) => a - b);
-
-            // ソートされたキーの配列を使って、数値とその個数のペアを作成
-            const result = sortedKeys.map(key => [parseInt(key), countMap[key]]);
-            let SelectedAfId = [];
-            for (let i = 0; i < result.length; i++) {
-                if (result[i][1] > 1 && result[i][1] < 4)
-                {
-                    SelectedAfId.push(result[i][0]);
-                }
-                else if (result[i][1] > 3 && result[i][1] < 6)
-                {
-                    SelectedAfId.push(result[i][0]);
-                    SelectedAfId.push(result[i][0]);
-                }
-            }
-
-            let AfSerch;
-            for (let i = 0; i < SelectedAfId.length; i++) {
-                AfSerch = afdata["AfMap"][SelectedAfId[i].toString()] || 0;
-                if (AfSerch == 0)
-                {
-                    ExecuteFlag = 1;
-                }
-            }
-            CharAdvanceRank = UserData.data.avatarInfoList[index].propMap["1002"].ival;
-            WeaponAdvanceRank = UserData.data.avatarInfoList[index].equipList[WeapomListIndex-1].weapon.promoteLevel;
-            if (!CharDataJson["CharMap"][charId.toString()]  || CharAdvanceRank < 4 || WeaponAdvanceRank < 4)
-            {
-                ExecuteFlag = 1;
-            }
-
-            let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
-            let weaponRank = ["星3", "星4", "星5"]
-            let numberString = WeaponPopId.toString();
-
-            // 数値を分割して配列に格納
-            let secondDigit = parseInt(numberString.charAt(1)); // 上から2桁目
-            let thirdDigit = parseInt(numberString.charAt(2)); // 上から3桁目
-            let lastTwoDigits = parseInt(numberString.substring(3)); // 4桁目と5桁目
-            let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
-
-            const WeaponImgContainer = document.getElementById("WeaponImage");
-            const existingImage = WeaponImgContainer.querySelector("img");
-            selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()] ? Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"] : -1;
-
-            if(selectedWeaponId == -1)
-            {
-                ExecuteFlag = 1;
-            }
-            return ExecuteFlag;
-        }
+    // fetchData() 関数を定義
+    async function fetchData() {
+        fetchButton.disabled = true;
         
-        function ResetParameter(){
-            for (let i = 1; i <= 5; i++) {
-                ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
-                    document.getElementById(`${type}${i}`).innerHTML = "-";
-                });
-            }
-            ["my_result_hp", "appro_result_hp", "my_hp_score", "appro_hp_score", "dlt_hp_score", "count_hp_score", "my_af_hp", "appro_af_hp", "dlt_af_hp", "count_hp_score3"].forEach(id => {
-                document.getElementById(id).innerHTML = "-";
-            });
-            ["my_result_deff", "appro_result_deff", "my_deff_score", "appro_deff_score", "dlt_deff_score", "count_deff_score", "my_af_deff", "appro_af_deff", "dlt_af_deff", "count_deff_score3"].forEach(id => {
-                document.getElementById(id).innerHTML = "-";
-            });
-            ["my_result_elm", "appro_result_elm", "my_elm_score", "appro_elm_score", "dlt_elm_score", "count_elm_score", "my_af_elm", "appro_af_elm", "dlt_af_elm", "count_elm_score3"].forEach(id => {
-                document.getElementById(id).innerHTML = "-";
-            });
-            ["my_result_elm_charge", "appro_result_elm_charge", "my_elm_charge_score", "appro_elm_charge_score", "dlt_elm_charge_score", "count_elm_charge_score", "my_af_elm_charge", "appro_af_elm_charge", "dlt_af_elm_charge", "count_elm_charge_score3"].forEach(id => {
-                document.getElementById(id).innerHTML = "-";
-            });
-            ["my_result_attck", "appro_result_attck", "my_attck_score", "appro_attck_score", "dlt_attck_score", "count_attck_score", "my_af_attck", "appro_af_attck", "dlt_af_attck", "count_attck_score3"].forEach(id => {
-                document.getElementById(id).innerHTML = "-";
-            });
-            ["my_result_cr", "appro_result_cr", "my_cr_score", "appro_cr_score", "dlt_cr_score", "count_cr_score", "my_af_cr", "appro_af_cr", "dlt_af_cr", "count_cr_score3"].forEach(id => {
-                document.getElementById(id).innerHTML = "-";
-            });
-            ["my_result_cd", "appro_result_cd", "my_cd_score", "appro_cd_score", "dlt_cd_score", "count_cd_score", "my_af_cd", "appro_af_cd", "dlt_af_cd", "count_cd_score3"].forEach(id => {
-                document.getElementById(id).innerHTML = "-";
-            });
-            ["my_result_dmg_buff", "appro_result_dmg_buff", "my_af_score", "appro_af_score", "dlt_af_score", "my_af_score3", "appro_af_score3", "dlt_af_score3"].forEach(id => {
-                document.getElementById(id).innerHTML = "-";
-            });
+        let ErrorId;
+        const img_grid = document.getElementById("imageGrid");
+        img_grid.innerHTML = "";
+        const uid = document.getElementById('uidInput').value.trim(); // 先頭と末尾の空白を削除
 
-            ["hp", "deff", "elm", "elm_charge", "attck", "cr", "cd", "dmg_buff"].forEach(id => {
-                document.getElementById(`table_base_${id}`).innerHTML = "-";
-                document.getElementById(`table_buff_${id}`).innerHTML = "-";
-                document.getElementById(`table_af_${id}`).innerHTML = "-";
-                document.getElementById(`table_final_${id}`).innerHTML = "-";
-            });
-
-            [
-                "dlt_hp_score", "dlt_af_hp",
-                "dlt_deff_score", "dlt_af_deff",
-                "dlt_elm_score", "dlt_af_elm",
-                "dlt_elm_charge_score", "dlt_af_elm_charge",
-                "dlt_attck_score", "dlt_af_attck",
-                "dlt_cr_score", "dlt_af_cr",
-                "dlt_cd_score", "dlt_af_cd"
-            ].forEach(id => {
-            let element = document.getElementById(id);
-            element.style.color = "black";
-            });
-
-            document.getElementById("result").innerHTML = "";
-        }
-        
-
-        function startCountdown() {
-
-            // ローカルストレージからカウントダウン終了時刻を取得
-            const endTime = sessionStorage.getItem(SessionStorageKey);
-            // 現在時刻を取得
-            const currentTime = new Date().getTime();
-
-            // カウントダウン終了時刻が現在時刻より未来の場合、再計算してカウントダウンを再開
-            if (endTime && parseInt(endTime) > currentTime) {
-                // APIのttlを再計算
-                const remainingTime = Math.ceil((parseInt(endTime) - currentTime) / 1000);
-
-                // カウントダウンを表示する要素
-                const countdownElement = document.getElementById("countdown");
-
-                // カウントダウンを更新する関数
-                function updateCountdown() {
-                    // 残り時間を計算
-                    let remainingTime = Math.ceil((parseInt(endTime) - new Date().getTime()) / 1000);
-
-                    // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
-                    if (remainingTime <= 0) {
-                    clearInterval(intervalId);
-                    countdownElement.textContent = "";
-                    fetchButton.disabled = false;
-                    } else {
-                    // カウントダウンを表示
-                    countdownElement.textContent = `更新可能まであと: ${remainingTime}秒`;
-                    }
-                }
-
-                // カウントダウンを最初に更新
-                updateCountdown();
-
-                // 残り時間を1秒ごとに更新
-                const intervalId = setInterval(updateCountdown, countdownInterval);
-            } else {
-                // カウントダウン終了時刻が現在時刻より過去の場合は、通常のカウントダウンを開始
-                const apiTTL = 60; // APIのttl（秒）
-                const endTime = new Date().getTime() + apiTTL * 1000;
-
-                // ローカルストレージにカウントダウン終了時刻を保存
-                sessionStorage.setItem(SessionStorageKey, endTime);
-
-                // カウントダウンを再開
-                startCountdown();
-            }
+        // uidが空白の場合はメッセージを表示して処理を中断
+        if (uid === '') {
+            const nicknameElement = document.getElementById('nickname');
+            nicknameElement.textContent = "UIDを入力してください";
+            return;
         }
 
-        // ページの読み込みが完了したら、カウントダウンを再開
-        window.onload = async function() {
-            showTable("table1","tablebutton1");
-            showOption("option1", "parameterbutton1");
-            const DataResponse = await fetch("../data/JsonData/CharacterData.json");
+        const url = `https://asia-northeast1-numeric-cinema-417315.cloudfunctions.net/ImportEnkaApi?uid=${uid}`;
+
+        try {
+            const response = await fetch(url);
+            ErrorId = response.status;
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
             let char_ids = [];
-            CharDataJson = await DataResponse.json();
-            console.log(CharDataJson);
-            // ローカルストレージからカウントダウン終了時刻を取得
-            const endTime = sessionStorage.getItem(SessionStorageKey);
-            // 現在時刻を取得
-            const currentTime = new Date().getTime();
-
-            // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
-            if (endTime && parseInt(endTime) > currentTime) {
-                // APIのttlを計算
-                const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
-                // 再度カウントダウンを開始
-                startCountdown();
-            };
-            UserData = JSON.parse(sessionStorage.getItem("UserData"));
+            char_names = [];
+            CharIndexList = [];
+            UserData = await response.json();
             const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
             Weapondata = await Weaponresponse.json();
             const afresponse = await fetch("../data/JsonData/url.json");
             afdata = await afresponse.json();
             const AfNameresponse = await fetch("../data/JsonData/MainStatusName.json");
             AfNameList = await AfNameresponse.json();
-            if (UserData !== null)
+            console.log(UserData);
+            sessionStorage.setItem("UserData", JSON.stringify(UserData));
+            // ニックネームをHTMLに出力する
+            const nicknameElement = document.getElementById('nickname');
+            const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
+            console.log(avatarIds);
+            nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
+                            "<br>";
+            
+            for (let i = 0; i < avatarIds.length; i++)
             {
-                const nicknameElement = document.getElementById('nickname');
-                const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
-                console.log(avatarIds);
-                nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
-                             "<br>";
-                
-                for (let i = 0; i < avatarIds.length; i++)
+                let charId = parseInt(avatarIds[i]) - 10000000;
+                let PossibleFlag = await CharExecution(i, charId);
+                if(PossibleFlag == 0)
                 {
-                    let charId = parseInt(avatarIds[i]) - 10000000;
-                    let PossibleFlag = await CharExecution(i, charId);
-                    if(PossibleFlag == 0)
-                    {
-                        char_names.push(characters[charId]);
-                        char_ids.push(charId);
-                        CharIndexList.push(i);
+                    char_names.push(characters[charId]);
+                    char_ids.push(charId);
+                    CharIndexList.push(i);
+                }
+            }
+            const images = [];
+
+            // 画像を生成して配列に追加
+            for (let i = 0; i < char_ids.length; i++) {
+                const image = {
+                    src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
+                    alt: `Image ${i}`,
+                    id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
+                    
+                };
+                images.push(image);
+            }
+            let divAttention = document.getElementById("Attention");
+            divAttention.style.display = "flex"; // または必要に応じて適切なdisplay値を使用します
+            // 画像要素を生成し、動的にHTMLに追加する
+            const imageGrid = document.getElementById("imageGrid");
+            images.forEach(image => {
+                const imgElement = document.createElement("img");
+                imgElement.src = image.src;
+                imgElement.alt = image.alt;
+                imgElement.id = image.id; // 画像にID属性を設定
+                imgElement.addEventListener("click", async function() {
+                    ResetParameter();
+                    // クリックされた画像のsrc属性を取得
+                    const imageUrl = this.src;
+                    const CharId = this.id;
+                    SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                    // 画像を表示するdiv要素を取得
+                    const digits = String(CharId); // 数値を文字列に変換
+                    const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
+                    console.log(upperDigits);
+                    selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
+                    console.log(selectedCharId);
+                    console.log(SelectId);
+                    const imageContainer = document.getElementById("CharImage");
+                    await DisplayCharStatus(SelectId);
+                    AfSetReffer(SelectId);
+                    await SetMainStatus(SelectId);
+                    await show_char_statsform();
+                    await show_weapon_statsform();
+                    await show_artifact()
+                    const initial_index = [0,0,0,0,1,1,1];
+                    const myStatus = [0,0,0,0,0,0,0];
+                    const TheoreticalStatus = [0,0,0,0,100,100,100];
+                    create_radarchart(initial_index, myStatus, TheoreticalStatus);
+
+                    // 画像を置き換える
+                    const existingImage = imageContainer.querySelector("img");
+                    if (existingImage) {
+                        existingImage.src = imageUrl;
+                        existingImage.alt = "Clicked Image";
+                    } else {
+                        // 既存の画像が存在しない場合は新しい画像を追加
+                        const imageElement = document.createElement("img");
+                        imageElement.src = imageUrl;
+                        imageElement.alt = "Clicked Image";
+                        imageContainer.appendChild(imageElement);
                     }
-                }
-                const images = [];
-
-                // 画像を生成して配列に追加
-                for (let i = 0; i < char_ids.length; i++) {
-                    const image = {
-                        src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
-                        alt: `Image ${i}`,
-                        id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
-                        
-                    };
-                    images.push(image);
-                }
-                // 画像要素を生成し、動的にHTMLに追加する
-                const imageGrid = document.getElementById("imageGrid");
-                images.forEach(image => {
-                    const imgElement = document.createElement("img");
-                    imgElement.src = image.src;
-                    imgElement.alt = image.alt;
-                    imgElement.id = image.id; // 画像にID属性を設定
-                    imgElement.addEventListener("click", async function() {
-                        ResetParameter();
-                        // クリックされた画像のsrc属性を取得
-                        const imageUrl = this.src;
-                        const CharId = this.id;
-                        SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
-                        // 画像を表示するdiv要素を取得
-                        const digits = String(CharId); // 数値を文字列に変換
-                        const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
-                        selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
-                        console.log(selectedCharId);
-                        const imageContainer = document.getElementById("CharImage");
-                        await DisplayCharStatus(SelectId);
-                        AfSetReffer(SelectId);
-                        await SetMainStatus(SelectId);
-                        await show_char_statsform();
-                        await show_weapon_statsform();
-                        await show_artifact();
-
-                        const initial_index = [0,0,0,0,1,1,1];
-                        const myStatus = [0,0,0,0,0,0,0];
-                        const TheoreticalStatus = [0,0,0,0,100,100,100];
-                        create_radarchart(initial_index, myStatus, TheoreticalStatus);
-
-                        // 画像を置き換える
-                        const existingImage = imageContainer.querySelector("img");
-                        if (existingImage) {
-                            existingImage.src = imageUrl;
-                            existingImage.alt = "Clicked Image";
-                        } else {
-                            // 既存の画像が存在しない場合は新しい画像を追加
-                            const imageElement = document.createElement("img");
-                            imageElement.src = imageUrl;
-                            imageElement.alt = "Clicked Image";
-                            imageContainer.appendChild(imageElement);
-                        }
-                        let div = document.getElementById("WholeDisplay");
-                        div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
-                    });
-                    imageGrid.appendChild(imgElement);
+                    let div = document.getElementById("WholeDisplay");
+                    div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
                 });
+                imageGrid.appendChild(imgElement);
+            });
+        } catch (error) {
+            fetchButton.disabled = false;
+            const nicknameElement = document.getElementById('nickname');
+            if(ErrorId == 500)
+            {
+                nicknameElement.textContent = "EnkaNetWorkサーバーのエラー";
+            }
+            else if(ErrorId == 404)
+            {
+                nicknameElement.textContent = "正しいUIDを入力してください。";
+            }
+            else
+            {
+                console.error('Error fetching data:', error);
+                nicknameElement.textContent = "入力したUIDに問題があるようです。";
+            }
+            return;
+        }
+        startCountdown();
+    }
+
+    async function DisplayCharStatus(SortOrder){
+        // SortOrder の値が有効なインデックスであることを確認
+        if (SortOrder >= 0 && SortOrder < UserData.data.avatarInfoList.length)
+        {
+            CharLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["4001"].val;
+            CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
+            // talentIdList が存在するかどうかを確認し、その長さを取得
+            CharConstellations = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList.length : 0;
+            const CharTalentLevelList = Object.values(UserData.data.avatarInfoList[CharIndexList[SortOrder]].skillLevelMap);
+            const LevelDisplay = document.getElementById("CharLevel");
+            const ConsteDisplay = document.getElementById("CharConstellations");
+            const charIndexDisplay = document.getElementById('Charindex-display');
+            const NormalTalent = document.getElementById('NormalTalentLevel');
+            const SkillTalent = document.getElementById('SkillTalentLevel');
+            const BurstTalent = document.getElementById('BurstTalentLevel');
+            charIndexDisplay.innerHTML = char_names[SortOrder]
+            LevelDisplay.innerHTML = "Lv." + CharLevel;
+            ConsteDisplay.innerHTML = "命の星座" + CharConstellations + "重";
+            NormalTalent.innerHTML = "Lv." + CharTalentLevelList[0];
+            SkillTalent.innerHTML = "Lv." + CharTalentLevelList[1];
+            BurstTalent.innerHTML = "Lv." + CharTalentLevelList[2];
+            console.log(CharTalentLevelList);
+
+            CharTalentLevel[0] = CharTalentLevelList[0];
+            CharTalentLevel[1] = CharTalentLevelList[0];
+            CharTalentLevel[2] = CharTalentLevelList[0];
+            CharTalentLevel[3] = CharTalentLevelList[1];
+            CharTalentLevel[4] = CharTalentLevelList[2];
+            console.log(CharTalentLevel);
+        }
+        else
+        {
+            console.error("Invalid SortOrder value");
+        }
+    }
+    async function EquipWeaponList()
+    {
+        
+    }
+
+    async function DisplayWeaponStatus(index,SortOrder,id){
+        WeaponLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.level;
+        WeaponConstellations = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.affixMap[100000 + id] + 1;
+        let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
+        // "itemId" の値を格納するための配列を初期化
+        let AfIdList = [];
+        let ExecuteFlag;
+        // JSON配列の各要素を走査して、"itemId" の要素を取り出す
+        AfJsonList.forEach(status => {
+            // オブジェクトから "itemId" の要素を取り出して配列に追加
+            if (status.hasOwnProperty("itemId")) {
+                AfIdList.push(status["itemId"]);
+            }
+        });
+        let WeapomListIndex = AfIdList.length;
+        WeaponAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[WeapomListIndex-1].weapon.promoteLevel;
+        const LevelDisplay = document.getElementById("WeaponLevel");
+        const ConsteDisplay = document.getElementById("WeaponRank");
+        LevelDisplay.innerHTML = "Lv." + WeaponLevel;
+        ConsteDisplay.innerHTML = "精錬ランク" + WeaponConstellations;
+    }
+
+    async function AfSetReffer(SortOrder){
+        let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
+        // "itemId" の値を格納するための配列を初期化
+        let AfIdList = [];
+
+        // JSON配列の各要素を走査して、"itemId" の要素を取り出す
+        AfJsonList.forEach(status => {
+            // オブジェクトから "itemId" の要素を取り出して配列に追加
+            if (status.hasOwnProperty("itemId")) {
+                AfIdList.push(status["itemId"]);
+            }
+        });
+
+        // 各リスト内の文字列の上2文字を取り出して数字に変換する
+        let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));
+
+        // 数値の出現回数を記録するオブジェクトを作成
+        const countMap = {};
+        AfNumList.forEach(num => {
+            if (countMap[num]) {
+                countMap[num]++;
+            } else {
+                countMap[num] = 1;
+            }
+        });
+
+        // キーを数値の小さい順にソート
+        const sortedKeys = Object.keys(countMap).sort((a, b) => a - b);
+
+        // ソートされたキーの配列を使って、数値とその個数のペアを作成
+        const result = sortedKeys.map(key => [parseInt(key), countMap[key]]);
+        SelectedAfId = [];
+        for (let i = 0; i < result.length; i++) {
+            if (result[i][1] > 1 && result[i][1] < 4)
+            {
+                SelectedAfId.push(result[i][0]);
+            }
+            else if (result[i][1] > 3 && result[i][1] < 6)
+            {
+                SelectedAfId.push(result[i][0]);
+                SelectedAfId.push(result[i][0]);
+            }
+        }
+        if(SelectedAfId.length == 0)
+        {
+            SelectedAfId = [-1,-1];
+        }
+        else if(SelectedAfId.length == 1)
+        {
+            SelectedAfId.push(-1);
+        }
+
+        let set_eff1;
+        let set_eff2;
+        let AfName1;
+        let AfName2
+        
+        if (SelectedAfId[0] === SelectedAfId[1]) {
+            set_eff1 = afdata["AfMap"][SelectedAfId[0].toString()]["2セット効果"];
+            set_eff2 = afdata["AfMap"][SelectedAfId[1].toString()]["4セット効果"];
+            AfName1 = afdata["AfMap"][SelectedAfId[0].toString()]["名前"];
+            AfName2 = afdata["AfMap"][SelectedAfId[1].toString()]["名前"];
+            document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
+            document.getElementById("set_eff2").innerHTML = `${AfName2}：4セット効果<br>${set_eff2}`;
+        } else {
+            set_eff1 = afdata["AfMap"][SelectedAfId[0].toString()]["2セット効果"];
+            set_eff2 = afdata["AfMap"][SelectedAfId[1].toString()]["2セット効果"];
+            AfName1 = afdata["AfMap"][SelectedAfId[0].toString()]["名前"];
+            AfName2 = afdata["AfMap"][SelectedAfId[1].toString()]["名前"];
+            document.getElementById("set_eff1").innerHTML = `${AfName1}：2セット効果<br>${set_eff1}`;
+            document.getElementById("set_eff2").innerHTML = `${AfName1}：2セット効果<br>${set_eff2}`;
+        }
+
+        // 選択された聖遺物の画像設定
+        const selectedImageSrc1 = afdata["AfMap"][SelectedAfId[0].toString()]["url"] || '';
+        const selectedImageSrc2 = afdata["AfMap"][SelectedAfId[1].toString()]["url"] || '';
+        document.getElementById("AfImage1").src = selectedImageSrc1;
+        document.getElementById("AfImage2").src = selectedImageSrc2;
+        selectedImageIds[0] = afdata["AfMap"][SelectedAfId[0].toString()]["id"] || -1;
+        selectedImageIds[1] = afdata["AfMap"][SelectedAfId[1].toString()]["id"] || -1;
+
+        return result;
+    }
+
+    async function SetMainStatus(SortOrder){
+        let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList;
+        let ClockMainStatus = "装備無し";
+        let GobletMainStatus = "装備無し";
+        let CircletMainStatus = "装備無し";
+        let PropName;
+        // "itemId" の値を格納するための配列を初期化
+        let AfIdList = [];
+
+        // JSON配列の各要素を走査して、"itemId" の要素を取り出す
+        AfJsonList.forEach(status => {
+            // オブジェクトから "itemId" の要素を取り出して配列に追加
+            if (status.hasOwnProperty("itemId")) {
+                AfIdList.push(status["itemId"]);
+            }
+        });
+        EquipNumber = AfIdList.length;
+        let WeaponPopId = AfIdList.pop();
+        await DisplayWeaponStatus(EquipNumber, SortOrder, WeaponPopId);
+        await DisplayWeaponImg(WeaponPopId);
+
+        const fourthDigits = AfIdList.map(number => {
+            const numberAsString = number.toString();
+            const fourthDigit = numberAsString.charAt(3); // 4桁目の数値のインデックスは3
+            return parseInt(fourthDigit); // 文字列から数値に変換して返す
+        });
+
+        for (let i = 0; i <fourthDigits.length; i++) {
+            if (fourthDigits[i] == 5)
+            {
+                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+                ClockMainStatus = AfNameList[PropName]["名前"];
+            }
+            else if (fourthDigits[i] == 1)
+            {
+                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+                GobletMainStatus = AfNameList[PropName]["名前"];
+            }
+            else if (fourthDigits[i] == 3)
+            {
+                PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
+                CircletMainStatus = AfNameList[PropName]["名前"];
+            }
+        }
+        document.getElementById("ClockMainStatus").innerHTML = ClockMainStatus;
+        document.getElementById("GobletMainStatus").innerHTML = GobletMainStatus;
+        document.getElementById("CircletMainStatus").innerHTML = CircletMainStatus;
+    }
+
+    async function DisplayWeaponImg(Id){
+        let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
+        let weaponRank = ["星3", "星4", "星5"]
+        let numberString = Id.toString();
+
+        // 数値を分割して配列に格納
+        let secondDigit = parseInt(numberString.charAt(1)); // 上から2桁目
+        let thirdDigit = parseInt(numberString.charAt(2)); // 上から3桁目
+        let lastTwoDigits = parseInt(numberString.substring(3)); // 4桁目と5桁目
+
+        let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
+
+        const WeaponImgContainer = document.getElementById("WeaponImage");
+        const existingImage = WeaponImgContainer.querySelector("img");
+        selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"];
+        existingImage.src = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["url"];
+        existingImage.alt = "Clicked Image";
+        const charIndexDisplay = document.getElementById('Weaponindex-display');
+        charIndexDisplay.innerHTML = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["名前"];
+}
+
+    async function CharExecution(index, charId){
+        let AfJsonList = UserData.data.avatarInfoList[index].equipList;
+        // "itemId" の値を格納するための配列を初期化
+        let AfIdList = [];
+        let ExecuteFlag = 0;
+        // JSON配列の各要素を走査して、"itemId" の要素を取り出す
+        AfJsonList.forEach(status => {
+            // オブジェクトから "itemId" の要素を取り出して配列に追加
+            if (status.hasOwnProperty("itemId")) {
+                AfIdList.push(status["itemId"]);
+            }
+        });
+        let WeapomListIndex = AfIdList.length;
+        let WeaponPopId = AfIdList.pop();
+
+        // 各リスト内の文字列の上2文字を取り出して数字に変換する
+        let AfNumList = AfIdList.map(item => parseInt(item.toString().substring(0, 2)));
+
+        // 数値の出現回数を記録するオブジェクトを作成
+        const countMap = {};
+        AfNumList.forEach(num => {
+            if (countMap[num]) {
+                countMap[num]++;
+            } else {
+                countMap[num] = 1;
+            }
+        });
+
+        // キーを数値の小さい順にソート
+        const sortedKeys = Object.keys(countMap).sort((a, b) => a - b);
+
+        // ソートされたキーの配列を使って、数値とその個数のペアを作成
+        const result = sortedKeys.map(key => [parseInt(key), countMap[key]]);
+        let SelectedAfId = [];
+        for (let i = 0; i < result.length; i++) {
+            if (result[i][1] > 1 && result[i][1] < 4)
+            {
+                SelectedAfId.push(result[i][0]);
+            }
+            else if (result[i][1] > 3 && result[i][1] < 6)
+            {
+                SelectedAfId.push(result[i][0]);
+                SelectedAfId.push(result[i][0]);
             }
         }
 
-        document.getElementById('attack_method').addEventListener('change', show_attack_method);
-        document.getElementById('char_talent').addEventListener('change', calculate_table_status);
-        document.getElementById('temporary_char_talent').addEventListener('change', calculate_table_status);
-        document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
-        document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
-        document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
-        document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
-        // ボタンをクリックしたときに fetchData() 関数を実行する
-        document.getElementById('fetchButton').onclick = function() {
-            fetchData();
-        };
+        let AfSerch;
+        for (let i = 0; i < SelectedAfId.length; i++) {
+            AfSerch = afdata["AfMap"][SelectedAfId[i].toString()] || 0;
+            if (AfSerch == 0)
+            {
+                ExecuteFlag = 1;
+            }
+        }
+        CharAdvanceRank = UserData.data.avatarInfoList[index].propMap["1002"].ival;
+        WeaponAdvanceRank = UserData.data.avatarInfoList[index].equipList[WeapomListIndex-1].weapon.promoteLevel;
+        if (!CharDataJson["CharMap"][charId.toString()]  || CharAdvanceRank < 4 || WeaponAdvanceRank < 4)
+        {
+            ExecuteFlag = 1;
+        }
 
-    </script>
-</body>
+        let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
+        let weaponRank = ["星3", "星4", "星5"]
+        let numberString = WeaponPopId.toString();
+
+        // 数値を分割して配列に格納
+        let secondDigit = parseInt(numberString.charAt(1)); // 上から2桁目
+        let thirdDigit = parseInt(numberString.charAt(2)); // 上から3桁目
+        let lastTwoDigits = parseInt(numberString.substring(3)); // 4桁目と5桁目
+        let WeaponList = [secondDigit, thirdDigit, lastTwoDigits];
+
+        const WeaponImgContainer = document.getElementById("WeaponImage");
+        const existingImage = WeaponImgContainer.querySelector("img");
+        selectedWeaponId = Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()] ? Weapondata[weaponRank[WeaponList[1]-3]][WeaponType[WeaponList[0]-1]][WeaponList[2].toString()]["id"] : -1;
+
+        if(selectedWeaponId == -1)
+        {
+            ExecuteFlag = 1;
+        }
+        return ExecuteFlag;
+    }
+    
+    function ResetParameter(){
+        for (let i = 1; i <= 5; i++) {
+            ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
+                document.getElementById(`${type}${i}`).innerHTML = "-";
+            });
+        }
+        ["my_result_hp", "appro_result_hp", "my_hp_score", "appro_hp_score", "dlt_hp_score", "count_hp_score", "my_af_hp", "appro_af_hp", "dlt_af_hp", "count_hp_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_deff", "appro_result_deff", "my_deff_score", "appro_deff_score", "dlt_deff_score", "count_deff_score", "my_af_deff", "appro_af_deff", "dlt_af_deff", "count_deff_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_elm", "appro_result_elm", "my_elm_score", "appro_elm_score", "dlt_elm_score", "count_elm_score", "my_af_elm", "appro_af_elm", "dlt_af_elm", "count_elm_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_elm_charge", "appro_result_elm_charge", "my_elm_charge_score", "appro_elm_charge_score", "dlt_elm_charge_score", "count_elm_charge_score", "my_af_elm_charge", "appro_af_elm_charge", "dlt_af_elm_charge", "count_elm_charge_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_attck", "appro_result_attck", "my_attck_score", "appro_attck_score", "dlt_attck_score", "count_attck_score", "my_af_attck", "appro_af_attck", "dlt_af_attck", "count_attck_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_cr", "appro_result_cr", "my_cr_score", "appro_cr_score", "dlt_cr_score", "count_cr_score", "my_af_cr", "appro_af_cr", "dlt_af_cr", "count_cr_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_cd", "appro_result_cd", "my_cd_score", "appro_cd_score", "dlt_cd_score", "count_cd_score", "my_af_cd", "appro_af_cd", "dlt_af_cd", "count_cd_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+        ["my_result_dmg_buff", "appro_result_dmg_buff", "my_af_score", "appro_af_score", "dlt_af_score", "my_af_score3", "appro_af_score3", "dlt_af_score3"].forEach(id => {
+            document.getElementById(id).innerHTML = "-";
+        });
+
+        ["hp", "deff", "elm", "elm_charge", "attck", "cr", "cd", "dmg_buff"].forEach(id => {
+            document.getElementById(`table_base_${id}`).innerHTML = "-";
+            document.getElementById(`table_buff_${id}`).innerHTML = "-";
+            document.getElementById(`table_af_${id}`).innerHTML = "-";
+            document.getElementById(`table_final_${id}`).innerHTML = "-";
+        });
+
+        [
+            "dlt_hp_score", "dlt_af_hp",
+            "dlt_deff_score", "dlt_af_deff",
+            "dlt_elm_score", "dlt_af_elm",
+            "dlt_elm_charge_score", "dlt_af_elm_charge",
+            "dlt_attck_score", "dlt_af_attck",
+            "dlt_cr_score", "dlt_af_cr",
+            "dlt_cd_score", "dlt_af_cd"
+        ].forEach(id => {
+        let element = document.getElementById(id);
+        element.style.color = "black";
+        });
+
+        document.getElementById("result").innerHTML = "";
+    }
+    
+
+    function startCountdown() {
+
+        // ローカルストレージからカウントダウン終了時刻を取得
+        const endTime = sessionStorage.getItem(SessionStorageKey);
+        // 現在時刻を取得
+        const currentTime = new Date().getTime();
+
+        // カウントダウン終了時刻が現在時刻より未来の場合、再計算してカウントダウンを再開
+        if (endTime && parseInt(endTime) > currentTime) {
+            // APIのttlを再計算
+            const remainingTime = Math.ceil((parseInt(endTime) - currentTime) / 1000);
+
+            // カウントダウンを表示する要素
+            const countdownElement = document.getElementById("countdown");
+
+            // カウントダウンを更新する関数
+            function updateCountdown() {
+                // 残り時間を計算
+                let remainingTime = Math.ceil((parseInt(endTime) - new Date().getTime()) / 1000);
+
+                // 残り時間が0以下になったらカウントダウンを停止し、ボタンを有効にする
+                if (remainingTime <= 0) {
+                clearInterval(intervalId);
+                countdownElement.textContent = "";
+                fetchButton.disabled = false;
+                } else {
+                // カウントダウンを表示
+                countdownElement.textContent = `更新可能まであと: ${remainingTime}秒`;
+                }
+            }
+
+            // カウントダウンを最初に更新
+            updateCountdown();
+
+            // 残り時間を1秒ごとに更新
+            const intervalId = setInterval(updateCountdown, countdownInterval);
+        } else {
+            // カウントダウン終了時刻が現在時刻より過去の場合は、通常のカウントダウンを開始
+            const apiTTL = 60; // APIのttl（秒）
+            const endTime = new Date().getTime() + apiTTL * 1000;
+
+            // ローカルストレージにカウントダウン終了時刻を保存
+            sessionStorage.setItem(SessionStorageKey, endTime);
+
+            // カウントダウンを再開
+            startCountdown();
+        }
+    }
+
+    // ページの読み込みが完了したら、カウントダウンを再開
+    window.onload = async function() {
+        showTable("table1","tablebutton1");
+        showOption("option1", "parameterbutton1");
+        const DataResponse = await fetch("../data/JsonData/CharacterData.json");
+        let char_ids = [];
+        CharDataJson = await DataResponse.json();
+        console.log(CharDataJson);
+        // ローカルストレージからカウントダウン終了時刻を取得
+        const endTime = sessionStorage.getItem(SessionStorageKey);
+        // 現在時刻を取得
+        const currentTime = new Date().getTime();
+
+        // カウントダウン終了時刻が現在時刻より未来の場合、カウントダウンを再開
+        if (endTime && parseInt(endTime) > currentTime) {
+            // APIのttlを計算
+            const apiTTLFromNow = Math.ceil((parseInt(endTime) - currentTime) / 1000);
+            // 再度カウントダウンを開始
+            startCountdown();
+        };
+        UserData = JSON.parse(sessionStorage.getItem("UserData"));
+        const Weaponresponse = await fetch("../data/JsonData/WeaponData.json");
+        Weapondata = await Weaponresponse.json();
+        const afresponse = await fetch("../data/JsonData/url.json");
+        afdata = await afresponse.json();
+        const AfNameresponse = await fetch("../data/JsonData/MainStatusName.json");
+        AfNameList = await AfNameresponse.json();
+        if (UserData !== null)
+        {
+            const nicknameElement = document.getElementById('nickname');
+            const avatarIds = UserData.data.playerInfo.showAvatarInfoList.map(info => info.avatarId);
+            console.log(avatarIds);
+            nicknameElement.innerHTML = "ユーザーネーム：" + UserData.data.playerInfo.nickname +
+                            "<br>";
+            
+            for (let i = 0; i < avatarIds.length; i++)
+            {
+                let charId = parseInt(avatarIds[i]) - 10000000;
+                let PossibleFlag = await CharExecution(i, charId);
+                if(PossibleFlag == 0)
+                {
+                    char_names.push(characters[charId]);
+                    char_ids.push(charId);
+                    CharIndexList.push(i);
+                }
+            }
+            const images = [];
+
+            // 画像を生成して配列に追加
+            for (let i = 0; i < char_ids.length; i++) {
+                const image = {
+                    src: CharDataJson["CharMap"][char_ids[i].toString()]["url"],
+                    alt: `Image ${i}`,
+                    id: char_ids[i] * 10 + i // 画像に割り当てるID属性を生成
+                    
+                };
+                images.push(image);
+            }
+            // 画像要素を生成し、動的にHTMLに追加する
+            const imageGrid = document.getElementById("imageGrid");
+            images.forEach(image => {
+                const imgElement = document.createElement("img");
+                imgElement.src = image.src;
+                imgElement.alt = image.alt;
+                imgElement.id = image.id; // 画像にID属性を設定
+                imgElement.addEventListener("click", async function() {
+                    ResetParameter();
+                    // クリックされた画像のsrc属性を取得
+                    const imageUrl = this.src;
+                    const CharId = this.id;
+                    SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                    // 画像を表示するdiv要素を取得
+                    const digits = String(CharId); // 数値を文字列に変換
+                    const upperDigits = digits.substring(0, 2); // 上位2桁を取り出す
+                    selectedCharId = CharDataJson["CharMap"][upperDigits]["id"]; // 文字列を数値に変換
+                    console.log(selectedCharId);
+                    const imageContainer = document.getElementById("CharImage");
+                    await DisplayCharStatus(SelectId);
+                    AfSetReffer(SelectId);
+                    await SetMainStatus(SelectId);
+                    await show_char_statsform();
+                    await show_weapon_statsform();
+                    await show_artifact();
+
+                    const initial_index = [0,0,0,0,1,1,1];
+                    const myStatus = [0,0,0,0,0,0,0];
+                    const TheoreticalStatus = [0,0,0,0,100,100,100];
+                    create_radarchart(initial_index, myStatus, TheoreticalStatus);
+
+                    // 画像を置き換える
+                    const existingImage = imageContainer.querySelector("img");
+                    if (existingImage) {
+                        existingImage.src = imageUrl;
+                        existingImage.alt = "Clicked Image";
+                    } else {
+                        // 既存の画像が存在しない場合は新しい画像を追加
+                        const imageElement = document.createElement("img");
+                        imageElement.src = imageUrl;
+                        imageElement.alt = "Clicked Image";
+                        imageContainer.appendChild(imageElement);
+                    }
+                    let div = document.getElementById("WholeDisplay");
+                    div.style.display = "block"; // または必要に応じて適切なdisplay値を使用します
+                });
+                imageGrid.appendChild(imgElement);
+            });
+        }
+    }
+
+    document.getElementById('attack_method').addEventListener('change', show_attack_method);
+    document.getElementById('char_talent').addEventListener('change', calculate_table_status);
+    document.getElementById('temporary_char_talent').addEventListener('change', calculate_table_status);
+    document.getElementById('weaponInfo').addEventListener('change', calculate_table_status);
+    document.getElementById('artifact_checkbox').addEventListener('change', calculate_table_status);
+    document.getElementById('team_buff_info').addEventListener('input', calculate_table_status);
+    document.getElementById('element_action').addEventListener('change', elemental_reaction_add);
+    // ボタンをクリックしたときに fetchData() 関数を実行する
+    document.getElementById('fetchButton').onclick = function() {
+        fetchData();
+    };
+
+</script>
 </html>

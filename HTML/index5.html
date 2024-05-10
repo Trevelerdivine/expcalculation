@@ -1574,11 +1574,13 @@
             }
         }
 
-        if (AfLevelList.every(level => level !== 21)) 
-        {
-            ExecuteFlag = 1;
+        for (let i = 0; i < AfLevelList.length; i++) {
+            if (AfLevelList[i] < 21)
+            {
+                ExecuteFlag = 1;
+                return ExecuteFlag;
+            }
         }
-
         
         if(AfSpecialEffect < 2)
         {
@@ -1591,6 +1593,7 @@
             if (AfSerch == 0)
             {
                 ExecuteFlag = 1;
+                return ExecuteFlag;
             }
         }
         CharAdvanceRank = UserData.data.avatarInfoList[index].propMap["1002"].ival;
@@ -1598,6 +1601,7 @@
         if (!CharDataJson["CharMap"][charId.toString()]  || CharAdvanceRank < 4 || WeaponAdvanceRank < 4)
         {
             ExecuteFlag = 1;
+            return ExecuteFlag;
         }
 
         let WeaponType = ["片手剣", "両手剣", "長柄", "法器", "弓"]
@@ -1617,6 +1621,7 @@
         if(selectedWeaponId == -1)
         {
             ExecuteFlag = 1;
+            return ExecuteFlag;
         }
         return ExecuteFlag;
     }

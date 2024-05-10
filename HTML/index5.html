@@ -1166,9 +1166,7 @@
     }
 
     // fetchData() 関数を定義
-    async function fetchData() {
-        fetchButton.disabled = true;
-        
+    async function fetchData() {        
         let ErrorId;
         const img_grid = document.getElementById("imageGrid");
         img_grid.innerHTML = "";
@@ -1668,7 +1666,7 @@
     
 
     function startCountdown() {
-
+        fetchButton.disabled = true;
         // ローカルストレージからカウントダウン終了時刻を取得
         const endTime = sessionStorage.getItem(SessionStorageKey);
         // 現在時刻を取得

@@ -616,21 +616,22 @@ details summary {
     justify-content: center;
 }
 
-details summary::before {
-  content: '\25B6';
-  margin-right: 20px;
-  transition: transform 0.3s ease;
-  color: #666;
-}
 
-details[open] summary::before {
-  transform: rotate(90deg);
-}
+  details summary::before {
+    content: '\25B6';
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+    color: #666;
+  }
 
-details[open] summary::after {
-  content: '\25BC';
-  transform: none; /* 回転をリセット */
-}
+  details[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  details[open] summary::before {
+    content: '\25BC';
+    transform: none; /* 回転をリセット */
+  }
 
   details p {
     margin: 0;

@@ -1537,7 +1537,6 @@
                 }
             }
         });
-        console.log(AfLevelList);
         let WeapomListIndex = AfIdList.length;
         let WeaponPopId = AfIdList.pop();
 
@@ -1574,6 +1573,12 @@
                 AfSpecialEffect +=2
             }
         }
+
+        if (AfLevelList.every(level => level !== 21)) 
+        {
+            ExecuteFlag = 1;
+        }
+
         
         if(AfSpecialEffect < 2)
         {

@@ -1104,7 +1104,7 @@ async function calculate_team_fix_buff(base_status)
   else if (WeaponEquipData.appendPropId === "FIGHT_PROP_DEFENSE_PERCENT") {
     weapon_base_deffper = WeaponEquipData.statValue / 100;
   }
-
+  console.log([weapon_base_hpper,weapon_base_attackper,weapon_base_deffper]);
   // チェックボックスの情報をまとめた配列を作成
   const checkboxStates = {
     pyro_reso: pyroCheckbox.checked ? 1 : 0,

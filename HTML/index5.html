@@ -1309,7 +1309,7 @@
             CharAdvanceRank = UserData.data.avatarInfoList[CharIndexList[SortOrder]].propMap["1002"].val;
             // talentIdList が存在するかどうかを確認し、その長さを取得
             const CharConstellationsIndex = UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList ? UserData.data.avatarInfoList[CharIndexList[SortOrder]].talentIdList.length : 0;
-            CharConstellations = CharConstellationsChange[CharConstellationsIndex]
+            CharConstellations = CharConstellationsChange[CharConstellationsIndex];
             const CharTalentLevelList = Object.values(UserData.data.avatarInfoList[CharIndexList[SortOrder]].skillLevelMap);
             const LevelDisplay = document.getElementById("CharLevel");
             const ConsteDisplay = document.getElementById("CharConstellations");
@@ -1319,7 +1319,7 @@
             const BurstTalent = document.getElementById('BurstTalentLevel');
             charIndexDisplay.innerHTML = char_names[SortOrder]
             LevelDisplay.innerHTML = "Lv." + CharLevel;
-            ConsteDisplay.innerHTML = "命の星座" + CharConstellations + "重";
+            ConsteDisplay.innerHTML = "命の星座" + CharConstellationsIndex + "重";
             NormalTalent.innerHTML = "Lv." + CharTalentLevelList[0];
             SkillTalent.innerHTML = "Lv." + CharTalentLevelList[1];
             BurstTalent.innerHTML = "Lv." + CharTalentLevelList[2];

@@ -7533,7 +7533,6 @@ class shikanoinheizou {
       dmg_attack_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
       dmg_rate = [0, 0, 0, 0, dmg_attack_rate, 0, 0];
     }
-    
   return dmg_rate;
 }
 
@@ -7602,7 +7601,7 @@ class shikanoinheizou {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
-    const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.react_attack_count, status, this.weapon_rank, this.base_dmgbuff);
+    const attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
     return attckRate;
   }
 

@@ -1319,10 +1319,10 @@
             const BurstTalent = document.getElementById('BurstTalentLevel');
             if (CharConstellationsIndex > 2)
             {
-                CharTalentLevelList[CharDataJson["CharMap"][CharIndexList[SortOrder]]["3重"]] +=3;
+                CharTalentLevelList[CharDataJson["CharMap"][CharIndexList[SortOrder].toString()]["3重"]] +=3;
                 if(CharConstellationsIndex > 4)
                 {
-                    CharTalentLevelList[CharDataJson["CharMap"][CharIndexList[SortOrder]]["5重"]] +=3;
+                    CharTalentLevelList[CharDataJson["CharMap"][CharIndexList[SortOrder].toString()]["5重"]] +=3;
                 }
             };
             charIndexDisplay.innerHTML = char_names[SortOrder]

@@ -1246,10 +1246,10 @@
                     const imageUrl = this.src;
                     const CharId = this.id;
                     SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                    let APICharId = Math.floor(CharId / 10);
                     // 画像を表示するdiv要素を取得
-                    selectedCharId = CharDataJson["CharMap"][Math.floor(CharId / 10)]["id"]; // 文字列を数値に変換
+                    selectedCharId = CharDataJson["CharMap"][APICharId]["id"]; // 文字列を数値に変換
                     console.log(selectedCharId);
-                    console.log(SelectId);
                     const imageContainer = document.getElementById("CharImage");
                     await DisplayCharStatus(SelectId, APICharId);
                     AfSetReffer(SelectId);

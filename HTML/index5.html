@@ -1251,7 +1251,7 @@
                     console.log(selectedCharId);
                     console.log(SelectId);
                     const imageContainer = document.getElementById("CharImage");
-                    await DisplayCharStatus(SelectId);
+                    await DisplayCharStatus(SelectId, APICharId);
                     AfSetReffer(SelectId);
                     await SetMainStatus(SelectId);
                     await show_char_statsform();
@@ -1300,7 +1300,7 @@
         startCountdown();
     }
 
-    async function DisplayCharStatus(SortOrder){
+    async function DisplayCharStatus(SortOrder, APICharIndex){
         // SortOrder の値が有効なインデックスであることを確認
         if (SortOrder >= 0 && SortOrder < UserData.data.avatarInfoList.length)
         {
@@ -1319,10 +1319,10 @@
             const BurstTalent = document.getElementById('BurstTalentLevel');
             if (CharConstellationsIndex > 2)
             {
-                CharTalentLevelList[CharDataJson["CharMap"][CharIndexList[SortOrder].toString()]["3重"]] +=3;
+                CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["3重"]] +=3;
                 if(CharConstellationsIndex > 4)
                 {
-                    CharTalentLevelList[CharDataJson["CharMap"][CharIndexList[SortOrder].toString()]["5重"]] +=3;
+                    CharTalentLevelList[CharDataJson["CharMap"][APICharIndex.toString()]["5重"]] +=3;
                 }
             };
             charIndexDisplay.innerHTML = char_names[SortOrder]
@@ -1814,11 +1814,12 @@
                     const imageUrl = this.src;
                     const CharId = this.id;
                     SelectId = CharId % 10; // 10で割った余りを取得 // 文字列に変換し、最後の文字を取得
+                    let APICharId = Math.floor(CharId / 10);
                     // 画像を表示するdiv要素を取得
-                    selectedCharId = CharDataJson["CharMap"][Math.floor(CharId / 10)]["id"]; // 文字列を数値に変換
+                    selectedCharId = CharDataJson["CharMap"][APICharId]["id"]; // 文字列を数値に変換
                     console.log(selectedCharId);
                     const imageContainer = document.getElementById("CharImage");
-                    await DisplayCharStatus(SelectId);
+                    await DisplayCharStatus(SelectId, APICharId);
                     AfSetReffer(SelectId);
                     await SetMainStatus(SelectId);
                     await show_char_statsform();

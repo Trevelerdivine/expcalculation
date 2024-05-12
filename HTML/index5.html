@@ -1177,6 +1177,7 @@
         if (uid === '') {
             const nicknameElement = document.getElementById('nickname');
             nicknameElement.textContent = "UIDを入力してください";
+            fetchButton.disabled = false;
             return;
         }
 

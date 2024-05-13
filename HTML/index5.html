@@ -93,7 +93,7 @@
         <input type="text" id="uidInput" placeholder="UIDを入力してください" style="width: 200px;">
         <br>
         <br>
-        <button id="fetchButton">データを取得する</button>
+        <button id="fetchButton" disabled>データを取得する</button>
         <div id="countdown"></div>
         <br>
         <div id="nickname">
@@ -1768,7 +1768,6 @@
 
     // ページの読み込みが完了したら、カウントダウンを再開
     window.onload = async function() {
-        fetchButton.disabled = true;
         showTable("table1","tablebutton1");
         showOption("option1", "parameterbutton1");
         const DataResponse = await fetch("../data/JsonData/CharacterData.json");
@@ -1877,6 +1876,7 @@
                 imageGrid.appendChild(imgElement);
             });
         }
+        fetchButton.disabled = false;
     }
 
     document.getElementById('attack_method').addEventListener('change', show_attack_method);

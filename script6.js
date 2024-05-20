@@ -417,11 +417,11 @@ async function calculate_fixed_status(bs, AfParameter)
 //変数は左から（score_distribution,base_status,af_main_status_buff）
 {
   let fixed_status = [0,0,0,0,0,0,0,0];
-  fixed_status[0] = bs[0] * (1 + AfParameter[0] / 100 + AfParameter[7]);
-  fixed_status[1] = bs[1] * (1 + AfParameter[1] / 100 + AfParameter[9]);
+  fixed_status[0] = bs[0] * (1 + AfParameter[0] / 100) + AfParameter[7];
+  fixed_status[1] = bs[1] * (1 + AfParameter[1] / 100) + AfParameter[9];
   fixed_status[2] = bs[2] + AfParameter[2];
   fixed_status[3] = bs[3] + AfParameter[3] / 100;
-  fixed_status[4] = bs[4] * (1 + AfParameter[4] / 100 + AfParameter[8]);
+  fixed_status[4] = bs[4] * (1 + AfParameter[4] / 100) + AfParameter[8];
   fixed_status[5] = bs[5] + AfParameter[5] / 100;
   fixed_status[6] = bs[6] + AfParameter[6] / 100;
   fixed_status[7] = bs[7] + AfParameter[parseInt(char_propaty[0]) + 10] / 100;

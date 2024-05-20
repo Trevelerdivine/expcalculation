@@ -418,7 +418,7 @@ async function calculate_fixed_status(bs, AfParameter)
 {
   let fixed_status = [0,0,0,0,0,0,0,0];
   fixed_status[0] = bs[0] * (1 + AfParameter[0] / 100 + AfParameter[7]);
-  fixed_status[1] = bs[1] * (1 + AfParameter[1] / 100 + amsb[9]);
+  fixed_status[1] = bs[1] * (1 + AfParameter[1] / 100 + AfParameter[9]);
   fixed_status[2] = bs[2] + AfParameter[2];
   fixed_status[3] = bs[3] + AfParameter[3] / 100;
   fixed_status[4] = bs[4] * (1 + AfParameter[4] / 100 + AfParameter[8]);

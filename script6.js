@@ -2029,9 +2029,7 @@ async function monte_carlo_calculate()
         {
             result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
         }
-        console.log(result_status);
         let basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
-        console.log(basic_dmg);
         let exp_dmg;
         if (depend_status[2] == 1) {
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
@@ -2040,6 +2038,7 @@ async function monte_carlo_calculate()
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8];
         }
+        exp_dmg = Math.log(exp_dmg);
 
         SumExpDmg += exp_dmg;
         SquareExpDmg += exp_dmg ** 2

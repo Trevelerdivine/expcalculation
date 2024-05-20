@@ -1906,13 +1906,13 @@ async function monte_carlo_calculate()
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
     const depend_status_index = await calculate_depend_status_index(depend_status);
-    const TryCount = 500000;
+    const TryCount = 1;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let response = "";
     let SumExpDmg = 0;
     let SquareExpDmg = 0;
-    let MinExpDmg  = 5000000;
+    let MinExpDmg  = 10;
     let MaxExpDmg = 0;
     let MaxAfStatus;
     document.getElementById("response").innerHTML = response;
@@ -2055,6 +2055,7 @@ async function monte_carlo_calculate()
                 MaxAfStatus = afStatusList;
             }   
     }
+    console.log(result_status);
     console.log(MinExpDmg)
     console.log(MaxExpDmg);
     console.log(MaxAfStatus)

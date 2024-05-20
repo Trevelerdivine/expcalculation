@@ -2085,6 +2085,7 @@ async function monte_carlo_calculate()
         let num2 = new Decimal(NormcdfData[Nsigma]);
         IntegralGauss = num1.sub(num2).toString();
         SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
+        console.log(Nsigma);
     }
     else
     {
@@ -2094,7 +2095,7 @@ async function monte_carlo_calculate()
         IntegralGauss = num1.add(num2).toString();
         SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
     }
-
+    
     console.log(IntegralGauss);
     console.log(SpendDays);
 
@@ -2102,7 +2103,7 @@ async function monte_carlo_calculate()
     
 
   calculationMessage.style.visibility = "hidden";
-  let result = "聖遺物厳選日数 ：" + SpendDays.toString(0);
+  let result = "聖遺物厳選日数 ：" + SpendDays + "日";
   document.getElementById("result").innerHTML = result;
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }

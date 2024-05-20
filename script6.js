@@ -2063,8 +2063,6 @@ async function monte_carlo_calculate()
     console.log(AverageExpDmg);
     console.log(sigma);
 
-    const Nsigma = ((Math.log(my_exp_dmg) - AverageExpDmg) / sigma * 10).toFixed(0);
-
     const NormcdfData = ["0.0", "0.039827837277028981465404618239182", "0.0792597094391030230424379529563", "0.11791142218895263730652896312142", "0.15542174161032416673688067602198", "0.19146246127401310363770461060834", "0.22574688224992641970563721493023", "0.25803634777692698525064957182749", "0.2881446014166033144244682282285", "0.31593987465324051144580219911856", 
                         "0.34134474606854294858523254563204", "0.36433393905361732482694296197365", "0.38493032977829173197777979304336", "0.40319951541438966684799017569778", "0.41924334076622895350381136936523", "0.43319279873114193399550595902011", "0.44520070830044200603952603342582", "0.45543453724145696051256699529203", "0.46406968088707419603967413855778", "0.47128344018399820059866303583547", 
                         "0.47724986805182079279971736283347", "0.48213557943718344321607575980164", "0.48609655248650138938524612310476", "0.48927588997832419460764451613719", "0.49180246407540387055561305967893", "0.49379033467422386483302189542581", "0.49533881197628124974900659077094", "0.49653302619695933150405817312012", "0.49744486966957206719846863920765", "0.49813418669961596204968971513496", 
@@ -2077,17 +2075,32 @@ async function monte_carlo_calculate()
                         "0.49999999999999999988714115940462", "0.49999999999999999995483408508565", "0.49999999999999999998210251187986", "0.49999999999999999999297771575956", "0.49999999999999999999727184642865", "0.49999999999999999999895054849246", "0.49999999999999999999960027787943", "0.49999999999999999999984925068312", "0.49999999999999999999994370717689", "0.49999999999999999999997918624781", 
                         "0.49999999999999999999999238014698", ]
     
-    let num1 = new Decimal('0.5');
-    let num2 = new Decimal(NormcdfData[Nsigma]);
-    let IntegralGauss = num1.add(num2).toString();
+    const DltDmg = Math.log(my_exp_dmg) - AverageExpDmg;
+    if (DltDmg > 0)
+    {
+        const Nsigma = (DltDmg/ sigma * 10).toFixed(0);   
+        let num1 = new Decimal('0.5');
+        let num2 = new Decimal(NormcdfData[Nsigma]);
+        let IntegralGauss = num1.sub(num2).toString();
+        let SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
+    }
+    else
+    {
+        const Nsigma = (-DltDmg/ sigma * 10).toFixed(0);   
+        let num1 = new Decimal('0.5');
+        let num2 = new Decimal(NormcdfData[Nsigma]);
+        let IntegralGauss = num1.add(num2).toString();
+        let SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
+    }
+
     console.log(IntegralGauss);
-    let SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
     console.log(SpendDays);
+
 
     
 
   calculationMessage.style.visibility = "hidden";
-  let result = "聖遺物厳選日数 ：";
+  let result = "聖遺物厳選日数 ：" + SpendDays.toString(0);
   document.getElementById("result").innerHTML = result;
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }

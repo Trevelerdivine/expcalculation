@@ -1912,6 +1912,8 @@ async function monte_carlo_calculate()
     let SumExpDmg = 0;
     let SquareExpDmg = 0;
     let MinExpDmg  = 1000000;
+    let MaxExpDmg = 0;
+    let MaxAfStatus;
     document.getElementById("response").innerHTML = response;
     if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
     {
@@ -2045,9 +2047,16 @@ async function monte_carlo_calculate()
         if (MinExpDmg > exp_dmg)
             {
                 MinExpDmg = exp_dmg;
-            }    
+            }   
+        if (MaxExpDmg < exp_dmg)
+            {
+                MaxExpDmg = exp_dmg;
+                MaxAfStatus = afStatusList;
+            }   
     }
     console.log(MinExpDmg)
+    console.log(MaxExpDmg);
+    console.log(MaxAfStatus)
     const AverageExpDmg = SumExpDmg / TryCount;
     const AverageSquareExpDmg = SquareExpDmg / TryCount;
     const sigma = (AverageSquareExpDmg - AverageExpDmg ** 2) ** 0.5

@@ -2057,10 +2057,11 @@ async function monte_carlo_calculate()
 
     const AverageExpDmg = SumExpDmg / TryCount;
     const AverageSquareExpDmg = SquareExpDmg / TryCount;
-    console.log(base_parameter);
-    console.log(exp_dmg);
+    const sigma = (AverageSquareExpDmg - AverageExpDmg ** 2) ** 0.5
+
+    console.log(my_exp_dmg);
     console.log(AverageExpDmg);
-    console.log(AverageSquareExpDmg)
+    console.log(sigma);
 
   calculationMessage.style.visibility = "hidden";
   let result = "聖遺物厳選日数 ：";

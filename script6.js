@@ -1905,7 +1905,7 @@ async function monte_carlo_calculate()
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
     const depend_status_index = await calculate_depend_status_index(depend_status);
-    const TryCount = 1000000;
+    const TryCount = 500000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let response = "";
@@ -2035,7 +2035,7 @@ async function monte_carlo_calculate()
         let exp_dmg;
         if (depend_status[2] == 1) {
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                    * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list) - 500;
+                    * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
         } else {
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8];

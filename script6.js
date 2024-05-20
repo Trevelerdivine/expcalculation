@@ -424,7 +424,7 @@ async function calculate_fixed_status(bs, AfParameter)
   fixed_status[4] = bs[4] * (1 + AfParameter[4] / 100 + AfParameter[8]);
   fixed_status[5] = bs[5] + AfParameter[5] / 100;
   fixed_status[6] = bs[6] + AfParameter[6] / 100;
-  fixed_status[7] = bs[7] + AfParameter[parseInt(char_propaty[0]) + 10];
+  fixed_status[7] = bs[7] + AfParameter[parseInt(char_propaty[0]) + 10] / 100;
   return fixed_status;
 }
 

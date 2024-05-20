@@ -1947,6 +1947,7 @@ async function monte_carlo_calculate()
     const reaction_bonus_list = create_reactionbonus_list();
     console.log(correct_coeff);
     let zetsuen_check = 0;
+    let afStatusList;
     if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
     {
         const zetsuen_checkbox = document.getElementById("af17_4");
@@ -1968,7 +1969,7 @@ async function monte_carlo_calculate()
 
     for (let j= 0; j < TryCount; j++)
     {
-        let afStatusList = Array(19).fill(0);
+        afStatusList = Array(19).fill(0);
         for (let i = 0; i < 5; i++) {
             let afInfo = await createAf(i);
             afStatusList[afInfo[0][0]] += afInfo[0][1];

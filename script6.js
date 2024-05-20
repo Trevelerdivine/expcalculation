@@ -2076,21 +2076,23 @@ async function monte_carlo_calculate()
                         "0.49999999999999999999999238014698", ]
     
     const DltDmg = Math.log(my_exp_dmg) - AverageExpDmg;
+    let IntegralGauss;
+    let SpendDays;
     if (DltDmg > 0)
     {
         const Nsigma = (DltDmg/ sigma * 10).toFixed(0);   
         let num1 = new Decimal('0.5');
         let num2 = new Decimal(NormcdfData[Nsigma]);
-        let IntegralGauss = num1.sub(num2).toString();
-        let SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
+        IntegralGauss = num1.sub(num2).toString();
+        SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
     }
     else
     {
         const Nsigma = (-DltDmg/ sigma * 10).toFixed(0);   
         let num1 = new Decimal('0.5');
         let num2 = new Decimal(NormcdfData[Nsigma]);
-        let IntegralGauss = num1.add(num2).toString();
-        let SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
+        IntegralGauss = num1.add(num2).toString();
+        SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
     }
 
     console.log(IntegralGauss);

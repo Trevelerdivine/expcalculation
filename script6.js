@@ -1955,7 +1955,6 @@ async function createAf(partsIndex) {
     }
 
     const afInfoList = [mainBuffList, subStatusList];
-    console.log(afInfoList);
     return afInfoList;
 }
 

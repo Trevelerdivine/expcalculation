@@ -1984,6 +1984,7 @@ async function monte_carlo_calculate()
     let response = "";
     let SumExpDmg = 0;
     let SquareExpDmg = 0;
+    let  = 10000;
     document.getElementById("response").innerHTML = response;
     if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
     {
@@ -2053,8 +2054,12 @@ async function monte_carlo_calculate()
                                         ));
         SumExpDmg += exp_dmg;
         SquareExpDmg += exp_dmg ** 2
+        if (MinExpDmg > exp_dmg)
+            {
+                MinExpDmg = exp_dmg;
+            }    
     }
-
+    console.log(MinExpDmg)
     const AverageExpDmg = SumExpDmg / TryCount;
     const AverageSquareExpDmg = SquareExpDmg / TryCount;
     const sigma = (AverageSquareExpDmg - AverageExpDmg ** 2) ** 0.5
@@ -2078,18 +2083,18 @@ async function monte_carlo_calculate()
     const DltDmg = Math.log(my_exp_dmg) - AverageExpDmg;
     let IntegralGauss;
     let SpendDays;
+    let Nsigma;
     if (DltDmg > 0)
     {
-        const Nsigma = (DltDmg/ sigma * 10).toFixed(0);   
+        Nsigma = (DltDmg/ sigma * 10).toFixed(0);   
         let num1 = new Decimal('0.5');
         let num2 = new Decimal(NormcdfData[Nsigma]);
         IntegralGauss = num1.sub(num2).toString();
         SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
-        console.log(Nsigma);
     }
     else
     {
-        const Nsigma = (-DltDmg/ sigma * 10).toFixed(0);   
+        Nsigma = (-DltDmg/ sigma * 10).toFixed(0);   
         let num1 = new Decimal('0.5');
         let num2 = new Decimal(NormcdfData[Nsigma]);
         IntegralGauss = num1.add(num2).toString();
@@ -2098,7 +2103,7 @@ async function monte_carlo_calculate()
     
     console.log(IntegralGauss);
     console.log(SpendDays);
-
+    console.log(NormcdfData[Nsigma]);
 
     
 

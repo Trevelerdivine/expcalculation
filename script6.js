@@ -2056,6 +2056,7 @@ async function monte_carlo_calculate()
             }   
     }
     console.log(result_status);
+    console.log(afStatusList);
     console.log(MinExpDmg)
     console.log(MaxExpDmg);
     console.log(MaxAfStatus)

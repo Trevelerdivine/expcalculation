@@ -142,6 +142,7 @@ async function calculate_base_status() {
 
   // 基礎ステータス配列を作成
   const base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
+  console.log(base_status);
   return base_status;
 }
 
@@ -1765,10 +1766,10 @@ async function calculateAndStoreResult(resultList) {
 }
 
 async function createAf(partsIndex) {
-    const fixBuffList = [7, 8, 9];
-    const rateList = [0, 1, 2, 3, 4];
-    const criticalList = [5, 6];
-    const subStatusList = [];
+    let fixBuffList = [7, 8, 9];
+    let rateList = [0, 1, 2, 3, 4];
+    let criticalList = [5, 6];
+    let subStatusList = [];
     let mainBuffList = [];
     const subStatusBaseIndex = [0.583, 0.729, 2.331, 0.648, 0.583, 0.389, 0.777, 29.875, 1.945, 2.315];
 

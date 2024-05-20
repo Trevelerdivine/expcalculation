@@ -1961,86 +1961,86 @@ async function createAf(partsIndex) {
 
 async function monte_carlo_calculate()
 {
-  const calculationMessage = document.getElementById("calculationMessage")
-  calculationMessage.style.visibility = "visible";
-  console.time('myTimer'); 
-  const input_check = identify_condition();
-  if (input_check ==1)
-  {
-    calculationMessage.style.visibility = "hidden";
-    return;
-  }
-
-  const char_parameter = await import_char_parameter();
-
-  const base_status = await calculate_base_status();
-  const af_main_status_buff = await calculate_af_main_status_buff();
-  const depend_status = await calculate_depend_status();
-  const team_fix_buff = await calculate_team_fix_buff(base_status);
-  const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-  const depend_status_index = await calculate_depend_status_index(depend_status);
-  const TryCount = 100000;
-  let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
-  let my_exp_dmg = my_result_status[8];
-  let response = "";
-  let SumExpDmg = 0;
-  let SquareExpDmg = 0;
-  document.getElementById("response").innerHTML = response;
-  if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
-  {
-    calculationMessage.style.visibility = "hidden";
-    response ="ダメージ期待値が異常値を示しています。再入力してください。"
-    document.getElementById("response").innerHTML = response;
-    return response;
-  }
-  
-  if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
-  {
-    calculationMessage.style.visibility = "hidden";
-    response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
-    document.getElementById("response").innerHTML = response;
-    return response;
-  }
-
-  let base_parameter;
-  let fixed_status = [0,0,0,0,0,0,0,0];
-  let result_status = [0,0,0,0,0,0,0,0];
-
-  const char_instance = await create_char_instance(base_status, char_parameter);
-  const weapon_instance = await create_weapon_instance(base_status);
-  const dmg_rate = await char_instance.dmg_rate_data();
-  const char_debuff = await char_instance.calculate_char_debuff();
-  const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
-  const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
-  const reaction_check = document.getElementById("reactionoff_flag");
-  const reaction_count_list = create_reactioncount_list();
-  const reaction_bonus_list = create_reactionbonus_list();
-  console.log(correct_coeff);
-  let zetsuen_check = 0;
-  if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
-  {
-    const zetsuen_checkbox = document.getElementById("af17_4");
-    if(zetsuen_checkbox.checked)
+    const calculationMessage = document.getElementById("calculationMessage")
+    calculationMessage.style.visibility = "visible";
+    console.time('myTimer'); 
+    const input_check = identify_condition();
+    if (input_check ==1)
     {
-      zetsuen_check = 1;
+        calculationMessage.style.visibility = "hidden";
+        return;
     }
-  }
 
-  let fixed_buff =[0,0,0,0,0,0,0,0];
-  fixed_buff[0] = await (char_instance.calculate_char_fixed_hp(fixed_status) + weapon_instance.calculate_weapon_fixed_hp(fixed_status) + team_fix_buff[0]) + AfMainFixStatus[0];
-  fixed_buff[1] = await (char_instance.calculate_char_fixed_deff(fixed_status) + weapon_instance.calculate_weapon_fixed_deff(fixed_status)+ team_fix_buff[1]);
-  fixed_buff[2] = await (char_instance.calculate_char_fixed_elm(fixed_status) + weapon_instance.calculate_weapon_fixed_elm(fixed_status) + team_fix_buff[2]);
-  fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge(fixed_status) + weapon_instance.calculate_weapon_fixed_elm_charge(fixed_status) + team_fix_buff[3]);
-  fixed_buff[4] = await (char_instance.calculate_char_fixed_attck(fixed_status) + weapon_instance.calculate_weapon_fixed_attck(fixed_status) + team_fix_buff[4]) + AfMainFixStatus[1];
-  fixed_buff[5] = await (char_instance.calculate_char_fixed_cr(fixed_status) + weapon_instance.calculate_weapon_fixed_cr(fixed_status) + team_fix_buff[5]);
-  fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
-  fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
+    const char_parameter = await import_char_parameter();
+
+    const base_status = await calculate_base_status();
+    const af_main_status_buff = await calculate_af_main_status_buff();
+    const depend_status = await calculate_depend_status();
+    const team_fix_buff = await calculate_team_fix_buff(base_status);
+    const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
+    const depend_status_index = await calculate_depend_status_index(depend_status);
+    const TryCount = 100000;
+    let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
+    let my_exp_dmg = my_result_status[8];
+    let response = "";
+    let SumExpDmg = 0;
+    let SquareExpDmg = 0;
+    document.getElementById("response").innerHTML = response;
+    if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
+    {
+        calculationMessage.style.visibility = "hidden";
+        response ="ダメージ期待値が異常値を示しています。再入力してください。"
+        document.getElementById("response").innerHTML = response;
+        return response;
+    }
+    
+    if (af_score < 0 || af_score > 350 || !Number.isFinite(af_score))
+    {
+        calculationMessage.style.visibility = "hidden";
+        response = "  聖遺物スコア: " + af_score + "<br>" + "聖遺物スコアが異常値を示しています。再入力してください。"
+        document.getElementById("response").innerHTML = response;
+        return response;
+    }
+
+    let base_parameter;
+    let fixed_status = [0,0,0,0,0,0,0,0];
+    let result_status = [0,0,0,0,0,0,0,0];
+
+    const char_instance = await create_char_instance(base_status, char_parameter);
+    const weapon_instance = await create_weapon_instance(base_status);
+    const dmg_rate = await char_instance.dmg_rate_data();
+    const char_debuff = await char_instance.calculate_char_debuff();
+    const weapon_debuff =  await weapon_instance.calculate_weapon_debuff();
+    const correct_coeff = await calculateEnemyProps(char_debuff, weapon_debuff);
+    const reaction_check = document.getElementById("reactionoff_flag");
+    const reaction_count_list = create_reactioncount_list();
+    const reaction_bonus_list = create_reactionbonus_list();
+    console.log(correct_coeff);
+    let zetsuen_check = 0;
+    if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
+    {
+        const zetsuen_checkbox = document.getElementById("af17_4");
+        if(zetsuen_checkbox.checked)
+        {
+        zetsuen_check = 1;
+        }
+    }
+
+    let fixed_buff =[0,0,0,0,0,0,0,0];
+    fixed_buff[0] = await (char_instance.calculate_char_fixed_hp(fixed_status) + weapon_instance.calculate_weapon_fixed_hp(fixed_status) + team_fix_buff[0]) + AfMainFixStatus[0];
+    fixed_buff[1] = await (char_instance.calculate_char_fixed_deff(fixed_status) + weapon_instance.calculate_weapon_fixed_deff(fixed_status)+ team_fix_buff[1]);
+    fixed_buff[2] = await (char_instance.calculate_char_fixed_elm(fixed_status) + weapon_instance.calculate_weapon_fixed_elm(fixed_status) + team_fix_buff[2]);
+    fixed_buff[3] = await (char_instance.calculate_char_fixed_elm_charge(fixed_status) + weapon_instance.calculate_weapon_fixed_elm_charge(fixed_status) + team_fix_buff[3]);
+    fixed_buff[4] = await (char_instance.calculate_char_fixed_attck(fixed_status) + weapon_instance.calculate_weapon_fixed_attck(fixed_status) + team_fix_buff[4]) + AfMainFixStatus[1];
+    fixed_buff[5] = await (char_instance.calculate_char_fixed_cr(fixed_status) + weapon_instance.calculate_weapon_fixed_cr(fixed_status) + team_fix_buff[5]);
+    fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
+    fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
 
     for (let i = 0; i < TryCount; i++)
     {
         let afStatusList = Array(19).fill(0);
         for (let i = 0; i < 5; i++) {
-            let afInfo = createAf(i);
+            let afInfo = await createAf(i);
             afStatusList[afInfo[0][0]] += afInfo[0][1];
             for (let k = 0; k < 4; k++) {
                 afStatusList[afInfo[1][k][0]] += afInfo[1][k][1];
@@ -2064,7 +2064,6 @@ async function monte_carlo_calculate()
   calculationMessage.style.visibility = "hidden";
   let result = "聖遺物厳選日数 ：";
   document.getElementById("result").innerHTML = result;
-
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 

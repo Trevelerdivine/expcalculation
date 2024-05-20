@@ -2057,6 +2057,8 @@ async function monte_carlo_calculate()
 
     const AverageExpDmg = SumExpDmg / TryCount;
     const AverageSquareExpDmg = SquareExpDmg / TryCount;
+    console.log(base_parameter);
+    console.log(exp_dmg);
     console.log(AverageExpDmg);
     console.log(AverageSquareExpDmg)
 

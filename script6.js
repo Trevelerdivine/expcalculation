@@ -413,18 +413,18 @@ async function calculate_score_distribute(af_score,depend_status)
   return score_distribution;
 }
 
-async function calculate_fixed_status(sd,bs,amsb)
+async function calculate_fixed_status(bs, AfParameter)
 //変数は左から（score_distribution,base_status,af_main_status_buff）
 {
   let fixed_status = [0,0,0,0,0,0,0,0];
-  fixed_status[0] = bs[0] * (1 + sd[0] * 3 / 400 + amsb[0]);
-  fixed_status[1] = bs[1] * (1 + sd[1] * 3 / 320 + amsb[1]);
-  fixed_status[2] = bs[2] + sd[2] * 3 + amsb[2];
-  fixed_status[3] = bs[3] + sd[3] / 120 + amsb[3]/100;
-  fixed_status[4] = bs[4] * (1 + sd[4] * 3 / 400 + amsb[4]);
-  fixed_status[5] = bs[5] + sd[5] / 200 + amsb[5] / 100;
-  fixed_status[6] = bs[6] + sd[6] / 100 + amsb[6] / 100;
-  fixed_status[7] = bs[7] + amsb[7];
+  fixed_status[0] = bs[0] * (1 + AfParameter[0] / 100 + AfParameter[7]);
+  fixed_status[1] = bs[1] * (1 + AfParameter[1] / 100 + amsb[9]);
+  fixed_status[2] = bs[2] + AfParameter[2];
+  fixed_status[3] = bs[3] + AfParameter[3] / 100;
+  fixed_status[4] = bs[4] * (1 + AfParameter[4] / 100 + AfParameter[8]);
+  fixed_status[5] = bs[5] + AfParameter[5] / 100;
+  fixed_status[6] = bs[6] + AfParameter[6] / 100;
+  fixed_status[7] = bs[7] + AfParameter[char_propaty[0] + 10];
   return fixed_status;
 }
 
@@ -1756,7 +1756,7 @@ async function CalculateIdealAfMainStatusBuff(status_array)
 }
 
 async function CalculateExpDmg(
-                               score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
+                               base_parameter, depend_status_index, fixed_buff, fixed_status,
                                result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
                                char_parameter, reaction_check, reaction_count_list, reaction_bonus_list
                               )
@@ -1842,7 +1842,6 @@ async function createAf(partsIndex) {
     const rateList = [0, 1, 2, 3, 4];
     const criticalList = [5, 6];
     const subStatusList = [];
-    const resultList = [];
     let mainBuffList = [];
     const subStatusBaseIndex = [0.583, 0.729, 2.331, 0.648, 0.583, 0.389, 0.777, 29.875, 1.945, 2.315];
 
@@ -1953,14 +1952,12 @@ async function createAf(partsIndex) {
 
     for (let i = 0; i < 4; i++) {
         subStatusList[i][1] *= subStatusBaseIndex[subStatusList[i][0]];
-        resultList.push(subStatusList[i][0] + "：" + subStatusList[i][1]);
     }
 
     const afInfoList = [mainBuffList, subStatusList];
     console.log(afInfoList);
     return afInfoList;
 }
-
 
 async function monte_carlo_calculate()
 {
@@ -1974,16 +1971,7 @@ async function monte_carlo_calculate()
     return;
   }
 
-  const checkboxStates = [];
-  const characterInfo = document.getElementById("characterInfo");
-  const checkboxes = characterInfo.querySelectorAll('input[type="checkbox"]');
   const char_parameter = await import_char_parameter();
-  checkboxes.forEach((checkbox) => {
-    checkboxStates.push(checkbox.checked);
-  });
-  while (checkboxStates.length < 4) {
-    checkboxStates.push(false);
-  }
 
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
@@ -1991,17 +1979,12 @@ async function monte_carlo_calculate()
   const team_fix_buff = await calculate_team_fix_buff(base_status);
   const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
   const depend_status_index = await calculate_depend_status_index(depend_status);
+  const TryCount = 100000;
   let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
   let my_exp_dmg = my_result_status[8];
-  let my_af_score_distribution = await  calculate_af_score(depend_status,base_status);
-  let af_score = my_af_score_distribution[7];
-  const my_af_score = my_af_score_distribution[7];
-  let dlt_score;
-  let critical_dmg;
-  let temp_critical_dmg;
-  let excess_crscore;
   let response = "";
-  let LoopCount = 2000 * depend_status_index.length;
+  let SumExpDmg = 0;
+  let SquareExpDmg = 0;
   document.getElementById("response").innerHTML = response;
   if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
   {
@@ -2018,30 +2001,10 @@ async function monte_carlo_calculate()
     document.getElementById("response").innerHTML = response;
     return response;
   }
-  let score_distribute;
-  let af_score_upper_limit = af_score;
-  let af_score_lower_limit = 0;
-  af_score = af_score/2;
 
   let base_parameter;
   let fixed_status = [0,0,0,0,0,0,0,0];
   let result_status = [0,0,0,0,0,0,0,0];
-  let save_status = [0,0,0,0,0,0,0,0];
-  let save_score_distribute = [0,0,0,0,0,0,0,0];
-  let save_af_score;
-  let optimaize_af_score;
-  let main_status_name = ["HP%","防御力%","元素熟知","元チャ効率","攻撃力%","会心率","会心ダメージ","元素ダメバフ","物理ダメバフ"]
-  let random_1;
-  let random_2;
-  let output_exp_dmg;
-  let dmg_error = Infinity;
-  let abs_dmg_error = Infinity;
-  let temp_status = [0,0,0,0,0,0,0,0];
-  let temp_score_distribute = [0,0,0,0,0,0,0];
-  let old_score_distribution = [0,0,0,0,0,0,0];
-  let new_score_distribution = [0,0,0,0,0,0,0];
-  let basic_dmg;
-  let n_count = 0;
 
   const char_instance = await create_char_instance(base_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status);
@@ -2054,7 +2017,6 @@ async function monte_carlo_calculate()
   const reaction_bonus_list = create_reactionbonus_list();
   console.log(correct_coeff);
   let zetsuen_check = 0;
-  let zetsuen_dmgbuff;
   if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
   {
     const zetsuen_checkbox = document.getElementById("af17_4");
@@ -2074,38 +2036,35 @@ async function monte_carlo_calculate()
   fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
   fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
 
-  while (n_count < 30)
-  {
-    let exp_dmg = 0;
-    let temp_exp_dmg = 0;
-    n_count = n_count + 1;
-    for (let i = 0; i < LoopCount; i++)
+    for (let i = 0; i < TryCount; i++)
     {
-      score_distribute = await calculate_score_distribute(af_score,depend_status);
-      base_parameter = await calculate_fixed_status(score_distribute,base_status,af_main_status_buff);
-      exp_dmg = await CalculateExpDmg(
-                                        score_distribute, base_parameter, depend_status_index, fixed_buff, fixed_status,
-                                        result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
-                                        char_parameter, reaction_check, reaction_count_list, reaction_bonus_list
-                                      );
-
-      if (temp_exp_dmg < exp_dmg)
-      {
-        temp_score_distribute = score_distribute;
-        temp_status = result_status.slice();
-        temp_exp_dmg = exp_dmg;
-      }
+        let afStatusList = Array(19).fill(0);
+        for (let i = 0; i < 5; i++) {
+            let afInfo = createAf(i);
+            afStatusList[afInfo[0][0]] += afInfo[0][1];
+            for (let k = 0; k < 4; k++) {
+                afStatusList[afInfo[1][k][0]] += afInfo[1][k][1];
+            }
+        }
+        base_parameter = await calculate_fixed_status(base_status,afStatusList);
+        exp_dmg = Math.log(await CalculateExpDmg(
+                                            base_parameter, depend_status_index, fixed_buff, fixed_status,
+                                            result_status, team_dynamic_buff, char_instance, weapon_instance, zetsuen_check, dmg_rate, correct_coeff,
+                                            char_parameter, reaction_check, reaction_count_list, reaction_bonus_list
+                                        ));
+        SumExpDmg += exp_dmg;
+        SquareExpDmg += exp_dmg ** 2
     }
 
+    const AverageExpDmg = SumExpDmg / TryCount;
+    const AverageSquareExpDmg = SquareExpDmg / TryCount;
+    console.log(AverageExpDmg);
+    console.log(AverageSquareExpDmg)
+
   calculationMessage.style.visibility = "hidden";
-  let result = "最適化聖遺物スコア (メインステータス考慮)： " + optimaize_af_score.toFixed(1) +"<br>" + "ダメージ期待値： " + output_exp_dmg;
+  let result = "聖遺物厳選日数 ：";
   document.getElementById("result").innerHTML = result;
 
-}
-
-
-  console.log(n_count);
-  create_radarchart(depend_status, my_af_score_distribution, save_score_distribute);
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 

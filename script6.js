@@ -1107,7 +1107,7 @@ async function calculate_team_fix_buff(base_status)
   else if (WeaponEquipData.appendPropId === "FIGHT_PROP_DEFENSE_PERCENT") {
     weapon_base_deffper = WeaponEquipData.statValue / 100;
   }
-  console.log([weapon_base_hpper,weapon_base_attackper,weapon_base_deffper]);
+
   // チェックボックスの情報をまとめた配列を作成
   const checkboxStates = {
     pyro_reso: pyroCheckbox.checked ? 1 : 0,
@@ -1978,7 +1978,7 @@ async function monte_carlo_calculate()
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
     const depend_status_index = await calculate_depend_status_index(depend_status);
-    const TryCount = 1000000;
+    const TryCount = 500000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let response = "";
@@ -2063,7 +2063,7 @@ async function monte_carlo_calculate()
     console.log(AverageExpDmg);
     console.log(sigma);
 
-    const Nsigma = (Math.log(my_exp_dmg - AverageExpDmg) / sigma * 10).toFixed(0);
+    const Nsigma = ((my_exp_dmg - AverageExpDmg) / sigma * 10).toFixed(0);
 
     const NormcdfData = ["0.0", "0.039827837277028981465404618239182", "0.0792597094391030230424379529563", "0.11791142218895263730652896312142", "0.15542174161032416673688067602198", "0.19146246127401310363770461060834", "0.22574688224992641970563721493023", "0.25803634777692698525064957182749", "0.2881446014166033144244682282285", "0.31593987465324051144580219911856", 
                         "0.34134474606854294858523254563204", "0.36433393905361732482694296197365", "0.38493032977829173197777979304336", "0.40319951541438966684799017569778", "0.41924334076622895350381136936523", "0.43319279873114193399550595902011", "0.44520070830044200603952603342582", "0.45543453724145696051256699529203", "0.46406968088707419603967413855778", "0.47128344018399820059866303583547", 

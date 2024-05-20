@@ -2164,7 +2164,7 @@ async function monte_carlo_calculate()
     let Nsigma;
     if (DltDmg > 0)
     {
-        Nsigma = (DltDmg/ sigma * 10).toFixed(0);   
+        Nsigma = (DltDmg/ sigma * 100).toFixed(0);   
         let num1 = new Decimal('0.5');
         let num2 = new Decimal(NormcdfData[Nsigma]);
         IntegralGauss = num1.sub(num2).toString();

@@ -1984,7 +1984,7 @@ async function monte_carlo_calculate()
     let response = "";
     let SumExpDmg = 0;
     let SquareExpDmg = 0;
-    let  = 10000;
+    let MinExpDmg  = 10000;
     document.getElementById("response").innerHTML = response;
     if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
     {

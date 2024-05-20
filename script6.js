@@ -1911,7 +1911,7 @@ async function monte_carlo_calculate()
     let response = "";
     let SumExpDmg = 0;
     let SquareExpDmg = 0;
-    let MinExpDmg  = 1000000;
+    let MinExpDmg  = 5000000;
     let MaxExpDmg = 0;
     let MaxAfStatus;
     document.getElementById("response").innerHTML = response;
@@ -2035,7 +2035,7 @@ async function monte_carlo_calculate()
         let exp_dmg;
         if (depend_status[2] == 1) {
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
-                    * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);
+                    * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list) - 500;
         } else {
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8];

@@ -2032,6 +2032,7 @@ async function monte_carlo_calculate()
                 afStatusList[MyAfStatus[i][1][k][0]] += MyAfStatus[i][1][k][1];
             }
         }
+        console.log(afStatusList)
         base_parameter = await calculate_fixed_status(base_status,afStatusList);
         for (let g = 0; g < depend_status_index.length; g++)
             {

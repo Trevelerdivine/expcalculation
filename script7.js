@@ -1907,13 +1907,11 @@ async function SetMyAfStatus(){
             MainPropList = [];
             status.flat.reliquarySubstats.map(stat => {
                 SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"])]);
-                console.log(SubPropList)
             });
             MainPropList.push([SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"], Math.round(status.flat.reliquaryMainstat.statValue / SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"])]);
             tempAfStatusList.push([MainPropList, SubPropList]);
         }
     });
-    console.log(tempAfStatusList)
     const fourthDigits = AfIdList.map(number => {
         const numberAsString = number.toString();
         const fourthDigit = numberAsString.charAt(3); // 4桁目の数値のインデックスは3
@@ -1929,12 +1927,12 @@ async function SetMyAfStatus(){
         }
         else
         {
-            AfSutatusList.push([0,0]);
+            AfSutatusList.push([0,0], [[0,0], [0,0], [0,0], [0,0]]);
             i-=1;
             k += 1;
         }
     }
-    console.log(AfSutatusList);
+    return AfSutatusList;
 }
 
 
@@ -1958,7 +1956,7 @@ async function monte_carlo_calculate()
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
     const depend_status_index = await calculate_depend_status_index(depend_status);
-    const TryCount = 500000;
+    const TryCount = 10000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let response = "";
@@ -1967,6 +1965,11 @@ async function monte_carlo_calculate()
     let MinExpDmg  = 10;
     let MaxExpDmg = 0;
     let MaxAfStatus;
+    let MyAfStatusSave = await SetMyAfStatus();
+    let MyAfStatus;
+    let RandomAfIndex;
+    let UpperNum = 0;
+    let StrongestAf;
     document.getElementById("response").innerHTML = response;
     if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
     {
@@ -2021,9 +2024,12 @@ async function monte_carlo_calculate()
 
     for (let j= 0; j < TryCount; j++)
     {
+        RandomAfIndex = Math.floor(Math.random() * 5);
+        MyAfStatus = MyAfStatusSave;
+        afInfo = await createAf(RandomAfIndex);
+        MyAfStatus[i] = afInfo;
         afStatusList = Array(19).fill(0);
         for (let i = 0; i < 5; i++) {
-            let afInfo = await createAf(i);
             afStatusList[afInfo[0][0]] += afInfo[0][1];
             for (let k = 0; k < 4; k++) {
                 afStatusList[afInfo[1][k][0]] += afInfo[1][k][1];
@@ -2098,57 +2104,15 @@ async function monte_carlo_calculate()
 
         SumExpDmg += exp_dmg;
         SquareExpDmg += exp_dmg ** 2;
-        if (MinExpDmg > exp_dmg)
+        if (exp_dmg > my_exp_dmg)
             {
-                MinExpDmg = exp_dmg;
-            }   
-        if (MaxExpDmg < exp_dmg)
-            {
-                MaxExpDmg = exp_dmg;
-                MaxAfStatus = afStatusList;
+                UpperNum += 1;
+                StrongestAf = [RandomAfIndex, afInfo];
             }   
     }
-    console.log(result_status);
-    console.log(afStatusList);
-    console.log(MinExpDmg)
-    console.log(MaxExpDmg);
-    console.log(MaxAfStatus)
-    const AverageExpDmg = SumExpDmg / TryCount;
-    const AverageSquareExpDmg = SquareExpDmg / TryCount;
-    const sigma = (AverageSquareExpDmg - AverageExpDmg ** 2) ** 0.5
-
-    console.log(my_exp_dmg);
-    console.log(AverageExpDmg);
-    console.log(sigma);
-
-    const DltDmg = Math.log(my_exp_dmg) - AverageExpDmg;
-    let IntegralGauss;
-    let SpendDays;
-    let Nsigma;
-    if (DltDmg > 0)
-    {
-        Nsigma = (DltDmg/ sigma * 100).toFixed(0);   
-        let num1 = new Decimal('0.5');
-        let num2 = new Decimal(NormcdfData[Nsigma]);
-        IntegralGauss = num1.sub(num2).toString();
-        SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
-    }
-    else
-    {
-        Nsigma = (-DltDmg/ sigma * 100).toFixed(0);   
-        let num1 = new Decimal('0.5');
-        let num2 = new Decimal(NormcdfData[Nsigma]);
-        IntegralGauss = num1.add(num2).toString();
-        SpendDays = 1/(parseFloat(IntegralGauss)) ** 0.2;
-    }
-    
-    console.log(IntegralGauss);
-    console.log(SpendDays);
-    console.log(NormcdfData[Nsigma]);
-
-    
-
-  calculationMessage.style.visibility = "hidden";
+    console.log(TryCount/UpperNum/5);
+    console.log(StrongestAf);
+   
   let result = "聖遺物厳選日数 ：" + SpendDays + "日";
   document.getElementById("result").innerHTML = result;
   console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示

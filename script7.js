@@ -1956,7 +1956,7 @@ async function monte_carlo_calculate()
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
     const depend_status_index = await calculate_depend_status_index(depend_status);
-    const TryCount = 1000000;
+    const TryCount = 1;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let response = "";
@@ -2025,9 +2025,9 @@ async function monte_carlo_calculate()
         MyAfStatus[RandomAfIndex] = afInfo;
         afStatusList = Array(19).fill(0);
         for (let i = 0; i < 5; i++) {
-            afStatusList[afInfo[0][0]] += afInfo[0][1];
+            afStatusList[afInfo[0][0]] += MyAfStatus[0][1];
             for (let k = 0; k < 4; k++) {
-                afStatusList[afInfo[1][k][0]] += afInfo[1][k][1];
+                afStatusList[afInfo[1][k][0]] += MyAfStatus[1][k][1];
             }
         }
         base_parameter = await calculate_fixed_status(base_status,afStatusList);
@@ -2102,12 +2102,15 @@ async function monte_carlo_calculate()
                 StrongestAf = [RandomAfIndex, afInfo];
             }   
     }
+    console.log(my_exp_dmg);
+    console.log(exp_dmg)
     console.log(TryCount/UpperNum/5);
     console.log(StrongestAf);
-  let SpendDays = (TryCount/UpperNum/5).toFixed(0)
-  let result = "聖遺物厳選日数 ：" + SpendDays + "日";
-  document.getElementById("result").innerHTML = result;
-  console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
+    calculationMessage.style.visibility = "hidden";
+    let SpendDays = (TryCount/UpperNum/5).toFixed(0)
+    let result = "聖遺物厳選日数 ：" + SpendDays + "日";
+    document.getElementById("result").innerHTML = result;
+    console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 
 function DisplayCharacter()

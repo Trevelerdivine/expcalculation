@@ -1908,9 +1908,8 @@ async function SetMyAfStatus(){
             status.flat.reliquarySubstats.map(stat => {
                 SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"]) * subStatusBaseIndex[SubstatusData[stat.appendPropId]["id"]]]);
             });
-            MainStatus = [SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"], Math.round(status.flat.reliquaryMainstat.statValue / SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]) * SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]]
-            MainPropList.push(MainStatus);
-            tempAfStatusList.push([MainPropList, SubPropList]);
+            MainStatus = [SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"], Math.round(status.flat.reliquaryMainstat.statValue / SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]) * SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]];
+            tempAfStatusList.push([MainStatus, SubPropList]);
         }
     });
     const fourthDigits = AfIdList.map(number => {

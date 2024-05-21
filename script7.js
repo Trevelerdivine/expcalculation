@@ -1887,7 +1887,7 @@ async function createAf(partsIndex) {
 }
 
 async function SetMyAfStatus(){
-    const Afresponse = await fetch("../data/JsonData/WeaponData.json");
+    const Afresponse = await fetch("../data/JsonData/AfSubStatusData.json");
     SubstatusData = await Afresponse.json();
     let AfJsonList = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList;
     // "itemId" の値を格納するための配列を初期化
@@ -1915,6 +1915,7 @@ async function SetMyAfStatus(){
         const fourthDigit = numberAsString.charAt(3); // 4桁目の数値のインデックスは3
         return parseInt(fourthDigit); // 文字列から数値に変換して返す
     });
+    
 
     for (let i = 0; i <fourthDigits.length; i++) {
         if (fourthDigits[i] == 5)

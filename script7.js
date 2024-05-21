@@ -142,7 +142,6 @@ async function calculate_base_status() {
 
   // 基礎ステータス配列を作成
   const base_status = [base_hp, base_deff, base_elm, base_elm_charge, base_attck, base_cr, base_cd, base_dmg_buff];
-  console.log(base_status);
   return base_status;
 }
 
@@ -2024,7 +2023,7 @@ async function monte_carlo_calculate()
         RandomAfIndex = Math.floor(Math.random() * 5);
         MyAfStatus = MyAfStatusSave;
         afInfo = await createAf(RandomAfIndex);
-        MyAfStatus[RandomAfIndex] = afInfo;
+        //MyAfStatus[RandomAfIndex] = afInfo;
         afStatusList = Array(19).fill(0);
         console.log(MyAfStatus)
         for (let i = 0; i < 5; i++) {

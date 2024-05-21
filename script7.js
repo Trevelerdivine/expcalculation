@@ -2025,6 +2025,7 @@ async function monte_carlo_calculate()
         afInfo = await createAf(RandomAfIndex);
         MyAfStatus[RandomAfIndex] = afInfo;
         afStatusList = Array(19).fill(0);
+        console.log(MyAfStatus)
         for (let i = 0; i < 5; i++) {
             afStatusList[afInfo[0][0]] += MyAfStatus[0][1];
             for (let k = 0; k < 4; k++) {

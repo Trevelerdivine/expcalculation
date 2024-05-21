@@ -1904,6 +1904,7 @@ async function SetMyAfStatus(){
             AfIdList.push(status["itemId"]);
             status.flat.reliquarySubstats.map(stat => {
                 SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"])]);
+                console.log(SubPropList)
             });
             MainPropList.push([SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"], Math.round(status.flat.reliquaryMainstat.statValue / SubstatusData[status.flat.reliquaryMainstat.statValue]["基礎数値"])]);
             tempAfStatusList.push([MainPropList, SubPropList]);

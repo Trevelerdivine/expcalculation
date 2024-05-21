@@ -1984,6 +1984,7 @@ async function monte_carlo_calculate()
     }
 
     let base_parameter;
+    let exp_dmg;
     let fixed_status = [0,0,0,0,0,0,0,0];
     let result_status = [0,0,0,0,0,0,0,0];
 
@@ -2089,7 +2090,6 @@ async function monte_carlo_calculate()
             result_status[7] += await (char_instance.calculate_char_result_dmg_buff(fixed_status, result_status) + weapon_instance.calculate_weapon_result_dmg_buff(fixed_status, result_status));
         }
         let basic_dmg = await char_instance.calculate_basic_dmg(dmg_rate, result_status);
-        let exp_dmg;
         if (depend_status[2] == 1) {
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8] + calculate_elmreaction_constdmg(char_parameter[1], result_status, correct_coeff, reaction_check, reaction_count_list, reaction_bonus_list);

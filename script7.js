@@ -1932,6 +1932,7 @@ async function SetMyAfStatus(){
             k += 1;
         }
     }
+    console.log(AfSutatusList);
     return AfSutatusList;
 }
 

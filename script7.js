@@ -2027,7 +2027,7 @@ async function monte_carlo_calculate()
         RandomAfIndex = Math.floor(Math.random() * 5);
         MyAfStatus = MyAfStatusSave;
         afInfo = await createAf(RandomAfIndex);
-        MyAfStatus[i] = afInfo;
+        MyAfStatus[RandomAfIndex] = afInfo;
         afStatusList = Array(19).fill(0);
         for (let i = 0; i < 5; i++) {
             afStatusList[afInfo[0][0]] += afInfo[0][1];

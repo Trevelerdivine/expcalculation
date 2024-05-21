@@ -2027,9 +2027,9 @@ async function monte_carlo_calculate()
         afStatusList = Array(19).fill(0);
         console.log(MyAfStatus)
         for (let i = 0; i < 5; i++) {
-            afStatusList[afInfo[0][0]] += MyAfStatus[0][1];
+            afStatusList[afInfo[i][0][0]] += MyAfStatus[i][0][1];
             for (let k = 0; k < 4; k++) {
-                afStatusList[afInfo[1][k][0]] += MyAfStatus[1][k][1];
+                afStatusList[afInfo[i][1][k][0]] += MyAfStatus[i][1][k][1];
             }
         }
         base_parameter = await calculate_fixed_status(base_status,afStatusList);

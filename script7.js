@@ -1896,6 +1896,7 @@ async function SetMyAfStatus(){
     let AfSutatusList = [];
     let MainPropList = [];
     let SubPropList = [];
+    const AfArray = [4,2,5,1,3]
 
     // JSON配列の各要素を走査して、"itemId" の要素を取り出す
     AfJsonList.forEach(status => {
@@ -1919,24 +1920,21 @@ async function SetMyAfStatus(){
         return parseInt(fourthDigit); // 文字列から数値に変換して返す
     });
     
-
+    let k = 0
     for (let i = 0; i <fourthDigits.length; i++) {
-        if (fourthDigits[i] == 5)
+        if (fourthDigits[i] == AfArray[k])
         {
-            PropName = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[i].flat.reliquaryMainstat.mainPropId;
-
+            AfSutatusList.push(tempAfStatusList[i]);
+            k += 1;
         }
-        else if (fourthDigits[i] == 1)
+        else
         {
-            PropName = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[i].flat.reliquaryMainstat.mainPropId;
-
-        }
-        else if (fourthDigits[i] == 3)
-        {
-            PropName = UserData.data.avatarInfoList[CharIndexList[SelectId]].equipList[i].flat.reliquaryMainstat.mainPropId;
-
+            AfSutatusList.push([0,0]);
+            i-=1;
+            k += 1;
         }
     }
+    console.log(AfSutatusList);
 }
 
 

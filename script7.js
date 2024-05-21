@@ -1896,7 +1896,7 @@ async function SetMyAfStatus(){
     let MainPropList = [];
     let SubPropList = [];
     const AfArray = [4,2,5,1,3]
-
+    const subStatusBaseIndex = [0.583, 0.729, 2.331, 0.648, 0.583, 0.389, 0.777, 29.875, 1.945, 2.315, 0.583, 0.583, 0.583, 0.583, 0.583, 0.583, 0.583, 0.583, 0];
     // JSON配列の各要素を走査して、"itemId" の要素を取り出す
     AfJsonList.forEach(status => {
         // オブジェクトから "itemId" の要素を取り出して配列に追加
@@ -1905,9 +1905,9 @@ async function SetMyAfStatus(){
             SubPropList = [];
             MainPropList = [];
             status.flat.reliquarySubstats.map(stat => {
-                SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"])]);
+                SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"]) * subStatusBaseIndex[SubstatusData[stat.appendPropId]["id"]]]);
             });
-            MainPropList.push([SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"], Math.round(status.flat.reliquaryMainstat.statValue / SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"])]);
+            MainPropList.push([SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"], Math.round(status.flat.reliquaryMainstat.statValue / SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]) * SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"]]);
             tempAfStatusList.push([MainPropList, SubPropList]);
         }
     });

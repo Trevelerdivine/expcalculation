@@ -1903,6 +1903,7 @@ async function SetMyAfStatus(){
         if (status.hasOwnProperty("itemId") && status.hasOwnProperty("reliquary")) {
             AfIdList.push(status["itemId"]);
             SubPropList = [];
+            MainPropList = [];
             status.flat.reliquarySubstats.map(stat => {
                 SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"])]);
                 console.log(SubPropList)

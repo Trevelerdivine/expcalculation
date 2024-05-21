@@ -1932,7 +1932,6 @@ async function SetMyAfStatus(){
             k += 1;
         }
     }
-    console.log(AfSutatusList);
     return AfSutatusList;
 }
 
@@ -1957,7 +1956,7 @@ async function monte_carlo_calculate()
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
     const depend_status_index = await calculate_depend_status_index(depend_status);
-    const TryCount = 1;
+    const TryCount = 1000000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let response = "";
@@ -2024,16 +2023,15 @@ async function monte_carlo_calculate()
         RandomAfIndex = Math.floor(Math.random() * 5);
         MyAfStatus = MyAfStatusSave;
         afInfo = await createAf(RandomAfIndex);
-        //MyAfStatus[RandomAfIndex] = afInfo;
+        MyAfStatus[RandomAfIndex] = afInfo;
         afStatusList = Array(19).fill(0);
-        console.log(MyAfStatus)
         for (let i = 0; i < 5; i++) {
             afStatusList[MyAfStatus[i][0][0]] += MyAfStatus[i][0][1];
             for (let k = 0; k < 4; k++) {
                 afStatusList[MyAfStatus[i][1][k][0]] += MyAfStatus[i][1][k][1];
             }
         }
-        console.log(afStatusList)
+
         base_parameter = await calculate_fixed_status(base_status,afStatusList);
         for (let g = 0; g < depend_status_index.length; g++)
             {

@@ -1902,6 +1902,7 @@ async function SetMyAfStatus(){
         // オブジェクトから "itemId" の要素を取り出して配列に追加
         if (status.hasOwnProperty("itemId") && status.hasOwnProperty("reliquary")) {
             AfIdList.push(status["itemId"]);
+            SubPropList = [];
             status.flat.reliquarySubstats.map(stat => {
                 SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"])]);
                 console.log(SubPropList)

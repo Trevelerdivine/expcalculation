@@ -1956,7 +1956,7 @@ async function monte_carlo_calculate()
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
     const depend_status_index = await calculate_depend_status_index(depend_status);
-    const TryCount = 100000;
+    const TryCount = 1000000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
     let response = "";
@@ -2107,10 +2107,18 @@ async function monte_carlo_calculate()
     console.log(my_exp_dmg);
     console.log(exp_dmg)
     console.log(MaxDmg);
-    console.log(TryCount/UpperNum/5);
     console.log(StrongestAf);
     calculationMessage.style.visibility = "hidden";
-    let SpendDays = (TryCount/UpperNum/5).toFixed(0)
+    let SpendDays;
+    if(UpperNum < 5)
+    {
+        SpendDays = "？？？"
+    }
+    else
+    {
+        SpendDays = (TryCount/UpperNum/5).toFixed(0)
+    }
+
     let result = "聖遺物厳選日数 ：" + SpendDays + "日";
     document.getElementById("result").innerHTML = result;
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示

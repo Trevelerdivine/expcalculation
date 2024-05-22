@@ -1906,8 +1906,8 @@ async function SetMyAfStatus(){
             SubPropList = [];
             MainPropList = [];
             status.flat.reliquarySubstats.map(stat => {
-                SubStatus = [SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"]) * subStatusBaseIndex[SubstatusData[stat.appendPropId]["id"]]];
-                SubPropList.push();
+                SubStatus = []
+                SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"]) * subStatusBaseIndex[SubstatusData[stat.appendPropId]["id"]]]);
             });
             MainStatus = [SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"], Math.round(status.flat.reliquaryMainstat.statValue / SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]) * SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]];
             tempAfStatusList.push([MainStatus, SubPropList]);

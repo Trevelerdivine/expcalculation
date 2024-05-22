@@ -1893,7 +1893,7 @@ async function SetMyAfStatus(){
     let AfIdList = [];
     let tempAfStatusList = [];
     let AfSutatusList = [];
-    let MainPropList = [];
+    let SubStatus = [];
     let SubPropList = [];
     let MainStatus;
     const AfArray = [4,2,5,1,3]
@@ -1906,7 +1906,8 @@ async function SetMyAfStatus(){
             SubPropList = [];
             MainPropList = [];
             status.flat.reliquarySubstats.map(stat => {
-                SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"]) * subStatusBaseIndex[SubstatusData[stat.appendPropId]["id"]]]);
+                SubStatus = [SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"]) * subStatusBaseIndex[SubstatusData[stat.appendPropId]["id"]]];
+                SubPropList.push();
             });
             MainStatus = [SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"], Math.round(status.flat.reliquaryMainstat.statValue / SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]) * SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]];
             tempAfStatusList.push([MainStatus, SubPropList]);

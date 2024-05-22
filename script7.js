@@ -2022,7 +2022,7 @@ async function monte_carlo_calculate()
     for (let j= 0; j < TryCount; j++)
     {
         RandomAfIndex = Math.floor(Math.random() * 5);
-        MyAfStatus = MyAfStatusSave;
+        MyAfStatus = MyAfStatusSave.slice();
         afInfo = await createAf(RandomAfIndex);
         MyAfStatus[RandomAfIndex] = afInfo;
         afStatusList = Array(19).fill(0);
@@ -2106,6 +2106,7 @@ async function monte_carlo_calculate()
     }
     console.log(my_exp_dmg);
     console.log(exp_dmg)
+    console.log(MaxDmg);
     console.log(TryCount/UpperNum/5);
     console.log(StrongestAf);
     calculationMessage.style.visibility = "hidden";

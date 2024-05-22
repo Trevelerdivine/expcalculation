@@ -2116,16 +2116,16 @@ async function monte_carlo_calculate()
     let SpendDays = AfPartsNum.map(num => num / TryCount)
 
 
-    let result = "「花」更新確率 ：" + (SpendDays[0]*100).toFixed(1) + "%"
-                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[0]*5)).toFixed() + "<br>"
-                + "「羽」更新確率 ：" + (SpendDays[1]*100).toFixed(1) + "%"
-                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[1]*5)).toFixed() + "<br>"
-                + "「時計」更新確率 ：" + (SpendDays[2]*100).toFixed(1) + "%"
-                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[2]*5)).toFixed() + "<br>"
-                + "「杯」更新確率 ：" + (SpendDays[3]*100).toFixed(1) + "%"
-                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[3]*5)).toFixed() + "<br>"
-                + "「冠」更新確率 ：" + (SpendDays[4]*100).toFixed(1) + "%"
-                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[4]*5)).toFixed() + "<br>";
+    let result = "「花」更新確率 ：" + (SpendDays[0]*100).toFixed(3) + "%"
+                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[0]*5)).toFixed() + "<br>"
+                + "「羽」更新確率 ：" + (SpendDays[1]*100).toFixed(3) + "%"
+                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[1]*5)).toFixed() + "<br>"
+                + "「時計」更新確率 ：" + (SpendDays[2]*100).toFixed(3) + "%"
+                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[2]*5)).toFixed() + "<br>"
+                + "「杯」更新確率 ：" + (SpendDays[3]*100).toFixed(3) + "%"
+                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[3]*5)).toFixed() + "<br>"
+                + "「冠」更新確率 ：" + (SpendDays[4]*100).toFixed(3) + "%"
+                + "<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厳選日数 ：" + (1/(SpendDays[4]*5)).toFixed() + "<br>";
     document.getElementById("result").innerHTML = result;
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }

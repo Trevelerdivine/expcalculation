@@ -1987,6 +1987,7 @@ async function monte_carlo_calculate()
     let MaxDmg = 0;
     let fixed_status = [0,0,0,0,0,0,0,0];
     let result_status = [0,0,0,0,0,0,0,0];
+    let AfPartsNum = [0,0,0,0,0];
 
     const char_instance = await create_char_instance(base_status, char_parameter);
     const weapon_instance = await create_weapon_instance(base_status);
@@ -2099,7 +2100,7 @@ async function monte_carlo_calculate()
 
         if (exp_dmg > my_exp_dmg)
             {
-                UpperNum += 1;
+                AfPartsNum[RandomAfIndex] += 1;
                 if (MaxDmg < exp_dmg)
                     {
                         MaxDmg = exp_dmg;
@@ -2112,17 +2113,19 @@ async function monte_carlo_calculate()
     console.log(MaxDmg);
     console.log(StrongestAf);
     calculationMessage.style.visibility = "hidden";
-    let SpendDays;
-    if(UpperNum < 5)
-    {
-        SpendDays = "？？？"
-    }
-    else
-    {
-        SpendDays = (TryCount/UpperNum/5).toFixed(0)
-    }
+    let SpendDays = AfPartsNum.map(num => num / TryCount)
 
-    let result = "聖遺物厳選日数 ：" + SpendDays + "日";
+
+    let result = "「花」更新確率 ：" + (SpendDays[0]*100).toFixed(1) + "%"
+                + "<br>" + "    厳選日数 ：" + (1/(SpendDays[0]*5)).toFixed()
+                + "「羽」更新確率 ：" + (SpendDays[1]*100).toFixed(1) + "%"
+                + "<br>" + "    厳選日数 ：" + (1/(SpendDays[1]*5)).toFixed()
+                + "「時計」更新確率 ：" + (SpendDays[2]*100).toFixed(1) + "%"
+                + "<br>" + "    厳選日数 ：" + (1/(SpendDays[2]*5)).toFixed()
+                + "「杯」更新確率 ：" + (SpendDays[3]*100).toFixed(1) + "%"
+                + "<br>" + "    厳選日数 ：" + (1/(SpendDays[3]*5)).toFixed()
+                + "「冠」更新確率 ：" + (SpendDays[4]*100).toFixed(1) + "%"
+                + "<br>" + "    厳選日数 ：" + (1/(SpendDays[4]*5)).toFixed();
     document.getElementById("result").innerHTML = result;
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }

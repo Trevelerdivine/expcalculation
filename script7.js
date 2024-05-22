@@ -1893,7 +1893,7 @@ async function SetMyAfStatus(){
     let AfIdList = [];
     let tempAfStatusList = [];
     let AfSutatusList = [];
-    let SubStatus = [];
+    let MainPropList = [];
     let SubPropList = [];
     let MainStatus;
     const AfArray = [4,2,5,1,3]
@@ -1906,7 +1906,6 @@ async function SetMyAfStatus(){
             SubPropList = [];
             MainPropList = [];
             status.flat.reliquarySubstats.map(stat => {
-                SubStatus = []
                 SubPropList.push([SubstatusData[stat.appendPropId]["id"], Math.round(stat.statValue / SubstatusData[stat.appendPropId]["基礎数値"]) * subStatusBaseIndex[SubstatusData[stat.appendPropId]["id"]]]);
             });
             MainStatus = [SubstatusData[status.flat.reliquaryMainstat.mainPropId]["id"], Math.round(status.flat.reliquaryMainstat.statValue / SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]) * SubstatusData[status.flat.reliquaryMainstat.mainPropId]["基礎数値"]];
@@ -2023,11 +2022,10 @@ async function monte_carlo_calculate()
     {
         RandomAfIndex = Math.floor(Math.random() * 5);
         MyAfStatus = MyAfStatusSave;
-        console.log(MyAfStatus);
+        console.log(MyAfStatus)
         afInfo = await createAf(RandomAfIndex);
         console.log(afInfo);
-        MyAfStatus[RandomAfIndex] = afInfo;
-        console.log(MyAfStatus);
+        //MyAfStatus[RandomAfIndex] = afInfo;
         afStatusList = Array(19).fill(0);
         for (let i = 0; i < 5; i++) {
             afStatusList[MyAfStatus[i][0][0]] += MyAfStatus[i][0][1];

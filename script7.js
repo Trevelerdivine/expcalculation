@@ -1984,7 +1984,7 @@ async function monte_carlo_calculate()
 
     let base_parameter;
     let exp_dmg;
-    let MaxDmg;
+    let MaxDmg = 0;
     let fixed_status = [0,0,0,0,0,0,0,0];
     let result_status = [0,0,0,0,0,0,0,0];
 
@@ -2100,8 +2100,11 @@ async function monte_carlo_calculate()
         if (exp_dmg > my_exp_dmg)
             {
                 UpperNum += 1;
-                StrongestAf = [RandomAfIndex, afInfo];
-                MaxDmg = exp_dmg;
+                if (MaxDmg < exp_dmg)
+                    {
+                        MaxDmg = exp_dmg;
+                        StrongestAf = [RandomAfIndex, afInfo];
+                    }
             }   
     }
     console.log(my_exp_dmg);

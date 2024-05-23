@@ -1834,7 +1834,7 @@ async function createAf(partsIndex, depend_index) {
         }
     }
 
-    if (mainBuffList[0] < 7 && mainBuffList[0] > 9 && depend_index[mainBuffList[0]] == 0)
+    if ((mainBuffList[0] < 7 || mainBuffList[0] > 9) && depend_index[mainBuffList[0]] == 0)
     {
         return 1;
     } 

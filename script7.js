@@ -1976,6 +1976,7 @@ async function monte_carlo_calculate()
         DependSubStatusIndex[depend_status_index[d]] = 1; 
     }
     DependSubStatusIndex[10 + parseInt(DependSubStatusIndex[0])] = 1;
+    console.log(DependSubStatusIndex);
 
     document.getElementById("response").innerHTML = response;
     if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))

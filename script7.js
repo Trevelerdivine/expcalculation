@@ -1971,12 +1971,11 @@ async function monte_carlo_calculate()
     let StrongestAf;
     let nCount = 0;
     let DependSubStatusIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    for (let d= 0; d < depend_status_index; d++)
+    for (let d= 0; d < depend_status_index.length; d++)
     {
         DependSubStatusIndex[depend_status_index[d]] = 1; 
     }
-    DependSubStatusIndex[10 + parseInt(DependSubStatusIndex[0])] = 1;
-    console.log(DependSubStatusIndex);
+    DependSubStatusIndex[10 + parseInt(char_propaty[0])] = 1;
 
     document.getElementById("response").innerHTML = response;
     if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))

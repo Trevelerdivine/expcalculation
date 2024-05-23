@@ -1973,7 +1973,7 @@ async function monte_carlo_calculate()
     let DependSubStatusIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     for (let d= 0; d < depend_status_index; d++)
     {
-        DependSubStatusIndex[d] = 1; 
+        DependSubStatusIndex[depend_status_index[d]] = 1; 
     }
     DependSubStatusIndex[10 + parseInt(DependSubStatusIndex[0])] = 1;
 

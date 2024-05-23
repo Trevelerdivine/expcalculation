@@ -1773,64 +1773,53 @@ async function createAf(partsIndex, depend_index) {
     const subStatusBaseIndex = [0.583, 0.729, 2.331, 0.648, 0.583, 0.389, 0.777, 29.875, 1.945, 2.315];
 
     const random_number_float = Math.random();
-
-    if (partsIndex === 0) {
-        mainBuffList = [7, 160 * subStatusBaseIndex[7]];
-    } else if (partsIndex === 1) {
-        mainBuffList = [8, 160 * subStatusBaseIndex[8]];
-    } else if (partsIndex === 2) {
-        if (random_number_float < 0.26666666) {
-            mainBuffList = [0, 80 * subStatusBaseIndex[0]];
-        } else if (random_number_float < 0.53333333) {
-            mainBuffList = [1, 80 * subStatusBaseIndex[1]];
-        } else if (random_number_float < 0.8) {
-            mainBuffList = [4, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.9) {
-            mainBuffList = [2, 80 * subStatusBaseIndex[2]];
+    
+    const partsConfig = {
+        0: [7, 160 * subStatusBaseIndex[7]],
+        1: [8, 160 * subStatusBaseIndex[8]],
+        2: [
+            { threshold: 0.26666666, value: [0, 80 * subStatusBaseIndex[0]] },
+            { threshold: 0.53333333, value: [1, 80 * subStatusBaseIndex[1]] },
+            { threshold: 0.8, value: [4, 80 * subStatusBaseIndex[4]] },
+            { threshold: 0.9, value: [2, 80 * subStatusBaseIndex[2]] },
+            { threshold: 1, value: [3, 80 * subStatusBaseIndex[3]] }
+        ],
+        3: [
+            { threshold: 0.19166666, value: [0, 80 * subStatusBaseIndex[0]] },
+            { threshold: 0.38333333, value: [1, 80 * subStatusBaseIndex[1]] },
+            { threshold: 0.575, value: [4, 80 * subStatusBaseIndex[4]] },
+            { threshold: 0.6, value: [2, 80 * subStatusBaseIndex[2]] },
+            { threshold: 0.65, value: [10, 80 * subStatusBaseIndex[4]] },
+            { threshold: 0.7, value: [11, 80 * subStatusBaseIndex[4]] },
+            { threshold: 0.75, value: [12, 80 * subStatusBaseIndex[4]] },
+            { threshold: 0.8, value: [13, 80 * subStatusBaseIndex[4]] },
+            { threshold: 0.85, value: [14, 80 * subStatusBaseIndex[4]] },
+            { threshold: 0.9, value: [15, 80 * subStatusBaseIndex[4]] },
+            { threshold: 0.95, value: [16, 80 * subStatusBaseIndex[4]] },
+            { threshold: 1, value: [17, 100 * subStatusBaseIndex[4]] }
+        ],
+        4: [
+            { threshold: 0.22, value: [0, 80 * subStatusBaseIndex[0]] },
+            { threshold: 0.44, value: [1, 80 * subStatusBaseIndex[1]] },
+            { threshold: 0.66, value: [4, 80 * subStatusBaseIndex[4]] },
+            { threshold: 0.7, value: [2, 80 * subStatusBaseIndex[2]] },
+            { threshold: 0.8, value: [5, 80 * subStatusBaseIndex[5]] },
+            { threshold: 0.9, value: [6, 80 * subStatusBaseIndex[6]] },
+            { threshold: 1, value: [18, 0] }
+        ]
+    };
+    
+    if (partsIndex in partsConfig) {
+        const config = partsConfig[partsIndex];
+        if (Array.isArray(config[0])) {
+            for (const entry of config) {
+                if (random_number_float < entry.threshold) {
+                    mainBuffList = entry.value;
+                    break;
+                }
+            }
         } else {
-            mainBuffList = [3, 80 * subStatusBaseIndex[3]];
-        }
-    } else if (partsIndex === 3) {
-        if (random_number_float < 0.19166666) {
-            mainBuffList = [0, 80 * subStatusBaseIndex[0]];
-        } else if (random_number_float < 0.38333333) {
-            mainBuffList = [1, 80 * subStatusBaseIndex[1]];
-        } else if (random_number_float < 0.575) {
-            mainBuffList = [4, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.6) {
-            mainBuffList = [2, 80 * subStatusBaseIndex[2]];
-        } else if (random_number_float < 0.65) {
-            mainBuffList = [10, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.7) {
-            mainBuffList = [11, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.75) {
-            mainBuffList = [12, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.8) {
-            mainBuffList = [13, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.85) {
-            mainBuffList = [14, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.9) {
-            mainBuffList = [15, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.95) {
-            mainBuffList = [16, 80 * subStatusBaseIndex[4]];
-        } else {
-            mainBuffList = [17, 100 * subStatusBaseIndex[4]];
-        }
-    } else if (partsIndex === 4) {
-        if (random_number_float < 0.22) {
-            mainBuffList = [0, 80 * subStatusBaseIndex[0]];
-        } else if (random_number_float < 0.44) {
-            mainBuffList = [1, 80 * subStatusBaseIndex[1]];
-        } else if (random_number_float < 0.66) {
-            mainBuffList = [4, 80 * subStatusBaseIndex[4]];
-        } else if (random_number_float < 0.7) {
-            mainBuffList = [2, 80 * subStatusBaseIndex[2]];
-        } else if (random_number_float < 0.8) {
-            mainBuffList = [5, 80 * subStatusBaseIndex[5]];
-        } else if (random_number_float < 0.9) {
-            mainBuffList = [6, 80 * subStatusBaseIndex[6]];
-        } else {
-            mainBuffList = [18, 0];
+            mainBuffList = config;
         }
     }
 

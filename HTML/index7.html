@@ -188,6 +188,8 @@
                         <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 2em;">
                             <div id = "AfConditon">
                             </div>
+                            <div id = "ElmChargeStrict">
+                            </div>
                         </div>
                         <br>
                         <span class="property">スキルプロパティ</span>        
@@ -1509,19 +1511,22 @@
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 ClockMainStatus = AfNameList[PropName]["名前"];
+
                 let targetDiv = document.getElementById('AfConditon');
-    
-                // 新しいspan要素を作成
                 let newSpan = document.createElement('span');
-                
-                // span要素にクラスを追加
                 newSpan.classList.add('property');
-                
-                // span要素にテキストを追加
                 newSpan.textContent = '厳選条件';
-                
-                // targetDivにspan要素を追加
                 targetDiv.appendChild(newSpan);
+
+                
+                let StrictDiv = document.getElementById('ElmChargeStrict');
+                let label = document.createElement('label');
+                let checkbox = document.createElement('input');
+                let text = document.createTextNode('時計をチャージ効率に固定');
+                checkbox.type = 'checkbox';
+                label.appendChild(checkbox);
+                label.appendChild(text);
+                StrictDiv.appendChild(label);
             }
             else if (fourthDigits[i] == 1)
             {

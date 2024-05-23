@@ -189,7 +189,6 @@
                         <div style="display: flex; justify-content: space-between; max-width: 476px;">
                             <div id = "AfConditon">
                             </div>
-                            <br>
                             <div id = "ElmChargeStrict">
                             </div>
                         </div>
@@ -1526,6 +1525,7 @@
                     newSpan.textContent = '厳選条件';
                     targetDiv.appendChild(newSpan);document
                     targetDiv.appendChild(document.createElement("br"));
+                    targetDiv.appendChild(document.createElement("br"));
                     
                     let StrictDiv = document.getElementById('ElmChargeStrict');
                     let label = document.createElement('label');
@@ -1534,7 +1534,9 @@
                     checkbox.type = 'checkbox';
                     label.appendChild(checkbox);
                     label.appendChild(text);
+                    label.style.paddingLeft = '5px'; // 例: 5pxの余白を追加
                     StrictDiv.appendChild(label);
+                    StrictDiv.appendChild(document.createElement("br"));
                 }
             }
             else if (fourthDigits[i] == 1)

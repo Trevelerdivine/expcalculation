@@ -1764,7 +1764,7 @@ async function calculateAndStoreResult(resultList) {
   return topFive;
 }
 
-async function createAf(partsIndex) {
+async function createAf(partsIndex, depend_index) {
     let fixBuffList = [7, 8, 9];
     let rateList = [0, 1, 2, 3, 4];
     let criticalList = [5, 6];
@@ -1833,6 +1833,11 @@ async function createAf(partsIndex) {
             mainBuffList = [18, 0];
         }
     }
+
+    if (mainBuffList[0] < 7 && mainBuffList[0] > 9 && depend_index[mainBuffList[0]] == 0)
+    {
+        return 1;
+    } 
 
     if (mainBuffList[0] < 7) {
         if (fixBuffList.includes(mainBuffList[0])) {
@@ -1963,8 +1968,14 @@ async function monte_carlo_calculate()
     let MyAfStatusSave = await SetMyAfStatus();
     let MyAfStatus;
     let RandomAfIndex;
-    let UpperNum = 0;
     let StrongestAf;
+    let DependSubStatusIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    for (let d= 0; d < depend_status_index; d++)
+    {
+        DependSubStatusIndex[d] = 1; 
+    }
+    DependSubStatusIndex[10 + parseInt(DependSubStatusIndex[0])] = 1;
+
     document.getElementById("response").innerHTML = response;
     if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
     {
@@ -2024,7 +2035,11 @@ async function monte_carlo_calculate()
     {
         RandomAfIndex = Math.floor(Math.random() * 5);
         MyAfStatus = MyAfStatusSave.slice();
-        afInfo = await createAf(RandomAfIndex);
+        afInfo = await createAf(RandomAfIndex, DependSubStatusIndex);
+        if (afInfo === 1)
+        {
+            continue
+        }
         MyAfStatus[RandomAfIndex] = afInfo;
         afStatusList = Array(19).fill(0);
         for (let i = 0; i < 5; i++) {

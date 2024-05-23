@@ -184,7 +184,11 @@
                                 <div>元素爆発</div>
                                 <div id="BurstTalentLevel"></div>
                             </span>
-                        </div>   
+                        </div>
+                        <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 2em;">
+                            <div id = "AfConditon">
+                            </div>
+                        </div>
                         <br>
                         <span class="property">スキルプロパティ</span>        
                         <br>
@@ -221,7 +225,8 @@
                             <div>理の冠</div>
                             <div id="CircletMainStatus"></div>
                         </span>
-                    </div>                
+                    </div>    
+                    <br>          
                     <div id="index-display"></div>
                     <fieldset id="artifactInfo" style="max-width: 476px;">
                         <legend>聖遺物情報</legend>
@@ -1365,10 +1370,6 @@
             console.error("Invalid SortOrder value");
         }
     }
-    async function EquipWeaponList()
-    {
-        
-    }
 
     async function DisplayWeaponStatus(index,SortOrder,id){
         WeaponLevel = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[index-1].weapon.level;
@@ -1508,6 +1509,19 @@
             {
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 ClockMainStatus = AfNameList[PropName]["名前"];
+                let targetDiv = document.getElementById('AfConditon');
+    
+                // 新しいspan要素を作成
+                let newSpan = document.createElement('span');
+                
+                // span要素にクラスを追加
+                newSpan.classList.add('property');
+                
+                // span要素にテキストを追加
+                newSpan.textContent = '厳選条件';
+                
+                // targetDivにspan要素を追加
+                targetDiv.appendChild(newSpan);
             }
             else if (fourthDigits[i] == 1)
             {

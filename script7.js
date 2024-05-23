@@ -1834,20 +1834,25 @@ async function createAf(partsIndex, depend_index) {
         }
     }
 
-    if ((mainBuffList[0] < 7 || mainBuffList[0] > 9) && depend_index[mainBuffList[0]] == 0)
+    if (partsIndex > 1 && depend_index[mainBuffList[0]] == 0)
     {
         return 1;
     } 
 
-    if (mainBuffList[0] < 7) {
-        if (fixBuffList.includes(mainBuffList[0])) {
-            fixBuffList.splice(fixBuffList.indexOf(mainBuffList[0]), 1);
-        } else if (rateList.includes(mainBuffList[0])) {
-            rateList.splice(rateList.indexOf(mainBuffList[0]), 1);
-        } else if (criticalList.includes(mainBuffList[0])) {
-            criticalList.splice(criticalList.indexOf(mainBuffList[0]), 1);
+    const value = mainBuffList[0];
+
+    if (value < 7) {
+        const lists = [fixBuffList, rateList, criticalList];
+    
+        for (const list of lists) {
+            const index = list.indexOf(value);
+            if (index !== -1) {
+                list.splice(index, 1);
+                break;
+            }
         }
     }
+    
 
     for (let i = 0; i < 4; i++) {
         const baseNum = 6 * fixBuffList.length + 4 * rateList.length + 3 * criticalList.length;
@@ -2115,14 +2120,14 @@ async function monte_carlo_calculate()
         }
         nCount += 1;
         if (exp_dmg > my_exp_dmg)
-            {
-                AfPartsNum[RandomAfIndex] += 1;
-                if (MaxDmg < exp_dmg)
-                    {
-                        MaxDmg = exp_dmg;
-                        StrongestAf = [RandomAfIndex, afInfo];
-                    }
-            }   
+        {
+            AfPartsNum[RandomAfIndex] += 1;
+            if (MaxDmg < exp_dmg)
+                {
+                    MaxDmg = exp_dmg;
+                    StrongestAf = [RandomAfIndex, afInfo];
+                }
+        }   
     }
     console.log(my_exp_dmg);
     console.log(exp_dmg)

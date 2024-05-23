@@ -1531,10 +1531,12 @@
                     let checkbox = document.createElement('input');
                     let text = document.createTextNode('時計をチャージ効率に固定');
                     checkbox.type = 'checkbox';
+                    checkbox.id = 'FixClockElmCharge';
                     label.appendChild(checkbox);
                     label.appendChild(text);
                     label.style.paddingLeft = '2em';
                     StrictDiv.appendChild(label);
+                    StrictDiv.appendChild(document.createElement("br"));
                     StrictDiv.appendChild(document.createElement("br"));
                 }
             }

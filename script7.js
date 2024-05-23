@@ -1764,7 +1764,7 @@ async function calculateAndStoreResult(resultList) {
   return topFive;
 }
 
-async function createAf(partsIndex, depend_index) {
+async function createAf(partsIndex, depend_index, conditionIndex) {
     let fixBuffList = [7, 8, 9];
     let rateList = [0, 1, 2, 3, 4];
     let criticalList = [5, 6];
@@ -1838,6 +1838,15 @@ async function createAf(partsIndex, depend_index) {
     {
         return 1;
     } 
+
+    if (partsIndex == 2)
+      {
+        if (mainBuffList[0] != 3 && conditionIndex == 1)
+        {
+          return 1;
+        }
+      } 
+    
 
     const value = mainBuffList[0];
 
@@ -2018,6 +2027,10 @@ async function monte_carlo_calculate()
     console.log(correct_coeff);
     let zetsuen_check = 0;
     let afStatusList;
+    let conditionFlag = 0;
+    if (document.getElementById('FixClockElmCharge') !== null && document.getElementById('FixClockElmCharge').checked) {
+      conditionFlag = 1;
+    }
     if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
     {
         const zetsuen_checkbox = document.getElementById("af17_4");
@@ -2041,7 +2054,7 @@ async function monte_carlo_calculate()
     {
         RandomAfIndex = Math.floor(Math.random() * 5);
         MyAfStatus = MyAfStatusSave.slice();
-        afInfo = await createAf(RandomAfIndex, DependSubStatusIndex);
+        afInfo = await createAf(RandomAfIndex, DependSubStatusIndex, conditionFlag);
         if (afInfo === 1)
         {
             continue

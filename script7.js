@@ -1969,6 +1969,7 @@ async function monte_carlo_calculate()
     let MyAfStatus;
     let RandomAfIndex;
     let StrongestAf;
+    let nCount = 0;
     let DependSubStatusIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     for (let d= 0; d < depend_status_index; d++)
     {
@@ -2112,7 +2113,7 @@ async function monte_carlo_calculate()
             exp_dmg = basic_dmg * (1 + result_status[5]*result_status[6])
                     * (1 + result_status[7]) * correct_coeff[8];
         }
-
+        nCount += 1;
         if (exp_dmg > my_exp_dmg)
             {
                 AfPartsNum[RandomAfIndex] += 1;
@@ -2127,6 +2128,7 @@ async function monte_carlo_calculate()
     console.log(exp_dmg)
     console.log(MaxDmg);
     console.log(StrongestAf);
+    console.log(nCount);
     calculationMessage.style.visibility = "hidden";
     let SpendDays = AfPartsNum.map(num => num / TryCount)
 

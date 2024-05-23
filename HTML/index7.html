@@ -185,9 +185,11 @@
                                 <div id="BurstTalentLevel"></div>
                             </span>
                         </div>
+                        <br>
                         <div style="display: flex; justify-content: space-between; max-width: 476px; margin-left: 2em;">
                             <div id = "AfConditon">
                             </div>
+                            <br>
                             <div id = "ElmChargeStrict">
                             </div>
                         </div>
@@ -1512,21 +1514,24 @@
                 PropName = UserData.data.avatarInfoList[CharIndexList[SortOrder]].equipList[i].flat.reliquaryMainstat.mainPropId;
                 ClockMainStatus = AfNameList[PropName]["名前"];
 
-                let targetDiv = document.getElementById('AfConditon');
-                let newSpan = document.createElement('span');
-                newSpan.classList.add('property');
-                newSpan.textContent = '厳選条件';
-                targetDiv.appendChild(newSpan);
+                if (ClockMainStatus == "チャージ効率")
+                {
+                    let targetDiv = document.getElementById('AfConditon');
+                    let newSpan = document.createElement('span');
+                    newSpan.classList.add('property');
+                    newSpan.textContent = '厳選条件';
+                    targetDiv.appendChild(newSpan);
 
-                
-                let StrictDiv = document.getElementById('ElmChargeStrict');
-                let label = document.createElement('label');
-                let checkbox = document.createElement('input');
-                let text = document.createTextNode('時計をチャージ効率に固定');
-                checkbox.type = 'checkbox';
-                label.appendChild(checkbox);
-                label.appendChild(text);
-                StrictDiv.appendChild(label);
+                    
+                    let StrictDiv = document.getElementById('ElmChargeStrict');
+                    let label = document.createElement('label');
+                    let checkbox = document.createElement('input');
+                    let text = document.createTextNode('時計をチャージ効率に固定');
+                    checkbox.type = 'checkbox';
+                    label.appendChild(checkbox);
+                    label.appendChild(text);
+                    StrictDiv.appendChild(label);
+                }
             }
             else if (fourthDigits[i] == 1)
             {

@@ -2030,6 +2030,7 @@ async function monte_carlo_calculate()
     let conditionFlag = 0;
     if (document.getElementById('FixClockElmCharge') !== null && document.getElementById('FixClockElmCharge').checked) {
       conditionFlag = 1;
+      DependSubStatusIndex[3] = 1;
     }
     if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
     {

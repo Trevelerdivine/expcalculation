@@ -1171,11 +1171,13 @@ async function calculate_table_status()
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
+  let DisplayDependStatus = depend_status;
+  DisplayDependStatus[3] = 1;
   let zetsuen_check = 0;
   let buff_status = [0,0,0,0,0,0,0,0];
   let team_fix_buff = await calculate_team_fix_buff(base_status);
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-  let AfSubBuff = await calculate_af_score(depend_status,base_status);
+  let AfSubBuff = await calculate_af_score(DisplayDependStatus,base_status);
   let fixed_status = base_status.slice();
   let result_status;
   let zetsuen_dmgbuff = 0;
@@ -1228,7 +1230,7 @@ async function calculate_table_status()
   result_status = fixed_status.slice();
 
   async function updateStatus(index, resultStatus, buffStatus, afBuff, baseStatus, dynamicBuff, calculateResultFunction, tablePrefix) {
-    if (depend_status[index] === 1) 
+    if (DisplayDependStatus[index] === 1) 
     {
       if (index == 3 || index == 6)
       {
@@ -2151,18 +2153,18 @@ async function monte_carlo_calculate()
     document.getElementById("clock4").innerHTML = (1 / SpendDays[3]).toFixed() + "個";
     document.getElementById("clock5").innerHTML = (1 / SpendDays[4]).toFixed() + "個";
     document.getElementById("clock6").innerHTML = (1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4])).toFixed() + "個";
-    document.getElementById("circlet1").innerHTML = (1 / SpendDays[0] / 5).toFixed() + "日";
-    document.getElementById("circlet2").innerHTML = (1 / SpendDays[1] / 5).toFixed() + "日";
-    document.getElementById("circlet3").innerHTML = (1 / SpendDays[2] / 5).toFixed() + "日";
-    document.getElementById("circlet4").innerHTML = (1 / SpendDays[3] / 5).toFixed() + "日";
-    document.getElementById("circlet5").innerHTML = (1 / SpendDays[4] / 5).toFixed() + "日";
-    document.getElementById("circlet6").innerHTML = (1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]) / 5).toFixed() + "日";
-    document.getElementById("goblet1").innerHTML = "SS";
-    document.getElementById("goblet2").innerHTML = "SS";
-    document.getElementById("goblet3").innerHTML = "SS";
-    document.getElementById("goblet4").innerHTML = "SS";
-    document.getElementById("goblet5").innerHTML = "SS";
-    document.getElementById("goblet6").innerHTML = "SS";
+    document.getElementById("goblet1").innerHTML = (1 / SpendDays[0] / 5).toFixed() + "日";
+    document.getElementById("goblet2").innerHTML = (1 / SpendDays[1] / 5).toFixed() + "日";
+    document.getElementById("goblet3").innerHTML = (1 / SpendDays[2] / 5).toFixed() + "日";
+    document.getElementById("goblet4").innerHTML = (1 / SpendDays[3] / 5).toFixed() + "日";
+    document.getElementById("goblet5").innerHTML = (1 / SpendDays[4] / 5).toFixed() + "日";
+    document.getElementById("goblet6").innerHTML = (1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]) / 5).toFixed() + "日";
+    document.getElementById("circlet1").innerHTML = "SS";
+    document.getElementById("circlet2").innerHTML = "SS";
+    document.getElementById("circlet3").innerHTML = "SS";
+    document.getElementById("circlet4").innerHTML = "SS";
+    document.getElementById("circlet5").innerHTML = "SS";
+    document.getElementById("circlet6").innerHTML = "SS";
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 

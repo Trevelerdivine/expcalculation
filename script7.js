@@ -2146,6 +2146,7 @@ async function monte_carlo_calculate()
     console.log(nCount);
     calculationMessage.style.visibility = "hidden";
     const RankDefine = ["SS", "S", "A", "B", "C"];
+    const ConsumeNum = parseInt(document.getElementById("UseItemNum").value);
     let SpendDays = AfPartsNum.map(num => num / TryCount)
     let ItemNumResult = [];
     let DaysNumResult = [];
@@ -2161,7 +2162,7 @@ async function monte_carlo_calculate()
       else
       {
         ItemNumResult.push(possib.toFixed() + "個");
-        DaysNumResult.push((possib / 5).toFixed() + "日");
+        DaysNumResult.push((possib / ConsumeNum).toFixed() + "日");
       }
     }
     const SumPossib = 1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]);
@@ -2173,7 +2174,7 @@ async function monte_carlo_calculate()
       else
       {
         ItemNumResult.push(SumPossib.toFixed() + "個");
-        DaysNumResult.push((SumPossib / 5).toFixed() + "日");
+        DaysNumResult.push((SumPossib / ConsumeNum).toFixed() + "日");
       }
     
 

@@ -2168,7 +2168,7 @@ async function monte_carlo_calculate()
       }
 
       let AfScore = 4 * Math.log(possib / ConsumeNum) + 16
-      if (i == 0 || i == 1)
+      if (a == 0 || a == 1)
       {
         if (AfScore > 50)
         {
@@ -2224,7 +2224,7 @@ async function monte_carlo_calculate()
           RankClassList.push("rankC");
         }
       }
-      else if (i = 3)
+      else if (a = 3)
       {
         if (AfScore > 40)
         {
@@ -2252,7 +2252,7 @@ async function monte_carlo_calculate()
           RankClassList.push("rankC");
         }
       }
-      else if (i = 4)
+      else if (a = 4)
       {
         if (AfScore > 35)
         {

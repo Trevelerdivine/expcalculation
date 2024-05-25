@@ -2145,20 +2145,50 @@ async function monte_carlo_calculate()
     console.log(StrongestAf);
     console.log(nCount);
     calculationMessage.style.visibility = "hidden";
+    const RankDefine = ["SS", "S", "A", "B", "C"];
     let SpendDays = AfPartsNum.map(num => num / TryCount)
+    let ItemNumResult = [];
+    let DaysNumResult = [];
+    let RankList = []
+    for (let a = 0; a < 5; a++)
+    {
+      const possib = 1 / SpendDays[a];
+      if (possib > 100000 -1 )
+      {
+        ItemNumResult.push("測定不能！");
+        DaysNumResult.push("測定不能！");
+      }
+      else
+      {
+        ItemNumResult.push(possib.toFixed());
+        DaysNumResult.push((possib / 5).toFixed());
+      }
+    }
+    const SumPossib = 1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]);
+    if (SumPossib > 100000 -1 )
+      {
+        ItemNumResult.push("測定不能！");
+        DaysNumResult.push("測定不能！");
+      }
+      else
+      {
+        ItemNumResult.push(SumPossib.toFixed());
+        DaysNumResult.push((SumPossib / 5).toFixed());
+      }
+    
 
-    document.getElementById("clock1").innerHTML = (1 / SpendDays[0]).toFixed() + "個";
-    document.getElementById("clock2").innerHTML = (1 / SpendDays[1]).toFixed() + "個";
-    document.getElementById("clock3").innerHTML = (1 / SpendDays[2]).toFixed() + "個";
-    document.getElementById("clock4").innerHTML = (1 / SpendDays[3]).toFixed() + "個";
-    document.getElementById("clock5").innerHTML = (1 / SpendDays[4]).toFixed() + "個";
-    document.getElementById("clock6").innerHTML = (1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4])).toFixed() + "個";
-    document.getElementById("goblet1").innerHTML = (1 / SpendDays[0] / 5).toFixed() + "日";
-    document.getElementById("goblet2").innerHTML = (1 / SpendDays[1] / 5).toFixed() + "日";
-    document.getElementById("goblet3").innerHTML = (1 / SpendDays[2] / 5).toFixed() + "日";
-    document.getElementById("goblet4").innerHTML = (1 / SpendDays[3] / 5).toFixed() + "日";
-    document.getElementById("goblet5").innerHTML = (1 / SpendDays[4] / 5).toFixed() + "日";
-    document.getElementById("goblet6").innerHTML = (1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]) / 5).toFixed() + "日";
+    document.getElementById("clock1").innerHTML = ItemNumResult[0] + "個";
+    document.getElementById("clock2").innerHTML = ItemNumResult[1] + "個";
+    document.getElementById("clock3").innerHTML = ItemNumResult[2] + "個";
+    document.getElementById("clock4").innerHTML = ItemNumResult[3] + "個";
+    document.getElementById("clock5").innerHTML = ItemNumResult[4] + "個";
+    document.getElementById("clock6").innerHTML = ItemNumResult[5] + "個";
+    document.getElementById("goblet1").innerHTML = DaysNumResult[0] + "日";
+    document.getElementById("goblet2").innerHTML = DaysNumResult[1] + "日";
+    document.getElementById("goblet3").innerHTML = DaysNumResult[2] + "日";
+    document.getElementById("goblet4").innerHTML = DaysNumResult[3] + "日";
+    document.getElementById("goblet5").innerHTML = DaysNumResult[4] + "日";
+    document.getElementById("goblet6").innerHTML = DaysNumResult[5] + "日";
     document.getElementById("circlet1").innerHTML = "SS";
     document.getElementById("circlet2").innerHTML = "SS";
     document.getElementById("circlet3").innerHTML = "SS";

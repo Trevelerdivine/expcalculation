@@ -2146,21 +2146,12 @@ async function monte_carlo_calculate()
     calculationMessage.style.visibility = "hidden";
     let SpendDays = AfPartsNum.map(num => num / TryCount)
 
-
-    let result = "「花」厳選日数 ：" + (1/(SpendDays[0]*5)).toFixed() + "<br>"
-                + "「羽」厳選日数 ：" + (1/(SpendDays[1]*5)).toFixed() + "<br>"
-                + "「時計」厳選日数 ：" + (1/(SpendDays[2]*5)).toFixed() + "<br>"
-                + "「杯」厳選日数 ：" + (1/(SpendDays[3]*5)).toFixed() + "<br>"
-                + "「冠」厳選日数 ：" + (1/(SpendDays[4]*5)).toFixed() + "<br>"
-                + "総合厳選日数 ：" + (1/(SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]) / 5).toFixed();
-    document.getElementById("result").innerHTML = result;
-
-    document.getElementById("clock1").innerHTML = 1 / SpendDays[0] + "個";
-    document.getElementById("clock2").innerHTML = 1 / SpendDays[1] + "個";
-    document.getElementById("clock3").innerHTML = 1 / SpendDays[2] + "個";
-    document.getElementById("clock4").innerHTML = 1 / SpendDays[3] + "個";
-    document.getElementById("clock5").innerHTML = 1 / SpendDays[4] + "個";
-    document.getElementById("clock6").innerHTML = 1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]) + "個";
+    document.getElementById("clock1").innerHTML = (1 / SpendDays[0]).toFixed() + "個";
+    document.getElementById("clock2").innerHTML = (1 / SpendDays[1]).toFixed() + "個";
+    document.getElementById("clock3").innerHTML = (1 / SpendDays[2]).toFixed() + "個";
+    document.getElementById("clock4").innerHTML = (1 / SpendDays[3]).toFixed() + "個";
+    document.getElementById("clock5").innerHTML = (1 / SpendDays[4]).toFixed() + "個";
+    document.getElementById("clock6").innerHTML = (1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4])).toFixed() + "個";
     document.getElementById("goblet1").innerHTML = "SS";
     document.getElementById("goblet2").innerHTML = "SS";
     document.getElementById("goblet3").innerHTML = "SS";

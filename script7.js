@@ -1173,11 +1173,9 @@ async function calculate_table_status()
   const char_parameter = await import_char_parameter();
   let zetsuen_check = 0;
   let buff_status = [0,0,0,0,0,0,0,0];
-  let DisplayDependStatus = await calculate_depend_status();
   let team_fix_buff = await calculate_team_fix_buff(base_status);
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-  DisplayDependStatus[3] = 1
-  let AfSubBuff = await calculate_af_score(DisplayDependStatus,base_status);
+  let AfSubBuff = await calculate_af_score(depend_status,base_status);
   let fixed_status = base_status.slice();
   let result_status;
   let zetsuen_dmgbuff = 0;
@@ -1230,7 +1228,7 @@ async function calculate_table_status()
   result_status = fixed_status.slice();
 
   async function updateStatus(index, resultStatus, buffStatus, afBuff, baseStatus, dynamicBuff, calculateResultFunction, tablePrefix) {
-    if (DisplayDependStatus[index] === 1) 
+    if (depend_status[index] === 1) 
     {
       if (index == 3 || index == 6)
       {

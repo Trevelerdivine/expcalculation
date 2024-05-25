@@ -652,7 +652,7 @@ details summary {
 
   .rankSS {
     text-align: center;
-    line-height: 0.95em;
+    line-height: 2em;
     font-weight: bold;
     color: transparent;
     background: linear-gradient(0deg, #FF69B4 0%, #FF69B4 55%, #FFEBEE 70%, #FF69B4 85%, #FF69B4 90% 100%);
@@ -662,7 +662,7 @@ details summary {
 
   .rankS {
     text-align: center;
-    line-height: 0.95em;
+    line-height: 2em;
     font-weight: bold;
     color: transparent;
     background: linear-gradient(0deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%);
@@ -672,7 +672,7 @@ details summary {
 
   .rankA {
     text-align:center;
-    line-height:0.95em;
+    line-height:2em;
     font-weight:bold;
     color: transparent;
     background: linear-gradient(0deg, #C62828 0%, #EF5350 55%, #FFEBEE 70%, #EF5350 85%, #C62828 90% 100%); 
@@ -682,7 +682,7 @@ details summary {
 
   .rankB {
     text-align: center;
-    line-height: 0.95em;
+    line-height: 2em;
     font-weight: bold;
     color: transparent;
     background: linear-gradient(0deg, #00BFFF 0%, #00BFFF 55%, #E0F7FA 70%, #00BFFF 85%, #00BFFF 90% 100%);
@@ -692,7 +692,7 @@ details summary {
 
   .rankC {
     text-align: center;
-    line-height: 0.95em;
+    line-height: 2em;
     font-weight: bold;
     color: transparent;
     background: linear-gradient(0deg, #77B300 0%, #77B300 55%, #F1F8E9 70%, #77B300 85%, #77B300 90% 100%);

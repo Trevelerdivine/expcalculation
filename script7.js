@@ -2150,7 +2150,9 @@ async function monte_carlo_calculate()
     let SpendDays = AfPartsNum.map(num => num / TryCount)
     let ItemNumResult = [];
     let DaysNumResult = [];
-    let RankList = []
+    let RankClassList = [];
+    let RankList = [];
+
     for (let a = 0; a < 5; a++)
     {
       const possib = 1 / SpendDays[a];
@@ -2164,19 +2166,160 @@ async function monte_carlo_calculate()
         ItemNumResult.push(possib.toFixed() + "個");
         DaysNumResult.push((possib / ConsumeNum).toFixed() + "日");
       }
+
+      let AfScore = 4 * Math.log(possib / ConsumeNum) + 16
+      if (i == 0 || i == 1)
+      {
+        if (AfScore > 50)
+        {
+          RankList.push("SS");
+          RankClassList.push("rankSS");
+        }
+        else if (AfScore > 45)
+        {
+          RankList.push("S");
+          RankClassList.push("rankS");
+        }
+        else if (AfScore > 40)
+        {
+          RankList.push("A");
+          RankClassList.push("rankA");
+        }
+        else if (AfScore > 35)
+        {
+          RankList.push("B");
+          RankClassList.push("rankB");
+        }
+        else
+        {
+          RankList.push("C");
+          RankClassList.push("rankC");
+        }
+      }
+      else if (i = 2)
+      {
+        if (AfScore > 45)
+        {
+          RankList.push("SS");
+          RankClassList.push("rankSS");
+        }
+        else if (AfScore > 40)
+        {
+          RankList.push("S");
+          RankClassList.push("rankS");
+        }
+        else if (AfScore > 35)
+        {
+          RankList.push("A");
+          RankClassList.push("rankA");
+        }
+        else if (AfScore > 30)
+        {
+          RankList.push("B");
+          RankClassList.push("rankB");
+        }
+        else
+        {
+          RankList.push("C");
+          RankClassList.push("rankC");
+        }
+      }
+      else if (i = 3)
+      {
+        if (AfScore > 40)
+        {
+          RankList.push("SS");
+          RankClassList.push("rankSS");
+        }
+        else if (AfScore > 35)
+        {
+          RankList.push("S");
+          RankClassList.push("rankS");
+        }
+        else if (AfScore > 30)
+        {
+          RankList.push("A");
+          RankClassList.push("rankA");
+        }
+        else if (AfScore > 25)
+        {
+          RankList.push("B");
+          RankClassList.push("rankB");
+        }
+        else
+        {
+          RankList.push("C");
+          RankClassList.push("rankC");
+        }
+      }
+      else if (i = 4)
+      {
+        if (AfScore > 35)
+        {
+          RankList.push("SS");
+          RankClassList.push("rankSS");
+        }
+        else if (AfScore > 30)
+        {
+          RankList.push("S");
+          RankClassList.push("rankS");
+        }
+        else if (AfScore > 25)
+        {
+          RankList.push("A");
+          RankClassList.push("rankA");
+        }
+        else if (AfScore > 20)
+        {
+          RankList.push("B");
+          RankClassList.push("rankB");
+        }
+        else
+        {
+          RankList.push("C");
+          RankClassList.push("rankC");
+        }
+      }
     }
     const SumPossib = 1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]);
     if (SumPossib > 100000 -1 )
-      {
-        ItemNumResult.push("測定不能！");
-        DaysNumResult.push("測定不能！");
-      }
-      else
-      {
-        ItemNumResult.push(SumPossib.toFixed() + "個");
-        DaysNumResult.push((SumPossib / ConsumeNum).toFixed() + "日");
-      }
+    {
+      ItemNumResult.push("測定不能！");
+      DaysNumResult.push("測定不能！");
+    }
+    else
+    {
+      ItemNumResult.push(SumPossib.toFixed() + "個");
+      DaysNumResult.push((SumPossib / ConsumeNum).toFixed() + "日");
+    }
     
+    let AlbodyAfScore = 22 * Math.log(SumPossib / ConsumeNum) + 105;
+
+    if (AlbodyAfScore > 220)
+    {
+      RankList.push("SS");
+      RankClassList.push("rankSS");
+    }
+    else if (AlbodyAfScore > 200)
+    {
+      RankList.push("S");
+      RankClassList.push("rankS");
+    }
+    else if (AlbodyAfScore > 180)
+    {
+      RankList.push("A");
+      RankClassList.push("rankA");
+    }
+    else if (AlbodyAfScore > 160)
+    {
+      RankList.push("B");
+      RankClassList.push("rankB");
+    }
+    else
+    {
+      RankList.push("C");
+      RankClassList.push("rankC");
+    }
 
     document.getElementById("clock1").innerHTML = ItemNumResult[0];
     document.getElementById("clock2").innerHTML = ItemNumResult[1];
@@ -2190,18 +2333,18 @@ async function monte_carlo_calculate()
     document.getElementById("goblet4").innerHTML = DaysNumResult[3];
     document.getElementById("goblet5").innerHTML = DaysNumResult[4];
     document.getElementById("goblet6").innerHTML = DaysNumResult[5];
-    document.getElementById("circlet1").innerHTML = "SS";
-    document.getElementById("circlet1").classList.add("rankSS");
-    document.getElementById("circlet2").innerHTML = "S";
-    document.getElementById("circlet2").classList.add("rankS");
-    document.getElementById("circlet3").innerHTML = "A";
-    document.getElementById("circlet3").classList.add("rankA");
-    document.getElementById("circlet4").innerHTML = "B";
-    document.getElementById("circlet4").classList.add("rankB");
-    document.getElementById("circlet5").innerHTML = "C";
-    document.getElementById("circlet5").classList.add("rankC");
-    document.getElementById("circlet6").innerHTML = "SS";
-    document.getElementById("circlet6").classList.add("rankSS");
+    document.getElementById("circlet1").innerHTML = RankList[0];
+    document.getElementById("circlet1").classList.add(RankClassList[0]);
+    document.getElementById("circlet2").innerHTML = RankList[1];
+    document.getElementById("circlet2").classList.add(RankClassList[1]);
+    document.getElementById("circlet3").innerHTML = RankList[2];
+    document.getElementById("circlet3").classList.add(RankClassList[2]);
+    document.getElementById("circlet4").innerHTML = RankList[3];
+    document.getElementById("circlet4").classList.add(RankClassList[3]);
+    document.getElementById("circlet5").innerHTML = RankList[4];
+    document.getElementById("circlet5").classList.add(RankClassList[4]);
+    document.getElementById("circlet6").innerHTML = RankList[5];
+    document.getElementById("circlet6").classList.add(RankClassList[5]);
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 

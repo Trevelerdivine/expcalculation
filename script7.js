@@ -2160,8 +2160,8 @@ async function monte_carlo_calculate()
       }
       else
       {
-        ItemNumResult.push(possib.toFixed());
-        DaysNumResult.push((possib / 5).toFixed());
+        ItemNumResult.push(possib.toFixed() + "個");
+        DaysNumResult.push((possib / 5).toFixed() + "日");
       }
     }
     const SumPossib = 1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]);
@@ -2172,23 +2172,23 @@ async function monte_carlo_calculate()
       }
       else
       {
-        ItemNumResult.push(SumPossib.toFixed());
-        DaysNumResult.push((SumPossib / 5).toFixed());
+        ItemNumResult.push(SumPossib.toFixed() + "個");
+        DaysNumResult.push((SumPossib / 5).toFixed() + "日");
       }
     
 
-    document.getElementById("clock1").innerHTML = ItemNumResult[0] + "個";
-    document.getElementById("clock2").innerHTML = ItemNumResult[1] + "個";
-    document.getElementById("clock3").innerHTML = ItemNumResult[2] + "個";
-    document.getElementById("clock4").innerHTML = ItemNumResult[3] + "個";
-    document.getElementById("clock5").innerHTML = ItemNumResult[4] + "個";
-    document.getElementById("clock6").innerHTML = ItemNumResult[5] + "個";
-    document.getElementById("goblet1").innerHTML = DaysNumResult[0] + "日";
-    document.getElementById("goblet2").innerHTML = DaysNumResult[1] + "日";
-    document.getElementById("goblet3").innerHTML = DaysNumResult[2] + "日";
-    document.getElementById("goblet4").innerHTML = DaysNumResult[3] + "日";
-    document.getElementById("goblet5").innerHTML = DaysNumResult[4] + "日";
-    document.getElementById("goblet6").innerHTML = DaysNumResult[5] + "日";
+    document.getElementById("clock1").innerHTML = ItemNumResult[0];
+    document.getElementById("clock2").innerHTML = ItemNumResult[1];
+    document.getElementById("clock3").innerHTML = ItemNumResult[2];
+    document.getElementById("clock4").innerHTML = ItemNumResult[3];
+    document.getElementById("clock5").innerHTML = ItemNumResult[4];
+    document.getElementById("clock6").innerHTML = ItemNumResult[5];
+    document.getElementById("goblet1").innerHTML = DaysNumResult[0];
+    document.getElementById("goblet2").innerHTML = DaysNumResult[1];
+    document.getElementById("goblet3").innerHTML = DaysNumResult[2];
+    document.getElementById("goblet4").innerHTML = DaysNumResult[3];
+    document.getElementById("goblet5").innerHTML = DaysNumResult[4];
+    document.getElementById("goblet6").innerHTML = DaysNumResult[5];
     document.getElementById("circlet1").innerHTML = "SS";
     document.getElementById("circlet2").innerHTML = "SS";
     document.getElementById("circlet3").innerHTML = "SS";

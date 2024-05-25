@@ -2191,11 +2191,17 @@ async function monte_carlo_calculate()
     document.getElementById("goblet5").innerHTML = DaysNumResult[4];
     document.getElementById("goblet6").innerHTML = DaysNumResult[5];
     document.getElementById("circlet1").innerHTML = "SS";
-    document.getElementById("circlet2").innerHTML = "SS";
-    document.getElementById("circlet3").innerHTML = "SS";
-    document.getElementById("circlet4").innerHTML = "SS";
-    document.getElementById("circlet5").innerHTML = "SS";
+    document.getElementById("circlet1").classList.add("rankSS");
+    document.getElementById("circlet2").innerHTML = "S";
+    document.getElementById("circlet2").classList.add("rankS");
+    document.getElementById("circlet3").innerHTML = "A";
+    document.getElementById("circlet3").classList.add("rankA");
+    document.getElementById("circlet4").innerHTML = "B";
+    document.getElementById("circlet4").classList.add("rankB");
+    document.getElementById("circlet5").innerHTML = "C";
+    document.getElementById("circlet5").classList.add("rankC");
     document.getElementById("circlet6").innerHTML = "SS";
+    document.getElementById("circlet6").classList.add("rankSS");
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 

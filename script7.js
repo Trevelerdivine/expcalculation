@@ -2145,7 +2145,6 @@ async function monte_carlo_calculate()
     console.log(StrongestAf);
     console.log(nCount);
     calculationMessage.style.visibility = "hidden";
-    const RankDefine = ["SS", "S", "A", "B", "C"];
     const ConsumeNum = parseInt(document.getElementById("UseItemNum").value);
     let SpendDays = AfPartsNum.map(num => num / TryCount)
     let ItemNumResult = [];
@@ -2167,8 +2166,8 @@ async function monte_carlo_calculate()
         DaysNumResult.push((possib / ConsumeNum).toFixed() + "日");
       }
 
-      let AfScore = 4 * Math.log(possib / ConsumeNum) + 16
-      if (a == 0 || a == 1)
+      let AfScore = 4 * Math.log(possib / 5) + 16
+      if (a === 0 || a === 1)
       {
         if (AfScore > 50)
         {
@@ -2196,7 +2195,7 @@ async function monte_carlo_calculate()
           RankClassList.push("rankC");
         }
       }
-      else if (a = 2)
+      else if (a === 2)
       {
         if (AfScore > 45)
         {
@@ -2224,7 +2223,7 @@ async function monte_carlo_calculate()
           RankClassList.push("rankC");
         }
       }
-      else if (a = 3)
+      else if (a === 3)
       {
         if (AfScore > 40)
         {
@@ -2252,7 +2251,7 @@ async function monte_carlo_calculate()
           RankClassList.push("rankC");
         }
       }
-      else if (a = 4)
+      else if (a === 4)
       {
         if (AfScore > 35)
         {
@@ -2293,7 +2292,7 @@ async function monte_carlo_calculate()
       DaysNumResult.push((SumPossib / ConsumeNum).toFixed() + "日");
     }
     
-    let AlbodyAfScore = 22 * Math.log(SumPossib / ConsumeNum) + 105;
+    let AlbodyAfScore = 22 * Math.log(SumPossib / 5) + 105;
 
     if (AlbodyAfScore > 220)
     {

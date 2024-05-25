@@ -2196,7 +2196,7 @@ async function monte_carlo_calculate()
           RankClassList.push("rankC");
         }
       }
-      else if (i = 2)
+      else if (a = 2)
       {
         if (AfScore > 45)
         {

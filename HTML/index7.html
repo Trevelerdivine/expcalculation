@@ -1708,8 +1708,8 @@
     
 
     function ResetParameter(){
-        for (let i = 1; i <= 3; i++) {
-            ["clock", "goblet", "circlet", "dmgrate"].forEach(type => {
+        for (let i = 1; i <= 6; i++) {
+            ["clock", "goblet", "circlet"].forEach(type => {
                 document.getElementById(`${type}${i}`).innerHTML = "-";
             });
         }

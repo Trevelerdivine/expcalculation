@@ -1764,7 +1764,7 @@ async function calculateAndStoreResult(resultList) {
   return topFive;
 }
 
-async function createAf(partsIndex, depend_index, conditionIndex) {
+async function createAf(partsIndex, depend_index) {
     let fixBuffList = [7, 8, 9];
     let rateList = [0, 1, 2, 3, 4];
     let criticalList = [5, 6];
@@ -1838,14 +1838,6 @@ async function createAf(partsIndex, depend_index, conditionIndex) {
     {
         return 1;
     } 
-
-    if (partsIndex == 2)
-      {
-        if (mainBuffList[0] != 3 && conditionIndex == 1)
-        {
-          return 1;
-        }
-      } 
     
 
     const value = mainBuffList[0];
@@ -2027,17 +2019,16 @@ async function monte_carlo_calculate()
     console.log(correct_coeff);
     let zetsuen_check = 0;
     let afStatusList;
-    let conditionFlag = 0;
-    if (document.getElementById('FixClockElmCharge') !== null && document.getElementById('FixClockElmCharge').checked) {
-      conditionFlag = 1;
-      DependSubStatusIndex[3] = 1;
+    let RequwireElmCharge = parseInt(document.getElementById('RequwireElmCharge').value) / 100
+    if (RequwireElmCharge > 1) {
+      depend_status[3] = 1;
     }
     if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
     {
         const zetsuen_checkbox = document.getElementById("af17_4");
         if(zetsuen_checkbox.checked)
         {
-        zetsuen_check = 1;
+          zetsuen_check = 1;
         }
     }
 
@@ -2058,7 +2049,7 @@ async function monte_carlo_calculate()
         afInfo = await createAf(RandomAfIndex, DependSubStatusIndex, conditionFlag);
         if (afInfo === 1)
         {
-            continue
+          continue
         }
         MyAfStatus[RandomAfIndex] = afInfo;
         afStatusList = Array(19).fill(0);
@@ -2095,6 +2086,10 @@ async function monte_carlo_calculate()
         if (depend_status[3] == 1)
         {
             result_status[3] += await (char_instance.calculate_char_result_elm_charge(fixed_status, result_status) + weapon_instance.calculate_weapon_result_elm_charge(fixed_status, result_status));
+            if (result_status[3] < RequwireElmCharge)
+            {
+              continue;
+            }
         }
         
         if (depend_status[4] == 1)

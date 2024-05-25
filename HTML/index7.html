@@ -1547,7 +1547,7 @@
 
         // 単位を表示するための span 要素を作成
         const unitSpan = document.createElement("span");
-        unitSpan.textContent = "％";
+        unitSpan.textContent = "（％）";
 
         // フォーム要素と単位要素を div 要素に追加
         inputContainer.appendChild(input);
@@ -1555,7 +1555,7 @@
         
         let StrictDiv = document.getElementById('ElmChargeStrict');
         let label = document.createElement('label');
-        let text = document.createTextNode('必要元素チャージ効率');
+        let text = document.createTextNode('必要元素チャージ効率：');
         label.appendChild(text);
         label.style.paddingLeft = '2em';
         StrictDiv.appendChild(label);

@@ -1528,16 +1528,12 @@
                     
                     let StrictDiv = document.getElementById('ElmChargeStrict');
                     let label = document.createElement('label');
-                    let checkbox = document.createElement('input');
-                    let text = document.createTextNode('時計をチャージ効率に固定');
-                    checkbox.type = 'checkbox';
-                    checkbox.id = 'FixClockElmCharge';
-                    checkbox.checked = true;
-                    label.appendChild(checkbox);
+                    let text = document.createTextNode('必要元素チャージ効率');
                     label.appendChild(text);
                     label.style.paddingLeft = '2em';
                     StrictDiv.appendChild(label);
                     StrictDiv.appendChild(document.createElement("br"));
+                    
                     StrictDiv.appendChild(document.createElement("br"));
                 }
             }

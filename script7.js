@@ -2166,118 +2166,30 @@ async function monte_carlo_calculate()
         DaysNumResult.push((possib / ConsumeNum).toFixed() + "日");
       }
 
-      let AfScore = 4 * Math.log(possib / 5) + 16
-      if (a === 0 || a === 1)
+      if (AfScore > 50)
       {
-        if (AfScore > 50)
-        {
-          RankList.push("SS");
-          RankClassList.push("rankSS");
-        }
-        else if (AfScore > 45)
-        {
-          RankList.push("S");
-          RankClassList.push("rankS");
-        }
-        else if (AfScore > 40)
-        {
-          RankList.push("A");
-          RankClassList.push("rankA");
-        }
-        else if (AfScore > 35)
-        {
-          RankList.push("B");
-          RankClassList.push("rankB");
-        }
-        else
-        {
-          RankList.push("C");
-          RankClassList.push("rankC");
-        }
+        RankList.push("SS");
+        RankClassList.push("rankSS");
       }
-      else if (a === 2)
+      else if (AfScore > 45)
       {
-        if (AfScore > 45)
-        {
-          RankList.push("SS");
-          RankClassList.push("rankSS");
-        }
-        else if (AfScore > 40)
-        {
-          RankList.push("S");
-          RankClassList.push("rankS");
-        }
-        else if (AfScore > 35)
-        {
-          RankList.push("A");
-          RankClassList.push("rankA");
-        }
-        else if (AfScore > 30)
-        {
-          RankList.push("B");
-          RankClassList.push("rankB");
-        }
-        else
-        {
-          RankList.push("C");
-          RankClassList.push("rankC");
-        }
+        RankList.push("S");
+        RankClassList.push("rankS");
       }
-      else if (a === 3)
+      else if (AfScore > 40)
       {
-        if (AfScore > 40)
-        {
-          RankList.push("SS");
-          RankClassList.push("rankSS");
-        }
-        else if (AfScore > 35)
-        {
-          RankList.push("S");
-          RankClassList.push("rankS");
-        }
-        else if (AfScore > 30)
-        {
-          RankList.push("A");
-          RankClassList.push("rankA");
-        }
-        else if (AfScore > 25)
-        {
-          RankList.push("B");
-          RankClassList.push("rankB");
-        }
-        else
-        {
-          RankList.push("C");
-          RankClassList.push("rankC");
-        }
+        RankList.push("A");
+        RankClassList.push("rankA");
       }
-      else if (a === 4)
+      else if (AfScore > 35)
       {
-        if (AfScore > 35)
-        {
-          RankList.push("SS");
-          RankClassList.push("rankSS");
-        }
-        else if (AfScore > 30)
-        {
-          RankList.push("S");
-          RankClassList.push("rankS");
-        }
-        else if (AfScore > 25)
-        {
-          RankList.push("A");
-          RankClassList.push("rankA");
-        }
-        else if (AfScore > 20)
-        {
-          RankList.push("B");
-          RankClassList.push("rankB");
-        }
-        else
-        {
-          RankList.push("C");
-          RankClassList.push("rankC");
-        }
+        RankList.push("B");
+        RankClassList.push("rankB");
+      }
+      else
+      {
+        RankList.push("C");
+        RankClassList.push("rankC");
       }
     }
     const SumPossib = 1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]);

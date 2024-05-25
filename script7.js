@@ -2046,7 +2046,7 @@ async function monte_carlo_calculate()
     {
         RandomAfIndex = Math.floor(Math.random() * 5);
         MyAfStatus = MyAfStatusSave.slice();
-        afInfo = await createAf(RandomAfIndex, DependSubStatusIndex, conditionFlag);
+        afInfo = await createAf(RandomAfIndex, DependSubStatusIndex);
         if (afInfo === 1)
         {
           continue

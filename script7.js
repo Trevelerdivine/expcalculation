@@ -1966,7 +1966,6 @@ async function monte_carlo_calculate()
     const depend_status = await calculate_depend_status();
     const team_fix_buff = await calculate_team_fix_buff(base_status);
     const team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-    const depend_status_index = await calculate_depend_status_index(depend_status);
     const TryCount = 2000000;
     let my_result_status = await calculate_my_exp_dmg(base_status,af_main_status_buff,depend_status);
     let my_exp_dmg = my_result_status[8];
@@ -1977,11 +1976,6 @@ async function monte_carlo_calculate()
     let StrongestAf;
     let nCount = 0;
     let DependSubStatusIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    for (let d= 0; d < depend_status_index.length; d++)
-    {
-        DependSubStatusIndex[depend_status_index[d]] = 1; 
-    }
-    DependSubStatusIndex[10 + parseInt(char_propaty[0])] = 1;
 
     document.getElementById("response").innerHTML = response;
     if (my_exp_dmg < 0 || !Number.isFinite(my_exp_dmg))
@@ -2019,10 +2013,16 @@ async function monte_carlo_calculate()
     console.log(correct_coeff);
     let zetsuen_check = 0;
     let afStatusList;
-    let RequwireElmCharge = parseInt(document.getElementById('RequwireElmCharge').value) / 100 - 1
+    let RequwireElmCharge = parseInt(document.getElementById("RequwireElmCharge").value * 10) / 1000 - 1;
     if (RequwireElmCharge > 0) {
       depend_status[3] = 1;
     }
+    const depend_status_index = await calculate_depend_status_index(depend_status);
+    for (let d= 0; d < depend_status_index.length; d++)
+      {
+          DependSubStatusIndex[depend_status_index[d]] = 1; 
+      }
+      DependSubStatusIndex[10 + parseInt(char_propaty[0])] = 1;
     if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)
     {
         const zetsuen_checkbox = document.getElementById("af17_4");

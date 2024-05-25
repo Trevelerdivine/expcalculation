@@ -1173,13 +1173,16 @@ async function calculate_table_status()
   const char_parameter = await import_char_parameter();
   let zetsuen_check = 0;
   let buff_status = [0,0,0,0,0,0,0,0];
+  let DisplayDependStatus = calculate_depend_status();
   let team_fix_buff = await calculate_team_fix_buff(base_status);
   let team_dynamic_buff = await calculate_team_dynamic_buff(base_status);
-  let AfSubBuff = await calculate_af_score(depend_status,base_status);
+  DisplayDependStatus[3] = 1
+  let AfSubBuff = await calculate_af_score(DisplayDependStatus,base_status);
   let fixed_status = base_status.slice();
   let result_status;
   let zetsuen_dmgbuff = 0;
   identify_condition();
+  DisplayDependStatus[3] = 1
 
   AfStatusBuff[0] = base_status[0] * (af_main_status_buff[0] + AfSubBuff[0] * 3 / 400) + AfMainFixStatus[0];;
   AfStatusBuff[1] = base_status[1] * (af_main_status_buff[1] + AfSubBuff[1] * 15 / 1600);
@@ -1216,7 +1219,6 @@ async function calculate_table_status()
   
   const char_instance = await create_char_instance(base_status, char_parameter);
   const weapon_instance = await create_weapon_instance(base_status);
-  const dmg_rate = await char_instance.dmg_rate_data();
   
   fixed_status[0] += await (char_instance.calculate_char_fixed_hp(fixed_status) + weapon_instance.calculate_weapon_fixed_hp(fixed_status));
   fixed_status[1] += await (char_instance.calculate_char_fixed_deff(fixed_status) + weapon_instance.calculate_weapon_fixed_deff(fixed_status));
@@ -1229,7 +1231,7 @@ async function calculate_table_status()
   result_status = fixed_status.slice();
 
   async function updateStatus(index, resultStatus, buffStatus, afBuff, baseStatus, dynamicBuff, calculateResultFunction, tablePrefix) {
-    if (depend_status[index] === 1) 
+    if (DisplayDependStatus[index] === 1) 
     {
       if (index == 3 || index == 6)
       {
@@ -2152,6 +2154,12 @@ async function monte_carlo_calculate()
     document.getElementById("clock4").innerHTML = (1 / SpendDays[3]).toFixed() + "個";
     document.getElementById("clock5").innerHTML = (1 / SpendDays[4]).toFixed() + "個";
     document.getElementById("clock6").innerHTML = (1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4])).toFixed() + "個";
+    document.getElementById("circlet1").innerHTML = (1 / SpendDays[0] / 5).toFixed() + "日";
+    document.getElementById("circlet2").innerHTML = (1 / SpendDays[1] / 5).toFixed() + "日";
+    document.getElementById("circlet3").innerHTML = (1 / SpendDays[2] / 5).toFixed() + "日";
+    document.getElementById("circlet4").innerHTML = (1 / SpendDays[3] / 5).toFixed() + "日";
+    document.getElementById("circlet5").innerHTML = (1 / SpendDays[4] / 5).toFixed() + "日";
+    document.getElementById("circlet6").innerHTML = (1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]) / 5).toFixed() + "日";
     document.getElementById("goblet1").innerHTML = "SS";
     document.getElementById("goblet2").innerHTML = "SS";
     document.getElementById("goblet3").innerHTML = "SS";

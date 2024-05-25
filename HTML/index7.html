@@ -742,9 +742,10 @@
                         <div id="table4" class="tablestyle1">
                             <table  class="main_combination_table" style="table-layout: fixed">
                             <colgroup>
-                                <col style="width: 15%;">
+                                <col style="width: 5%;">
                                 <col style="width: 20%;">
-                                <col style="width: 15%;">
+                                <col style="width: 20%;">
+                                <col style="width: 10%;">
                             </colgroup>
                             <thead>
                                 <tr>
@@ -760,6 +761,7 @@
                                 </th>
                                 <td id = clock1>-</td>
                                 <td id = goblet1>-</td>
+                                <td id = circlet1>-</td>
                                 </tr>
                                 <tr>
                                 <th rowspan="1" style="text-align: left;">
@@ -767,6 +769,7 @@
                                 </th>
                                 <td id = clock2>-</td>
                                 <td id = goblet2>-</td>
+                                <td id = circlet2>-</td>
                                 </tr>
                                 <tr>
                                 <th rowspan="1" style="text-align: left;">
@@ -774,6 +777,7 @@
                                 </th>
                                 <td id = clock3>-</td>
                                 <td id = goblet3>-</td>
+                                <td id = circlet3>-</td>
                                 </tr>
                                 <tr>
                                 <th rowspan="1" style="text-align: left;">
@@ -781,6 +785,7 @@
                                 </th>
                                 <td id = clock4>-</td>
                                 <td id = goblet4>-</td>
+                                <td id = circlet4>-</td>
                                 </tr>
                                 <tr>
                                 <th rowspan="1" style="text-align: left;">
@@ -788,6 +793,7 @@
                                 </th>
                                 <td id = clock5>-</td>
                                 <td id = goblet5>-</td>
+                                <td id = circlet5>-</td>
                                 </tr>
                                 <tr>
                                 <th rowspan="1" style="text-align: left;">
@@ -795,6 +801,7 @@
                                 </th>
                                 <td id = clock6>-</td>
                                 <td id = goblet6>-</td>
+                                <td id = circlet6>-</td>
                                 </tr>
                             </tbody>
                             </table>
@@ -1549,10 +1556,18 @@
         let StrictDiv = document.getElementById('ElmChargeStrict');
         let label = document.createElement('label');
         let text = document.createTextNode('必要元素チャージ効率：');
+        let lavel2 = document.createElement('label');
+        let text2 = document.createTextNode('１日の消費濃縮樹脂数：');
+        const selectList = createSelectList("UseItemNum", 1, 20, "個", 5);
         label.appendChild(text);
         label.style.paddingLeft = '2em';
+        label2.appendChild(text2);
+        label2.style.paddingLeft = '2em';
         StrictDiv.appendChild(label);
         StrictDiv.appendChild(inputContainer);
+        StrictDiv.appendChild(document.createElement("br"));
+        StrictDiv.appendChild(label2);
+        StrictDiv.appendChild(selectList);
         StrictDiv.appendChild(document.createElement("br"));
         StrictDiv.appendChild(document.createElement("br"));
 
@@ -1703,7 +1718,7 @@
 
     function ResetParameter(){
         for (let i = 1; i <= 6; i++) {
-            ["clock", "goblet"].forEach(type => {
+            ["clock", "goblet", "circlet"].forEach(type => {
                 document.getElementById(`${type}${i}`).innerHTML = "-";
             });
         }

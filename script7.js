@@ -2154,6 +2154,19 @@ async function monte_carlo_calculate()
                 + "「冠」厳選日数 ：" + (1/(SpendDays[4]*5)).toFixed() + "<br>"
                 + "総合厳選日数 ：" + (1/(SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]) / 5).toFixed();
     document.getElementById("result").innerHTML = result;
+
+    document.getElementById("clock1").innerHTML = 1 / SpendDays[0] + "個";
+    document.getElementById("clock2").innerHTML = 1 / SpendDays[1] + "個";
+    document.getElementById("clock3").innerHTML = 1 / SpendDays[2] + "個";
+    document.getElementById("clock4").innerHTML = 1 / SpendDays[3] + "個";
+    document.getElementById("clock5").innerHTML = 1 / SpendDays[4] + "個";
+    document.getElementById("clock6").innerHTML = 1 / (SpendDays[0] + SpendDays[1] + SpendDays[2] + SpendDays[3] + SpendDays[4]) + "個";
+    document.getElementById("goblet1").innerHTML = "SS";
+    document.getElementById("goblet2").innerHTML = "SS";
+    document.getElementById("goblet3").innerHTML = "SS";
+    document.getElementById("goblet4").innerHTML = "SS";
+    document.getElementById("goblet5").innerHTML = "SS";
+    document.getElementById("goblet6").innerHTML = "SS";
     console.timeEnd('myTimer'); // タイマーを終了し、経過時間をコンソールに表示
 }
 

@@ -2019,8 +2019,8 @@ async function monte_carlo_calculate()
     console.log(correct_coeff);
     let zetsuen_check = 0;
     let afStatusList;
-    let RequwireElmCharge = parseInt(document.getElementById('RequwireElmCharge').value) / 100
-    if (RequwireElmCharge > 1) {
+    let RequwireElmCharge = parseInt(document.getElementById('RequwireElmCharge').value) / 100 - 1
+    if (RequwireElmCharge > 0) {
       depend_status[3] = 1;
     }
     if (selectedImageIds[0] ==17 && selectedImageIds[1] == 17 && attack_method_index == 4)

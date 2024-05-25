@@ -2166,6 +2166,7 @@ async function monte_carlo_calculate()
         DaysNumResult.push((possib / ConsumeNum).toFixed() + "日");
       }
 
+      let AfScore = 4 * Math.log(possib / 5) + 16
       if (AfScore > 50)
       {
         RankList.push("SS");

@@ -2102,7 +2102,7 @@ async function monte_carlo_calculate()
             result_status[5] += await (char_instance.calculate_char_result_cr(fixed_status, result_status) + weapon_instance.calculate_weapon_result_cr(fixed_status, result_status));
             if (result_status[5] > 1)
             {
-            result_status[5] = 1;
+              result_status[5] = 1;
             }
         }
         

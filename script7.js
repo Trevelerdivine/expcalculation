@@ -1171,7 +1171,7 @@ async function calculate_table_status()
   const base_status = await calculate_base_status();
   const af_main_status_buff = await calculate_af_main_status_buff();
   const char_parameter = await import_char_parameter();
-  let DisplayDependStatus = depend_status;
+  let DisplayDependStatus = depend_status.slice();
   DisplayDependStatus[3] = 1;
   let zetsuen_check = 0;
   let buff_status = [0,0,0,0,0,0,0,0];

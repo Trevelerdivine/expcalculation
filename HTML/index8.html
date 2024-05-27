@@ -1528,6 +1528,31 @@
                 CircletMainStatus = AfNameList[PropName]["名前"];
             }
         }
+        let StrictDiv = document.getElementById('ElmChargeStrict');
+        const name = "options"; // 全てのラジオボタンに共通の名前を設定
+        const AfPartsName = ["花", "羽", "時計", "杯", "冠"];
+
+        for (let i = 1; i <= 5; i++) {
+            // ラベル要素を作成
+            const label = document.createElement('label');
+            label.textContent = AfPartsName[i - 1];
+
+            // ラジオボタン要素を作成
+            const radioButton = document.createElement('input');
+            radioButton.type = 'radio';
+            radioButton.id = i.toString();
+            radioButton.name = name;
+            radioButton.value = i;
+
+            // ラベルにラジオボタンを追加
+            label.prepend(radioButton);
+
+            // コンテナにラベルを追加
+            StrictDiv.appendChild(label);
+        }
+
+        StrictDiv.appendChild(document.createElement("br"));
+        StrictDiv.appendChild(document.createElement("br"));
 
         let targetDiv = document.getElementById('AfConditon');
         let newSpan = document.createElement('span');
@@ -1553,7 +1578,6 @@
         inputContainer.appendChild(input);
         inputContainer.appendChild(unitSpan);
         
-        let StrictDiv = document.getElementById('ElmChargeStrict');
         let label = document.createElement('label');
         let text = document.createTextNode('必要元素チャージ効率：');
         let label2 = document.createElement('label');

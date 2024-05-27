@@ -1529,7 +1529,7 @@
             }
         }
         let StrictDiv = document.getElementById('ElmChargeStrict');
-        const name = "options"; // 全てのラジオボタンに共通の名前を設定
+        const name = "AfParts"; // 全てのラジオボタンに共通の名前を設定
         const AfPartsName = ["花", "羽", "時計", "杯", "冠"];
 
         for (let i = 1; i <= 5; i++) {
@@ -1547,6 +1547,7 @@
             if(i === 1)
             {
                 label.style.paddingLeft = '2em';
+                radioButton.checked = true;
             }
             else
             {

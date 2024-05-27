@@ -2043,7 +2043,12 @@ async function monte_carlo_calculate()
     fixed_buff[5] = await (char_instance.calculate_char_fixed_cr(fixed_status) + weapon_instance.calculate_weapon_fixed_cr(fixed_status) + team_fix_buff[5]);
     fixed_buff[6] = await (char_instance.calculate_char_fixed_cd(fixed_status) + weapon_instance.calculate_weapon_fixed_cd(fixed_status) + team_fix_buff[6]);
     fixed_buff[7] = await (char_instance.calculate_char_fixed_dmg_buff(fixed_status) + weapon_instance.calculate_weapon_fixed_dmg_buff(fixed_status) + team_fix_buff[7]);
-    RandomAfIndex = 0;
+    const radios = document.getElementsByName("AfParts");
+    for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            RandomAfIndex = parseInt(radios[i].value) - 1;
+        }
+    }
     for (let j= 0; j < TryCount; j++)
     {
         MyAfStatus = MyAfStatusSave.slice();

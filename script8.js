@@ -2137,21 +2137,12 @@ async function monte_carlo_calculate()
         if (exp_dmg > my_exp_dmg)
         {
             AfPartsNum[RandomAfIndex] += 1;
-            if (MaxDmg < exp_dmg)
-                {
-                    MaxDmg = exp_dmg;
-                    StrongestAf = [RandomAfIndex, afInfo];
-                }
         }   
     }
-    console.log(my_exp_dmg);
-    console.log(exp_dmg)
-    console.log(MaxDmg);
-    console.log(StrongestAf);
-    console.log(nCount);
+
     calculationMessage.style.visibility = "hidden";
     const ConsumeNum = parseInt(document.getElementById("UseItemNum").value);
-    let SpendDays = AfPartsNum.map(num => num / TryCount)
+    let SpendDays = AfPartsNum.map(num => num / TryCount / 5)
     let ItemNumResult = [];
     let DaysNumResult = [];
     let RankClassList = [];
@@ -2160,7 +2151,7 @@ async function monte_carlo_calculate()
     for (let a = 0; a < 5; a++)
     {
       const possib = 1 / SpendDays[a];
-      if (possib > 100000 -1 )
+      if (possib > 500000 -1 )
       {
         ItemNumResult.push("測定不能！");
         DaysNumResult.push("測定不能！");

@@ -1543,7 +1543,15 @@
             radioButton.id = i.toString();
             radioButton.name = name;
             radioButton.value = i;
-
+            
+            if(i === 1)
+            {
+                label.style.paddingLeft = '2em';
+            }
+            else
+            {
+                label.style.paddingLeft = '1em';
+            }
             // ラベルにラジオボタンを追加
             label.prepend(radioButton);
 

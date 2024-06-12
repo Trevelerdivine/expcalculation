@@ -1573,16 +1573,6 @@ async function show_char_statsform()
         { text: "元素スキル(羽袖一触)", value: "16" },
         { text: "元素爆発(二刀の型・比翼)", value: "21" },
       ];
-
-      if (char_constellations > 2)
-      {
-        traitCheckbox = createCheckbox(traits[0].id, true);
-        traitLabel = createLabel(traits[0].id, traits[0].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
       createchar_attackmethod(options)  
     }
     else if (selectedCharId == "75")

@@ -2689,21 +2689,6 @@ async function show_attack_method()
           attack_method_prop.appendChild(element);
         });
       }
-      else if (attack_method == 21)
-      {
-        elementsToAddToCharTalent = [
-          createLabel("navia_hitcount1", "　初撃ヒット回数"),
-          createSelectList("navia_hitcount1", 0, 1, "", "回", 1),
-          document.createElement("br"),
-          createLabel("navia_hitcount2", "　火力支援ヒット回数"),
-          createSelectList("navia_hitcount2", 0, 17, "", "個", 17),
-          document.createElement("br"),
-        ];
-  
-        elementsToAddToCharTalent.forEach(element => {
-          attack_method_prop.appendChild(element);
-        });
-      }
     }
   }
   else if (selectedCharId == "75")

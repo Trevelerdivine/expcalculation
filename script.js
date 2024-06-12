@@ -33,7 +33,7 @@ const DisplayWeaponName = [ "萃光の裁葉", "聖顕の鍵", "波乱月白経�
                             "弾弓", "リカーブボウ", "シャープシューターの誓い", "鴉羽の弓", "久遠流転の大典", "碧落の瓏", "トゥライトゥーラの記憶", "千夜に浮かぶ夢", "神楽の真意", "不滅の月華",
                             "浮世の錠", "四風原典", "天空の巻", "果てなき紺碧の唄", "古祠の瓏", "純水流華", "彷徨える星", "満悦の実", "誓いの明瞳", "白辰の輪",
                             "ドドコの物語", "ダークアレイの酒と詩", "冬忍びの実", "昭心", "黒岩の緋玉", "万国諸海の図譜", "金珀·試作", "匣中日月", "旧貴族秘法録", "祭礼の断片",
-                            "流浪楽章", "西風秘典", "龍殺しの英傑譚", "魔導緒論", "凛流の監視者", "静水流転の輝き", "裁断", "スーパーアルティメット覇王魔剣"
+                            "流浪楽章", "西風秘典", "龍殺しの英傑譚", "魔導緒論", "凛流の監視者", "静水流転の輝き", "裁断", "スーパーアルティメット覇王魔剣", "有楽御簾切"
 ];
 const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
                    "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
@@ -59,7 +59,7 @@ const weapon_name = [ "LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFu
                       "Slingshot", "RecurveBow", "SharpshootersOath", "RavenBow", "TomeoftheEternalFlow", "JadefallsSplendor", "TulaytullahsRemembrance", "AThousandFloatingDreams", "KagurasVerity", "EverlastingMoonglow",
                       "MemoryofDust", "LostPrayertotheSacredWinds", "SkywardAtlas", "BalladOfTheBoundlessBlue", "SacrificialJade", "FlowingPurity", "WanderingEvenstar", "FruitofFulfillment", "OathswornEye", "HakushinRing",
                       "DodocoTales", "WineandSong", "Frostbearer", "EyeofPerception", "BlackcliffAgate", "MappaMare", "PrototypeAmber", "SolarPearl", "RoyalGrimoire", "SacrificialFragments",
-                      "TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide", "CashflowSupervision", "SplendorOfTranquilWaters", "Verdict", "UltimateTyrantSuperDevilSword"
+                      "TheWidsith", "FavoniusCodex", "ThrillingTalesofDragonSlayers", "MagicGuide", "CashflowSupervision", "SplendorOfTranquilWaters", "Verdict", "UltimateTyrantSuperDevilSword", "UrakuMisugiri"
                     ]
 
 
@@ -994,6 +994,9 @@ async function create_weapon_instance(base_status) {
       break;
     case "155":
       weapon_instance = new SplendorOfTranquilWaters(base_status);
+      break;
+    case "158":
+      weapon_instance = new UrakuMisugiri(base_status);
       break;
     default:
       // 未知の武器IDに対する処理を追加することもできます

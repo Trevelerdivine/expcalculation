@@ -8674,7 +8674,7 @@ class chiori {
     let dmg_deff_rate = 0;
     if (attack_method == 1) {
       this.attack_hit_count = 5;
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 5; i++) {
         dmg_attck_rate += parseFloat(data["通常攻撃"]["詳細"][i]["数値"][this.parameter[3]]);
       }
       if(this.char_constellations == 4)

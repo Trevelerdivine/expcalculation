@@ -1555,6 +1555,36 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "77")
+    {
+      elementsToAddToCharTalent = [
+        createCheckbox("chiori_talent2", true),
+        createLabel("chiori_talent2", "固有天賦2：岩元素ダメージ+20%"),
+        document.createElement("br"),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      const options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃1ループ(岩元素)", value: "1" },        
+        { text: "元素スキル(羽袖一触)", value: "16" },
+        { text: "元素爆発(二刀の型・比翼)", value: "21" },
+      ];
+
+      if (char_constellations > 2)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      createchar_attackmethod(options)  
+    }
     else if (selectedCharId == "75")
     {
       elementsToAddToCharTalent = [

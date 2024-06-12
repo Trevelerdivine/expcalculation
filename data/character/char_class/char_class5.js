@@ -8546,7 +8546,7 @@ class Lyney {
       this.sixth_conste_buff = 0;
       this.skill_buff = 0;
       this.attack_hit_count = 0;
-      this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+      this.weapon_rank = WeaponConstellations;
       const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
       const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
       this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;

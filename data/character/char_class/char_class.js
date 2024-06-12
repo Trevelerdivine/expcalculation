@@ -8785,7 +8785,6 @@ class chiori {
   }
 }
 
-
 class Navia {
   constructor(base_status_array, parameter) {
     this.base_status_array = base_status_array;

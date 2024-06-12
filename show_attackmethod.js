@@ -2639,48 +2639,48 @@ async function show_attack_method()
         if(char_constellations < 2)
         {
           elementsToAddToCharTalent = [
-            createLabel("navia_hitcount", "　斬り上げ攻撃ヒット数"),
-            createSelectList("navia_hitcount", 0, 1, "", "回", 1),
+            createLabel("chiori_hitcount1", "　斬り上げ攻撃ヒット数"),
+            createSelectList("chiori_hitcount1", 0, 1, "", "回", 1),
             document.createElement("br"),
-            createLabel("navia_buff_count", "　たもと攻撃ヒット数"),
-            createSelectList("navia_buff_count", 0, 20, "", "回", 10),
+            createLabel("chiori_hitcount2", "　たもと攻撃ヒット数"),
+            createSelectList("chiori_hitcount2", 0, 20, "", "回", 10),
             document.createElement("br"),
-            createLabel("navia_buff_count", "　たもと連携攻撃ヒット数"),
-            createSelectList("navia_buff_count", 0, 2, "", "回", 2),
+            createLabel("chiori_hitcount3", "　たもと連携攻撃ヒット数"),
+            createSelectList("chiori_hitcount3", 0, 2, "", "回", 2),
             document.createElement("br"),
           ];
         }
         else if (char_constellations < 3)
         {
           elementsToAddToCharTalent = [
-            createLabel("navia_hitcount", "　斬り上げ攻撃ヒット数"),
-            createSelectList("navia_hitcount", 0, 1, "", "回", 1),
+            createLabel("chiori_hitcount1", "　斬り上げ攻撃ヒット数"),
+            createSelectList("chiori_hitcount1", 0, 1, "", "回", 1),
             document.createElement("br"),
-            createLabel("navia_buff_count", "　たもと攻撃ヒット数"),
-            createSelectList("navia_buff_count", 0, 20, "", "回", 10),
+            createLabel("chiori_hitcount2", "　たもと攻撃ヒット数"),
+            createSelectList("chiori_hitcount2", 0, 20, "", "回", 10),
             document.createElement("br"),
-            createLabel("navia_buff_count", "　たもと連携攻撃ヒット数"),
-            createSelectList("navia_buff_count", 0, 2, "", "回", 2),
+            createLabel("chiori_hitcount3", "　たもと連携攻撃ヒット数"),
+            createSelectList("chiori_hitcount3", 0, 2, "", "回", 2),
             document.createElement("br"),
-            createLabel("navia_buff_count", "　きぬ攻撃ヒット数"),
-            createSelectList("navia_buff_count", 0, 6, "", "回", 3),
+            createLabel("chiori_hitcount4", "　きぬ攻撃ヒット数"),
+            createSelectList("chiori_hitcount4", 0, 6, "", "回", 3),
             document.createElement("br"),
           ];
         }
         else
         {
           elementsToAddToCharTalent = [
-            createLabel("navia_hitcount", "　斬り上げ攻撃ヒット数"),
-            createSelectList("navia_hitcount", 0, 1, "", "回", 1),
+            createLabel("chiori_hitcount1", "　斬り上げ攻撃ヒット数"),
+            createSelectList("chiori_hitcount1", 0, 1, "", "回", 1),
             document.createElement("br"),
-            createLabel("navia_buff_count", "　たもと攻撃ヒット数"),
-            createSelectList("navia_buff_count", 0, 20, "", "回", 10),
+            createLabel("chiori_hitcount2", "　たもと攻撃ヒット数"),
+            createSelectList("chiori_hitcount2", 0, 20, "", "回", 10),
             document.createElement("br"),
-            createLabel("navia_buff_count", "　たもと連携攻撃ヒット数"),
-            createSelectList("navia_buff_count", 0, 2, "", "回", 2),
+            createLabel("chiori_hitcount3", "　たもと連携攻撃ヒット数"),
+            createSelectList("chiori_hitcount3", 0, 2, "", "回", 2),
             document.createElement("br"),
-            createLabel("navia_buff_count", "　きぬ攻撃ヒット数"),
-            createSelectList("navia_buff_count", 0, 12, "", "回", 6),
+            createLabel("chiori_hitcount4", "　きぬ攻撃ヒット数"),
+            createSelectList("chiori_hitcount4", 0, 12, "", "回", 6),
             document.createElement("br"),
           ];
         }

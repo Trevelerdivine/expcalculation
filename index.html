@@ -1796,19 +1796,17 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     buttonscondition[index] = true;
   }
 
-  window.onload = async function() {
-    const JsonData = await fetch("./data/JsonData/DisplayCharData.json");
-    CharJsonData = await JsonData.json();
-  }
 
 
-  window.addEventListener('DOMContentLoaded', function () {
+  window.addEventListener('DOMContentLoaded', async function () {
   // オーバーレイ画像
   af_overlayImages = document.querySelectorAll('.overlay img');
   const indexDisplay = document.getElementById('index-display');
   afpopupImages = document.querySelectorAll('.open img');
   console.log(af_overlayImages);
-  
+  const JsonData = await fetch("./data/JsonData/DisplayCharData.json");
+  CharJsonData = await JsonData.json();
+  console.log(CharJsonData);
   // イメージの選択処理を実行
   handleImageSelection(af_overlayImages, indexDisplay);
   

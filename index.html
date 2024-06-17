@@ -1685,7 +1685,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   const elemental_reaction = document.getElementById("element_action");
   
   indexDisplay1.textContent = CharJsonData["CharMap"][selectedCharId.toString()]["名前"];
-  indexDisplay2.textContent = WeaponJsonData["CharMap"][selectedCharId.toString()]["名前"];
+  indexDisplay2.textContent = WeaponJsonData["CharMap"][selectedWeaponId.toString()]["名前"];
 
   async function handleCharClick() {
     attack_method_prop.innerHTML = "";
@@ -1709,7 +1709,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     calculate_table_status();
     toggleweapontype(weapon_type_index);
     indexDisplay1.textContent = CharJsonData["CharMap"][selectedCharId.toString()]["名前"];
-    indexDisplay2.textContent = WeaponJsonData["CharMap"][selectedCharId.toString()]["名前"];
+    indexDisplay2.textContent = WeaponJsonData["CharMap"][selectedWeaponId.toString()]["名前"];
   }
 
   for (let i = 0; i < images.length; i++) {
@@ -1723,7 +1723,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
 
   function handleWeaponSelection(images, indexDisplay)
   {
-    indexDisplay.textContent = WeaponJsonData["CharMap"][selectedCharId.toString()]["名前"];
+    indexDisplay.textContent = WeaponJsonData["CharMap"][selectedWeaponId.toString()]["名前"];
 
     async function handleWeaponClick() 
     { 
@@ -1735,7 +1735,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
       weaponPopupImage.setAttribute('src', selectedImageSrc);
       weaponPopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
-      indexDisplay.textContent = WeaponJsonData["CharMap"][selectedCharId.toString()]["名前"];
+      indexDisplay.textContent = WeaponJsonData["CharMap"][selectedWeaponId.toString()]["名前"];
       const checkbox = document.getElementById('pop-up_weapon');
       checkbox.checked = false;
       await calculate_depend_status()
@@ -1806,9 +1806,9 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   afpopupImages = document.querySelectorAll('.open img');
   console.log(af_overlayImages);
   const JsonData1 = await fetch("./data/JsonData/DisplayCharData.json");
-  CharJsonData = await JsonData1.json();
+  CharJsonData = await JsonData.json();
   const JsonData2 = await fetch("./data/JsonData/DisplayWeaponData.json");
-  WeaponJsonData = await JsonData2.json();
+  WeaponJsonData = await JsonData.json();
   console.log(CharJsonData);
   // イメージの選択処理を実行
   handleImageSelection(af_overlayImages, indexDisplay);

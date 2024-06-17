@@ -1451,6 +1451,7 @@
   let elements_name = ["tierPyro", "tierHydro", "tierCyro", "tierElectro", "tierAnemo", "tierDendro", "tierGeo"];
   let weapon_type = ["sword", "claymore", "polearm", "bow", "catalyst"];
   let CharJsonData;
+  let WeaponJsonData;
   let af_list = [
   "剣闘士のフィナーレ",
   "大地を流浪する楽団",
@@ -1682,9 +1683,9 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   const attack_method_prop = document.getElementById("attack_method_prop");
   const select_reaction_method = document.getElementById("select_reaction_method");
   const elemental_reaction = document.getElementById("element_action");
-
+  
   indexDisplay1.textContent = CharJsonData["CharMap"][selectedCharId.toString()]["名前"];
-  indexDisplay2.textContent = DisplayWeaponName[selectedWeaponId];
+  indexDisplay2.textContent = WeaponJsonData["CharMap"][selectedCharId.toString()]["名前"];
 
   async function handleCharClick() {
     attack_method_prop.innerHTML = "";
@@ -1708,7 +1709,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     calculate_table_status();
     toggleweapontype(weapon_type_index);
     indexDisplay1.textContent = CharJsonData["CharMap"][selectedCharId.toString()]["名前"];
-    indexDisplay2.textContent = DisplayWeaponName[selectedWeaponId];
+    indexDisplay2.textContent = WeaponJsonData["CharMap"][selectedCharId.toString()]["名前"];
   }
 
   for (let i = 0; i < images.length; i++) {
@@ -1722,7 +1723,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
 
   function handleWeaponSelection(images, indexDisplay)
   {
-    indexDisplay.textContent = DisplayWeaponName[selectedWeaponId];
+    indexDisplay.textContent = WeaponJsonData["CharMap"][selectedCharId.toString()]["名前"];
 
     async function handleWeaponClick() 
     { 
@@ -1734,7 +1735,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
       weaponPopupImage.setAttribute('src', selectedImageSrc);
       weaponPopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
-      indexDisplay.textContent = DisplayWeaponName[selectedWeaponId];
+      indexDisplay.textContent = WeaponJsonData["CharMap"][selectedCharId.toString()]["名前"];
       const checkbox = document.getElementById('pop-up_weapon');
       checkbox.checked = false;
       await calculate_depend_status()
@@ -1804,8 +1805,10 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   const indexDisplay = document.getElementById('index-display');
   afpopupImages = document.querySelectorAll('.open img');
   console.log(af_overlayImages);
-  const JsonData = await fetch("./data/JsonData/DisplayCharData.json");
+  const JsonData1 = await fetch("./data/JsonData/DisplayCharData.json");
   CharJsonData = await JsonData.json();
+  const JsonData2 = await fetch("./data/JsonData/DisplayWeaponData.json");
+  WeaponJsonData = await JsonData.json();
   console.log(CharJsonData);
   // イメージの選択処理を実行
   handleImageSelection(af_overlayImages, indexDisplay);

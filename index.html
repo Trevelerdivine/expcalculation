@@ -1450,6 +1450,7 @@
   let buttonscondition = [false, false, false, false, false, false, false];
   let elements_name = ["tierPyro", "tierHydro", "tierCyro", "tierElectro", "tierAnemo", "tierDendro", "tierGeo"];
   let weapon_type = ["sword", "claymore", "polearm", "bow", "catalyst"];
+  let CharJsonData;
   let af_list = [
   "剣闘士のフィナーレ",
   "大地を流浪する楽団",
@@ -1682,7 +1683,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
   const select_reaction_method = document.getElementById("select_reaction_method");
   const elemental_reaction = document.getElementById("element_action");
 
-  indexDisplay1.textContent = DisplayCharName[selectedCharId];
+  indexDisplay1.textContent = CharJsonData["CharMap"][selectedCharId.toString()]["名前"];
   indexDisplay2.textContent = DisplayWeaponName[selectedWeaponId];
 
   async function handleCharClick() {
@@ -1706,7 +1707,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     show_weapon_statsform();
     calculate_table_status();
     toggleweapontype(weapon_type_index);
-    indexDisplay1.textContent = DisplayCharName[selectedCharId];
+    indexDisplay1.textContent = CharJsonData["CharMap"][selectedCharId.toString()]["名前"];
     indexDisplay2.textContent = DisplayWeaponName[selectedWeaponId];
   }
 
@@ -1794,6 +1795,12 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
     buttonscondition.fill(false);
     buttonscondition[index] = true;
   }
+
+  window.onload = async function() {
+    const JsonData = await fetch("./data/JsonData/DisplayCharData.json");
+    CharJsonData = await JsonData.json();
+  }
+
 
   window.addEventListener('DOMContentLoaded', function () {
   // オーバーレイ画像

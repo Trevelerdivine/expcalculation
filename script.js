@@ -9,15 +9,7 @@ let attack_method = 0;
 let attack_method_index = 0;
 const attack_method_name = ["通常攻撃", "重撃", "落下攻撃", "元素スキル", "元素爆発"];
 const element = ["炎元素", "水元素", "氷元素", "雷元素", "風元素", "草元素", "岩元素"]
-const DisplayCharName = ["ディシア","宵宮","胡桃","クレー","ディルック","トーマ","煙緋","辛炎","ベネット","香菱",
-                            "アンバー","ニィロウ","夜蘭","神里綾人","珊瑚宮心海","タルタリヤ","モナ","キャンディス","バーバラ","行秋",
-                            "申鶴","神里綾華","エウルア","甘雨","七七","アーロイ","ミカ","レイラ","ロサリア","ディオナ",
-                            "重雲","ガイア","セノ","八重神子","雷電将軍","刻晴","ドリー","久岐忍","九条裟羅","フィッシュル",
-                            "北斗","レザー","リサ","雷旅人","放浪者","楓原万葉 ","魈","ウェンティ","ジン","ファルザン",
-                            "鹿野院平蔵","早柚","スクロース","風旅人","白朮","アルハイゼン","ナヒーダ","ティナリ","綺良々","カーヴェ",
-                            "ヨォーヨ","コレイ","草旅人","荒瀧一斗","アルベド","鍾離","雲菫","ゴロー","ノエル","凝光",
-                            "岩旅人", "リネ", "ヌヴィレット", "リオセスリ", "フリーナ", "ナヴィア", "嘉明", "千織", "アルレッキーノ", "クロリンデ"
-];
+
 const DisplayWeaponName = [ "萃光の裁葉", "聖顕の鍵", "波乱月白経津", "霧切の廻光", "蒼古なる自由への誓い", "磐岩結緑", "斬山の刃", "天空の刃", "風鷹剣", "船渠剣",
                             "狼牙", "サーンドルの渡し守", "海淵のフィナーレ", "東花坊時雨", "サイフォスの月明かり", "原木刀", "籠釣瓶一心", "シナバースピンドル", "天目影打", "ダークアレイの閃光",
                             "腐植の剣", "黒剣", "黒岩の長剣", "鉄蜂の刺し", "斬岩·試作", "匣中龍吟", "旧貴族長剣", "祭礼の剣", "笛の剣", "西風剣",
@@ -35,15 +27,6 @@ const DisplayWeaponName = [ "萃光の裁葉", "聖顕の鍵", "波乱月白経�
                             "ドドコの物語", "ダークアレイの酒と詩", "冬忍びの実", "昭心", "黒岩の緋玉", "万国諸海の図譜", "金珀·試作", "匣中日月", "旧貴族秘法録", "祭礼の断片",
                             "流浪楽章", "西風秘典", "龍殺しの英傑譚", "魔導緒論", "凛流の監視者", "静水流転の輝き", "裁断", "スーパーアルティメット覇王魔剣", "有楽御簾切"
 ];
-const char_name = ["dehya","yoimiya","hutao","klee","diluc","thoma","yanfei","xinyan","bennett","xiangling",
-                   "amber","nirou","yelan","kamisatoayato","sangonomiyakokomi","tartaglia","mona","candace","barbara","xingqiu",
-                   "shenhe","kamisatoayaka","eula","ganyu","qiqi","aloy","mika","layla","rosaria","diona",
-                   "chongyun","kaeya","cyno","yaemiko","raidenshougun","keqing","dori","kukishinobu","kujousara","fischl",
-                   "beidou","razor","lisa","travelarelectro","wanderer","kazuhakaedehara","xiao","venti","jean","faruzan",
-                   "shikanoinheizou","sayu","sucrose","traveraranemo","baizhu","alhaitham","nahida","tighnari","kirara","kaveh",
-                   "yaoyao","collei","travelardendro","aratakiitto","albedo","zhongli","yunjin","gorou","noelle","ningguang","travelergeo",
-                   "Lyney", "Neuvillette", "Wriothesley", "Furina", "Navia", "gaming", "chiori", "Arlecchino", "Clorinde"
-                  ];
 const weapon_name = [ "LightofFoliarIncision", "KeyofKhajNisut", "HaranGeppakuFutsu", "MistsplitterReforged", "FreedomSworn", "PrimordialJadeCutter", "SummitShaper", "SkywardBlade", "AquilaFavonia", "TheDockhandsAssistant",
                       "WolfFang", "FleuveCendreFerryman", "FinaleoftheDeep", "ToukabouShigure", "XiphosMoonlight", "SapwoodBlade", "KagotsurubeIsshin", "CinnabarSpindle", "AmenomaKageuchi", "TheAlleyFlash",
                       "FesteringDesire", "TheBlackSword", "BlackcliffLongsword", "IronSting", "PrototypeRancour", "LionsRoar", "RoyalLongsword", "SacrificialSword", "TheFlute", "FavoniusSword",
@@ -97,7 +80,7 @@ const elm_reaction_obj = [
 async function calculate_char_base_status() 
 {
   const char_level = document.getElementById("char_level").value;
-  const response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
+  const response = await fetch("./data/character/char_data/" + CharJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
   const data = await response.json();
   const char_base_hp = data.ステータス.基礎HP[char_level];
   let char_base_attck = data.ステータス.基礎攻撃力[char_level];
@@ -261,7 +244,7 @@ async function calculate_depend_status()
     }
   }
   depend_status = [0,0,0,0,0,0,0];
-  const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
+  const char_response = await fetch("./data/character/char_data/" + CharJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
   const char_data = await char_response.json();
   if (attack_method != 0)
  {
@@ -1028,7 +1011,7 @@ async function calculate_team_fix_buff(base_status)
   const geoCheckbox = document.getElementById("geo_reso");
 
   const char_level = document.getElementById("char_level").value;
-  const char_response = await fetch("./data/character/char_data/" + char_name[selectedCharId] + ".json");
+  const char_response = await fetch("./data/character/char_data/" + CharJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
   const char_data = await char_response.json();
   const char_base_hpper = parseFloat(char_data["ステータス"]["基礎HP％"][char_level]);
   const char_base_attackper = parseFloat(char_data["ステータス"]["基礎攻撃力％"][char_level]);

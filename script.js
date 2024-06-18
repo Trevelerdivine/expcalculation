@@ -77,7 +77,7 @@ async function calculate_char_base_status()
 async function calculate_weapon_base_status() 
 {
   const weapon_level = document.getElementById("weapon_level").value;
-  const response = await fetch("./data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
+  const response = await fetch("./data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedWeaponId.toString()]["name"] + ".json");
   const data = await response.json();
   const weapon_base_hp = data.ステータス.基礎HP[weapon_level];
   const weapon_base_attck = data.ステータス.基礎攻撃力[weapon_level];
@@ -214,7 +214,7 @@ async function calculate_depend_status()
  {
   char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
   const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;;
-  const weapon_response = await fetch("./data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
+  const weapon_response = await fetch("./data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedWeaponId.toString()]["name"] + ".json");
   const weapon_data = await weapon_response.json();
   const weapon_depend_status = weapon_data.ステータス.依存ステータス;
   const button = document.getElementById("reactionoff_flag");
@@ -982,7 +982,7 @@ async function calculate_team_fix_buff(base_status)
   const char_base_deffper = parseFloat(char_data["ステータス"]["基礎防御力％"][char_level]);
 
   const weapon_level = document.getElementById("weapon_level").value;
-  const weapon_response = await fetch("./data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
+  const weapon_response = await fetch("./data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedWeaponId.toString()]["name"] + ".json");
   const weapon_data = await weapon_response.json();
   const weapon_base_hpper = parseFloat(weapon_data["ステータス"]["基礎HP％"][weapon_level]);
   const weapon_base_attackper = parseFloat(weapon_data["ステータス"]["基礎攻撃力％"][weapon_level]);

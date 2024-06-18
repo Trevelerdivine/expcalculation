@@ -63,7 +63,7 @@ async function calculate_base_status() {
   // キャラクターと武器のデータを取得
   const CharResponse = await fetch("../data/character/char_data/" + CharJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
   const CharData = await CharResponse.json();
-  const WeaponResponse = await fetch("../data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
+  const WeaponResponse = await fetch("../data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedWeaponId.toString()]["name"] + ".json");
   const WeaponData = await WeaponResponse.json();
 
   // 基礎ステータスを取得し、小数点以下を四捨五入
@@ -299,7 +299,7 @@ async function calculate_depend_status()
     {
         char_propaty[0] = char_data[attack_method_name[attack_method_index]]["元素"];
         const char_depend_status = char_data[attack_method_name[attack_method_index]].依存ステータス;
-        const weapon_response = await fetch("../data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedCharId.toString()]["name"] + ".json");
+        const weapon_response = await fetch("../data/weapon/weapon_data/" + WeaponJsonData["CharMap"][selectedWeaponId.toString()]["name"] + ".json");
         const weapon_data = await weapon_response.json();
         const weapon_depend_status = weapon_data.ステータス.依存ステータス;
         const button = document.getElementById("reactionoff_flag");

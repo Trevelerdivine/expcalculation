@@ -1614,7 +1614,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
 
   function handleWeaponSelection(images, indexDisplay)
   {
-    indexDisplay.textContent = DisplayWeaponName[selectedWeaponId];
+    indexDisplay.textContent = WeaponJsonData["CharMap"][selectedWeaponId.toString()]["名前"];
 
     async function handleWeaponClick() 
     { 
@@ -1626,7 +1626,7 @@ function handleCharSelection(images, popupImage, indexDisplay1, indexDisplay2) {
       weaponPopupImage.setAttribute('src', selectedImageSrc);
       weaponPopupImage.parentNode.classList.toggle('selected', !!selectedWeaponId);
 
-      indexDisplay.textContent = DisplayWeaponName[selectedWeaponId];
+      indexDisplay.textContent = WeaponJsonData["CharMap"][selectedWeaponId.toString()]["名前"];
       const checkbox = document.getElementById('pop-up_weapon');
       checkbox.checked = false;
       await calculate_depend_status()

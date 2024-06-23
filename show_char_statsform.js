@@ -1031,7 +1031,7 @@ async function show_char_statsform()
         createanySelectList("ClorindeTalent2", 0, 2, "+", "%", 2, 10),
         document.createElement("br"),
       ];
-      elementsToAddToCharTalent.forEach(element => {
+      traits.forEach(element => {
         char_talent.appendChild(element);
       });
 

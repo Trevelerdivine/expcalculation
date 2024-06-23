@@ -1024,6 +1024,18 @@ async function show_char_statsform()
     else if (selectedCharId == "79")
     {
       traits = [
+        createCheckbox("ClorindeTalent1", true),
+        createLabel("ClorindeTalent1", "固有天賦1：夜を裂く紫焔"),
+        document.createElement("br"),
+        createTextNode("　固有天賦２：会心率　"),
+        createanySelectList("ClorindeTalent2", 0, 2, "+", "%", 2, 10),
+        document.createElement("br"),
+      ];
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
+      traits = [
         { id: "traitCheckbox4", label: "第4重：雷元素ダメージ+20%" },
         { id: "traitCheckbox6", label: "第6重：クロリンデの会心率+10%、会心ダメージ+70%" },
       ];

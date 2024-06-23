@@ -1938,6 +1938,18 @@ async function show_attack_method()
     else if (attack_method==21)
     {
       ClorindeAggCountList = createSelectList("ClorindeAggCount", 0, 30, "", "回", 2);
+      if (char_constellations > 2)
+        {
+          elementsToAddToCharTalent = [
+            createLabel("traitCheckbox4", "命の契約："),
+            createInputWithUnit("text", "traitCheckbox4", "100","(%)"),
+            document.createElement("br")
+          ];
+    
+          elementsToAddToCharTalent.forEach(element => {
+            char_talent.appendChild(element);
+          });
+        }
     }
     elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
     elemental_reaction.appendChild(ClorindeAggCountList); // ラベルを select_reaction_method に追加

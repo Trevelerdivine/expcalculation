@@ -1027,7 +1027,7 @@ async function show_char_statsform()
         createCheckbox("ClorindeTalent1", true),
         createLabel("ClorindeTalent1", "固有天賦1：夜を裂く紫焔"),
         document.createElement("br"),
-        createTextNode("　固有天賦２：会心率　"),
+        createTextNode("　固有天賦2：会心率　"),
         createanySelectList("ClorindeTalent2", 0, 2, "+", "%", 2, 10),
         document.createElement("br"),
       ];

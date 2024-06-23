@@ -5733,14 +5733,6 @@ class clorinde {
 
   calculate_char_debuff() {
     let char_debuff = [0,0,0];
-    if (this.char_constellations >3)
-    {
-      const six_conste_check = document.getElementById("traitCheckbox4");
-      if(six_conste_check.checked && attack_method == 16)
-      {
-        char_debuff = [0,0,0.6];
-      }
-    }
     return char_debuff;
   }
 }

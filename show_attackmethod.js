@@ -1913,27 +1913,81 @@ async function show_attack_method()
   {
     if (attack_method == 1)
     {
-      traits = [
-        createLabel("ClorindeAttackCount1", "　駆猟(契約100%未満)ヒット数："),
-        createSelectList("ClorindeAttackCount1", 0, 10, "", "回", 3),
-        document.createElement("br"),
-        createLabel("ClorindeAttackCount2", "　駆猟(契約100%以上)ヒット数："),
-        createSelectList("ClorindeAttackCount2", 0, 10, "", "回", 0),
-        document.createElement("br"),
-        createLabel("ClorindeAttackCount3", "　穿夜(契約0%)ヒット数："),
-        createSelectList("ClorindeAttackCount3", 0, 10, "", "回", 0),
-        document.createElement("br"),
-        createLabel("ClorindeAttackCount4", "　穿夜(契約100%未満)ヒット数："),
-        createSelectList("ClorindeAttackCount4", 0, 10, "", "回", 0),
-        document.createElement("br"),
-        createLabel("ClorindeAttackCount5", "　穿夜(契約100%以上)ヒット数："),
-        createSelectList("ClorindeAttackCount5", 0, 10, "", "回", 1),
-        document.createElement("br"),
-      ];
+      if (char_constellations  == 0)
+      {
+        traits = [
+          createLabel("ClorindeAttackCount1", "　駆猟(契約100%未満)ヒット数："),
+          createSelectList("ClorindeAttackCount1", 0, 10, "", "回", 3),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount2", "　駆猟(契約100%以上)ヒット数："),
+          createSelectList("ClorindeAttackCount2", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount3", "　穿夜(契約0%)ヒット数："),
+          createSelectList("ClorindeAttackCount3", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount4", "　穿夜(契約100%未満)ヒット数："),
+          createSelectList("ClorindeAttackCount4", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount5", "　穿夜(契約100%以上)ヒット数："),
+          createSelectList("ClorindeAttackCount5", 0, 10, "", "回", 1),
+          document.createElement("br"),
+        ];
+        ClorindeAggCountList = createSelectList("ClorindeAggCount", 0, 30, "", "回", 2);
+      }
+      else if (char_constellations < 4)
+      {
+        traits = [
+          createLabel("ClorindeAttackCount1", "　駆猟(契約100%未満)ヒット数："),
+          createSelectList("ClorindeAttackCount1", 0, 10, "", "回", 3),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount2", "　駆猟(契約100%以上)ヒット数："),
+          createSelectList("ClorindeAttackCount2", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount3", "　穿夜(契約0%)ヒット数："),
+          createSelectList("ClorindeAttackCount3", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount4", "　穿夜(契約100%未満)ヒット数："),
+          createSelectList("ClorindeAttackCount4", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount5", "　穿夜(契約100%以上)ヒット数："),
+          createSelectList("ClorindeAttackCount5", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount6", "　1重 連携攻撃ヒット数："),
+          createSelectList("ClorindeAttackCount6", 0, 10, "", "回", 1),
+          document.createElement("br"),
+        ];
+        ClorindeAggCountList = createSelectList("ClorindeAggCount", 0, 30, "", "回", 3);
+      }
+      else
+      {
+        traits = [
+          createLabel("ClorindeAttackCount1", "　駆猟(契約100%未満)ヒット数："),
+          createSelectList("ClorindeAttackCount1", 0, 10, "", "回", 3),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount2", "　駆猟(契約100%以上)ヒット数："),
+          createSelectList("ClorindeAttackCount2", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount3", "　穿夜(契約0%)ヒット数："),
+          createSelectList("ClorindeAttackCount3", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount4", "　穿夜(契約100%未満)ヒット数："),
+          createSelectList("ClorindeAttackCount4", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount5", "　穿夜(契約100%以上)ヒット数："),
+          createSelectList("ClorindeAttackCount5", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount6", "　1重 連携攻撃ヒット数："),
+          createSelectList("ClorindeAttackCount6", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("ClorindeAttackCount7", "　6重 明燭の影ヒット数："),
+          createSelectList("ClorindeAttackCount67", 0, 6, "", "回", 1),
+          document.createElement("br"),
+        ];
+        ClorindeAggCountList = createSelectList("ClorindeAggCount", 0, 30, "", "回", 4);
+      }
       traits.forEach(element => {
         attack_method_prop.appendChild(element);
       });
-      ClorindeAggCountList = createSelectList("ClorindeAggCount", 0, 30, "", "回", 2);
     }
     else if (attack_method == 21)
     {

@@ -5578,6 +5578,15 @@ class clorinde {
       const six_conste_check = document.getElementById("traitCheckbox6");
       this.sixth_conste_buff = 0.1;
     }
+
+    if (this.char_constellations > 1)
+    {
+      this.talent1effect = parseInt(document.getElementById("ClorindeTalent1").value) * 0.3;
+    }
+    else
+    {
+      this.talent1effect = parseInt(document.getElementById("ClorindeTalent1").value) * 0.2;
+    }
   
     // JSON データを取得
     const response = await fetch("./data/character/char_data/Clorinde.json");
@@ -5675,7 +5684,7 @@ class clorinde {
 
   calculate_char_fixed_cr(fixstatus,status) {
     const talent2_buff = document.getElementById("ClorindeTalent2").value;
-    const talent2effect = talent2_buff * 0.1
+    const talent2effect = talent2_buff * 0.01
     return talent2effect + this.sixth_conste_buff;
   }
 
@@ -5700,19 +5709,26 @@ class clorinde {
   }
 
   calculate_basic_dmg(dmg_rate, status) {
-    let basicDmg;
+    let BasicDmg;
     let attckRate;
     if (this.reaction_coeff > 0)
     {
         attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
-        basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
-        return basicDmg;
+        BasicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
     }
     else
     {
-      attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
+      BasicDmg = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
     }
-    return attckRate;
+    if(status[4] > 3000)
+    {
+      BasicDmg += 3000 * this.talent1effect * this.attack_hit_count;
+    }
+    else
+    {
+      BasicDmg += status[4] * this.talent1effect * this.attack_hit_count;
+    }
+    return BasicDmg;
   }
 
   calculate_char_debuff() {

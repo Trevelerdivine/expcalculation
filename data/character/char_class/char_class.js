@@ -5623,7 +5623,7 @@ class clorinde {
         if(this.char_constellations == 4)
         {
           const attack_count7 = parseInt(document.getElementById("ClorindeAttackCount7").value);
-          dmg_attck_rate += attack_count6 * 2;
+          dmg_attck_rate += attack_count7 * 2;
           this.attack_hit_count += attack_count7;
         }
       }

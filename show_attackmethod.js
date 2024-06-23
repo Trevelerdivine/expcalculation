@@ -1909,6 +1909,40 @@ async function show_attack_method()
       select_reaction_method.appendChild(kaeyareaction_selectlist); 
     }
   }
+  else if (selectedCharId == "79")
+  {
+    if (attack_method == 1)
+    {
+      traits = [
+        createLabel("ClorindeAttackCount1", "　駆猟(契約100%未満)ヒット数："),
+        createSelectList("ClorindeAttackCount1", 0, 10, "", "回", 3),
+        document.createElement("br"),
+        createLabel("ClorindeAttackCount2", "　駆猟(契約100%以上)ヒット数："),
+        createSelectList("ClorindeAttackCount2", 0, 10, "", "回", 0),
+        document.createElement("br"),
+        createLabel("ClorindeAttackCount3", "　穿夜(契約0%)ヒット数："),
+        createSelectList("ClorindeAttackCount3", 0, 10, "", "回", 0),
+        document.createElement("br"),
+        createLabel("ClorindeAttackCount4", "　穿夜(契約100%未満)ヒット数："),
+        createSelectList("ClorindeAttackCount4", 0, 10, "", "回", 0),
+        document.createElement("br"),
+        createLabel("ClorindeAttackCount5", "　穿夜(契約100%以上)ヒット数："),
+        createSelectList("ClorindeAttackCount5", 0, 10, "", "回", 1),
+        document.createElement("br"),
+      ];
+      traits.forEach(element => {
+        attack_method_prop.appendChild(element);
+      });
+      ClorindeAggCountList = createSelectList("ClorindeAggCount", 0, 30, "", "回", 2);
+    }
+    else if (attack_method==21)
+    {
+      ClorindeAggCountList = createSelectList("ClorindeAggCount", 0, 30, "", "回", 2);
+    }
+    elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
+    elemental_reaction.appendChild(ClorindeAggCountList); // ラベルを select_reaction_method に追加
+    elemental_reaction.appendChild(document.createElement("br"));
+  }
   else if (selectedCharId == "32")
   {
     let cyno_selectlist;

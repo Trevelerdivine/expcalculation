@@ -81,7 +81,7 @@ async function show_weapon_statsform() {
   }
   else if (selectedWeaponId == "159") {
     buff_group = [
-      createweaponLabel("dmg_buff_count", "　ダメージバフ：　"),
+      createweaponLabel("dmg_buff_count", "赦罪：ダメージバフ　"),
       createweaponSelectList("dmg_buff_count", 0, 3, "", "層", 3),
       document.createElement("br"),
     ];

@@ -5609,12 +5609,24 @@ class clorinde {
       const dmg_rate4 = parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]]);
       const dmg_rate5 = parseFloat(data["通常攻撃"]["詳細"][4]["数値"][this.parameter[3]]);
       this.attack_hit_count = attack_count1 + attack_count2 + attack_count3 + attack_count4 + attack_count5 * 3;
-
       dmg_attck_rate = attack_count1 * dmg_rate1
                      + attack_count2 * dmg_rate2
                      + attack_count3 * dmg_rate3
                      + attack_count4 * dmg_rate4
                      + attack_count5 * dmg_rate5;
+
+      if(this.char_constellations > 0)
+      {
+        const attack_count6 = parseInt(document.getElementById("ClorindeAttackCount6").value);
+        dmg_attck_rate += attack_count6 * 0.6;
+        this.attack_hit_count += 2 * attack_count6;
+        if(this.char_constellations == 4)
+        {
+          const attack_count7 = parseInt(document.getElementById("ClorindeAttackCount7").value);
+          dmg_attck_rate += attack_count6 * 2;
+          this.attack_hit_count += attack_count7;
+        }
+      }
 
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     } else if (attack_method == 21) {

@@ -1980,7 +1980,7 @@ async function show_attack_method()
           createSelectList("ClorindeAttackCount6", 0, 10, "", "回", 1),
           document.createElement("br"),
           createLabel("ClorindeAttackCount7", "　6重 明燭の影ヒット数："),
-          createSelectList("ClorindeAttackCount67", 0, 6, "", "回", 1),
+          createSelectList("ClorindeAttackCount7", 0, 6, "", "回", 1),
           document.createElement("br"),
         ];
         ClorindeAggCountList = createSelectList("ClorindeAggCount", 0, 30, "", "回", 4);

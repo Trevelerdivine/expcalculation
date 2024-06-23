@@ -5543,6 +5543,192 @@ class kaeya {
   }
 }
 
+class clorinde {
+  constructor(base_status_array, parameter) {
+    this.base_status_array = base_status_array;
+    this.parameter = parameter;
+    this.aggcount = 0;
+    this.reaction_coeff = 0;
+    this.skill_buff = 0;
+    this.talent1effect = 0;
+    this.fourth_conste_buff = 0;
+    this.sixth_conste_buff = 0;
+    this.char_constellations = 0;
+    this.attack_hit_count = 0;
+    this.weapon_rank = parseInt(document.getElementById("weapon_rank").value);
+    const fix_basedmg_buff = parseFloat(document.getElementById("fix_basedmg_buff").value) || 0;
+    const dynamic_basedmg_buff = parseFloat(document.getElementById("dynamic_basedmg_buff").value) || 0;
+    this.base_dmgbuff = fix_basedmg_buff + dynamic_basedmg_buff;
+    this.reaction_bonus = calculate_reaction_bonus (this.weapon_rank);
+  }
+
+  async dmg_rate_data() {
+    this.char_constellations = document.getElementById("char_constellations").value;
+
+    const reaction_check = document.getElementById("reactionon_flag");
+
+    if (reaction_check.checked)
+    {
+      this.aggcount = parseInt(document.getElementById("ClorindeAggCount").value);
+      this.reaction_coeff = 1.15
+    }
+
+    if (this.char_constellations == 4)
+    {
+      const six_conste_check = document.getElementById("traitCheckbox6");
+      this.sixth_conste_buff = 0.1;
+    }
+  
+    // JSON データを取得
+    const response = await fetch("./data/character/char_data/Clorinde.json");
+    const data = await response.json();
+  
+    // 攻撃方法に応じてダメージ率を計算
+    let dmg_rate;
+    let dmg_attck_rate = 0;
+  
+    if (attack_method == 1) {
+      
+      const attack_count1 = parseInt(document.getElementById("ClorindeAttackCount1").value);
+      const attack_count2 = parseInt(document.getElementById("ClorindeAttackCount2").value);
+      const attack_count3 = parseInt(document.getElementById("ClorindeAttackCount3").value);
+      const attack_count4 = parseInt(document.getElementById("ClorindeAttackCount4").value);
+      const attack_count5 = parseInt(document.getElementById("ClorindeAttackCount5").value);
+      const dmg_rate1 = parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]]);
+      const dmg_rate2 = parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]]);
+      const dmg_rate3 = parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]]);
+      const dmg_rate4 = parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]]);
+      const dmg_rate5 = parseFloat(data["通常攻撃"]["詳細"][4]["数値"][this.parameter[3]]);
+      this.attack_hit_count = attack_count1 + attack_count2 + attack_count3 + attack_count4 + attack_count5 * 3;
+
+      dmg_attck_rate = attack_count1 * dmg_rate1
+                     + attack_count2 * dmg_rate2
+                     + attack_count3 * dmg_rate3
+                     + attack_count4 * dmg_rate4
+                     + attack_count5 * dmg_rate5;
+
+      dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
+    } else if (attack_method == 21) {
+      if (this.char_constellations > 2 )
+      {
+        const BondOfLife = document.getElementById("traitCheckbox4");
+        if (BondOfLife > 100)
+        {
+          fourth_conste_buff = 2;
+        }
+        else if (BondOfLife < 0 || isNaN(BondOfLife) )
+        {
+          fourth_conste_buff = 0;
+        }
+        else
+        {
+          fourth_conste_buff = 0.02 * BondOfLife;
+        }
+      } 
+
+      this.attack_hit_count = 5;
+      const first_dmg_rate = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      dmg_rate = [0, 0, 0, 0, first_dmg_rate, 0, 0];
+    }
+    return dmg_rate;
+  }
+  
+  calculate_char_fixed_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_hp(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_attck(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_deff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_result_elm_charge(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cr(fixstatus,status) {
+    const talent2_buff = document.getElementById("ClorindeTalent2").value;
+    const talent2effect = talent2_buff * 0.1
+    return talent2effect + this.sixth_conste_buff;
+  }
+
+  calculate_char_result_cr(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_cd(fixstatus,status) {
+    return this.sixth_conste_buff * 7;
+  }
+
+  calculate_char_result_cd(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_char_fixed_dmg_buff(fixstatus,status) {
+    return this.fourth_conste_buff;
+  }
+
+  calculate_char_result_dmg_buff(fixstatus,status) {
+    return 0;
+  }
+
+  calculate_basic_dmg(dmg_rate, status) {
+    let basicDmg;
+    let attckRate;
+    if (this.reaction_coeff > 0)
+    {
+        attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
+        basicDmg = (attckRate + this.aggcount * 1.15 * (this.parameter[1]) * (1 + this.reaction_bonus + 5 * status[2] / (status[2] + 1200)));
+        return basicDmg;
+    }
+    else
+    {
+      attckRate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_hit_count, status, this.weapon_rank, this.base_dmgbuff);
+    }
+    return attckRate;
+  }
+
+  calculate_char_debuff() {
+    let char_debuff = [0,0,0];
+    if (this.char_constellations >3)
+    {
+      const six_conste_check = document.getElementById("traitCheckbox4");
+      if(six_conste_check.checked && attack_method == 16)
+      {
+        char_debuff = [0,0,0.6];
+      }
+    }
+    return char_debuff;
+  }
+}
+
 class cyno {
   constructor(base_status_array, parameter) 
   {

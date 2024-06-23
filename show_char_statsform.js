@@ -1024,8 +1024,8 @@ async function show_char_statsform()
     else if (selectedCharId == "79")
     {
       traits = [
-        createCheckbox("ClorindeTalent1", true),
         createLabel("ClorindeTalent1", "固有天賦1：夜を裂く紫焔"),
+        createanySelectList("ClorindeTalent1", 0, 3, "", "層", 3, 1),
         document.createElement("br"),
         createTextNode("　固有天賦2：会心率　"),
         createanySelectList("ClorindeTalent2", 0, 2, "+", "%", 2, 10),

@@ -391,6 +391,9 @@ async function create_char_instance(base_status, parameter) {
     case "31":
       char_instance = new kaeya(base_status, parameter);
       break;
+    case "79":
+      char_instance = new clorinde(base_status, parameter);
+      break;
     case "32":
       char_instance = new cyno(base_status, parameter);
       break;

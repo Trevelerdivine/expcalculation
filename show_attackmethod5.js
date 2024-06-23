@@ -1979,7 +1979,7 @@ async function show_attack_method()
     else if (attack_method == 21)
     {
       ClorindeAggCountList = createSelectList("ClorindeAggCount", 0, 30, "", "回", 2);
-      if (char_constellations > 2)
+      if (CharConstellations > 2)
       {
         elementsToAddToCharTalent = [
           createLabel("traitCheckbox4", "命の契約："),

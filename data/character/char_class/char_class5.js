@@ -3917,7 +3917,7 @@
     }
   
     async dmg_rate_data() {
-      this.char_constellations = document.getElementById("char_constellations").value;
+ 
       const reaction_flag = document.getElementById("reactionon_flag");
       const Vaporize_hydro = document.getElementById("Vaporize-hydro");
       if (Vaporize_hydro.checked && reaction_flag.checked)
@@ -3934,7 +3934,7 @@
       let elm_react_dmgrate = 0;
       let elm_nonreact_dmgrate = 0;
   
-      if (this.char_constellations > 1)
+      if (CharConstellations > 1)
       {
         const second_conste_check = document.getElementById("traitCheckbox2");
         if (second_conste_check.checked)

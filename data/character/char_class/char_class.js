@@ -3997,7 +3997,7 @@ class barbara {
       const react_count4 = parseInt(document.getElementById("barbara_react4_count").value);
 
       this.react_attack_count = react_count1 + react_count2 + react_count3 + react_count4;
-      this.nonreact_attack_count = attack_count1 + attack_count2 + attack_count3 + attack_count4 - react_attack_count;
+      this.nonreact_attack_count = attack_count1 + attack_count2 + attack_count3 + attack_count4 - this.react_attack_count;
 
       elm_react_dmgrate = react_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
                         + react_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
@@ -4015,7 +4015,7 @@ class barbara {
       const react_count1 = parseInt(document.getElementById("barbara_react1_count").value);
 
       this.react_attack_count = react_count1;
-      this.nonreact_attack_count = attack_count1 - react_attack_count;
+      this.nonreact_attack_count = attack_count1 - this.react_attack_count;
 
       elm_react_dmgrate = react_count1 * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);
       elm_nonreact_dmgrate = (attack_count1 - react_count1) * parseFloat(data["重撃"]["詳細"][0]["数値"][this.parameter[3]]);

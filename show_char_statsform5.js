@@ -744,7 +744,7 @@ async function show_char_statsform()
         { id: "traitCheckbox2", label: "第2重：水元素ダメージ+15% " },
       ];
 
-      if (char_constellations > 1)
+      if (CharConstellations > 1)
       {
         traitCheckbox = createCheckbox(traits[0].id, true);
         traitLabel = createLabel(traits[0].id, traits[0].label);

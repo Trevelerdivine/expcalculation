@@ -3805,7 +3805,7 @@
                              + (attack_count4 - react_count4) * parseFloat(data["通常攻撃"]["詳細"][3]["数値"][this.parameter[3]]);
         dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
       } 
-      else if (attack_method == 21) {
+      else if (attack_method == 6) {
         const attack_count1 = parseInt(document.getElementById("barbara_attack1_count").value);
         const react_count1 = parseInt(document.getElementById("barbara_react1_count").value);
   

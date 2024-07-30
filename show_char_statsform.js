@@ -1891,9 +1891,7 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
     showFormElements();
-    const JsonData1 = await fetch("./data/JsonData/DisplayCharData.json");
-    const CharJsonData1 = await JsonData1.json();
-    const AfMainIndex = CharJsonData1["CharMap"][selectedCharId.toString()]["Artifact"];
+    const AfMainIndex = CharJsonData["CharMap"][selectedCharId.toString()]["Artifact"];
     selectOptionByValue("clock_mainstatus", AfMainIndex[0]);
     selectOptionByValue("goblet_mainstatus", AfMainIndex[1]);
     selectOptionByValue("circlet_mainstatus", AfMainIndex[2]);
@@ -2170,9 +2168,15 @@ function createInputWithUnit(type, id, value, unit)
   return inputContainer;
 }
 
-function selectOptionByValue(selectId, value) 
-{
+function selectOptionByValue(selectId, value) {
   const selectElement = document.getElementById(selectId);
+
+  // すべての<option>要素のselected属性を解除
+  for (let option of selectElement.options) {
+      option.selected = false;
+  }
+
+  // 指定されたvalueを持つ<option>要素を選択状態にする
   for (let option of selectElement.options) {
       if (option.value === value) {
           option.selected = true;

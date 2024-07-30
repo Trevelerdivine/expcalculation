@@ -1891,10 +1891,12 @@ async function show_char_statsform()
       createchar_attackmethod(options)  
     }
     showFormElements();
-    const AfMainIndex = CharJsonData["CharMap"][selectedCharId.toString()]["Artifact"];
-    selectOptionByValue(clock_mainstatus, AfMainIndex[0]);
-    selectOptionByValue(goblet_mainstatus, AfMainIndex[1]);
-    selectOptionByValue(circlet_mainstatus, AfMainIndex[2]);
+    const JsonData1 = await fetch("./data/JsonData/DisplayCharData.json");
+    const CharJsonData1 = await JsonData1.json();
+    const AfMainIndex = CharJsonData1["CharMap"][selectedCharId.toString()]["Artifact"];
+    selectOptionByValue("clock_mainstatus", AfMainIndex[0]);
+    selectOptionByValue("goblet_mainstatus", AfMainIndex[1]);
+    selectOptionByValue("circlet_mainstatus", AfMainIndex[2]);
   }
 
 function createchar_attackmethod(options)

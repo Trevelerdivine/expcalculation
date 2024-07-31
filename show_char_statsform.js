@@ -1892,6 +1892,7 @@ async function show_char_statsform()
     }
     showFormElements();
     const AfMainIndex = CharJsonData["CharMap"][selectedCharId.toString()]["Artifact"];
+    console.log(AfMainIndex);
     selectOptionByValue("clock_mainstatus", AfMainIndex[0]);
     selectOptionByValue("goblet_mainstatus", AfMainIndex[1]);
     selectOptionByValue("circlet_mainstatus", AfMainIndex[2]);

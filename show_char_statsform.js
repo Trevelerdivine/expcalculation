@@ -2179,7 +2179,7 @@ function selectOptionByValue(selectId, value) {
 
   // 指定されたvalueを持つ<option>要素を選択状態にする
   for (let option of selectElement.options) {
-      if (option.value === value) {
+      if (option.value == value) {
           option.selected = true;
           break;
       }

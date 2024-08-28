@@ -585,6 +585,51 @@ async function show_char_statsform()
         characterInfo.appendChild(document.createElement("br"));
       }
     }
+    else if (selectedCharId == "80")
+    {
+      options = [
+        { text: "攻撃方法", value: "0", disabled: true, selected: true },
+        { text: "通常攻撃", value: "1" },
+        { text: "重撃", value: "6" },
+        { text: "元素スキル", value: "2" },
+        { text: "元素爆発", value: "21" }
+      ];
+      createchar_attackmethod(options);
+
+      traits = [
+        { id: "traitCheckbox1", label: "第1重：初回のみサメサメバイト·ビッグウェーブのダメージアップ" },
+        { id: "traitCheckbox6", label: "第4重：爆瀑ロケットの与えるダメージ+75%" },
+        { id: "traitCheckbox6", label: "第6重：第1重の「初回のみ」の制限解除" },
+      ];
+
+      if (char_constellations > 0)
+      {
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
+    
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
+        characterInfo.appendChild(document.createElement("br"));
+      }
+      if (char_constellations > 2)
+        {
+          traitCheckbox = createCheckbox(traits[1].id, true);
+          traitLabel = createLabel(traits[1].id, traits[1].label);
+      
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          characterInfo.appendChild(document.createElement("br"));
+        }
+      if (char_constellations > 3)
+        {
+          traitCheckbox = createCheckbox(traits[2].id, true);
+          traitLabel = createLabel(traits[2].id, traits[2].label);
+      
+          characterInfo.appendChild(traitCheckbox);
+          characterInfo.appendChild(traitLabel);
+          characterInfo.appendChild(document.createElement("br"));
+        }
+    }
     else if (selectedCharId == "74")
     {
       elementsToAddToCharTalent = [

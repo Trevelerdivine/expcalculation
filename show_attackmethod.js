@@ -810,6 +810,92 @@ async function show_attack_method()
     }
     createCheckboxList_br(options);
   }
+  else if (selectedCharId == "80")
+    {
+      if (attack_method == 1)
+      {
+        traits = [
+          createLabel("mualani_attack1_count", "　通常1段ヒット回数："),
+          createSelectList("mualani_attack1_count", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("mualani_attack2_count", "　通常2段ヒット回数："),
+          createSelectList("mualani_attack2_count", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("mualani_attack3_count", "　通常3段ヒット回数："),
+          createSelectList("mualani_attack3_count", 0, 10, "", "回", 1),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+    
+        traits = [
+          createLabel("mualani_react1_count", "　通常1段反応回数："),
+          createSelectList("mualani_react1_count", 0, 10, "", "回", 1),
+          document.createElement("br"),
+          createLabel("mualani_react2_count", "　通常2段反応回数："),
+          createSelectList("mualani_react2_count", 0, 10, "", "回", 0),
+          document.createElement("br"),
+          createLabel("mualani_react3_count", "　通常3段反応回数："),
+          createSelectList("mualani_react3_count", 0, 10, "", "回", 0),
+        ];
+        traits.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
+      }
+      else if (attack_method == 6)
+      {
+        traits = [
+          createLabel("barbara_attack1_count", "　重撃ヒット回数："),
+          createSelectList("barbara_attack1_count", 0, 10, "", "回", 1),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+    
+        traits = [
+          createLabel("barbara_react1_count", "　重撃反応回数："),
+          createSelectList("barbara_react1_count", 0, 10, "", "回", 1),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
+      }
+      else if (attack_method == 2)
+      {
+        traits = [
+          createLabel("mualani_attack_count1", "　サメサメバイト チャージ1層："),
+          createSelectList("mualani_attack_count1", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          createLabel("mualani_attack_count2", "　サメサメバイト チャージ2層："),
+          createSelectList("mualani_attack_count2", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          createLabel("mualani_attack_count3", "　サメサメバイト・ビッグウェーブ："),
+          createSelectList("mualani_attack_count3", 0, 5, "", "回", 1),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          attack_method_prop.appendChild(element);
+        });
+  
+        traits = [
+          createLabel("mualani_react_count1", "　サメサメバイト チャージ1層："),
+          createSelectList("mualani_react_count1", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          createLabel("mualani_react_count2", "　サメサメバイト チャージ2層："),
+          createSelectList("mualani_react_count2", 0, 5, "", "回", 0),
+          document.createElement("br"),
+          createLabel("mualani_react_count3", "　サメサメバイト・ビッグウェーブ："),
+          createSelectList("mualani_react_count3", 0, 5, "", "回", 1),
+          document.createElement("br"),
+        ];
+        traits.forEach(element => {
+          select_reaction_method.appendChild(element);
+        });
+      }
+  }
   else if (selectedCharId == "74")
   {
     if (char_constellations == 0)
@@ -1063,7 +1149,7 @@ async function show_attack_method()
         createLabel("Neuvillette_react_count1", "　スキル反応回数："),
         createSelectList("Neuvillette_react_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("Neuvillette_react_count2", "　瀑ヒット回数："),
+        createLabel("Neuvillette_react_count2", "　瀑反応回数："),
         createSelectList("Neuvillette_react_count2", 0, 2, "", "回", 0),
         document.createElement("br"),
       ];

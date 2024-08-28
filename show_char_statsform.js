@@ -587,6 +587,15 @@ async function show_char_statsform()
     }
     else if (selectedCharId == "80")
     {
+      elementsToAddToCharTalent = [
+        createTextNode("ウェーブチェイサーの心得："),
+        createSelectList("mualani_talent2_buff", 0, 3, "", "重", 3),
+      ];
+    
+      elementsToAddToCharTalent.forEach(element => {
+        char_talent.appendChild(element);
+      });
+
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
         { text: "通常攻撃", value: "1" },

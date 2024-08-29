@@ -2631,17 +2631,17 @@ class mualani {
     }
     else if (attack_method == 21)
     {
-      const mualani_talent1_count = parseInt(document.getElementById("mualani_talent2_buff").value);
-      this.talent2_buff = 0.15 * mualani_talent1_count;
-      
+      const mualani_talent2_count = parseInt(document.getElementById("mualani_talent2_buff").value);
+      const talent2_buff = 0.15 * mualani_talent2_count;
+
       const attack_count1 = parseInt(document.getElementById("mualani_attack1_count").value);
       const react_count1 = parseInt(document.getElementById("mualani_react1_count").value);
 
       this.react_attack_count = react_count1;
       this.nonreact_attack_count = attack_count1 - this.react_attack_count;
 
-      elm_react_dmgrate = react_count1 * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
-      elm_nonreact_dmgrate = (attack_count1 - react_count1) * parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]);
+      elm_react_dmgrate = react_count1 * (talent2_buff + parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]));
+      elm_nonreact_dmgrate = (attack_count1 - react_count1) * (talent2_buff + parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]));
 
       dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     }
@@ -2705,7 +2705,7 @@ class mualani {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return this.fourth_conste_buff + this.talent2_buff;
+    return this.fourth_conste_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {

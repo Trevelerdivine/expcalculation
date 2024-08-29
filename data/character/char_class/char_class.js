@@ -2584,26 +2584,6 @@ class mualani {
     let elm_react_dmgrate = 0;
     let elm_nonreact_dmgrate = 0;
   
-    if (attack_method == 1) {
-      const attack_count1 = parseInt(document.getElementById("barbara_attack1_count").value);
-      const attack_count2 = parseInt(document.getElementById("barbara_attack2_count").value);
-      const attack_count3 = parseInt(document.getElementById("barbara_attack3_count").value);
-      const react_count1 = parseInt(document.getElementById("barbara_react1_count").value);
-      const react_count2 = parseInt(document.getElementById("barbara_react2_count").value);
-      const react_count3 = parseInt(document.getElementById("barbara_react3_count").value);
-
-      this.react_attack_count = react_count1 + react_count2 + react_count3;
-      this.nonreact_attack_count = attack_count1 + attack_count2 + attack_count3 - this.react_attack_count;
-
-      elm_react_dmgrate = react_count1 * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
-                        + react_count2 * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
-                        + react_count3 * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
-
-      elm_nonreact_dmgrate = (attack_count1 - react_count1) * parseFloat(data["通常攻撃"]["詳細"][0]["数値"][this.parameter[3]])
-                           + (attack_count2 - react_count2) * parseFloat(data["通常攻撃"]["詳細"][1]["数値"][this.parameter[3]])
-                           + (attack_count3 - react_count3) * parseFloat(data["通常攻撃"]["詳細"][2]["数値"][this.parameter[3]])
-      dmg_rate = [0, 0, 0, 0, [elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0];
-    }
     if (attack_method == 2) {
       const attack_count1 = parseInt(document.getElementById("mualani_attack1_count").value);
       const attack_count2 = parseInt(document.getElementById("mualani_attack2_count").value);
@@ -2624,18 +2604,18 @@ class mualani {
       this.react_attack_count = react_count1 + react_count2 + react_count3 + react_count4;
       this.nonreact_attack_count = attack_count1 + attack_count2 + attack_count3 + attack_count4 - this.react_attack_count;
 
-      const mualani_react_buff_count = react_count1 + react_count2 * 2 + (react_count3 + react_count4) * 3;
+      const mualani_react_buff_count = react_count1 + react_count2 * 2;
       const mualani_nonreact_buff_count =(attack_count1 - react_count1) + (attack_count2 - react_count2) * 2 + (attack_count3 + attack_count4 + react_count3 -react_count4) * 3;
 
       elm_react_dmgrate = this.react_attack_count * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
                         + mualani_react_buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
-                        + react_count3 * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
+                        + (react_count3 + react_count4) * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
                         + 0.66 * react_count4;
                         
 
       elm_nonreact_dmgrate = this.nonreact_attack_count * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
                             + mualani_nonreact_buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
-                            + react_count3 * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])
+                            + (attack_count3 + attack_count4 - react_count3 - react_count4) * parseFloat(data["元素スキル"]["詳細"][2]["数値"][this.parameter[3]])
                             + 0.66 * (attack_count4 - react_count4);
                         
 
@@ -2669,7 +2649,7 @@ class mualani {
   }
 
   calculate_char_fixed_hp(fixstatus,status) {
-    return fixstatus[0] * this.talent2_buff;
+    return 0;
   }
 
   calculate_char_result_hp(fixstatus,status) {

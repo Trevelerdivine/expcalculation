@@ -812,38 +812,7 @@ async function show_attack_method()
   }
   else if (selectedCharId == "80")
     {
-      if (attack_method == 1)
-      {
-        traits = [
-          createLabel("mualani_attack1_count", "　通常1段ヒット回数："),
-          createSelectList("mualani_attack1_count", 0, 10, "", "回", 1),
-          document.createElement("br"),
-          createLabel("mualani_attack2_count", "　通常2段ヒット回数："),
-          createSelectList("mualani_attack2_count", 0, 10, "", "回", 1),
-          document.createElement("br"),
-          createLabel("mualani_attack3_count", "　通常3段ヒット回数："),
-          createSelectList("mualani_attack3_count", 0, 10, "", "回", 1),
-          document.createElement("br"),
-        ];
-        traits.forEach(element => {
-          attack_method_prop.appendChild(element);
-        });
-    
-        traits = [
-          createLabel("mualani_react1_count", "　通常1段反応回数："),
-          createSelectList("mualani_react1_count", 0, 10, "", "回", 1),
-          document.createElement("br"),
-          createLabel("mualani_react2_count", "　通常2段反応回数："),
-          createSelectList("mualani_react2_count", 0, 10, "", "回", 0),
-          document.createElement("br"),
-          createLabel("mualani_react3_count", "　通常3段反応回数："),
-          createSelectList("mualani_react3_count", 0, 10, "", "回", 0),
-        ];
-        traits.forEach(element => {
-          select_reaction_method.appendChild(element);
-        });
-      }
-      else if (attack_method == 6)
+      if (attack_method == 6)
       {
         traits = [
           createLabel("mualani_attack1_count", "　重撃ヒット回数："),

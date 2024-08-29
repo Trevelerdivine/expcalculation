@@ -598,10 +598,9 @@ async function show_char_statsform()
 
       options = [
         { text: "攻撃方法", value: "0", disabled: true, selected: true },
-        { text: "通常攻撃", value: "1" },
         { text: "重撃", value: "6" },
-        { text: "元素スキル", value: "2" },
-        { text: "元素爆発", value: "21" }
+        { text: "元素スキル（サメサメバイト）", value: "2" },
+        { text: "元素爆発（爆瀑ロケット）", value: "21" }
       ];
       createchar_attackmethod(options);
 

@@ -1248,7 +1248,7 @@ async function show_artifact()
 
             }
         }
-        else if (selectedImageIds[i] == "31") 
+        else if (selectedImageIds[i] == "33") 
         {
             buff_group = [
                 createAfCheckbox("af33_2", true),

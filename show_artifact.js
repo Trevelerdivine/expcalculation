@@ -1230,17 +1230,41 @@ async function show_artifact()
                 selectList.id = "af32_4select";
             
                 for (let j = 0; j < 3; j++) {
-                    option = document.createElement("option");
+                    const option = document.createElement("option");
                     option.value = j;
-                    dmg_buff = 8 * j ** 2 + 4 * j;
+                    const dmg_buff = 8 * j ** 2 + 4 * j;
                     option.text = `+${dmg_buff}%`;
+                    
+                    if (j === 2) {
+                        option.selected = true; // jが2のときにselected属性を付与
+                    }
+                    
                     selectList.appendChild(option);
                 }
+                
 
                 artifact_checkbox.appendChild(af32_4text);
                 artifact_checkbox.appendChild(selectList);
 
             }
+        }
+        else if (selectedImageIds[i] == "31") 
+        {
+            buff_group = [
+                createAfCheckbox("af33_2", true),
+                createAfLabel("af33_2", "黒曜の秘典2 与えるダメージ+15%"),
+                ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af33_4", true),
+                    createAfLabel("af33_4", "黒曜の秘典4 会心率+40%"),
+                    document.createElement("br"),
+                    ];
+            }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+            });
         }
 
         if (i === 0)

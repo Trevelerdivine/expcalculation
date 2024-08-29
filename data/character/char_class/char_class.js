@@ -2564,9 +2564,6 @@ class mualani {
     {
       this.reaction_coeff = 2;
     }
-
-    const mualani_talent1_count = parseInt(document.getElementById("mualani_talent2_buff").value);
-    this.talent2_buff = 0.15 * mualani_talent1_count;
   
     if (this.char_constellations > 2  && attack_method == 21)
     {
@@ -2634,6 +2631,9 @@ class mualani {
     }
     else if (attack_method == 21)
     {
+      const mualani_talent1_count = parseInt(document.getElementById("mualani_talent2_buff").value);
+      this.talent2_buff = 0.15 * mualani_talent1_count;
+      
       const attack_count1 = parseInt(document.getElementById("mualani_attack1_count").value);
       const react_count1 = parseInt(document.getElementById("mualani_react1_count").value);
 

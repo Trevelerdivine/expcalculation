@@ -349,7 +349,7 @@ async function create_char_instance(base_status, parameter) {
     case "10":
       char_instance = new amber(base_status, parameter);
       break;
-    case "74":
+    case "80":
       char_instance = new mualani(base_status, parameter);
       break;
     case "74":

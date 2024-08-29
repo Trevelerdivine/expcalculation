@@ -2622,8 +2622,8 @@ class mualani {
       dmg_rate = [[elm_react_dmgrate,elm_nonreact_dmgrate], 0, 0, 0, 0, 0, 0];
     }
     else if (attack_method == 6) {
-      const attack_count1 = parseInt(document.getElementById("barbara_attack1_count").value);
-      const react_count1 = parseInt(document.getElementById("barbara_react1_count").value);
+      const attack_count1 = parseInt(document.getElementById("mualani_attack1_count").value);
+      const react_count1 = parseInt(document.getElementById("mualani_attack1_count").value);
 
       this.react_attack_count = react_count1;
       this.nonreact_attack_count = attack_count1 - this.react_attack_count;
@@ -2705,7 +2705,7 @@ class mualani {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return this.fourth_conste_buff;
+    return this.fourth_conste_buff + this.talent2_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {

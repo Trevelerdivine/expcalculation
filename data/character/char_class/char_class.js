@@ -2693,7 +2693,7 @@ class mualani {
   }
 
   calculate_char_fixed_elm(fixstatus,status) {
-    return this.talent1_buff;
+    return 0;
   }
 
   calculate_char_result_elm(fixstatus,status) {

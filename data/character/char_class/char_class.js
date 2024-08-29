@@ -2565,7 +2565,7 @@ class mualani {
       this.reaction_coeff = 2;
     }
 
-    const mualani_talent1_count = parseint(document.getElementById("mualani_talent2_buff").value);
+    const mualani_talent1_count = parseInt(document.getElementById("mualani_talent2_buff").value);
     this.talent2_buff = 0.15 * mualani_talent1_count;
   
     if (this.char_constellations > 2  && attack_method == 21)

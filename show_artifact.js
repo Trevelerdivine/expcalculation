@@ -1174,24 +1174,24 @@ async function show_artifact()
               });
         }
         else if (selectedImageIds[i] == "30") 
+        {
+            buff_group = [
+                createAfCheckbox("af30_2", true),
+                createAfLabel("af30_2", "諧律奇想の断章2"),
+                ];
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
             {
                 buff_group = [
-                    createAfCheckbox("af30_2", true),
-                    createAfLabel("af30_2", "諧律奇想の断章2"),
-                  ];
-                if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
-                {
-                    buff_group = [
-                        createAfCheckbox("af30_4", true),
-                        createAfLabel("af30_4", "諧律奇想の断章4 セット効果　"),
-                        createAfSelectList("af30-4List", 0, 3, "", "層", 3),
-                        document.createElement("br"),
-                        ];
-                }
-                buff_group.forEach(element => {
-                    artifact_checkbox.appendChild(element);
-                  });
+                    createAfCheckbox("af30_4", true),
+                    createAfLabel("af30_4", "諧律奇想の断章4 セット効果　"),
+                    createAfSelectList("af30-4List", 0, 3, "", "層", 3),
+                    document.createElement("br"),
+                    ];
             }
+            buff_group.forEach(element => {
+                artifact_checkbox.appendChild(element);
+                });
+        }
         else if (selectedImageIds[i] == "31") 
         {
             buff_group = [
@@ -1210,6 +1210,37 @@ async function show_artifact()
             buff_group.forEach(element => {
                 artifact_checkbox.appendChild(element);
             });
+        }
+        else if (selectedImageIds[i] == "32") 
+        {
+            if (i == 1 && selectedImageIds[0] == selectedImageIds[1])
+            {
+                buff_group = [
+                    createAfCheckbox("af32_4", true),
+                    createAfLabel("af32_4", "灰燼の都に立つ英雄の絵巻4"),
+                ];
+                buff_group.forEach(element => {
+                    artifact_checkbox.appendChild(element);
+                });
+
+                const af32_4text = document.createTextNode("　ダメージバフ：");
+                const selectList = document.createElement("select");
+                let option;
+                let dmg_buff;
+                selectList.id = "af32_4select";
+            
+                for (let j = 0; j < 3; j++) {
+                    option = document.createElement("option");
+                    option.value = j;
+                    dmg_buff = 8 * j ** 2 + 4 * j;
+                    option.text = `+${dmg_buff}%`;
+                    selectList.appendChild(option);
+                }
+
+                artifact_checkbox.appendChild(af32_4text);
+                artifact_checkbox.appendChild(selectList);
+
+            }
         }
 
         if (i === 0)

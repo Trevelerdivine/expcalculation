@@ -2605,7 +2605,7 @@ class mualani {
       this.nonreact_attack_count = attack_count1 + attack_count2 + attack_count3 + attack_count4 - this.react_attack_count;
 
       const mualani_react_buff_count = react_count1 + react_count2 * 2;
-      const mualani_nonreact_buff_count =(attack_count1 - react_count1) + (attack_count2 - react_count2) * 2 + (attack_count3 + attack_count4 + react_count3 -react_count4) * 3;
+      const mualani_nonreact_buff_count =(attack_count1 - react_count1) + (attack_count2 - react_count2) * 2;
 
       elm_react_dmgrate = this.react_attack_count * parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]])
                         + mualani_react_buff_count * parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]])

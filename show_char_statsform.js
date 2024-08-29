@@ -606,33 +606,13 @@ async function show_char_statsform()
       createchar_attackmethod(options);
 
       traits = [
-        { id: "traitCheckbox1", label: "第1重：初回のみサメサメバイト·ビッグウェーブのダメージアップ" },
-        { id: "traitCheckbox6", label: "第4重：爆瀑ロケットの与えるダメージ+75%" },
-        { id: "traitCheckbox6", label: "第6重：第1重の「初回のみ」の制限解除" },
+        { id: "traitCheckbox4", label: "第4重：爆瀑ロケットの与えるダメージ+75%" },
       ];
 
-      if (char_constellations > 0)
-      {
-        traitCheckbox = createCheckbox(traits[0].id, true);
-        traitLabel = createLabel(traits[0].id, traits[0].label);
-    
-        characterInfo.appendChild(traitCheckbox);
-        characterInfo.appendChild(traitLabel);
-        characterInfo.appendChild(document.createElement("br"));
-      }
       if (char_constellations > 2)
         {
-          traitCheckbox = createCheckbox(traits[1].id, true);
-          traitLabel = createLabel(traits[1].id, traits[1].label);
-      
-          characterInfo.appendChild(traitCheckbox);
-          characterInfo.appendChild(traitLabel);
-          characterInfo.appendChild(document.createElement("br"));
-        }
-      if (char_constellations > 3)
-        {
-          traitCheckbox = createCheckbox(traits[2].id, true);
-          traitLabel = createLabel(traits[2].id, traits[2].label);
+          traitCheckbox = createCheckbox(traits[0].id, true);
+          traitLabel = createLabel(traits[0].id, traits[0].label);
       
           characterInfo.appendChild(traitCheckbox);
           characterInfo.appendChild(traitLabel);

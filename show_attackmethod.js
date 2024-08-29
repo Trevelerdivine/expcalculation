@@ -865,32 +865,73 @@ async function show_attack_method()
       }
       else if (attack_method == 2)
       {
-        traits = [
-          createLabel("mualani_attack_count1", "　サメサメバイト チャージ1層："),
-          createSelectList("mualani_attack_count1", 0, 5, "", "回", 0),
-          document.createElement("br"),
-          createLabel("mualani_attack_count2", "　サメサメバイト チャージ2層："),
-          createSelectList("mualani_attack_count2", 0, 5, "", "回", 0),
-          document.createElement("br"),
-          createLabel("mualani_attack_count3", "　サメサメバイト・ビッグウェーブ："),
-          createSelectList("mualani_attack_count3", 0, 5, "", "回", 1),
-          document.createElement("br"),
-        ];
+        if (char_constellations > 0)
+        {
+          traits = [
+            createLabel("mualani_attack1_count", "　サメサメバイト チャージ1層："),
+            createSelectList("mualani_attack1_count", 0, 10, "", "回", 0),
+            document.createElement("br"),
+            createLabel("mualani_attack2_count", "　サメサメバイト チャージ2層："),
+            createSelectList("mualani_attack2_count", 0, 10, "", "回", 0),
+            document.createElement("br"),
+            createLabel("mualani_attack3_count", "　サメサメバイト チャージ3層："),
+            createSelectList("mualani_attack3_count", 0, 10, "", "回", 5),
+            document.createElement("br"),
+            createLabel("mualani_attack4_count", "　サメサメバイト チャージ3層初回："),
+            createSelectList("mualani_attack4_count", 0, 10, "", "回", 1),
+            document.createElement("br"),
+          ];
+        }
+        else
+        {
+          traits = [
+            createLabel("mualani_attack1_count", "　サメサメバイト チャージ1層："),
+            createSelectList("mualani_attack1_count", 0, 10, "", "回", 0),
+            document.createElement("br"),
+            createLabel("mualani_attack2_count", "　サメサメバイト チャージ2層："),
+            createSelectList("mualani_attack2_count", 0, 10, "", "回", 0),
+            document.createElement("br"),
+            createLabel("mualani_attack3_count", "　サメサメバイト チャージ3層："),
+            createSelectList("mualani_attack3_count", 0, 10, "", "回", 1),
+            document.createElement("br"),
+          ];
+        }
+
         traits.forEach(element => {
           attack_method_prop.appendChild(element);
         });
-  
-        traits = [
-          createLabel("mualani_react_count1", "　サメサメバイト チャージ1層："),
-          createSelectList("mualani_react_count1", 0, 5, "", "回", 0),
-          document.createElement("br"),
-          createLabel("mualani_react_count2", "　サメサメバイト チャージ2層："),
-          createSelectList("mualani_react_count2", 0, 5, "", "回", 0),
-          document.createElement("br"),
-          createLabel("mualani_react_count3", "　サメサメバイト・ビッグウェーブ："),
-          createSelectList("mualani_react_count3", 0, 5, "", "回", 1),
-          document.createElement("br"),
-        ];
+
+        if (char_constellations > 0)
+        {
+          traits = [
+            createLabel("mualani_react1_count", "　サメサメバイト チャージ1層："),
+            createSelectList("mualani_react1_count", 0, 10, "", "回", 0),
+            document.createElement("br"),
+            createLabel("mualani_react2_count", "　サメサメバイト チャージ2層："),
+            createSelectList("mualani_react2_count", 0, 10, "", "回", 0),
+            document.createElement("br"),
+            createLabel("mualani_react3_count", "　サメサメバイト チャージ3層："),
+            createSelectList("mualani_react3_count", 0, 10, "", "回", 5),
+            document.createElement("br"),
+            createLabel("mualani_react4_count", "　サメサメバイト チャージ3層初回："),
+            createSelectList("mualani_react4_count", 0, 10, "", "回", 1),
+            document.createElement("br"),
+          ];
+        }
+        else
+        {
+          traits = [
+            createLabel("mualani_react1_count", "　サメサメバイト チャージ1層："),
+            createSelectList("mualani_react1_count", 0, 10, "", "回", 0),
+            document.createElement("br"),
+            createLabel("mualani_react2_count", "　サメサメバイト チャージ2層："),
+            createSelectList("mualani_react2_count", 0, 10, "", "回", 0),
+            document.createElement("br"),
+            createLabel("mualani_react3_count", "　サメサメバイト チャージ3層："),
+            createSelectList("mualani_react3_count", 0, 10, "", "回", 1),
+            document.createElement("br"),
+          ];
+        }
         traits.forEach(element => {
           select_reaction_method.appendChild(element);
         });

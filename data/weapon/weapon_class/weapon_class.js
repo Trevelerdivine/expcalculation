@@ -12709,8 +12709,6 @@ class AThousandFloatingDreams {
         let buff_count = parseInt(document.getElementById("SurfsUp_count").value);
         dmg_buff = buff_count * 0.03 * (this.weapon_rank + 3);
       }
-      let buff_count = parseInt(document.getElementById("SurfsUp_count").value);
-      dmg_buff = buff_count * 0.03 * (this.weapon_rank + 3);
       return dmg_buff;
     }
   

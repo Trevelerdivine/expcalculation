@@ -12704,6 +12704,11 @@ class AThousandFloatingDreams {
   
     calculate_weapon_fixed_dmg_buff(fixstatus,status) {
       let dmg_buff = 0
+      if (attack_method_index == 0)
+      {
+        let buff_count = parseInt(document.getElementById("SurfsUp_count").value);
+        dmg_buff = buff_count * 0.03 * (this.weapon_rank + 3);
+      }
       let buff_count = parseInt(document.getElementById("SurfsUp_count").value);
       dmg_buff = buff_count * 0.03 * (this.weapon_rank + 3);
       return dmg_buff;

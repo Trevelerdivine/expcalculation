@@ -942,6 +942,9 @@ async function create_weapon_instance(base_status) {
     case "155":
       weapon_instance = new SplendorOfTranquilWaters(base_status);
       break;
+    case "160":
+      weapon_instance = new SurfsUp(base_status);
+      break;
     default:
       // 未知の武器IDに対する処理を追加することもできます
       break;

@@ -3038,7 +3038,7 @@ async function show_attack_method()
     if (attack_method == 16)
     {
       traits = [
-        createLabel("", "　ぐるぐるコマちゃん："),
+        createLabel("", "　ぐるぐるコマちゃん"),
         document.createElement("br"),
         createLabel("kachina_skill_count1", "　　ライドヒット回数："),
         createSelectList("kachina_skill_count1", 0, 20, "", "回", 10),

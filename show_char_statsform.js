@@ -1835,7 +1835,7 @@ async function show_char_statsform()
     {
       elementsToAddToCharTalent = [
         createCheckbox("Kachina_talent1", true),
-        createLabel("albedo_talent1", "固有天賦1：岩元素ダメージ+20％"),
+        createLabel("Kachina_talent1", "固有天賦1：岩元素ダメージ+20％"),
         document.createElement("br"),
       ];
     
@@ -1858,12 +1858,12 @@ async function show_char_statsform()
 
       if (char_constellations > 2)
       {
-        traitCheckbox = createCheckbox(traits[2].id, true);
-        traitLabel = createLabel(traits[2].id, traits[2].label);
+        traitCheckbox = createCheckbox(traits[0].id, true);
+        traitLabel = createLabel(traits[0].id, traits[0].label);
     
         characterInfo.appendChild(traitCheckbox);
         characterInfo.appendChild(traitLabel);
-        const four_conste_selectList = createSelectList("four_conste", 0, 3,"", "体", 0);
+        const four_conste_selectList = createSelectList("four_conste", 1, 3,"", "体", 1);
         const four_conste_option = document.createElement("option");
         four_conste_option.value = 4;
         four_conste_option.text = "4体以上";

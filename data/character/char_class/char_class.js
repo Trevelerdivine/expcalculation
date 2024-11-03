@@ -10371,7 +10371,7 @@ class kachina {
     if(this.char_constellations > 2)
       {
         const buff_count = parseint(document.getElementById("four_conste").value);
-        this.forth_conste_buff = (buff_count + 1) * 0.04;
+        this.fourth_conste_buff = (buff_count + 1) * 0.04;
       }
 
     // JSON データを取得
@@ -10415,7 +10415,7 @@ class kachina {
   }
 
   calculate_char_fixed_deff(fixstatus,status) {
-    return this.forth_conste_buff * this.base_status_array[1];
+    return this.fourth_conste_buff * this.base_status_array[1];
   }
 
   calculate_char_result_deff(fixstatus,status) {

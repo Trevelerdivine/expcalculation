@@ -10370,7 +10370,7 @@ class kachina {
 
     if(this.char_constellations > 2)
     {
-      const buff_count = parseint(document.getElementById("four_conste").value);
+      const buff_count = parseInt(document.getElementById("four_conste").value);
       this.fourth_conste_buff = (buff_count + 1) * 0.04;
     }
 

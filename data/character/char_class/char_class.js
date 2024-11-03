@@ -10369,10 +10369,10 @@ class kachina {
     }
 
     if(this.char_constellations > 2)
-      {
-        const buff_count = parseint(document.getElementById("four_conste").value);
-        this.fourth_conste_buff = (buff_count + 1) * 0.04;
-      }
+    {
+      const buff_count = parseint(document.getElementById("four_conste").value);
+      this.fourth_conste_buff = (buff_count + 1) * 0.04;
+    }
 
     // JSON データを取得
     const response = await fetch("./data/character/char_data/Kachina.json");
@@ -10385,8 +10385,8 @@ class kachina {
       const attack_count1 = parseInt(document.getElementById("kachina_skill_count1").value);
       const attack_count2 = parseInt(document.getElementById("kachina_skill_count2").value);
       this.attack_hit_count = attack_count1 + attack_count2;
-      dmg_deff_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]] + 0.2) * attack_count1
-                     + parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]] + 0.2) * attack_count2;
+      dmg_deff_rate = (parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]]) + 0.2) * attack_count1
+                    + (parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) + 0.2) * attack_count2;
       dmg_rate = [0, dmg_deff_rate, 0, 0, 0, 0, 0];
     } 
     else if (attack_method == 21) {

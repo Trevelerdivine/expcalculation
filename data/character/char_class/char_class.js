@@ -10385,8 +10385,8 @@ class kachina {
       const attack_count1 = parseInt(document.getElementById("kachina_skill_count1").value);
       const attack_count2 = parseInt(document.getElementById("kachina_skill_count2").value);
       this.attack_hit_count = attack_count1 + attack_count2;
-      dmg_deff_rate = parseFloat(data["元素スキル"]["詳細"][0][数値][this.parameter[3]] + 0.2) * attack_count1
-                     + parseFloat(data["元素スキル"]["詳細"][1][数値][this.parameter[3]] + 0.2) * attack_count2;
+      dmg_deff_rate = parseFloat(data["元素スキル"]["詳細"][0]["数値"][this.parameter[3]] + 0.2) * attack_count1
+                     + parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]] + 0.2) * attack_count2;
       dmg_rate = [0, dmg_deff_rate, 0, 0, 0, 0, 0];
     } 
     else if (attack_method == 21) {
@@ -10411,11 +10411,11 @@ class kachina {
   }
 
   calculate_char_result_attck(fixstatus,status) {
-    return this.forth_conste_buff * this.base_status_array[1];
+    return 0;
   }
 
   calculate_char_fixed_deff(fixstatus,status) {
-    return 0;
+    return this.forth_conste_buff * this.base_status_array[1];
   }
 
   calculate_char_result_deff(fixstatus,status) {

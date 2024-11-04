@@ -1033,7 +1033,7 @@ async function show_weapon_statsform() {
       weaponInfo.appendChild(element);
     });
   }
-  else if (selectedWeaponId == "112") {
+  else if (selectedWeaponId == "166") {
     buff_group = [
       createweaponLabel("SilvershowerHeartstrings_count", "白雨心弦：療護効果 "),
       createweaponSelectList("SilvershowerHeartstrings_count", 0, 3, "", "重", 3),

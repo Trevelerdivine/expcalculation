@@ -2780,7 +2780,7 @@ class sigewinne {
       this.reaction_coeff = 2;
     }
 
-    const talent1_check = document.getElementById("sigwinne_effect").value;
+    const talent1_check = document.getElementById("sigwinne_effect");
     if (talent1_check.checked)
     {
       this.talent1_buff = 0.08;
@@ -2908,15 +2908,15 @@ class sigewinne {
     {
       if (attack_method == 16)
       {
-        let ReactRate = (status[0] * dmg_rate[0][0][0] + calculate_weapon_basedmg(this.react_attack_count[0], status, this.weapon_rank, this.base_dmgbuff)) * status[7]
-                      + (status[0] * dmg_rate[0][0][1] + calculate_weapon_basedmg(this.react_attack_count[1], status, this.weapon_rank, this.base_dmgbuff)) *(status[7] + 0.05)
-                      + (status[0] * dmg_rate[0][0][2] + calculate_weapon_basedmg(this.react_attack_count[2], status, this.weapon_rank, this.base_dmgbuff)) *(status[7] + 0.10);
+        let ReactRate = (status[0] * dmg_rate[0][0][0] + calculate_weapon_basedmg(this.react_attack_count[0], status, this.weapon_rank, this.base_dmgbuff)) * (1.00 + status[7])
+                      + (status[0] * dmg_rate[0][0][1] + calculate_weapon_basedmg(this.react_attack_count[1], status, this.weapon_rank, this.base_dmgbuff)) * (1.05 + status[7])
+                      + (status[0] * dmg_rate[0][0][2] + calculate_weapon_basedmg(this.react_attack_count[2], status, this.weapon_rank, this.base_dmgbuff)) * (1.10 + status[7]);
 
-        let nonReactRate = (status[0] * dmg_rate[0][1][0] + calculate_weapon_basedmg(this.nonreact_attack_count[0], status, this.weapon_rank, this.base_dmgbuff)) * status[7]
-                         + (status[0] * dmg_rate[0][1][1] + calculate_weapon_basedmg(this.nonreact_attack_count[1], status, this.weapon_rank, this.base_dmgbuff)) *(status[7] + 0.05)
-                         + (status[0] * dmg_rate[0][1][2] + calculate_weapon_basedmg(this.nonreact_attack_count[2], status, this.weapon_rank, this.base_dmgbuff)) *(status[7] + 0.10);
-        basicDmg = ReactRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400)) / status[7]
-                 + nonReactRate / status[7];
+        let nonReactRate = (status[0] * dmg_rate[0][1][0] + calculate_weapon_basedmg(this.nonreact_attack_count[0], status, this.weapon_rank, this.base_dmgbuff)) * (1.00 + status[7])
+                         + (status[0] * dmg_rate[0][1][1] + calculate_weapon_basedmg(this.nonreact_attack_count[1], status, this.weapon_rank, this.base_dmgbuff)) * (1.05 + status[7])
+                         + (status[0] * dmg_rate[0][1][2] + calculate_weapon_basedmg(this.nonreact_attack_count[2], status, this.weapon_rank, this.base_dmgbuff)) * (1.10 + status[7])
+        basicDmg = ReactRate * this.reaction_coeff * (1 + this.reaction_bonus + 2.78 * status[2] / (status[2] + 1400)) / (1 + status[7])
+                 + nonReactRate / (1 + status[7]);
       }
       else
       {
@@ -2930,10 +2930,10 @@ class sigewinne {
     {
       if (attack_method == 16)
       {
-        attckRate = (status[0] * (dmg_rate[0][0][0] + dmg_rate[0][1][0]) + calculate_weapon_basedmg(this.react_attack_count[0] + this.nonreact_attack_count[0], status, this.weapon_rank, this.base_dmgbuff)) * status[7]
-                  + (status[0] * (dmg_rate[0][0][1] + dmg_rate[0][1][1]) + calculate_weapon_basedmg(this.react_attack_count[1] + this.nonreact_attack_count[1], status, this.weapon_rank, this.base_dmgbuff)) *(status[7] + 0.05)
-                  + (status[0] * (dmg_rate[0][0][2] + dmg_rate[0][1][2]) + calculate_weapon_basedmg(this.react_attack_count[2] + this.nonreact_attack_count[2], status, this.weapon_rank, this.base_dmgbuff)) *(status[7] + 0.10);
-        basicDmg = attckRate / status[7];
+        attckRate = (status[0] * (dmg_rate[0][0][0] + dmg_rate[0][1][0]) + calculate_weapon_basedmg(this.react_attack_count[0] + this.nonreact_attack_count[0], status, this.weapon_rank, this.base_dmgbuff)) * (1 + status[7])
+                  + (status[0] * (dmg_rate[0][0][1] + dmg_rate[0][1][1]) + calculate_weapon_basedmg(this.react_attack_count[1] + this.nonreact_attack_count[1], status, this.weapon_rank, this.base_dmgbuff)) * (1.05 + status[7])
+                  + (status[0] * (dmg_rate[0][0][2] + dmg_rate[0][1][2]) + calculate_weapon_basedmg(this.react_attack_count[2] + this.nonreact_attack_count[2], status, this.weapon_rank, this.base_dmgbuff)) * (1.10 + status[7]);
+        basicDmg = attckRate / (1 + status[7]);
       }
       else
       {

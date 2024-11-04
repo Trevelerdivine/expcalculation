@@ -2824,6 +2824,10 @@ class sigewinne {
     }
     else if (attack_method == 21) 
     {   
+      if (this.char_constellations == 4)
+      {
+        this.sixth_conste_buff = 1;
+      }
       const attack_count = parseInt(document.getElementById("sigwinne_skill_count1").value);
       const react_count = parseInt(document.getElementById("sigwinne_react_count1").value);
       this.react_attack_count = react_count;
@@ -2882,7 +2886,12 @@ class sigewinne {
   }
 
   calculate_char_result_cr(fixstatus,status) {
-    return 0;
+    let cr_buff = status[0] * 0.004 / 1000;
+    if (cr_buff > 0.2)
+    {
+      cr_buff = 0.2;
+    }
+    return cr_buff;
   }
 
   calculate_char_fixed_cd(fixstatus,status) {
@@ -2890,7 +2899,12 @@ class sigewinne {
   }
 
   calculate_char_result_cd(fixstatus,status) {
-    return 0;
+    let cd_buff = status[0] * 0.022 / 1000;
+    if (cd_buff > 1.1)
+    {
+      cd_buff = 1.1;
+    }
+    return cd_buff;
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {

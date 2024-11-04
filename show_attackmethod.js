@@ -1027,11 +1027,11 @@ async function show_attack_method()
           attack_method_prop.appendChild(element);
         });
   
-        if (char_constellations > 1)
+        if (char_constellations > 2)
         {
           traits = [
             createLabel("sigwinne_react_count1", "　まごころお注射反応回数"),
-            createSelectList("sigwinne_react_count1", 0, 15, "", "回", 2),
+            createSelectList("sigwinne_react_count1", 0, 15, "", "回", 3),
             document.createElement("br"),
           ];
         }
@@ -1039,7 +1039,7 @@ async function show_attack_method()
         {
           traits = [
             createLabel("sigwinne_react_count1", "　まごころお注射反応回数"),
-            createSelectList("sigwinne_react_count1", 0, 15, "", "回", 3),
+            createSelectList("sigwinne_react_count1", 0, 15, "", "回", 2),
             document.createElement("br"),
           ];
         }

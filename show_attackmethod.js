@@ -1018,9 +1018,8 @@ async function show_attack_method()
         {
           traits = [
             createLabel("", "　まごころお注射ヒット回数"),
-            document.createElement("br"),
-            createLabel("sigwinne_skill_count1", "　　０段階："),
             createSelectList("sigwinne_skill_count1", 0, 15, "", "回", 6),
+            document.createElement("br"),
           ];
         }
         

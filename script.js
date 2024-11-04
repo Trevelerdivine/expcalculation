@@ -349,6 +349,9 @@ async function create_char_instance(base_status, parameter) {
     case "10":
       char_instance = new amber(base_status, parameter);
       break;
+    case "82":
+      char_instance = new sigewinne(base_status, parameter);
+      break;
     case "80":
       char_instance = new mualani(base_status, parameter);
       break;
@@ -481,6 +484,7 @@ async function create_char_instance(base_status, parameter) {
     case "70":
       char_instance = new travelergeo(base_status, parameter);
       break;
+    
     default:
       // 未知のキャラクターIDに対する処理を追加することもできます
       break;

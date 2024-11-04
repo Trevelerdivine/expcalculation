@@ -12781,6 +12781,10 @@ class AThousandFloatingDreams {
       {
         cr_buff = 0.07 * (this.weapon_rank + 3);
       }
+      if (cr_buff != 4)
+      {
+        cr_buff = 0;
+      }
       return cr_buff;
     }
   

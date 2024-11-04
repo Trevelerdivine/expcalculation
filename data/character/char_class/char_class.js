@@ -2891,7 +2891,7 @@ class sigewinne {
     {
       cr_buff = 0.2;
     }
-    return cr_buff;
+    return cr_buff * this.sixth_conste_buff;
   }
 
   calculate_char_fixed_cd(fixstatus,status) {
@@ -2904,7 +2904,7 @@ class sigewinne {
     {
       cd_buff = 1.1;
     }
-    return cd_buff;
+    return cd_buff * this.sixth_conste_buff;
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {

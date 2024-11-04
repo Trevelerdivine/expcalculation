@@ -1009,7 +1009,7 @@ async function show_attack_method()
       if (char_constellations > 2)
         {
           traits = [
-            createLabel("", "　まごころお注射ヒット回数"),
+            createLabel("", "　まごころお注射ヒット回数："),
             createSelectList("sigwinne_skill_count1", 0, 15, "", "回", 13),
             document.createElement("br"),
           ];
@@ -1017,7 +1017,7 @@ async function show_attack_method()
         else
         {
           traits = [
-            createLabel("", "　まごころお注射ヒット回数"),
+            createLabel("", "　まごころお注射ヒット回数："),
             createSelectList("sigwinne_skill_count1", 0, 15, "", "回", 6),
             document.createElement("br"),
           ];
@@ -1030,7 +1030,7 @@ async function show_attack_method()
         if (char_constellations > 2)
         {
           traits = [
-            createLabel("sigwinne_react_count1", "　まごころお注射反応回数"),
+            createLabel("sigwinne_react_count1", "　まごころお注射反応回数："),
             createSelectList("sigwinne_react_count1", 0, 15, "", "回", 3),
             document.createElement("br"),
           ];
@@ -1038,7 +1038,7 @@ async function show_attack_method()
         else
         {
           traits = [
-            createLabel("sigwinne_react_count1", "　まごころお注射反応回数"),
+            createLabel("sigwinne_react_count1", "　まごころお注射反応回数："),
             createSelectList("sigwinne_react_count1", 0, 15, "", "回", 2),
             document.createElement("br"),
           ];

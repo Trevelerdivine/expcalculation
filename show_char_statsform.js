@@ -1290,7 +1290,10 @@ async function show_char_statsform()
         traitLabel = createLabel(traits[1].id, traits[1].label);
 
         const second_conste_selectList = createanySelectList("sethos_conste2", 0, 2, "+", "%", 2, 15);
+        characterInfo.appendChild(traitCheckbox);
+        characterInfo.appendChild(traitLabel);
         characterInfo.appendChild(second_conste_selectList);
+        characterInfo.appendChild(document.createElement("br"));
       }
       if (char_constellations > 2)
       {

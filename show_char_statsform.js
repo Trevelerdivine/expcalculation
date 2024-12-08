@@ -1262,9 +1262,9 @@ async function show_char_statsform()
     else if (selectedCharId == "83")
     {
       traits = [
-        { id: "traitCheckbox", label: "第1重：シュラインの謁霊歌 貫影の矢の会心率+15%" },
+        { id: "traitCheckbox1", label: "第1重： シュラインの謁霊歌 貫影の矢の会心率+15%" },
         { id: "traitCheckbox2", label: "第2重： 寂秘のパピルス 雷元素ダメージ" },
-        { id: "traitCheckbox3", label: "第4重：真実のプリュマージュ 元素熟知+40" }
+        { id: "traitCheckbox4", label: "第4重： 真実のプリュマージュ 元素熟知+80" }
       ];
 
       options = [

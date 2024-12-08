@@ -7090,7 +7090,7 @@ class sethos {
       const sethos_secondConste_check = document.getElementById("traitCheckbox2");
       if (sethos_secondConste_check.checked)
       {
-        this.second_conste_buff = parseInt(document.getElementById("sethos_conste2").value);
+        this.second_conste_buff = parseInt(document.getElementById("sethos_conste2").value) / 100;
       }
     } 
 

@@ -2509,11 +2509,12 @@ async function show_attack_method()
 
         sethos_agg_countlist = createSelectList("sethos_agg_count", 0, 30, "", "回", 5);
       }
-      traits.forEach(element => {
-        attack_method_prop.appendChild(element);
-      });
-
     }
+    
+    traits.forEach(element => {
+      attack_method_prop.appendChild(element);
+    });
+
     elemental_reaction.appendChild(Aggravate_text); // チェックボックスを select_reaction_method に追加
     elemental_reaction.appendChild(sethos_agg_countlist); // ラベルを select_reaction_method に追加
     elemental_reaction.appendChild(document.createElement("br"));

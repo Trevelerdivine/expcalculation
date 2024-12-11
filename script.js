@@ -445,6 +445,9 @@ async function create_char_instance(base_status, parameter) {
     case "50":
       char_instance = new shikanoinheizou(base_status, parameter);
       break;
+    case "84":
+      char_instance = new kinich(base_status, parameter);
+      break;
     case "55":
       char_instance = new alhaitham(base_status, parameter);
       break;

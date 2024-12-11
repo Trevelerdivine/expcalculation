@@ -2871,7 +2871,7 @@ async function show_attack_method()
           createSelectList("kinich_react_count1", 0, 30, "", "回", 1),
           document.createElement("br"),
           createLabel("kinich_react_count2", "　廻狩貫鱗砲反応回数"),
-          createSelectList("kinich_react_count1", 0, 30, "", "回", 1),
+          createSelectList("kinich_react_count2", 0, 30, "", "回", 1),
           document.createElement("br"),
         ];
       }
@@ -2900,21 +2900,18 @@ async function show_attack_method()
           createLabel("kinich_skill_count6", "　　狩人の心得１層："),
           createSelectList("kinich_skill_count6", 0, 1, "", "回", 1),
           document.createElement("br"),
-          createLabel("kinich_skill_count7", "　　狩人の心得２層："),
-          createSelectList("kinich_skill_count7", 0, 1, "", "回", 0),
-          document.createElement("br"),
         ];
 
         agg_traeats = [
           createLabel("", "草激化回数"),
-          createLabel("kinich_react_count1", "　　円軌道射撃反応回数："),
-          createSelectList("kinich_react_count1", 0, 30, "", "回", 1),
+          createLabel("kinich_react_count1", "　　円軌道射撃："),
+          createSelectList("kinich_react_count1", 0, 30, "", "回", 0),
           document.createElement("br"),
-          createLabel("kinich_react_count2", "　　廻狩貫鱗砲初撃反応回数"),
-          createSelectList("kinich_react_count1", 0, 30, "", "回", 1),
+          createLabel("kinich_react_count2", "　　廻狩貫鱗砲初撃"),
+          createSelectList("kinich_react_count2", 0, 30, "", "回", 0),
           document.createElement("br"),
-          createLabel("kinich_react_count3", "　　廻狩貫鱗砲二回目以降反応回数"),
-          createSelectList("kinich_react_count3", 0, 30, "", "回", 1),
+          createLabel("kinich_react_count3", "　　廻狩貫鱗砲二回目"),
+          createSelectList("kinich_react_count3", 0, 30, "", "回", 0),
           document.createElement("br"),
         ];
       }
@@ -2922,10 +2919,10 @@ async function show_attack_method()
     else if (attack_method == 21)
     {
       traits = [
-        createLabel("kinich_skill_count1", "爆発ダメージヒット回数"),
+        createLabel("kinich_skill_count1", "　爆発ダメージヒット回数："),
         createSelectList("kinich_skill_count1", 0, 1, "", "回", 1),
         document.createElement("br"),
-        createLabel("kinich_skill_count2", "龍の息ヒット回数"),
+        createLabel("kinich_skill_count2", "　龍の息ヒット回数："),
         createSelectList("kinich_skill_count2", 0, 10, "", "枚", 10),
         document.createElement("br"),
       ];

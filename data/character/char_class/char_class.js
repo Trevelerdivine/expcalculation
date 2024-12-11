@@ -8677,7 +8677,7 @@ class kinich {
       }
       const attack_count1 = parseInt(document.getElementById("kinich_skill_count1").value);
       const attack_count2 = parseInt(document.getElementById("kinich_skill_count2").value);
-      this.agg_count1 = parseInt(document.getElementById("kinich_react_count1").value) + parseInt(document.getElementById("kinich_react_count2").value);
+      this.agg_count1 = parseInt(document.getElementById("kinich_react_count1").value);
 
       const dmg_attck_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
                             + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;

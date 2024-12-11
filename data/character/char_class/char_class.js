@@ -8763,18 +8763,18 @@ class kinich {
         const critical_coeff = (1 + status[5] * (this.first_conste_buff + status[6])) / (1 + status[5] * status[6]);
 
         const basicDmg1 = status[4] * dmg_rate[4][0] + calculate_weapon_basedmg(this.attack_count1, status, this.weapon_rank, this.base_dmgbuff)
-                        + this.aggcount1 * agg_bonus;
+                        + this.agg_count1 * agg_bonus;
         const basicDmg2 = (status[4] * dmg_rate[4][1] + calculate_weapon_basedmg(this.attack_count2, status, this.weapon_rank, this.base_dmgbuff)
-                        + this.aggcount2 * agg_bonus) * (1 + status[7] + this.second_conste_buff) / (1 + status[7]);
+                        + this.agg_count2 * agg_bonus) * (1 + status[7] + this.second_conste_buff) / (1 + status[7]);
         const basicDmg3 = status[4] * dmg_rate[4][2] + calculate_weapon_basedmg(this.attack_count3, status, this.weapon_rank, this.base_dmgbuff)
-                        + this.aggcount3 * agg_bonus;
+                        + this.agg_count3 * agg_bonus;
         const basicDmg = basicDmg1 + (basicDmg2 + basicDmg3) * critical_coeff;
         return basicDmg;
       }
       else if (attack_method == 21)
       { 
         const total_rate = status[4] * dmg_rate[4] + calculate_weapon_basedmg(this.attack_count1, status, this.weapon_rank, this.base_dmgbuff);
-        let basicDmg = (total_rate + this.aggcount1 * this.reaction_coeff * this.parameter[1] * (1 + 5 * status[2] / (status[2] + 1200)));
+        let basicDmg = (total_rate + this.agg_count1 * this.reaction_coeff * this.parameter[1] * (1 + 5 * status[2] / (status[2] + 1200)));
         return basicDmg;
       }
     }

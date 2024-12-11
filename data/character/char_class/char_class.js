@@ -8622,15 +8622,6 @@ class kinich {
     const reaction_check = document.getElementById("reactionon_flag");
     if (reaction_check.checked)
     {
-      this.aggcount = parseInt(document.getElementById("kinich_react_count1").value);
-      if (attack_method == 16)
-      {
-        this.unique_agg_count1 = parseInt(document.getElementById("kinich_react_count2").value);
-        if (this.char_constellations > 1)
-        {
-          this.unique_agg_count2 = parseInt(document.getElementById("kinich_react_count3").value);
-        }
-      }
       this.reaction_coeff = 1.25
     }    
   

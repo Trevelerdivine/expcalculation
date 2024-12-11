@@ -8604,6 +8604,7 @@ class kinich {
     this.talent2_buff = 0;
     this.first_conste_buff = 0;
     this.second_conste_buff = 0;
+    this.fourth_conste_buff = 0;
     this.sixth_conste_buff = 0;
     this.char_constellations = 0;
     this.attack_count1 = 0;
@@ -8655,6 +8656,8 @@ class kinich {
       const attack_count2 = parseInt(document.getElementById("kinich_skill_count2").value);
       const attack_count3 = parseInt(document.getElementById("kinich_skill_count3").value);
       const attack_count4 = parseInt(document.getElementById("kinich_skill_count4").value);
+      this.agg_count1 = parseInt(document.getElementById("kinich_react_count1").value);
+      this.agg_count2 = parseInt(document.getElementById("kinich_react_count2").value);
 
       this.attack_count1 = attack_count1 * 2;
       this.attack_count2 = attack_count2 + attack_count3 + attack_count4;
@@ -8669,7 +8672,7 @@ class kinich {
         const attack_count6 = parseInt(document.getElementById("kinich_skill_count6").value);
 
         this.attack_count2 += attack_count5 + attack_count6;
-
+        this.agg_count3 = parseInt(document.getElementById("kinich_react_count3").value);
         dmg_attck_rate[2] = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count5 + attack_count6)
                           + 3.2 * attack_count6;
       }
@@ -8677,8 +8680,13 @@ class kinich {
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     }
     else if (attack_method == 21) {
+      if (this.char_constellations > 0)
+      {
+        this.fourth_conste_buff = 0.7;
+      }
       const attack_count1 = parseInt(document.getElementById("kinich_skill_count1").value);
       const attack_count2 = parseInt(document.getElementById("kinich_skill_count2").value);
+      this.agg_count1 = parseInt(document.getElementById("kinich_react_count1").value) + parseInt(document.getElementById("kinich_react_count2").value);
 
       const dmg_attck_rate1 = parseFloat(data["元素爆発"]["詳細"][0]["数値"][this.parameter[3]]) * attack_count1
                             + parseFloat(data["元素爆発"]["詳細"][1]["数値"][this.parameter[3]]) * attack_count2;
@@ -8748,7 +8756,7 @@ class kinich {
   }
 
   calculate_char_fixed_dmg_buff(fixstatus,status) {
-    return 0;
+    return this.fourth_conste_buff;
   }
 
   calculate_char_result_dmg_buff(fixstatus,status) {

@@ -8668,8 +8668,8 @@ class kinich {
                           + 3.2 * attack_count6;
         if(this.char_constellations == 4)
         {
-          dmg_attck_rate[1] += 7 * this.attack_count3;
-          dmg_attck_rate[1] += 7 * this.attack_count3;
+          dmg_attck_rate[1] += 7 * this.attack_count2;
+          dmg_attck_rate[2] += 7 * this.attack_count3;
         }
       }
 

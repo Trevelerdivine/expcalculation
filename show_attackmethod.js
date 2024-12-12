@@ -2911,10 +2911,10 @@ async function show_attack_method()
           createLabel("kinich_react_count1", "　　円軌道射撃："),
           createSelectList("kinich_react_count1", 0, 5, "", "回", 0),
           document.createElement("br"),
-          createLabel("kinich_react_count2", "　　廻狩貫鱗砲初撃"),
+          createLabel("kinich_react_count2", "　　廻狩貫鱗砲初撃："),
           createSelectList("kinich_react_count2", 0, 5, "", "回", 0),
           document.createElement("br"),
-          createLabel("kinich_react_count3", "　　廻狩貫鱗砲二回目以降"),
+          createLabel("kinich_react_count3", "　　廻狩貫鱗砲二回目以降："),
           createSelectList("kinich_react_count3", 0, 5, "", "回", 0),
           document.createElement("br"),
         ];

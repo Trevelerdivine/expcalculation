@@ -8662,10 +8662,15 @@ class kinich {
         const attack_count5 = parseInt(document.getElementById("kinich_skill_count5").value);
         const attack_count6 = parseInt(document.getElementById("kinich_skill_count6").value);
 
-        this.attack_count2 += attack_count5 + attack_count6;
+        this.attack_count3 += attack_count5 + attack_count6;
         this.agg_count3 = parseInt(document.getElementById("kinich_react_count3").value);
         dmg_attck_rate[2] = parseFloat(data["元素スキル"]["詳細"][1]["数値"][this.parameter[3]]) * (attack_count5 + attack_count6)
                           + 3.2 * attack_count6;
+        if(this.char_constellations == 4)
+        {
+          dmg_attck_rate[1] += 7 * this.attack_count3;
+          dmg_attck_rate[1] += 7 * this.attack_count3;
+        }
       }
 
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];

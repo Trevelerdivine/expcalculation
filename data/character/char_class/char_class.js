@@ -8676,7 +8676,7 @@ class kinich {
       dmg_rate = [0, 0, 0, 0, dmg_attck_rate, 0, 0];
     }
     else if (attack_method == 21) {
-      if (this.char_constellations > 0)
+      if (this.char_constellations > 2)
       {
         this.fourth_conste_buff = 0.7;
       }

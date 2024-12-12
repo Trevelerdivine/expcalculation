@@ -12883,7 +12883,7 @@ class AThousandFloatingDreams {
         const buff_count = document.getElementById("MountainKingbuff_count").value;
         weapon_dmg_buff = 0.025 * (this.weapon_rank + 3) * buff_count;
       }
-      return 0;
+      return weapon_dmg_buff;
     }
   
     calculate_weapon_result_dmg_buff(fixstatus,status) {
